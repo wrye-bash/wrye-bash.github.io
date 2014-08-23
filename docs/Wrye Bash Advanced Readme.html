@@ -166,11 +166,18 @@
 
 <h3 id="install-components">Python Components</h3>
 <p>If you are installing the Python version of Wrye Bash and wish to install the Python dependencies separately, the following must be installed.
+<p style="font-style:italic;font-weight:bold;font-size:1em;color:red;">Note that the 32-bit versions are required even if you are on a 64-bit operating system.</p>
 <ul>
-    <li><a href="http://www.python.org/ftp/python/2.7.3/python-2.7.3.msi">Python 2.7.3</a>
-    <li><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 unicode for Python 2.7</a>
-    <li><a href="http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/pywin32-218.win32-py2.7.exe/download">PyWin32</a>: This component is required for Wizards to function. If you do not wish to use Wizards, then it need not be installed.
-    <li><a href="http://sourceforge.net/projects/comtypes/files/comtypes/0.6.2/comtypes-0.6.2.win32.exe/download">Comtypes 0.6.2</a>: This is an optional component, only required for users of the PM Archives tab. If Comtypes is not installed, the PM Archives tab will not be visible.
+    <li><a href="https://www.python.org/ftp/python/2.7.8/python-2.7.8.msi">Python 2.7.8</a>.  If you are already using 2.7.3 or higher, updating to the latest version is not required.  Versions prior to 2.7.3 may work with Wrye Bash, but have not been tested.  Updating is recommended for bug and security fixes.
+    <li><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 Unicode for Python 2.7</a>
+    <li><a href="http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win32-py2.7.exe/download">PyWin32</a>: This component is required for Wizards to function. If you do not wish to use Wizards, then it need not be installed.
+    <li><a href="http://sourceforge.net/projects/comtypes/files/comtypes/0.6.2/comtypes-0.6.2.win32.exe/download">Comtypes 0.6.2</a>: This is an optional component, it is used to enable rendering of HTML via an ActiveX control.  The  following features are affected if comtypes is not installed:
+        <ul>
+            <li>The PM Archives tab will be disabled.
+            <li>The DocBrowser will display raw text when displaying an HTML readme.
+            <li>The ModChecker report will be text instead of HTML.
+            <li>The Bashed Patch build report will be displayed by opening the file in your default browser.
+        </ul>
 </ul>
 
 <h2 id="bain">Installers Tab</h2>
@@ -1440,7 +1447,8 @@
 <img src="../bash/images/readme/toolbar-11-rclick-hide-gamelauncher.png" alt="toolbar hide launcher"/>
 <img src="../bash/images/readme/toolbar-12-rclick-hide-autoquit.png" alt="toolbar hide launcher"/>
 <img src="../bash/images/readme/toolbar-13-rclick-hide-obse-toggle.png" alt="toolbar hide launcher"/>
-<figcaption style="padding-top:80px;">The Hide option in the right-click menu for launchers.</figcaption>
+<img src="../bash/images/readme/toolbar-12-rclick-hide-boss.png" alt="toolbar hide launcher"/>
+<figcaption style="padding-top:95px;">The Hide option in the right-click menu for launchers.</figcaption>
 </figure>
 <p>You can hide specific launcher icons, preventing them from being displayed, by right-clicking them and selecting <q>Hide...</q> or by inserting a semicolon before their path in the <q>bash.ini</q>.
 <ul><li>For example, <code>sPhotoshopPath=;C:\Program Files\Adobe\Photoshop 7.0\Photoshop.exe</code>.</ul>
@@ -1546,7 +1554,6 @@
 <img src="../bash/images/readme/settings-4-language_highlighted.png" alt="Colors Dialog"/>
 <img src="../bash/images/readme/settings-5-plugin_encoding_highlighted.png" alt="Colors Dialog"/>
 <img src="../bash/images/readme/settings-6-game_highlighted.png" alt="Colors Dialog"/>
-<img src="../bash/images/readme/settings-7-check_for_updates_highlighted.png" alt="Colors Dialog"/>
 <figcaption style="padding-top:400px;">Wrye Bash's Settings menu.</figcaption>
 </figure>
 <p>The Settings menu is where Wrye Bash's global settings may be accessed. The Settings menu can be opened by clicking on the <a href="Wrye%20Bash%20General%20Readme.html#launchersSettingsMenu">Settings button</a> in the status bar. The Settings menu's items are detailed in the table below.
@@ -1585,7 +1592,6 @@
         <tr><td colspan="2">Use Alternate Wrye Bash Name<td>If checked, displays in the title bar <q>Wrye Bash</q> when running for Oblivion and <q>Wrye Smash</q> when running for Skyrim. If unchecked, the title bar will contain <q>Wrye Bash for [Game]</q> instead.
   <tr><td colspan="2">Debug Mode<td>Opens up a window to which debugging information is written.
   <tr><td colspan="2" id="settingsDumpTranslator">Dump Translator<td>Generates a new translation file for your locale. See <a href="#international">Internationalisation</a> for more information.
-        <tr><td colspan="2">Check for Updates...<td>Checks the TESNexus download page to see if there are newer versions of Wrye Bash available.
 </table>
 <figure class="slideshow">
 <img src="../bash/images/readme/settings-1-colours-dialogue-1.png" alt="Colors Dialog"/>
@@ -1775,13 +1781,13 @@
 			<td>Backup all Bash settings to an archive file before the app
 				launches. Either specify the filepath with the <code>-f/--filename</code>
 				options or Wrye Bash will prompt the user for the backup file path.
-			
+
 		<tr>
 			<td><code>-r, --restore</code>
 			<td>Backup all Bash settings to an archive file before the app
 				launches. Either specify the filepath with the <code>-f/--filname</code>
 				options or Wrye Bash will prompt the user for the backup file path.
-			
+
 		<tr>
 			<td><code>-f FILENAME, --filename=FILENAME</code>
 			<td>The file to use with the <code>-r</code> or <code>-b</code>
