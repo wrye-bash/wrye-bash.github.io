@@ -394,7 +394,9 @@
         <tr><td>Modification Time<td>For Oblivion, this affects the load order of the selected plugin. For Skyrim, it has no effect, except that if it is changed for a plugin obtained from Steam Workshop, it will cause the plugin to be redownloaded as Steam Workshop uses modification time to detect file versions.
         <tr><td>Author<td>Who made the selected plugin.
         <tr><td>Description<td>Commonly used for a short description of what the selected plugin does, plus the version number and any Bash Tags the author sets.
-        <tr><td>Masters List<td>The plugins (.esm or .esp) that the selected plugin depends on, and their indices (positions in load order). Plugins' entries in the Masters List may be renamed to reflect name changes of the plugins themselves. Renaming can be done by left-clicking the plugin entry and editing in the column display, or right-clicking the plugin and selecting <q>Change To...</q> then selecting the replacement plugin. <b>Do not</b> use this to change a plugin's masters to unrelated plugins, as this will cause file corruption.
+        <tr><td>Masters List<td>The plugins (.esm or .esp) that the selected plugin depends on, and their indices (positions in load order). Plugins' entries in the Masters List may be renamed to reflect name changes of the plugins themselves. Renaming can be done by left-clicking the plugin entry and editing in the column display, or right-clicking the plugin and selecting <q>Change To...</q> then selecting the replacement plugin. <b>Do not</b> use this to change a plugin's masters to unrelated plugins, as this will cause file corruption.<br />
+        MI = Master Index of the mod or save game. This means the actual number of the masters in succession starting with 00 Skyrim.esm, or 00 Oblivion.esm.<br />
+        Current LO = Current load order in relation to the load order of the Active Plugins. Active Plugins should correspond with plugins.txt.
         <tr><td>Bash Tags<td>This field lists any Bash Tags that are assigned to the selected plugin. Right-clicking will display a list of Bash Tags and allow you to add or remove tags by checking or unchecking them.
 </table>
 
@@ -1282,7 +1284,9 @@
         <tr><td>Screenshot<td>The screenshot embedded in the save file, taken at the moment of saving.
         <tr><td>Masters List<td>The plugins that the save file depends on, and their load order.<br />
         Masters in the list can be renamed if the corresponding plugin has been renamed. To rename a master, either left-click it and edit it in the column display, or right-click it and select <q>Change To...</q> to select the desired replacement plugin from the Data directory.<br />
-        Masters can also be disabled if they have been removed and are preventing your save from loading, as may sometimes happen, by right-clicking them and selecting <q>Disable</q>. Note that logical errors may still occur that prevent the removal of the plugin dependency, but this will let the game <i>try</i> to remove the dependency.
+        Masters can also be disabled if they have been removed and are preventing your save from loading, as may sometimes happen, by right-clicking them and selecting <q>Disable</q>. Note that logical errors may still occur that prevent the removal of the plugin dependency, but this will let the game <i>try</i> to remove the dependency.<br />
+        MI = Master Index of the mod or save game. This means the actual number of the masters in succession starting with 00 Skyrim.esm, or 00 Oblivion.esm.<br />
+        Current LO = Current load order in relation to the load order of the Active Plugins. Active Plugins should correspond with plugins.txt.
         <tr><td>Notes<td>This section can be used to keep notes on the save file.
 </table>
 
