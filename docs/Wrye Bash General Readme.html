@@ -50,6 +50,7 @@
 	<li><a href="#bain">Installing Mods</a>
 	<ol>
 		<li><a href="#bain-overview">Overview</a>
+		<li><a href="#bain-structure">BAIN-Compatible installer layout</a>
 		<li><a href="#bain-convert">Restructuring Packages to be BAIN-Compatible</a>
 		<li><a href="#bain-install">Installing/Uninstalling Via BAIN</a>
 		<li><a href="#bain-order">BAIN Package Order</a>
@@ -60,6 +61,7 @@
 	<ol>
 		<li><a href="#load-overview">Overview</a>
 		<li><a href="#load-set">Setting The Load Order</a>
+		<li><a href="#load-undo">Undo and redo Load Order changes</a>
 		<li><a href="#load-symbols">What Symbols &amp; Colours Mean</a>
 		<li><a href="#load-commands">Useful Context Menu Commands</a>
 	</ol>
@@ -86,6 +88,7 @@
 		<li><a href="#launchers-utils">Game-Specific Utilities</a>
 		<li><a href="#launchers-apps">Other Applications</a>
 		<li><a href="#launchers-features">Wrye Bash Feature Launchers</a>
+		<li><a href="#manually-add">Manually adding tools to the Launcher Bar</a>
 	</ol>
 	<li><a href="#trouble">Troubleshooting</a>
 	<ol>
@@ -146,6 +149,7 @@
 <p><b>Windows Vista &amp; Windows 7 users:</b> Windows' User Account Control feature may interfere with the running of Wrye Bash and other utilities. See the <a href="#trouble-permissions">File Permissions</a> section for solutions.
 <p>Manual Standalone Version Install:
 <ol>
+	<li>Download and install the <a href="https://download.microsoft.com/download/6/A/A/6AA4EDFF-645B-48C5-81CC-ED5963AEAD48/vc_redist.x86.exe">MSVC 2015 Redistributable (x86)</a>.
 	<li>Extract the downloaded Wrye Bash archive into the game folder (<q>Oblivion</q> or <q>Skyrim</q> depending on the game) so that the Mopy
 		directory appears in the game folder.
 	<li>Run Wrye Bash by double-clicking <q>Wrye Bash.exe</q> in the new Mopy folder.
@@ -156,6 +160,7 @@
 		See the <a href="Wrye%20Bash%20Advanced%20Readme.html#install-components">Python Components</a> section of the Advanced readme
 		for the list of included libraries and their versions. If you have previously installed Python and any Python libraries,
 		you may not need to install them again.
+	<li>Download and install the <a href="https://download.microsoft.com/download/6/A/A/6AA4EDFF-645B-48C5-81CC-ED5963AEAD48/vc_redist.x86.exe">MSVC 2015 Redistributable (x86)</a>.
 	<li>Extract the downloaded Wrye Bash archive into your game folder (<q>Oblivion</q> or <q>Skyrim</q> depending on the game) so that the Mopy
 	directory appears by the game executable. See the
 	<a href="Wrye%20Bash%20Advanced%20Readme.html#install-alternate">Alternative Install Locations</a> if you wish to install to a different directory.
@@ -169,7 +174,6 @@
 	<li>If you use BAIN to manage your installed mods, you will need to ensure that you have an adequate alternative management system ready, as although uninstalling Wrye Bash will not uninstall your mods, you will no longer be able to use BAIN's conflict resolution features.
 	<li>If you use any INI tweaks applied through Wrye Bash, you will need to make a note of which tweaks you have applied, as although uninstalling Wrye Bash will not undo your tweaks, you will no longer have any record of tweaks applied or default values.
 	<li>If you use the People tab, you will need to transfer your notes on people and record their karma outside of Wrye Bash.
-	<li>If you use the PM Archive tab, you will need to move your archived PMs outside of Wrye Bash's folders.
 </ul>
 <p>If none of the above points apply to you, or once you have taken the necessary measures for the points that apply, you can uninstall Wrye Bash by either running the uninstaller, if you used the installer to install Wrye Bash, or delete the following files and folders if you installed it manually.
 <ul>
@@ -193,9 +197,77 @@
 <img src="../bash/images/readme/installers-8.png" alt="Installers Tab"/>
 <figcaption style="padding-top:650px;">Wrye Bash's Installers tab.</figcaption>
 </figure>
+
 <h3 id="bain-overview">Overview</h3>
-<p>Wrye Bash's mod installer is known as <abbr title="Bash Installers">BAIN</abbr>, and is represented by the Installers tab. The first time the Installers tab is opened, a dialog will appear asking if BAIN should be initialized. If you click <q>Yes</q>, BAIN will be initialised, which can take some time. After that, the information refresh performed when the Installers tab is opened is much faster. BAIN's primary function is to install mod packages. <b>BAIN Packages</b> can be .zip, .7z or .rar archives or uncompressed directories. Uncompressed directories are called <b>Projects</b>.
+<p>Wrye Bash's mod installer is known as <abbr title="Bash Installers">BAIN</abbr>, and is represented by the Installers tab. The first time the Installers tab is opened, a
+	dialog will appear asking if BAIN should be initialized. If you click <q>Yes</q>, BAIN will be initialised, which can take some time. After that, the information refresh
+	performed when the Installers tab is opened is much faster. BAIN's primary function is to install mod packages. <b>BAIN Packages</b> can be <code>.zip</code>,
+	<code>.7z</code> or <code>.rar</code> archives or uncompressed directories. Uncompressed directories are called <b>projects</b> while archives are usually called
+	<b>packages</b>, abusing terminology. When we refer to projects and packages together we will be also using the term <b>installer</b>.
 <p>If BAIN is disabled, ie. if you clicked <q>No</q> on the dialog that was displayed the first time you selected the Installers tab, it can be re-enabled by right clicking on a column header in the Installers tab and selecting <a href="Wrye%20Bash%20Advanced%20Readme.html#bainEnabled">Enabled</a>.
+
+<h3 id="bain-structure">BAIN-Compatible installer layout</h3>
+
+<p>When looking at an installer (package or project) BAIN follows some rules to decide what's in there and if it can be installed. In broad lines, BAIN
+will search for specific directories and file extensions (mod, texture, nif, docs etc). The directories BAIN is aware of, independently of the game,
+are:
+
+<table>
+	<thead><tr><th>Bash directories<th>Notes
+	<tbody>
+		<tr><td>bash patches<td>yep, Bash will install files in this folder from packages
+		<tr><td>docs<td>its contents will be copied inside Data/Docs
+		<tr><td>ini tweaks<td>ini tweaks inside this will be installed in Data/Ini Tweaks/ - do <b>not</b> include subfolders in ini tweaks/
+		<tr><td>screenshots<td>its contents will be copied inside Data/Docs
+	<thead><tr><th colspan="2">Vanilla game directory present on all games
+	<tbody>
+		<tr><td colspan="2">meshes, music, textures, video
+</table>
+
+but there are game specific directories as well (all directory detection is <i>case insensitive</i>):
+
+<table>
+	<thead><tr><th>Game<th>Extra Game Directories<th>Bonus Directories (tools or modders)
+	<tbody>
+		<tr><td>Oblivion<td>distantlod, facegen, fonts, menus, shaders, sound, trees<td>_tejon, ini, obse, pluggy, scripts, streamline
+		<tr><td>Skyrim<td>dialogueviews, grass, interface, lodsettings, scripts, seq, shadersfx, sound, strings<td>asi, ini, skse, skyproc patchers
+		<tr><td>Fallout 4<td>interface, lodsettings, materials, misc, programs, scripts, shadersfx, sounds, strings, vis<td>f4se, ini
+</table>
+
+All these directories (either in the Global or Extra and Bonus Game directories) constitute the <i>standard game directories</i> for this game. If
+<a href="Wrye%20Bash%20Advanced%20Readme.html#bainHasExtraDirectories">Has Extra Directories</a> is not on for the package, any other top level directory in the (sub)package
+will be skipped (and their content listed in Skipped tab). There are also some directories and files that will be always skipped (for all the gory details see
+<a href="Wrye%20Bash%20Advanced%20Readme.html#bain-skipped">Skipped Files</a>).
+
+<p>There are, loosely speaking, three types of BAIN-compatible package structures:
+
+<table>
+	<thead><tr><th>Structure<th>Description
+	<tbody>
+		<tr><td>Simple<td>Installer has .esp, .esm and/or .bsa files, and/or any of the standard game subdirectories at the top level of the package/project.
+		<tr><td>Complex<td>Installer has top-level subdirectories that each have a simple structure (as defined above). The top level subdirectories
+			(known as subpackages) <b>must not have the same name as any of the regular game subdirectories for this game.</b>
+			Each top-level subdirectory will be treated as a sub-package, and can be independently activated or deactivated as desired.
+		<tr><td>Complex/Simple<td>A complex installer with only one top-level subdirectory. It is treated as a simple installer, starting at this
+			top level subdirectory. Examples include mods packaged with a top-level Data directory.
+</table>
+
+<p>You must dump your installer in <code>Bash Installers</code> directory which is created the first time Bash runs inside the <code>"Game" Mods</code> directory. This directory is by default
+	created on the same level as your game directory (that is if your game exe is located in "C:\GAMES\TESIV\Oblivion" then by default Bash will create the "C:\GAMES\TESIV\Oblivion Mods\"
+	directory on first run, but you can point Bash to create this "Game" Mods directory wherever you want (or point it to an existing one) via the <code>sOblivionMods</code> ini setting. Do
+	<i>not</i> however put it inside the game Data directory, as the game may well be confused and scan it adding to performance, mods thrashing and whatnot. To add an installer to the Bash
+	Installers dir it's enough to drag and drop it on the installers list.
+<p>Bash will scan the Bash Installers directory and pick up all subfolders and all <code>.zip</code>, <code>.7z</code> or <code>.rar</code> archives - except for:
+
+<ol>
+	<li>folders or files that begin with <code>--</code> will be skipped
+	<li>a <code>Bain Converters</code> subdir of Bash Installers will be skipped
+	<li>folders or files that begin with <code>bash</code> will be skipped
+	<li>you may specify additional directories to be skipped via the <code>sSkippedBashInstallersDirs</code> ini setting
+</ol>
+
+<p>Now BAIN will try to classify the packages it detected in Bash Installers into its package formats - if it fails the package will display as unrecognized and will have to
+be restructured.
 
 <h3 id="bain-convert">Restructuring Packages to be BAIN-Compatible</h3>
 <p>The easiest way to tell if a package needs manual converting to be compatible with BAIN is to try installing it. If it is listed in the Package list with a grey checkbox and name, then BAIN cannot install it. Due to BAIN's flexibility, many mods are already packaged in ways that are compatible, but for those that are not, there are a few possible cases:
@@ -208,19 +280,13 @@
 <p>If an archive has a BCF, it can be converted for installation with BAIN using the following instructions.
 <ol>
 	<li>Ensure that the BCF is installed in the correct location, <code>[Game] Mods\Bash Installers\Bain Converters</code>. Also ensure that the archive(s) it converts is/are in <code>[Game] Mods\Bash Installers</code>.
-	<li>From the BAIN installers list, select the archive(s) to be converted (i.e., the <q>source</q> packages) and right click on the selected file(s) to bring up the context menu, and select <a href="#bainConversions">Conversions</a> to open the sub-menu.
-	<li>Click on <a href="#bainApply">Apply</a> to open a second sub-menu and select the BCF from it. There may be more than one BCF listed if multiple installed BCFs can convert the selected package(s). An asterisk ('*') is added to the end of a BCF's name for every archive it converts that isn't selected.
+	<li>From the BAIN installers list, select the archive(s) to be converted (i.e., the <q>source</q> packages) and right click on the selected file(s) to bring up the context menu, and select <a href="Wrye%20Bash%20Advanced%20Readme.html#bainConversion">Conversions</a> to open the sub-menu.
+	<li>Click on <i>Apply</i> to open a second sub-menu and select the BCF from it. There may be more than one BCF listed if multiple installed BCFs can convert the selected package(s).
+	An asterisk ('*') is added to the end of a BCF's name for every archive it converts that isn't selected.
 	<li>Optionally choose a name for the converted archive(s).
 	<li>Once Wrye Bash has finished the conversion, the converted archive(s) will appear in the BAIN package list ready for install. You can now delete the original archive(s).
 </ol>
-<p>If a package is unrecognised by BAIN and has no associated BCF, its contents will have to be rearranged so that the structure matches one of the three types of BAIN-compatible package structures:
-<table>
-	<thead><tr><th>Structure<th>Description
-	<tbody>
-		<tr><td>Simple<td>Package has .esp, .esm and/or .bsa files, and/or any of the regular game subdirectories (screenshots, bash patches, distantlod, docs, facegen, fonts, menus, meshes, music, shaders, sound, textures, trees, video, streamline, _tejon, ini tweaks, scripts, pluggy, ini, obse) at the top level of the package.
-		<tr><td>Complex<td>Package has top-level subdirectories that each have a simple structure (as defined above). Each top-level subdirectory will be treated as a sub-package, and can be independently activated or deactivated as desired.
-		<tr><td>Complex/Simple<td>A complex package with only one top-level subdirectory. It is treated as a simple package. Examples include mods packaged with a top-level Data directory.
-</table>
+<p>If a package is unrecognised by BAIN and has no associated BCF, its contents will have to be rearranged so that the structure matches one of the three types of BAIN-compatible package structures.
 
 <h3 id="bain-install">Installing/Uninstalling Via BAIN</h3>
 <p>Packages must first be placed in the <code>[Game] Mods\Bash Installers</code> directory. This can either be done via Windows Explorer, or by dragging and dropping the package into the Wrye Bash window when the Installers tab is open. If you drag and drop, you will be asked whether you want to copy the package or move it.
@@ -370,11 +436,21 @@ from other packages previously overridden by the uninstalled package's
 <figcaption>Wrye Bash's Mods tab.</figcaption>
 </figure>
 <h3 id="load-overview">Overview</h3>
-<p>Wrye Bash displays your installed plugins in its <q>Mods</q> tab. Your load order consists of active installed plugins, which Wrye Bash marks with a ticked checkbox. The load order is important as it decides what plugin 'wins' any conflict between plugins, with later loading plugins overriding those that change the same thing. <b>Load order is not the same thing as install order!</b> Install order determines which mods' files overwrite other mods' files when they conflict. Load order determines which plugins' effects override other plugins' effects in-game when they conflict.
-<p>Plugins may be activated by clicking their checkbox so that the checkbox is ticked, or by selecting a plugin or group of plugins and pressing the space bar on your keyboard. Plugins may be deactivated by again clicking their checkbox or pressing the spacebar. If a group of selected plugins contains a mix of active and inactive plugins, pressing the space bar once will activate them all, thereafter it will function as normal.
+<p>Wrye Bash displays your installed plugins in its <q>Mods</q> tab. Your load order of active installed plugins, which Wrye Bash marks with a
+	ticked checkbox, is important as it decides what plugin 'wins' any conflict between plugins, with later loading plugins overriding those
+	that change the same thing. <b>Load order is not the same thing as BAIN install order!</b> Install order determines which mods' files overwrite
+	other mods' files when they conflict. Load order determines which plugins' effects override other plugins' effects in-game when they conflict.
+<p>Although in general "Load Order" stands for the load order of the <i>active</i> plugins, all installed plugins have a load order assigned
+	to them. In Oblivion this is based on the modification time of the plugin, in Skyrim based to an agreed upon text-file based standard,
+	while Fallout 4 finally dumps all installed plugins in its plugins.txt, marking active ones with an asterisk. Bash needs plugins load
+	order even for inactive plugins to correctly merge inactive mods in the bashed patch, among others.
+<p>Plugins may be activated by clicking their checkbox so that it is ticked, or by selecting a plugin or group of plugins and pressing the
+	space bar on your keyboard. Plugins may be deactivated by again clicking their checkbox or pressing the spacebar. If a group of selected
+	plugins contains a mix of active and inactive plugins, pressing the space bar once will activate them all, thereafter it will function as normal.
 <p>Some plugins are explicitly dependent on other plugins - they have these plugins as <q>masters</q>. When a plugin is activated, its masters are also activated. Conversely, when a plugin upon which other plugins depend is deactivated, those plugins are also deactivated.</p>
 <p>When setting the load order, make sure that Wrye Bash is displaying your plugins sorted by Load Order. Do so by clicking on the <q>Load Order</q> column header near the top of the tab. You can also display the plugins sorted by other attributes by clicking on any of the other column headers. Clicking twice will reverse the display order for any column but Load Order. The load order of plugins is given in hexadecimal digits, from 00 to FE, which is 0 to 254 in decimal. (This number also forms the first two digits of a record's Form ID.)
-<p>Note that you can only have a maximum of 255 plugins, including your game's master file (eg. Oblivion.esm, Skyrim.esm), active at any one time. Wrye Bash displays a plugin count in its status bar, to the right hand side, in the format <code>Mods: [active]/[installed]</code>.
+<p>Note that you can only have a maximum of 255 plugins active at any one time, including your game's master file (eg. Oblivion.esm, Skyrim.esm).
+	Wrye Bash displays a plugin count in its status bar, to the right hand side, in the format <code>Mods: [active]/[installed]</code>.
 
 <h3 id="load-set">Setting The Load Order</h3>
 <p>Setting up a correct load order that minimises detrimental conflicts that could cause issues in-game can be a difficult and time-consuming process. Effective load-ordering often requires a knowledge of what each plugin in your load order contains so that you can position the plugins to minimise these conflicts. For simple mods, the description in the mod's readme will usually be sufficient to determine the records it contains, but to be sure a utility such as TES4Edit is required.
@@ -387,13 +463,29 @@ from other packages previously overridden by the uninstalled package's
 	<li><i>Oblivion only.</i> Selecting a group of plugins and choosing File->Redate from the right-click menu. This will move the first plugin to the specified date/time and position the others at one minute intervals after it.
 	<li><i>Oblivion only.</i> Editing plugin modification dates in the right-hand details panel.
 </ul>
-<p>When running Wrye Bash for Oblivion, you can also lock your load order in place to prevent unintended changes to it by selecting the <a href="#modsLockLoadOrder">Lock Load Order</a> option in the column header right-click menu. Note that this will prevent other utilities from changing the load order, so uncheck this option if you use such a utility to set your load order. If you use BOSS to manage your load order and you also use Lock Load Order, ensure <a href="#launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</a> is also enabled to allow BOSS to function correctly.
-<p>The <q>Lock Load Order</q> feature is not implemented for Skyrim as Wrye Bash will automatically undo any changes to load order done made by the Skyrim launcher or any utility that does not follow the textfile-based load order standard in order to maintain a fully coherent load order. This effectively means that unintended changes are prevented.
+<p>When running Wrye Bash, you can also lock your load order in place to prevent unintended changes to it by selecting the <a href="#modsLockLoadOrder">Lock Load Order</a>
+	option in the column header right-click menu. Note that this will prevent other utilities from changing the load order, so uncheck this option if you use such a
+	utility to set your load order. If you use BOSS to manage your load order and you also use Lock Load Order, ensure
+	<a href="#launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</a> is also enabled to allow BOSS to function correctly.
+<p>Note that for Skyrim Wrye Bash will automatically undo any changes to load order done made by the Skyrim launcher or any utility that does not follow the textfile-based
+	load order standard in order to maintain a fully coherent load order. This effectively means that unintended changes are prevented.
 <figure>
 <img src="../bash/images/readme/toolbar-12-rclick-hide-boss.png" alt="toolbar hide launcher"/>
 <figcaption>BOSS's Launch Using GUI option.</figcaption>
 </figure>
 <p>The <q>Launch Using GUI</q> toggles the use of the command line interface for BOSS with the BOSS GUI. Giving quick and easy access to the additional features the GUI provides such as the <q>Edit User Rules</q> option.
+
+<h3 id="load-undo">Undo and redo Load Order changes</h3>
+<p>Bash features a sophisticated undo/redo load order feature, comprising both load order changes <i>of active <b>or</b> inactive
+	plugins</i> and activating/de-activating plugins. Whether you activate a plugin, drag and drop it in another position, deactivate a
+	plugin (having its children deactivated too) etc, you can always hit <code>Ctrl+Z</code> <i>while the list of mods has focus</i> to undo
+	the operation or <code>Ctrl+Y</code> to redo it. Bash keeps the load orders (meaning total load order of <i>all</i> installed plugins
+	and active state of the plugins) in its internal structures and will persist those on disc on shutting down,
+	in <code>My Games\&lt;Game>\BashLoadOrders.dat</code>, so you can undo/redo on restarting Bash.
+<p>The undo/redo feature will try to preserve as many load orders as possible - so unlike undo/redo in other applications if you have an
+	initial load order state A then change it to B, then hit undo (so you are back on state A), then change it to C Bash will keep in its
+	internal structures the load order states A C B while most other applications would end up with A C. Undo/redo load order state is a
+	relatively new feature (available in 307 beta) so it may have rough edges.
 
 <h3 id="load-symbols">What Symbols &amp; Colours Mean</h3>
 <p>Like in the Installers tab, Wrye Bash uses colour-coding and other formatting effects to convey information about the state of plugins. The different types of formatting used and their meanings are explained here.
@@ -445,7 +537,8 @@ from other packages previously overridden by the uninstalled package's
 			plugin is activated, the <q>.ghost</q> extension is removed, allowing it to function as normal. Note that most other utilities will not
 			recognise ghosted plugins, so there are options available for individual plugins to control which get ghosted.
 		Bash displays a warning if a lot of mods and BSAs are detected that you can disable via the ini.
-		<tr><td colspan="2" id="modsLockLoadOrder">Lock Load Order<td><i>Oblivion only.</i> This prevents other utilities from altering plugin load order. More accurately, it detects changes to load order when Wrye Bash is focused (ie. on top of all other program windows) and reverses those changes.
+		<tr><td colspan="2" id="modsLockLoadOrder">Lock Load Order<td>This prevents other utilities from altering plugin modification times. More accurately, it detects
+			changes to modification times when Wrye Bash starts or is focused (ie. on top of all other program windows) and reverses those changes.
 </table>
 <table>
 	<thead>
@@ -662,9 +755,11 @@ from other packages previously overridden by the uninstalled package's
             <td><img src="../bash/images/creationkit32.png" width="32" height="32" alt="Creation Kit icon"/><td><a href="http://www.creationkit.com/">Skyrim Creation Kit</a>
 </table>
 <h3 id="launchers-utils">Game-Specific Utilities</h3>
-<p>Tes4Edit, Tes4Trans and Tes4view are just different modes of Tes4Edit.exe and will be available if Tes4Edit.exe is available. Tes4Gecko &amp; Oblivion Book Creator will be available if the javaw.exe is present in Windows\System32 and their .jar file is present in Oblivion install directory or for OBC in the data directory. The BOSS launcher has some options if BOSS v2 is installed:
+<p>Tes4Edit, Tes4Trans and Tes4view are just different modes of Tes4Edit.exe and will be available if Tes4Edit.exe is available. Tes4Gecko &amp; Oblivion Book Creator will be available if the windows path variable <code>JAVA_HOME</code> points to a valid java install (or the javaw.exe is present in Windows\System32) and their .jar file is present in Oblivion install directory or for OBC in the data directory (you can override those default paths in bash.ini). The BOSS launcher has some options if BOSS v2 is installed:
 <ul>
- <li>Right-clicking the BOSS icon and selecting <q id="launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</q> will cause Wrye Bash to temporarily disable Lock Load Order when BOSS is run from its application launcher in the status bar, to allow BOSS to set the load order, re-enabling it after BOSS has finished running. It has no effect when BOSS is run from outside Wrye Bash, or when Wrye Bash is running for Skyrim.
+ <li>Right-clicking the BOSS icon and selecting <q id="launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</q> will cause Wrye Bash to temporarily disable Lock Load Order
+	 when BOSS is run from its application launcher in the status bar, to allow BOSS to set the load order, re-enabling it after BOSS has finished running. It has no effect when BOSS
+	 is run from outside Wrye Bash, or when Wrye Bash is running for Skyrim.
  <li>Right-clicking the BOSS icon and selecting the <q>Launch BOSS GUI</q> will cause Wrye Bash to launch BOSS's GUI instead of its command line interface.
 	<li>If <b>V</b> is pressed, it will disable version parsing.
 	<li>If <b>R</b> is pressed, it will do a level 1 revert (to the state just prior to the last sort).
@@ -855,6 +950,12 @@ from other packages previously overridden by the uninstalled package's
 		<tr><td id="launchersSettingsMenu"><img src="../bash/images/settingsbutton32.png" width="32" height="32" alt="tool image"/><td>Settings<td>Brings up the <a href="#BashSettingsMenu">Settings Menu</a>.
 		<tr><td><img src="../bash/images/help32.png" width="32" height="32" alt="tool image"/><td>Help<td>Show this help file in the default web browser.
 </table>
+
+<h3 id="manually-add">Manually adding tools to the Launcher Bar</h3>
+<p>To do this find and Right Click on a tools .exe file, and choose send to desktop
+<p>Copy this Icon from the desktop and paste it into the Mopy \ Apps \ folder ( The temporary desktop icon copy can now be deleted )
+<p>When you next run Wrye Bash the icon will be in the Launcher Bar, and you can Drag and drop the new icon to a desired position
+<p>Be careful not to use up all the available space and prevent tooltip messages appearing next to the Launcher Bar
 
 <h2 id="trouble">Troubleshooting</h2>
 <h3 id="trouble-dump">Generating A Bug Dump</h3>
@@ -1106,24 +1207,12 @@ MemoryError</code>
 		<li>Usage: Wrye Bash uses this library to help in detecting character encodings use when reading and writing encoded Unicode strings.
 		<li>Modifications: Minor modifications to bring chardet in line with Python 2.7 - removed the EUCTWProber, from the MBCSGroupProber class.
 	</ul>
-	<li>LOOT API
+	<li>LOOT API Python Module
 	<ul>
-		<li>Website: <a href="https://github.com/loot/loot">GitHub</a>
+		<li>Website: <a href="https://github.com/loot/loot-api-python">GitHub</a>
 		<li>License: <a href="http://www.gnu.org/licenses/gpl.html">GPL 3.0</a>
 		<li>Usage: Wrye Bash uses this library to retrieve Bash Tag suggestions and Dirty mod information from LOOT's plugin databases.
 	</ul>
-    <li>libloadorder
-    <ul>
-        <li>Website: <a href="https://github.com/WrinklyNinja/libloadorder">GitHub</a>
-        <li>License: <a href="http://www.gnu.org/licenses/gpl.html">GPL 3.0</a>
-        <li>Usage: Wrye Bash uses this library to read and write plugin load order.
-    </ul>
-    <li>libbsa
-    <ul>
-        <li>Website: <a href="https://github.com/WrinklyNinja/libbsa">GitHub</a>
-        <li>License: <a href="http://www.gnu.org/licenses/gpl.html">GPL 3.0</a>
-        <li>Usage: Wrye Bash uses this library to read the contents of BSA files.
-    </ul>
 	<li>CBash
 	<ul>
 		<li>Website: <a href="http://sourceforge.net/projects/cbash/">SourceForge</a>
@@ -1190,7 +1279,7 @@ MemoryError</code>
 		<li>How to import faces from other savegames and mods.
 		<li>What all the context menu commands do, and what all the colours and symbols used mean.
 	</ul>
-	<li>What the functionalities of the Screenshots, PM Archive and People tabs are, and how they may be used.
+	<li>What the functionalities of the Screenshots and People tabs are, and how they may be used.
 	<li>How to customise which launchers are displayed, including adding your own new launchers.
 	<li>How to use Wrye Bash's Settings menu to customise its general behaviour.
 	<li>How to use the Docs Browser to view mod readmes through Wrye Bash.

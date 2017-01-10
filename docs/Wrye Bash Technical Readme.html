@@ -13,7 +13,7 @@
 	li ul, li ol {margin-top:0.4em;}
 	li {margin-bottom:10px;}
 	ol ol {list-style:lower-alpha;}
- ol ol li {margin-bottom:0.2em;}
+	ol ol li {margin-bottom:0.2em;}
 	td, th {border:1px solid black; padding: 5px; vertical-align:top;}
 	table {margin:1em; background:#fdfdfd; border-collapse:collapse;}
 	thead {font-weight:bold; background:#8af;}
@@ -25,9 +25,8 @@
 	blockquote {background:#E6E6FA; display:table; padding:5px 30px 5px 10px;}
 	figure {margin:0;}
 	figcaption {font-style:italic; margin-bottom:2em;}
- .missing {background:red; color:white; border:0.25em solid black;}
+	.missing {background:red; color:white; border:0.25em solid black;}
 	abbr {cursor:help;}
-
 	.indent {margin-left:2em;}
 	td > code.box {margin:0;}
 </style>
@@ -56,11 +55,6 @@
 		<li><a href="#rulesets-syntax">Syntax</a>
 		<li><a href="#rulesets-example">Example</a>
 	</ol>
-	<li><a href="#pm">PM Archive Format</a>
-	<ol>
-		<li><a href="#pm-overiew">Overview</a>
-		<li><a href="#pm-convert">How To Convert Exported PMs</a>
-	</ol>
 </ol>
 
 
@@ -76,7 +70,7 @@
 	<li>Many, many more features
 </ul>
 <p>Wrye Bash can appear daunting at first. To help make it more manageable, the documentation has been split into a few readmes that are targeted towards different usage requirements.
-<p>This readme covers the most technical aspects of Wrye Bash, being the Wizard scripting language, the syntax used in Mod Checker rulesets and the formatting of PMs archives expected by the PM Archive tab. Information on the most commonly used aspects of Wrye Bash may be found in the <a href="Wrye%20Bash%20General%20Readme.html">General Readme</a>, and the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a> holds information on more advanced and less commonly used features. Wrye Bash's version history is stored in the <a href="Wrye%20Bash%20Version%20History.html">Version History</a> document.
+<p>This readme covers the most technical aspects of Wrye Bash, being the Wizard scripting language and the syntax used in Mod Checker rulesets. Information on the most commonly used aspects of Wrye Bash may be found in the <a href="Wrye%20Bash%20General%20Readme.html">General Readme</a>, and the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a> holds information on more advanced and less commonly used features. Wrye Bash's version history is stored in the <a href="Wrye%20Bash%20Version%20History.html">Version History</a> document.
 
 <h2 id="darn">DarNified Books Wtxt Formatting</h2>
 <p>The DarNified Books setting in the Bashed Patch's tweaks allows the use of Wtxt formatting, which is applied if the first line of a book is <code>== title ==</code>
@@ -179,10 +173,21 @@
 	<li><code>0</code> - Installed version is equal to the version specified in <var>version_string</var>.
 	<li><code>1</code> - Installed version is greater than the version specified in <var>version_string</var>.
 </ul>
-<p><dfn id="wizardsDataFileExists">DataFileExists</dfn> - Tests for the existence of a file in the Data directory. If the file you are testing for is an ESP or ESM, this will also detected ghosted versions of the file.
+<p><dfn id="wizardsDataFileExists">DataFileExists</dfn> - Tests for the existence of a file in the Data directory. If the file you are
+	testing for is an ESP or ESM, this will also detect ghosted versions of the file.
 <code class="box">DataFileExists(file_name [, ..., file_name_n])</code>
 <ul>
-	<li><var>file_name</var> - A string or variable holding a string, specifying the path relative to the Data directory to test. For example using "test.esp" would test for "<var>[path to game]</var>\Data\test.esp"
+	<li><var>file_name</var> - A string or variable holding a string, specifying the path relative to the Data directory to test. For example
+		using <code>"Oblivion.esm"</code> would test for <code>"[path to game]\Data\Oblivion.esm"</code>. Notes:
+    <ul>
+		<li>When specifying a path below the Data directory, use double slashes to indicate folder separation. For example assuming
+			MenuQue.dll is installed correctly, <code>"obse\\plugins\\MenuQue.dll"</code> will work but
+			<code>"obse\plugins\MenuQue.dll"</code> will fail.
+		<li>You can also look for files above the Data directory using the following syntax: <code>"..\\SoundCommands.log"</code>
+		<li>When testing for multiple files, separate each file with commas. They do not have to all be in the same directory. Example:
+		<code>DataFileExists("Oblivion.esm","..\\SoundCommands.log","obse\\plugins\\MenuQue.dll")</code> will accurately test to see if each
+		of the files exist.
+	</ul>
 </ul>
 <p class="indent">Return values:
 <ul class="indent">
@@ -206,7 +211,7 @@
 <code class="box">EditINI(file_name, section, setting, value [,comment])</code>
 <ul>
 	<li><var>file_name</var> - The name of the ini file you wish to edit, relative to the Data directory.
-	<li><var>section</var> - The section in the ini where <var>setting</var> resides, or 'set' or 'setGS' (see examples below).
+	<li><var>section</var> - The section in the ini where <var>setting</var> resides, or 'set' or 'setGS' or 'SetNumericGameSetting' (see examples below).
 	<li><var>setting</var> - The setting you wish to change.
 	<li><var>value</var> - The value to set the setting to.
 	<li><var>comment</var> - Optional comment to include with this tweak.
@@ -689,10 +694,12 @@ EndIf
 <p>These:
 <code class="box">EditINI('TargetINI.ini', 'set', 'ANVars.UseEW', 1)
 EditINI('TargetINI.ini', 'setGS', 'fPCBaseMagickaMult', 1)
+EditINI('TargetINI.ini', 'SetNumericGameSetting', 'fPerkSneakAttackMarksmanNoviceMult', 1.5, "default is 2.0")
 </code>
 <p>Would create Ini Tweaks:
 <code class="box">set ANVars.UseEW to 1
 setGS fPCBaseMagickaMult 1
+SetNumericGameSetting fPerkSneakAttackMarksmanNoviceMult 1.5;default is 2.0
 </code>
 <p>This:
 <code class="box">GetFilename("C:\Program Files\Bethesda Softworks\Oblivion\Oblivion.exe")</code>
@@ -1065,228 +1072,4 @@ x DLCShiveringIsles.esp // **Activate.** Required.
 x FF_REAL_Thirst, Cob.esp // Patch FF Real Thirst to work with Cobl water wells.
 </code>
 
-<h2 id="pm">PM Archive Format</h2>
-<h3 id="pm-overiew">Overview</h3>
-<p>Wrye Bash's PM Archive tab expects the PM archives it reads to be in a specific format. This section details the format and how to most easily convert PM archives to it.
-<h3 id="pm-format">Wrye Bash PM Archive Format</h3>
-<p>Wrye Bash's PM archive format uses HTML formatting. The formatting can be broken down into a header, a set of PMs in a specific HTML formatting and a footer.
-<p>As well as the formatting of the file itself being important, so too is the filename, which must begin with the date that the archive was created, in the format <code>YY.MM.DD</code>, eg. <code>07.11.06 archive.html</code>. PM archive files must be saved as <code>.html</code> files, but can be created in any text editor.
-<p>The header:
-<code class="box html">&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv="content-type" content="text/html; charset=iso-8859-1" /&gt;
-	&lt;title&gt;Private Message Archive&lt;/title&gt;
-	&lt;style type="text/css"&gt;
-		html{
-			overflow-x: auto;
-		}
 
-		body{
-			background-color: #fff;
-			color: #000;
-			font-family: Verdana, Tahoma, Arial, sans-serif;
-			font-size: 11px;
-			margin:0px;
-			padding:0px;
-			text-align:center;
-		   }
-
-		a:link, a:visited, a:active{
-			color: #000;
-			text-decoration: underline;
-		}
-
-		a:hover{
-			color: #465584;
-			text-decoration:underline;
-		}
-
-		img{
-			border: 0;
-			vertical-align: middle;
-		}
-
-		#ipbwrapper{
-			margin: 0 auto 0 auto;
-			text-align: left;
-			width: 95%;
-		}
-
-		.post1{
-			background-color: #F5F9FD;
-		}
-
-		.post2{
-			background-color: #EEF2F7;
-		}
-
-		/* Common elements */
-		.row1{
-			background-color: #F5F9FD;
-		}
-
-		.row1{
-			background-color: #DFE6EF;
-		}
-
-		.row3{
-			background-color: #EEF2F7;
-		}
-
-		.row2{
-			background-color: #E4EAF2;
-		}
-
-		/* tableborders gives the white column / row lines effect */
-		.plainborder{
-			background-color: #F5F9FD
-			border: 1px solid #345487;
-		}
-
-		.tableborder{
-			background-color: #FFF;
-			border: 1px solid #345487;
-			margin: 0;
-			padding: 0;
-		}
-
-		.tablefill{
-			background-color: #F5F9FD;
-			border: 1px solid #345487;
-			padding: 6px;
-		}
-
-		.tablepad{
-			background-color: #F5F9FD;
-			padding:6px;
-		}
-
-		.tablebasic{
-			border: 0;
-			margin: 0;
-			padding: 0;
-			width:100%;
-		}
-
-		.pformstrip{
-			background-color: #D1DCEB;
-			color: #3A4F6C;
-			font-weight: bold;
-			margin-top:1px
-			padding:7px;
-		}
-
-		#QUOTE{
-			background-color: #FAFCFE;
-			border: 1px solid #000;
-			color: #465584;
-			font-family: Verdana, Arial;
-			font-size: 11px;
-			padding: 2px;
-		}
-
-		#CODE{
-			background-color: #FAFCFE;
-			border: 1px solid #000;
-			color: #465584;
-			font-family: Courier, Courier New, Verdana, Arial;
-			font-size: 11px;
-			padding: 2px;
-		}
-		/* Main table top (dark blue gradient by default) */
-		.maintitle{
-			background-color: #D1DCEB;
-			background-image: url(http://www.bethsoft.com/bgsforums/style_images/bgsdark/tile_back.gif);
-			color: #FFF;
-			font-weight: bold;
-			padding:8px 0px 8px 5px;
-			vertical-align:middle;
-		}
-
-		.maintitle a:link, .maintitle  a:visited, .maintitle  a:active{
-			color: #fff;
-			text-decoration: none;
-		}
-
-		.maintitle a:hover{
-			text-decoration: underline;
-		}
-
-		/* Topic View elements */
-		.signature{
-			color: #339;
-			font-size: 10px;
-			line-height:150%;
-		}
-
-		.postdetails{
-			font-size: 10px;
-		}
-
-		.postcolor{
-			font-size: 12px;
-			line-height: 160%;
-		}
-	&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
- &lt;div id="ipbwrapper"&gt;
-</code>
-<p>The footer:
-<code class="box">&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code>
-<p>The PM formatting:
-<code class="box html">&lt;div class="borderwrapm"&gt;
-	&lt;div class="maintitle"&gt;PM: Re:Next Cobl Update&lt;/div&gt;
-	&lt;div class="tablefill"&gt;&lt;div class="postcolor"&gt;&lt;!--quoteo--&gt;&lt;div class='quotetop'&gt;QUOTE&lt;/div&gt;&lt;div class='quotemain'&gt;&lt;!--quotec--&gt;&lt;!--quoteo--&gt;&lt;div class='quotetop'&gt;QUOTE&lt;/div&gt;&lt;div class='quotemain'&gt;&lt;!--quotec--&gt;&lt;!--quoteo--&gt;&lt;div class='quotetop'&gt;QUOTE&lt;/div&gt;&lt;div class='quotemain'&gt;&lt;!--quotec--&gt;Haama,&lt;br /&gt;&lt;br /&gt;I'd like to include OBSE sorter in next Cobl release...Wrye&lt;/div&gt;&lt;/div&gt;
-	&lt;div class="formsubtitle"&gt;Sent by &lt;b&gt;Wrye&lt;/b&gt; on Jan 10 2008, 05:34 PM&lt;/div&gt;
-&lt;/div&gt;
-&lt;br /&gt;
-</code>
-<h3 id="pm-convert">How To Convert Exported PMs</h3>
-<p>The easiest way to convert PMs is to create a new file for the converted PMs, open up the existing PM file in a text editor with regular expression search/replace functionality (eg. Notepad++) and follow these instructions:
-<ol>
-	<li>Copy/paste the header above into the top of your new file.
-	<li>In the existing PM archive file, create a blank new line at the end of the file.
-	<li>Open the search/replace menu in your existing PM archive file and set it to use regular expressions.
-	<li>In the Find or Search box, use <code>"([^"]*)","([^"]*)","([^"]*)","([\s\S]*?)"\n</code> (copy/paste it in to be sure).
-	<li>In the Replace box, use <code>&lt;div class="borderwrapm"&gt;\n\t&lt;div class="maintitle"&gt;PM: $1&lt;/div&gt;\n\t&lt;div class="tablefill"&gt;&lt;div class="postcolor"&gt;&lt;!--quoteo--&gt;&lt;div class='quotetop'&gt;QUOTE&lt;/div&gt;&lt;div class='quotemain'&gt;&lt;!--quotec--&gt;$4&lt;/div&gt;&lt;/div&gt;\n\t&lt;div class="formsubtitle"&gt;Sent by &lt;b&gt;$3&lt;/b&gt; on $2&lt;/div&gt;\n&lt;/div&gt;\n&lt;br /&gt;</code> (copy/paste it in to be sure).
-	<li>Copy/paste each of the PMs in the existing file into the new file.
-</ol>
-
-<script>
-//Syntax highlighter. Colours need adjusting.
-function SyntaxHighlight(element) {
-	var raw = element.innerHTML;
-	//String highlighting. This is fully working.
-	raw = raw.replace(/(('|")[^\n"]*('|"))/g, "<span style='color:green;'>$1</span>");
-	//Comment highlighting. This is fully working.
-	raw = raw.replace(/(\/\/[^\n]*\n)/g, "<span style='color:green;'>$1</span>");
-	raw = raw.replace(/([^tp];(?!'>)[^\n]*)/g, "<span style='color:green;'>$1</span>");
-	//raw = raw.replace(/([^t](;|\/\/)[^\n]+\n)/g, "<span style='color:green;'>$1</span>");
-	//Function highlighting. This is fully working.
-	raw = raw.replace(/(\w+)\(/g, "<span style='color:blue;'>$1</span>(");  //This matches a function of the form "text(".
-	//Digit highlighting. This is fully working.
-	raw = raw.replace(/(\\n|\W)(\d[.\d]*)/g, "$1<span style='color:brown;'>$2</span>");
-	//Keyword highlighting. This is fully working. It works too well...
-	raw = raw.replace(/^(\w+)/, "<span style='color:blue;'>$1</span>");
-	raw = raw.replace(/\n(\w+)/g, "\n<span style='color:blue;'>$1</span>");
-	raw = raw.replace(/    ([CBFENDS]\w+)/g, "    <span style='color:blue;'>$1</span>");
-	raw = raw.replace(/ (in) /g, " <span style='color:blue;'>$1</span> ");
-	raw = raw.replace(/ (SubPackages)/g, " <span style='color:blue;'>$1</span>");
-	//Var highlighting. Doesn't handle keyword vars.
-	raw = raw.replace(/\[([a-zA-Z_]+)\]/g, "[<var>$1</var>]");
-	raw = raw.replace(/&lt;([\w ]+)&gt;/g, "&lt;<var>$1</var>&gt;");
-	raw = raw.replace(/((\(|,)[\w, ]+\))/g, "<var>$1</var>");
-	element.innerHTML = raw;
-}
-
-var codes = document.getElementsByTagName('code');
-for (var i=0; i < codes.length; i++) {
-	if (codes[i].className == 'box') {
-		SyntaxHighlight(codes[i]);
-	}
-}
-</script>
