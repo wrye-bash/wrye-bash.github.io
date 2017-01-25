@@ -592,13 +592,8 @@ from other packages previously overridden by the uninstalled package's
 </table>
 
 <h3 id="patch-merging">Merging Plugins</h3>
-<p>Plugins that contain only certain types of data records can be merged into the Bashed Patch. This then allows these plugins to be deactivated, freeing up space in your load order.
-<p>If you're merging plugins in, you do not need the plugins active to do so.  In fact, trying to merge them in Bash will 1 - ask you to deactivate them
-	before hand, and 2 - deactivate them even if you refused that prompt after the Bashed Patch has been created.
-	So if you're merging plugins, leave them inactive before building, then select to merge them in the Bashed Patch build dialog.  Don't worry,
-	all the algorithms for the rest of the patchers still work as you'd expect on plugins merged this way.
-<p>You should check the checkboxes of all the plugins listed in the <q>Merge Patches</q> section, and ensure the section is checked too.
-<p><b>Do not remove merged mods from your Data folder.</b> They will need to be present when you next rebuild your Bashed Patch.
+<p>Plugins that contain only certain types of data records can be merged into the Bashed Patch. This then allows these plugins to be deactivated, freeing up space in your load order.  <b>Do not remove merged mods from your Data folder.</b> They will need to be present when you next rebuild your Bashed Patch.
+<p>Plugins to be merged do not need to be active, and Bash will automatically deactivate plugins after merging them. Bash will also warn you about any active merge-able plugins before the Bashed Patch configuration dialog is displayed.  To merge plugins, check the checkbox for the <q>Merge Patches</q> section, and the checkboxes for all the plugins in that section that you want to merge.
 
 <h3 id="patch-importing">Importing From Plugins</h3>
 <p>Plugins can be tagged with Bash Tags that tell Wrye Bash that they contain certain changes that should be preserved even if another mod also changes the same things. This is usually because the changes are important to the functionality of the mod. Wrye Bash then allows you to choose which plugins should have which types of changes preserved, by selecting from the various Import sections when building a Bashed Patch.
