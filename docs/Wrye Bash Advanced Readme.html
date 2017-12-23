@@ -42,9 +42,9 @@
 <h2 style="margin-top:0;margin-bottom:1em;">Contents</h2>
 <ol style="float:left;margin:0;margin-right:4em;">
     <li><a href="#intro">Introduction</a>
-	<ol>
+    <ol>
         <li><a href="#intro-title">Title Bar Info</a>
-	</ol>
+    </ol>
     <li><a href="#install">Advanced Installation</a>
     <ol>
         <li><a href="#install-alternate">Alternative Install Locations</a>
@@ -60,11 +60,11 @@
         <li><a href="#bain-se">Script Extender Plugin Installation</a>
         <li><a href="#bain-omod">OMOD Conversion Data</a>
         <li><a href="#bain-bcf">BAIN Conversion Files</a>
+        <li><a href="#bain-monitor">Monitor External Installation</a>
         <li><a href="#bain-commands">Context Menu Commands</a>
     </ol>
     <li><a href="#mods">Mods Tab</a>
     <ol>
-        <li><a href="#mods-exclusion">Exclusion Groups</a>
         <li><a href="#mods-details">The Plugin Details Panel</a>
         <li><a href="#mod-masters-symbols">Color scheme for Plugin Masters (MI &amp; Current LO)</a>
         <li><a href="#mods-csv">CSV Files</a>
@@ -80,6 +80,8 @@
         <li><a href="#patch-csv">Default CSV Files</a>
         <li><a href="#patch-lists">Leveled Lists</a>
     </ol>
+</ol>
+<ol start="6" style="float:left;margin-top:0;">
     <li><a href="#saves">Saves Tab</a>
     <ol>
         <li><a href="#saves-overview">Overview</a>
@@ -89,8 +91,6 @@
         <li><a href="#saves-face">Face Import</a>
         <li><a href="#saves-commands">Context Menu Commands</a>
     </ol>
-</ol>
-<ol start="7" style="float:left;margin-top:0;">
     <li><a href="#screenshots">Screenshots Tab</a>
     <ol>
         <li><a href="#screenshots-overview">Overview</a>
@@ -126,7 +126,7 @@
 <p style="clear:both;">
 
 <h2 id="intro">Introduction</h2>
-<p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion and TES V: Skyrim. Its features include:
+<p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion, TES V: Skyrim, SSE: Skyrim Special Edition and Fallout 4. Its features include:
 <ul>
     <li>A mod installation and conflict manager
     <li>A plugin load order manager
@@ -148,18 +148,30 @@
 <p><code>Wrye Bash [Bash Version] [Install Type] [Game Modifier], Cbash v[CBash Version]: [Save Profile] [Version Indicator]</code>
 <p>The square bracketed information is:
 <ul>
-	<li><code>[Bash Version]</code>: This is the version number for the version of Wrye Bash running. Useful when troubleshooting.
-	<li><code>[Install Type]</code>: If the Python version is running, this will read <q>Python</q>. If the Standalone version is running, it will read <q>(Standalone)</q>. See the <a href="#install">Installation</a> section for more information.
-	<li><code>[Game Modifier]</code>: If the option is selected in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-settings">Settings menu</a>, this will display <q>for Oblivion</q> or <q>for Skyrim</q> depending on the game it is being run for.
-	<li><code>[CBash Version]</code>: This is the version number for the version of CBash included with the Wrye Bash install. Useful when troubleshooting. See the <a href="#patch">Setting Up A Bashed Patch</a> section for more information.
-	<li><code>[Save Profile]</code>: This is the name of the <a href="Wrye%20Bash%20Advanced%20Readme.html#saves-profile">save profile</a> Wrye Bash is currently using. By default it is <q>Default</q>.
-	<li><code>[Version Indicator]</code>: This is only displayed when Wrye Bash is running for Oblivion. It indicates the version of Oblivion.esm currently being used. This is related to the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-swapping">Oblivion.esm Swapping</a> feature.
+    <li><code>[Bash Version]</code>: This is the version number for the version of Wrye Bash running. Useful when troubleshooting.
+    <li><code>[Install Type]</code>: If the Python version is running, this will read <q>Python</q>. If the Standalone version is running, it will read <q>(Standalone)</q>. See the <a href="#install">Installation</a> section for more information.
+    <li><code>[Game Modifier]</code>: If the option is selected in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-settings">Settings menu</a>,
+    this will display <q>for Oblivion</q>, <q>for Skyrim</q> or <q>for Fallout 4</q> depending on the game it is being run for.
+    <li><code>[CBash Version]</code>: This is the version number for the version of CBash included with the Wrye Bash install. Useful when troubleshooting. See the <a href="#patch">Setting Up A Bashed Patch</a> section for more information.
+    <li><code>[Save Profile]</code>: This is the name of the <a href="Wrye%20Bash%20Advanced%20Readme.html#saves-profiles">save profile</a> Wrye Bash is currently using. By default it is <q>Default</q>.
+    <li><code>[Version Indicator]</code>: This is only displayed when Wrye Bash is running for Oblivion. It indicates the version of Oblivion.esm currently being used. This is related to the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-swapping">Oblivion.esm Swapping</a> feature.
 </ul>
 
 <h2 id="install">Advanced Installation</h2>
 <h3 id="install-alternate">Alternative Install Locations</h3>
-<p>Wrye Bash can be installed in any folder, but if it is installed outside of the game's folder, then the OblivionPath bash.ini option must be adjusted.
-<p>To do so:
+<p>Wrye Bash can be installed in any folder, and actually if you do manage multiple games the preferred way of installing Bash is to have a
+    single installation and redirect Bash via the command line and/or ini. But in this case you must tell Bash where the game folder is.
+    Bash checks (in this order) the <code>-o</code> argument, the sOblivionPath ini option and the position of the Mopy folder (namely
+    checks if Mopy's parent folder contains a supported game exe). The first of those three methods that yields a path to a supported game
+    exe will "win" and this game will be used. But in case those options are not set or a supported game exe (NB: only exe name is checked)
+    is not found using them, Bash reads the windows registry to find supported games. If no games are found in the registry Bash will notify
+    you and exit. If one game is found then Bash will use that. If however more than one games are found Bash will prompt you to choose
+    amongst those games.
+<p>So if you have installed Bash outside of a game folder (recommended for multi-game installs), and you don't want to be prompted (or your
+    games do not figure in the registry) you have to either launch Wrye Bash with the -o argument or set the bash.ini <q>sOblivionPath</q>
+    setting.
+
+<p>To set the OblivionPath bash.ini option:
 <ol>
     <li>Open <code>bash_default.ini</code> in the <code>Mopy</code> folder and save it as <code>bash.ini</code>.
     <li>In the new bash.ini, enter the full path of your game's installation folder (the one that contains the game's executable) for the <q>sOblivionPath</q> setting.
@@ -167,13 +179,15 @@
 </ol>
 <p>Alternatively, you can launch Wrye Bash with the -o argument, quoting the path as the argument's parameter. Note that backslashes must be doubled as Python treats a single backslash as an escape character. For example, <code>"Wrye Bash Launcher.pyw" -o "C:\\Games\\Oblivion\\"</code> if you are running Wrye Bash for Oblivion.
 
+<p>For more settings (such as changing the Wrye Bash Installers Path), please read the Bash_Default.ini.
+
 
 <h3 id="install-components">Python Components</h3>
 <p>If you are installing the Python version of Wrye Bash and wish to install the Python dependencies separately, the following must be installed.
-<p style="font-style:italic;font-weight:bold;font-size:1em;color:red;">Note that the 32-bit versions are required even if you are on a 64-bit operating system.</p>
+<p style="font-style: italic; font-weight: bold; font-size: 1em; color: red;">Note that the 32-bit versions are required even if you are on a 64-bit operating system.
 <ul>
-    <li><a href="https://www.python.org/ftp/python/2.7.10/python-2.7.10.msi">Python 2.7.10</a>.  Versions prior to 2.7.10 may work with Wrye Bash, but have not been tested.  Updating is recommended for bug and security fixes.
-    <li><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 Unicode for Python 2.7</a>
+    <li><a href="https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi">Python 2.7.12</a>:  Versions prior to 2.7.12 may work with Wrye Bash, but have not been tested.  Updating is recommended for bug and security fixes.
+    <li><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 Unicode for Python 2.7</a>: (do <b>not</b> get a newer version)
     <li><a href="https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/pywin32-220.win32-py2.7.exe/download">PyWin32</a>: This component is required for Wizards to function. If you do not wish to use Wizards, then it need not be installed.
     <li><a href="http://sourceforge.net/projects/comtypes/files/comtypes/0.6.2/comtypes-0.6.2.win32.exe/download">Comtypes 0.6.2</a>: This is an optional component, it is used to enable rendering of HTML via an ActiveX control.  The  following features are affected if comtypes is not installed:
         <ul>
@@ -181,6 +195,28 @@
             <li>The ModChecker report will be text instead of HTML.
             <li>The Bashed Patch build report will be displayed by opening the file in your default browser.
         </ul>
+    <li><a href="https://pypi.python.org/pypi/scandir">scandir</a>: Optional but highly recommended module (in the standard library since
+    python 3.5).Scandir speeds up disk I/O operations (namely os. walk) by 5-50x on the Windows operating system family. There are several
+    ways to install Scandir, in levels of increasing complexity
+  <ul>
+    <li>The first is to download the Scandir wheel file (.whl)&nbsp; and install it using the Pip command line tool.</li>
+    <ul>
+      <li>Browse to the <a href="https://pypi.python.org/pypi/scandir" target="_blank">official Python Scandir page</a> and download <a href="https://pypi.python.org/packages/ad/ba/72797d0d2cd7b9d2a2ca06bce94f59b8864dc737548c8169bbdf90be22ff/scandir-1.6-cp27-cp27m-win32.whl#md5=369517d3cd6d189afaefe7149adecc92" target="_blank">scandir-1.6-cp27-cp27m-win32.whl</a> or newer. Remember the path to the download location on your hard disk.&nbsp; For this example we will use "C:\Downloads\".
+      <li>Open a Windows command or Powershell prompt and issue the <code>command python.exe -m pip install C:\Downloads\scandir-1.6-cp27-cp27m-win32.whl</code>
+      <li>Follow the instructions on screen if any appear.
+    </ul>
+    <li>The second method is to install Scandir via the Python pip package manager.
+    </li>
+    <ul>
+      <li>Open a Windows command prompt or Powershell prompt.
+      <li>Issue the command <code>python.exe -m pip install --upgrade scandir</code>
+      <ul>
+        <li>You may be asked to install the 'Microsoft Visual C++ Compiler for Python 2.7'. In this event, download and install the compiler from the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44266" target="_blank">official Microsoft download page</a>.
+        <li>You may also be asked to install Python "setuptools". To install setuptools, issue the command (from within the same command prompt is fine) <code>python.exe -m pip install --upgrade setuptools</code>
+        <li>Once these two tools are installed the installation should proceed as expected.
+      </ul>
+    </ul>
+  </ul>
 </ul>
 
 <h3 id="install-loot-api">LOOT API</h3>
@@ -268,6 +304,7 @@
     extensions skipped is:
     <code>.001, .7z, .7z.001, .ace, .bz2, .db, .exe, .fomod, .gz, .lzma, .manifest, .omod, .py, .pyc, .rar, .tar, .tb2, .tgz, .zip</code>
     This includes BCFs (they have a .7z extension) - still BAIN will detect those.
+    <li>Espm files that are not in top level of the package/subpackage. It makes no sense to have those files in a subfolder, so those are skipped.
 </ul>
 
 
@@ -276,28 +313,28 @@
 tab. The directories skipped are:
 
 <table>
-	<thead><tr><th>Skipped Data subdirectories<th colspan="2">Notes
-	<tbody>
-		<tr><td>Bash<td colspan="2"><code>Data/Bash</code> directory that may contain Bash related data
-		<tr><td>--<td colspan="2">If you create a <code>Data/--</code> directory it will be ignored by Bash - dump your cruft there
-		<tr><td>distantlod<td colspan="2">If <a href="#bainSkipDistantLOD">Skip DistantLOD</a> is checked
-		<tr><td>meshes\landscape\lod<td colspan="2">If <a href="#bainSkipLODMeshes">Skip LOD Meshes</a> is checked
-		<tr><td>textures\landscapelod\generated<td colspan="2">If <a href="#bainSkipLODTextures">Skip LOD Textures</a> <b>and</b>
+    <thead><tr><th>Skipped Data subdirectories<th colspan="2">Notes
+    <tbody>
+        <tr><td>Bash<td colspan="2"><code>Data/Bash</code> directory that may contain Bash related data
+        <tr><td>--<td colspan="2">If you create a <code>Data/--</code> directory it will be ignored by Bash - dump your cruft there
+        <tr><td>distantlod<td colspan="2">If <a href="#bainSkipDistantLOD">Skip DistantLOD</a> is checked
+        <tr><td>meshes\landscape\lod<td colspan="2">If <a href="#bainSkipLODMeshes">Skip LOD Meshes</a> is checked
+        <tr><td>textures\landscapelod\generated<td colspan="2">If <a href="#bainSkipLODTextures">Skip LOD Textures</a> <b>and</b>
             <a href="#bainSkipLODNormals">Skip LOD Normals</a> are <b>both</b> checked
-		<tr><td>docs<td colspan="2">If <a href="#bainSkipDocs">Skip Docs</a>  <b>and</b> <a href="#bainSkipImages">Skip Images</a> are
+        <tr><td>docs<td colspan="2">If <a href="#bainSkipDocs">Skip Docs</a>  <b>and</b> <a href="#bainSkipImages">Skip Images</a> are
             <b>both</b> checked
-		<tr><td>Script extender (see game specific below)<td colspan="2">If <a href="#bainSkipOBSEPlugins">Skip OBSE Plugins</a> is checked
-		<tr><td>screenshots<td colspan="2">If <a href="#bainSkipScreenshots">Skip Screenshots</a> is checked (that may change as Skip Screenshots will
+        <tr><td>Script extender (see game specific below)<td colspan="2">If <a href="#bainSkipOBSEPlugins">Skip OBSE Plugins</a> is checked
+        <tr><td>screenshots<td colspan="2">If <a href="#bainSkipScreenshots">Skip Screenshots</a> is checked (that may change as Skip Screenshots will
             skip a screenshots directory in the package, whose contents would be currently installed in Data/Docs, not Data/Screenshots).
-	<thead><tr><th colspan="3">Skipped file extensions
+    <thead><tr><th colspan="3">Skipped file extensions
     <tbody>
         <td colspan="3">.001, .7z, .7z.001, .ace, .bz2, .db, .exe, .fomod, .gz, .lzma, .manifest, .omod, .py, .pyc, .rar, .tar, .tb2, .tgz, .zip
-	<thead><tr><th colspan="3">Per game skipped Data subdirectories
-	<thead><tr><th>Game<th>Skipped Data subdirectories<td>Script extender(s) directories
-	<tbody>
-		<tr><td>Oblivion<td>tes4edit backups, bgsee, conscribe logs<td>OBSE
-		<tr><td>Skyrim<td>tes5edit backups<td>SKSE, SkyProc, Script Dragon
-		<tr><td>Fallout 4<td>fo4edit backups<td>F4SEs
+    <thead><tr><th colspan="3">Per game skipped Data subdirectories
+    <thead><tr><th>Game<th>Skipped Data subdirectories<td>Script extender(s) directories
+    <tbody>
+        <tr><td>Oblivion<td>tes4edit backups, bgsee, conscribe logs<td>OBSE
+        <tr><td>Skyrim<td>tes5edit backups<td>SKSE, SkyProc, Script Dragon
+        <tr><td>Fallout 4<td>fo4edit backups<td>F4SEs
 </table>
 
 <p>Skipping of Data subdirectories has some implications vis-à-vis uninstalling those skipped files. So say you turn Skip DistantLOD on, all packages
@@ -311,11 +348,12 @@ tab. The directories skipped are:
 <h3 id="bain-se">Script Extender Plugin Installation</h3>
 <p>Script Extender (OBSE, SKSE) plugins (.dll, .dlx extensions) may be installed through BAIN if the following conditions are met:
 <ul>
-    <li>The package or subpackage containing the OBSE plugin has it in <code>OBSE\Plugins</code> (for Oblivion), <code>SKSE\Plugins</code> (for Skyrim) or a subfolder of the same.
+    <li>The package (or subpackage in the case of a Complex Bain) contains the OBSE plugin file inside <code>OBSE\Plugins\</code> (for
+        Oblivion), or <code>SKSE\Plugins\</code> (for Skyrim) sub-folders.
     <li>The <a href="#bainSkipOBSEPlugins">Skip OBSE Plugins</a> option found in the Installers tab column header context menu is disabled.
 </ul>
 <p>When attempting to install a specific Script Extender plugin for the first time, Wrye Bash will display a warning dialogue and ask you to confirm or deny the plugin's installation. Thereafter you can uninstall and install the plugin as you like without seeing the warning. These additional requirements are due to the significant (though currently theoretical) dangers of installing executable files.
-<p>The list of allowed and disallowed Script Extender plugins can be imported and exported using the <a href="#settingsImportList">Import list of allowed/disallowed OBSE plugin dlls</a> and <a href="#settingsExportList">Export list of allowed/disallowed OBSE plugin dlls</a> options in Wrye Bash's <a href="#settings">Settings</a> menu.
+<p>The list of allowed and disallowed Script Extender plugins can be imported and exported using the <a href="#settingsImportList">Import list of allowed/disallowed OBSE plugin dlls</a> and <a href="#settingsExportList">Export list of allowed/disallowed OBSE plugin dlls</a> options in Wrye Bash's <a href="#tools-settings">Settings</a> menu.
 
 
 <h3 id="bain-omod">OMOD Conversion Data</h3>
@@ -345,6 +383,78 @@ tab. The directories skipped are:
     <li>BCFs store the configuration settings of the original converted archive used when creating the BCF, allowing authors to pre-select options (see instructions above).
     <li>BCFs found to be duplicates will be moved to <code>[Game] Mods\Bash Installers\Bain Converters\--Duplicates</code>.
     <li>BCFs use data CRCs to verify the integrity of source archives. These use the contents of an archive, but not the name or type of the archive, so a source archive may be renamed or recompressed without affecting its ability to be used by a BCF. Wrye Bash displays the data CRCs of packages on the General Info tab for this reason.
+</ul>
+
+<h3 id="bain-monitor">Monitor External Installation</h3>
+
+<p>Wrye Bash can monitor your game's Data directory to detect any changes made by an external application or manual installation. It will
+    take the new or changed files and create a new BAIN package that can be handled, installed, and uninstalled just like any other standard
+    BAIN. This is very useful for mod authors or anyone that
+    wants to keep strict control of what gets placed into their data directory.
+
+<h4>Example usage scenarios</h4>
+
+<ul>
+    <li><b>Creation Kit/GECK monitoring</b>
+- When creating or managing content in the Creation Kit or GECK, Wrye Bash can capture any output from the CK/GECK in a BAIN package. This
+        is useful for example when capturing FaceGen data as NPCs are managed, and it will also capture any loose files, ESP, or BSA created in the
+    editor.
+    <li><b>BodySlide</b>
+- BodySlide is a utility used to create custom bodies and armor to fit these bodies, as well as from armors by third-parties to a
+    custom body. Wrye Bash can capture all output from BodySlide and package it into a BAIN for easy management. These files can then be
+    packaged and distributed, backed up, or used to build another mod.
+    <li><b>Nexus Mod Manager / Other Mod Managers</b>
+- Since Wrye Bash does not currently support the Nexus Mod Manager FOMOD XML installer format, sometimes it is necessary to use the Nexus
+    Mod Manager to install poorly packaged mods that cannot be installed via the usual "click the checkbox" BAIN methods. The monitor
+    external installation feature watches as NMM installs files and captures any changes to the content of Data, which can then be
+    uninstalled by NMM and reinstalled cleanly from the newly created BAIN with Wrye Bash instead.
+</ul>
+
+<h4>How to use the "Monitor External Installation" feature</h4>
+
+<ol>
+    <li>Launch Wrye Bash and switch to the Installers tab.</li>
+    <li>At the top of any column (e.g. Packages), right click and select "Monitor External Installation..." from the context menu.</li>
+    <li>Wrye Bash will then begin to scan your data directory to snapshot all data contained within it before any changes are made.</li>
+    <li>Once this has completed, you will be prompted to begin your external installation.</li>
+    <li>At this point, switch to your external application and perform the installation or content creation you intend to perform. There is
+        no time limit.
+    </li>
+    <li>Once you have completed the task in the external application, switch back to Wrye Bash and click the OK button to proceed.</li>
+    <li>Wrye Bash will scan the data folder again to calculate what files have changed, or what new files have been placed into your game's
+        data directory.
+    </li>
+    <li>Once this has completed, Wrye Bash will present a dialog box with a list of files that are new or changed. You can select and
+        deselect files to be included in the BAIN package at this point. It is advisable to exclude log files and other non-essential files
+        from the final BAIN package.
+    </li>
+    <li>Click OK when you are ready to build the package.</li>
+    <li>You will now be prompted for a name for your package. Enter a name and confirm.</li>
+    <li>Wrye Bash will then create the package and run a final CRC scan on the newly created BAIN package to add it to the installer
+        manifest. This will take a few seconds depending on the speed of your computer and the size of the data being packaged.
+    </li>
+    <li>The resulting project can be found at the bottom (highest number) of your package order on the Installer tab. You can then
+        install, uninstall, or anneal the project as you would any other regular BAIN package, or zip it up as a BAIN archive.
+    </li>
+</ol>
+
+<h4>Usage Notes</h4>
+
+<ul>
+    <li>When naming your new BAIN package it is safest to avoid spaces in the name (e,g. use underscores between words) as the created BAIN
+        package is written to an actual folder on your hard drive.
+    </li>
+    <li>If you use Mod Organiser (or any mod manager that utilises a virtual installation of files instead of actually installing them into
+        Data\), then Monitor External Installation can only be used if Wrye Bash is launched by the other Mod manager so that it will feed
+        Wrye Bash the files it needs from the virtual folder. See <a
+                href="https://github.com/wrye-bash/wrye-bash/wiki/Wrye-Bash-and-Mod-Organizer" target="_blank">this wiki article</a> for
+        more information on integrating Wrye Bash with Mod Organizer.
+    </li>
+    <li>When installing mods via Nexus Mod Manager, it is recommended that you start monitoring, install the mod via NMM, then before
+        closing NMM, complete the monitoring session. Create the BAIN package, then switch back to NMM and uninstall the mod. You can then
+        close NMM. Switch back to Wrye Bash then install the mod from Wrye Bash. This ensures the mod is cleanly installed, all conflicts
+        are recorded / resolved in Wrye Bash, and therefore able to be cleanly uninstalled.
+    </li>
 </ul>
 
 
@@ -384,7 +494,7 @@ tab. The directories skipped are:
             inside Data and Bash Installers (including project directories). Running this command will likely take <i>aeons</i>, and you seldom need it.
         <tr><td colspan="2" id="bainAddMarker">Add Marker...<td>Creates a marker for organising your packages. The <q>==</q> will be added for you.
         <tr><td colspan="2" id="bainCreateNewProject">Create New Project...<td>Displays a dialog that allows you to create a new project and select some starting files for it.
-		<tr><td colspan="2" id="bainMonitorExternalInstallation">Monitor External Installation...<td>When you absolutely cannot install a mod via BAIN, you can put BAIN into Monitor Mode using this command.  It will scan the Data folder before and after you install the mod, then provide an option to create a Project from the changes it detects.
+        <tr><td colspan="2" id="bainMonitorExternalInstallation">Monitor External Installation...<td>When you absolutely cannot install a mod via BAIN, you can put BAIN into Monitor Mode using this command.  It will scan the Data folder before and after you install the mod, then provide an option to create a Project from the changes it detects.
         <tr><td colspan="2" id="bainListPackages">List Packages...<td>Displays a list of projects and archives and copies the list to your clipboard. This is useful for posting your package order on forums, eg. when troubleshooting an install.
         <tr><td colspan="2" id="bainAnnealAll">Anneal All<td>Installs any missing files for active installers and corrects all install order errors.
         <tr><td colspan="2" id="bainUnhide">Unhide...<td>Opens a dialogue window allowing you to select which hidden packages to unhide.
@@ -416,11 +526,30 @@ tab. The directories skipped are:
             timestamps on the Bethsoft BSAs are changed. However, disabling this setting is the only way to allow BAIN to install Vanilla
             ESPs, ESMs, and BSAs. For example, DLC plugins which have been cleaned with xEdit and packed into a BAIN. Preferred setting:
             enabled (that is, <i>skip</i> installation of bethsoft content).
-        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td>Uses Quarn's <a href="http://devnull.sweetdanger.com/archiveinvalidation/">BSA redirection technique</a> to avoid bugs with the engines texture getting system. This is compatible with both OBMM and Quarn's original BSA redirection approaches.
+        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td>(Only for Oblivion) - Uses Quarn'ss
+            <a href="http://devnull.sweetdanger.com/archiveinvalidation/">BSA redirection technique</a> to avoid bugs with the engines
+            texture getting system. This is compatible with both OBMM and Quarn's original BSA redirection approaches.
         <tr><td colspan="2" id="bainCleanDataDirectory">Clean Data Directory<td>If this is checked, then any empty subfolders of the Data directory will be deleted. This reduces some clutter (especially after uninstalling packages). Removing unused data directories also improves game performance.
-        <tr><td colspan="2" id="bainShowInactiveConflicts">Show Inactive Conflicts<td>If checked, then the conflicts report will show conflicts with inactive as well as active mods. Usually only active conflicts are of interest, however sometimes it's useful to review all conflicting packages.
-        <tr><td colspan="2" id="bainShowLowerConflicts">Show Lower Conflicts<td>If checked, then the conflicts report with show conflicts with lower order packages. If you're only interested in higher order conflicts, the uncheck this to remove some clutter from the report.
-        <tr><td colspan="2">Show BSA Conflicts<td>If checked, the contents of BSAs are compared and any conflicting resources found are displayed in the conflicts list.
+        <tr><td colspan="2" id="bainShowInactiveConflicts">Show Inactive Conflicts<td>If checked, then the conflicts report will show
+            conflicts with inactive as well as active installers. Usually only active conflicts are of interest, however sometimes it's
+            useful to review all conflicting packages.
+        <tr><td colspan="2" id="bainShowLowerConflicts">Show Lower Conflicts<td>If checked, then the conflicts report with show conflicts
+            with lower order packages (or with lower ordering bsas in bsa conflicts view). If you're only interested in higher order
+            conflicts, then uncheck this to remove some clutter from the report.
+        <tr><td colspan="2">Show Active BSA Conflicts<td>If checked, the contents of the selected installer <i>active</i> BSAs
+            are compared with the contents of other installers <i>active</i> BSAs and any conflicting resources (actually same name
+            resources) found are displayed in the conflicts list. Active bsas are <i>installed</i> bsas that have a correspondingly named
+            mod active in the load order.<em>Lower</em> and <em>Higher</em> conflicts has therefore a different meaning than loose file
+            conflicts. Higher means that the corresponding active mod has a higher load oder number (loads later) so its bsa will load last
+            and <i>its</i>assets will be used. Note that this may lead to a package having its bsas appear in both Higher and Lower sections
+            depending on how they load. If <a href="#bainShowLowerConflicts">Show Lower Conflicts</a> is not checked <i>lower loading
+                conflicting bsas</i> won't be shown, again this is different than loose files, where <i>lower installers</i> (lower install
+            order) won't be shown. This function has some rough edges:
+            <ul>
+                <li> mod inis or the game ini are not taken into account when determining active bsas and their order
+                <li> we can't open the resources and check if they actually conflict or are identical, so take those "conflicts" with a
+                grain of salt
+            </ul>
         <tr><td colspan="2" id="bainWizardIconOverlay">Wizard Icon Overlay<td>If checked, installers with a Wizard will have a magic wand image displayed over their icons.
         <tr><td colspan="2" id="bainSkipOBSEPlugins">Skip OBSE Plugins<td>If this is checked, files to go in the Data\OBSE\Plugins folder will not be installed  (for other games replace OBSE with SKSE etc)
         <tr><td colspan="2">Skip SKSE/Script Dragon Plugins<td><i>Skyrim only.</i> If this is checked, files to go in the Data\SKSE\Plugins or Data\asi folder will not be installed.
@@ -467,7 +596,10 @@ tab. The directories skipped are:
             </ol>Case B) is relevant cause now Bash will recheck the files in Data that would belong to the packages that are being refreshed - this was not the case in 306, where you needed
         a full <a href="#bainRefreshData">Refresh Data</a>, which is now pretty much deprecated.
         <tr><td colspan="2" id="bainMoveTo">Move To...<td>Moves the selected package(s) to the specified position.
-        <tr><td colspan="2" id="bainHasExtraDirectories">Has Extra Directories<td>BAIN only recognises a limited set of subdirectories of the Data folder, and skips any unrecognised subdirectories. Checking this option will cause BAIN to install unrecognised subdirectories.
+        <tr><td colspan="2" id="bainHasExtraDirectories">Has Extra Directories<td>BAIN only recognises a limited set of subdirectories of
+            the Data folder, and skips any unrecognised subdirectories. Checking this option will cause BAIN to install unrecognised
+            subdirectories (Unless the files within are on the list of files which are always skipped such as .exe files .. See <a
+                    href="#bain-skipped">Skipped Files</a>)
         <tr><td colspan="2" id="bainOverrideSkips">Override Skips<td>If this is checked, Bain will not skip over files that would normally be skipped due to a <a href="#bainGlobalSkips">global
             skip option</a>.
         <tr><td colspan="2" id="bainSkipVoices">Skip Voices<td>If this is checked, Bain will skip over any voice files in the package. This is useful if the voice files are empty and/or the user prefers not to use them. If this option is used, then the user should also use Elys' <a href="http://oblivion.nexusmods.com/mods/16622">Universal Silent Voice</a> extension to prevent dialog subtitles from fading too rapidly.
@@ -477,7 +609,12 @@ tab. The directories skipped are:
         <tr><td colspan="2" id="bainAutoWizard">Auto Wizard<td>Runs the Wizard for the package, if it has one, selecting the default options.
         <tr><td colspan="2" id="bainViewWizard">View Wizard...<td>Opens the wizard.txt for viewing.
         <tr><td colspan="2" id="bainOpenReadme">Open Readme<td>If BAIN detects a readme in the selected package, it will be opened.
-        <tr><td colspan="2" id="bainAnneal">Anneal<td>Installs missing files and corrects install order errors.
+        <tr><td colspan="2" id="bainAnneal">Anneal<td>Installs missing files and corrects install order errors. Note: If an already
+            installed file is changed outside of Wrye Bash control, Wrye Bash will not anneal that file. Anneal is relative to other
+            installed packages. This is because we do not want to override user changes like cleaning plugins and the like. If you do want
+            to override the change use <a href="#bainInstall">Install</a> instead. Note2: The change will be detected immediately in case of
+            ini tweaks, mods or bsas, but on next Bash load for other files (like nifs etc). To detect the change without restarting
+            <a href="#bainQuickRefresh">(Quick) Refresh</a> the package.
         <tr><td colspan="2" id="bainInstall">Install<td>Fully installs the package except for files that would be overridden by later packages.
         <tr><td colspan="2" id="bainInstallLast">Install Last<td>Moves the package to the end of the order list and installs it.
         <tr><td colspan="2" id="bainInstallMissing">Install Missing<td>The same as Install, except that it only installs missing files – i.e. it will not override any currently existing files.
@@ -519,11 +656,6 @@ tab. The directories skipped are:
 
 
 <h2 id="mods">Mods Tab</h2>
-<h3 id="mods-exclusion">Exclusion Groups</h3>
-<p>Exclusion groups can be used to help flag plugins that are incompatible. Incompatible plugins can be placed into exclusion groups, and when more than one plugin in a group is present, the plugins will be highlighted in orange.
-<p>An exclusion group may be defined or added to by renaming a plugin, putting the exclusion group name first, then a comma, then the plugin's original name. Eg. <code>Group, My plugin.esp</code>. If plugins share the same exclusion group name, they will be members of the same exclusion group.
-<p><b>Note:</b> The usage of exclusion groups is not recommended. Renaming plugins will cause them to become unrecognised by features such as BAIN or utilities such as BOSS that expect plugins to have the names they are distributed with. Renaming plugins will also break any plugins that are dependent on them.
-
 <h3 id="mods-details">The Plugin Details Panel</h3>
 <figure>
 <img src="../bash/images/readme/mods-plugin-details-panel.png" alt="plugin details panel"/>
@@ -646,6 +778,8 @@ tab. The directories skipped are:
             used by Wrye Bash to highlight these plugins in the mod list. Checking this setting tells Wrye Bash to use this information if
             bundled version of LOOT is functional for this game. Note that the detection is based on user's LOOT install masterlists, if
             those are compatible with bundled LOOT, otherwise Bash falls back to the taglists it comes with.
+        <tr><td colspan="2" id="refreshCRCs">Recalculate CRCs<td>Clean stale CRCs from cache. Workaround for buggy CRC updates in previous
+            versions of Bash. Use for instance when plugins show as mismatched in BAIN when they are not.
 </table>
 <table>
     <thead>
@@ -674,7 +808,11 @@ tab. The directories skipped are:
             <tr><td>Refresh: pick up assigned groups and add them to the existing ones. Use it after importing groups from a file to update available groups.
             <tr><td>Sync: sync the list of available groups to the assigned ones - in other words delete unassigned groups.
             <tr><td>Default: reset the list of available groups to the default ones. This won't delete non default assigned groups. It's a feature. Use Refresh to pick up your groups and add them to the defaults.
-            <tr><td>Groups Menu<td>Set a group for the selected plugin(s) (do not confuse with an <a href="#mods-exclusion">Exclusion Group</a>). Groups that are assigned to the selected plugins appear checked. They provide no functionality other than to place hidden plugins in group folders provided those folders already exist. Use them to group plugins together so you can disable or enable them at once, etc. Note to old timers:  <abbr title="Bash Auto Load Ordering">BALO</abbr> has been removed taking balo groups for the ride - those of you who remember them shed a tear goodbye.
+            <tr><td>Groups Menu<td>Set a group for the selected plugin(s). Groups that are assigned to the selected plugins appear checked.
+            They provide no automatic functionality, other than to place hidden plugins in group folders provided those folders already
+            exist. Use them to group plugins together so you can disable or enable them at once, etc. Note to old timers:
+            <abbr title="Bash Auto Load Ordering">BALO</abbr> has been removed taking balo groups for the ride - those of you who remember
+            them, shed a tear goodbye.
         <tr><td colspan="2">Rating<td>A purely cosmetic feature, this allows you to assign different rating values to plugins.
         <tr><td colspan="2">Details...<td>Displays a list of the records in the selected plugin, similar to the Details view in the Construction Set.
         <tr><td colspan="2">List Masters...<td>Outputs a list of the selected plugin's masters.
@@ -688,7 +826,9 @@ tab. The directories skipped are:
         <tr><td colspan="2">Jump to installer<td>Jump to the installer of the selected mod, if the Installers tab is displayed and enabled and the
             plugin has an installer. You can Alt click on the mod to the same effect.
         <tr><td colspan="2" id="modsDontGhost">Disallow Ghosting<td>Displayed if a single plugin is selected. Don't ghost this plugin when it is inactive, even if Auto-Ghost is enabled. Will unghost a ghosted plugin if enabled.
-        <tr><td colspan="2">Ghost/Unghost<td>Displayed if a single plugin is selected. Manually ghost/unghost this plugin (active ones can't be ghosted). Ghosting a plugin will clear its Disallow Ghosting flag if set. Note that, if Auto-Ghost is enabled, <i>manually unghosting a plugin <b>will be reverted</b> on refresh</i> - mark the plugin as <a href="#modsDontGhost">disallow ghosting</a> if you want your changes to persist.
+        <tr><td colspan="2">Ghost/Unghost<td>Displayed if a single plugin is selected. Manually ghost/unghost this plugin (active ones can't
+            be ghosted). Ghosting a plugin will clear its Disallow Ghosting flag (if set). This will survive autoGhost till next restart. If
+            you want your changes to persist, mark the plugin as <a href="#modsDontGhost">disallow ghosting</a>.
         <tr><td colspan="2">Ghost<td>Displayed if multiple plugins are selected. Ghost selected plugins (no effect on active ones). Unghost all at once is on the todo list, if you wondered.
         <tr><td rowspan="3">Ghosting<td>Allow Ghosting<td>Displayed if multiple plugins are selected. Unchecks <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.
         <tr><td>Disallow Ghosting<td>Displayed if multiple plugins are selected. Checks <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.
@@ -1070,7 +1210,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Invent<td>Changes inventories.<td>Addition, removal or change in count/number of an item in NPC (NPC_), Creature (CREA) or Container (CONT) records.
         <tr><td>InventOnly<td><i>Deprecated. Use Invent in conjunction with IIM instead.</i><td><i>N/A</i>
         <tr><td>Merge<td><i>Obsolete. This tag is ignored.</i><td><i>N/A</i>
-        <tr><td>MustBeActiveIfImported<td>Must be active to function correctly even if it is imported into the Bashed Patch.<td><i>N/A</i>
+        <tr><td>MustBeActiveIfImported<td>Must be active to function correctly even if it is imported into the Bashed Patch. Currently this tags only function is that Bash won't ask to deactivate the plugin.<td><i>N/A</i>
         <tr><td>Names<td>Changes the names of things.<td>The Name (FULL) subrecord in the following record types:
             <ul>
                 <li>Class
@@ -1278,7 +1418,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h3 id="#patch-filter">Merge Filtering</h3>
+<h3 id="patch-filter">Merge Filtering</h3>
 <p>Merge filtering is an advanced option that allows records in a merged mod to be selectively filtered according to the current load order. For example, a patch mod could be created to rebalance weapons from several different weapon-adding mods. This feature would allow the patch to be used even if you didn't use all the mods, and the Bashed Patch would just apply the bits for the mods you do use. This saves the need for a separate patch plugin for each mod.
 <p>Merge filtering has requisite conditions that must be fulfilled for a plugin to take advantage of it, and some limitations. These conditions and limitations are:
 <ul>
@@ -1290,7 +1430,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 id="#patch-iim">Item Interchange Mode</h3>
+<h3 id="patch-iim">Item Interchange Mode</h3>
 <p>Item Interchange Mode is a 'hack' (a horribly inelegant and inconsistent implementation of a feature that nonetheless works) to support Vacuity's Item Interchange mod.
 <p>Activation of the mode for a plugin relies on the following conditions:
 <ul>
@@ -1308,6 +1448,7 @@ and masterlist relative priority and role see the LOOT docs.
 
 <h3 id="patch-tweaks">Tweak Options In Detail</h3>
 <p>Each <q>Tweak...</q> section has a table below that details the options found within it.
+<p>Tweaks are game dependant, most apply for Oblivion, not all of them will be available for Skyrim / Fallout 4 / Skyrim SE.
 <table>
     <thead>
         <tr><th colspan="2">Race Tweaks
@@ -1434,6 +1575,12 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Spells<td> There is a choice of formats and whether you wish the school (e.g. D) and spell level (e.g. D2) to show.
         <tr><td>Weapons<td> There is a choice of formats and whether you want damage to be shown.
 </table>
+<p><b>Tweak Settings Note</b> in some cases for newer games the following Tweaks may become a permanent part of your saves, and so should be
+    set prior to starting a new game. <br/>Trying to change the same settings in a continued game by rebuilding your bashed patch may fail
+    for games newer than Oblivion, because the game setting will always be loaded from your ongoing save files ( which the game loads last,
+    after the Bashed Patch ). <br/>For example Timescale once you change it, is known to become permanently baked in your save game for
+    Skyrim / Skyrim SE, it can be set once, but thereafter is part of your saves, and can only be changed by console command or starting a
+    new game.
 <table>
     <thead>
         <tr><th colspan="2">Tweak Settings
@@ -1509,7 +1656,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h3 id="#patch-csv">Default CSV Files</h3>
+<h3 id="patch-csv">Default CSV Files</h3>
 <p>The following CSV files are supplied with Wrye Bash and are can be used when building your Bashed Patch.
 <table>
     <thead>
@@ -2042,7 +2189,7 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 <h3 id="tools-shortcuts">Keyboard Shortcuts</h3>
-<p>The following keyboard shortcuts work almost on all lists in Wrye Bash (list must have focus).
+<p>The following keyboard shortcuts can be used when a list on Bash has focus (work almost on all lists unless otherwise noted).
 <table>
     <thead><tr><th>Shortcut<th>Function
     <tbody>
@@ -2059,120 +2206,105 @@ and masterlist relative priority and role see the LOOT docs.
 
 <h3 id="tools-arguments">Command Line Arguments</h3>
 <p>The following table lists all command-line arguments Wrye Bash
-	understands.
+    understands.
 <p>
 <table>
-	<thead>
-		<tr>
-			<th>Argument
-			<th>Function
-	<tbody>
-		<tr>
-			<td><code>-g&nbsp;GAMENAME, --game=GAMENAME</code>
-			<td>Bash reads the windows registry to find supported games and
-			checks the <code>-o</code> argument, the sOblivionPath ini option
-			and the position of the Mopy folder (namely checks if Mopy's parent
-			folder contains a supported game exe). If via any of the last three
-			methods a path to a supported game is found then this game will be
-			used, even if <code>-g</code> is not set. But in case those options
-			are not set or a supported game exe (NB: only exe name is checked)
-			is not found using them, Bash will prompt you to choose amongst the
-			games found in the registry (if any) except if <code>-g</code> is
-			set. <code>-g</code> takes precedence on the heuristics above which
-			may lead to surprises.
-		<tr>
-			<td><code>-d, --debug</code>
-			<td>Useful if bash is crashing on startup or if you want to
-				print a lot of information (e.g. while developing or debugging).
-		<tr>
-			<td><code>-C, --Cbash-mode</code>
-			<td>enables CBash and uses CBash to build the bashed patch.
-		<tr>
-			<td><code>-P, --Python-mode</code>
-			<td>disables CBash and uses python code to build the bashed
-				patch.
-		<tr>
-			<td><code>-L&nbsp;LANGUAGE, --language=LANGUAGE</code>
-			<td>Specify the user language overriding the system language
-				settings.
     <thead>
-		<tr>
-			<th>Path Arguments
-			<th>All path arguments must be absolute paths and use either
-				forward slashes (/) or two backward slashes (\\). All of these can
-				also be set in the ini (where you can also use relative paths) and
-				if set in both cmd line takes precedence.
+        <tr>
+            <th>Argument
+            <th>Function
     <tbody>
-		<tr>
-			<td><code>-o&nbsp;OBLIVIONPATH,
-					--oblivionPath=OBLIVIONPATH</code>
-			<td>Specifies the game directory (the one containing the game's
-			exe). Use this argument if Bash is located outside of the game
-			directory and you have no ini option (or want to override it).
-			Bash reads the windows registry to find supported games
-			so this is not needed if the game entry is present in the registry.
-			If however more than one game entries are present in the registry
-			consider providing the <code>--game</code> argument to specify
-			which one to use - otherwise Bash will prompt you.
+        <tr>
+            <td><code>-d, --debug</code>
+            <td>Useful if bash is crashing on startup or if you want to
+                print a lot of information (e.g. while developing or debugging).
+        <tr>
+            <td><code>-C, --Cbash-mode</code>
+            <td>enables CBash and uses CBash to build the bashed patch.
+        <tr>
+            <td><code>-P, --Python-mode</code>
+            <td>disables CBash and uses python code to build the bashed
+                patch.
+        <tr>
+            <td><code>-L&nbsp;LANGUAGE, --language=LANGUAGE</code>
+            <td>Specify the user language overriding the system language
+                settings.
     <thead>
-		<tr>
-			<th>User Directory Arguments
-			<th>These arguments allow you to specify your user directories
-				in several ways. These are only useful if the regular procedure for
-				getting the user directory fails. And even in that case, the user is
-				probably better off installing win32com.
+        <tr>
+            <th>Path Arguments
+            <th>All path arguments must be absolute paths and use either
+                forward slashes (/) or two backward slashes (\\). All of these can
+                also be set in the ini (where you can also use relative paths) and
+                if set in both cmd line takes precedence.
     <tbody>
-		<tr>
-			<td><code>-p&nbsp;PERSONALPATH,
-					--personalPath=PERSONALPATH</code>
-			<td>Specify the user's personal directory. (Like "C:\\Documents
-				and Settings\\Wrye\\My Documents") If you need to set this then you
-				probably need to set <code>-l</code> too.
-		<tr>
-			<td><code>-u&nbsp;USERPATH, --userPath=USERPATH</code>
-			<td>Specify the user profile path. May help if HOMEDRIVE and/or
-				HOMEPATH are missing from the user's environment.
-		<tr>
-			<td><code>-l&nbsp;LOCALAPPDATAPATH,
-					--localAppDataPath=LOCALAPPDATAPATH</code>
-			<td>Specify the user's local application data directory. If you
-				need to set this then you probably need to set <code>-p</code> too.
+        <tr>
+            <td><code>-o&nbsp;OBLIVIONPATH,
+                    --oblivionPath=OBLIVIONPATH</code>
+            <td>Specifies the game directory (the one containing the game's
+            exe). Use this argument if Bash is located outside of the game
+            directory and you have no ini option (or want to override the ini).
+            Bash reads the windows registry to find supported games so this is not
+            needed if the game entry is the only one present in the registry.
+            See <a href="#install-alternate">Alternative Install Locations</a>
     <thead>
-		<tr>
-			<th>Backup and Restore Arguments
-			<th>These arguments allow you to do backup and restore settings
-				operations.
+        <tr>
+            <th>User Directory Arguments
+            <th>These arguments allow you to specify your user directories
+                in several ways. These are only useful if the regular procedure for
+                getting the user directory fails. And even in that case, the user is
+                probably better off installing win32com.
     <tbody>
-		<tr>
-			<td><code>-b, --backup</code>
-			<td>Backup all Bash settings to an archive file before the app
-				launches. Either specify the filepath with the <code>-f/--filename</code>
-				options or Wrye Bash will prompt the user for the backup file path.
+        <tr>
+            <td><code>-p&nbsp;PERSONALPATH,
+                    --personalPath=PERSONALPATH</code>
+            <td>Specify the user's personal directory. (Like "C:\\Documents
+                and Settings\\Wrye\\My Documents") If you need to set this then you
+                probably need to set <code>-l</code> too.
+        <tr>
+            <td><code>-u&nbsp;USERPATH, --userPath=USERPATH</code>
+            <td>Specify the user profile path. May help if HOMEDRIVE and/or
+                HOMEPATH are missing from the user's environment.
+        <tr>
+            <td><code>-l&nbsp;LOCALAPPDATAPATH,
+                    --localAppDataPath=LOCALAPPDATAPATH</code>
+            <td>Specify the user's local application data directory. If you
+                need to set this then you probably need to set <code>-p</code> too.
+    <thead>
+        <tr>
+            <th>Backup and Restore Arguments
+            <th>These arguments allow you to do backup and restore settings
+                operations.
+    <tbody>
+        <tr>
+            <td><code>-b, --backup</code>
+            <td>Backup all Bash settings to an archive file before the app
+                launches. Either specify the filepath with the <code>-f/--filename</code>
+                options or Wrye Bash will prompt the user for the backup file path.
 
-		<tr>
-			<td><code>-r, --restore</code>
-			<td>Backup all Bash settings to an archive file before the app
-				launches. Either specify the filepath with the <code>-f/--filename</code>
-				options or Wrye Bash will prompt the user for the backup file path.
+        <tr>
+            <td><code>-r, --restore</code>
+            <td>Backup all Bash settings to an archive file before the app
+                launches. Either specify the filepath with the <code>-f/--filename</code>
+                options or Wrye Bash will prompt the user for the backup file path.
 
-		<tr>
-			<td><code>-f FILENAME, --filename=FILENAME</code>
-			<td>The file to use with the <code>-r</code> or <code>-b</code>
-				options. Must end in '.7z' and be a valid path and for <code>-r</code>
-				exist and for <code>-b</code> not already exist.
-		<tr>
-			<td><code>-q, --quiet-quit</code>
-			<td>Close Bash after creating or restoring backup and do not
-				display any prompts or message dialogs.
-		<tr>
-			<td><code>-i, --include-changed-images</code>
-			<td>Include changed images from mopy/bash/images in the backup.
-				Include any image(s) from backup file in restore.
-		<tr>
-			<td><code>-I, --include-all-images</code>
-			<td>Include all images from mopy/bash/images in the
-				backup/restore (if present in backup file).</td>
-		</tr>
+        <tr>
+            <td><code>-f FILENAME, --filename=FILENAME</code>
+            <td>The file to use with the <code>-r</code> or <code>-b</code>
+                options. Must end in '.7z' and be a valid path and for <code>-r</code>
+                exist and for <code>-b</code> not already exist.
+        <tr>
+            <td><code>-q, --quiet-quit</code>
+            <td>Close Bash after creating or restoring backup and do not
+                display any prompts or message dialogs.
+        <tr>
+            <td><code>-i, --include-changed-images</code>
+            <td>Include changed images from mopy/bash/images in the backup.
+                Include any image(s) from backup file in restore.
+        <tr>
+            <td><code>-I, --include-all-images</code>
+            <td>Include all images from mopy/bash/images in the
+                backup/restore (if present in backup file).</td>
+        </tr>
 </table>
 
 <h2 id="international">Internationalisation</h2>
