@@ -140,7 +140,7 @@
     <li><b>ITMs</b> are Identical To Master records, ie. data in a plugin for something that is identical to the data for that thing in the plugin's master(s). Usually a type of unintended edit, known as a <q>dirty edit</q>, which can break the functionality of other mods that require the record in question to have a specific value, but which have that value overridden by an ITM record.
     <li><b>UDRs</b> are Undeleted and Disabled References. Deleted References can cause crashing, and this can be avoided by first undeleting and then disabling them instead. A type of <q>dirty edit</q>. This acronym is generally misused - the UDR acronym is frequently used to refer to the deleted references, rather than their fixed counterparts. For example, <q>Scan For UDRs</q> will scan for deleted references, not undeleted and disabled references, and BOSS will report the UDR count for a plugin, which is actually the number of deleted references that can be fixed.
 </ul>
-<p>This readme will also use the placeholder <b>[Game]</b>. Replace this with <q>Oblivion</q>, <q>Fallout 3</q>, <q>Fallout NV</q>, <q>Skyrim</q>, <q>Fallout 4</q> or <q>Skyrim SE</q> depending on which game Wrye Bash is running for. Additional terminology specific to Wrye Bash's functions will be introduced as required. Also, links that are followed by <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII='/> go to pages that are not part of the Wrye Bash documentation.
+<p>This readme will also use the placeholder <b>[Game]</b>. Replace this with <q>Oblivion</q>, <q>Fallout 3</q>, <q>Fallout NV</q>, <q>Skyrim</q>, <q>Fallout 4</q> or <q>Skyrim SE</q> depending on which game Wrye Bash is running for. Additional terminology specific to Wrye Bash's functions will be introduced as required. Also, links that are followed by <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII="/> go to pages that are not part of the Wrye Bash documentation.
 
 
 <h2 id="install">Installation</h2>
@@ -482,10 +482,10 @@ from other packages previously overridden by the uninstalled package's
 <p><a href="http://boss-developers.github.io">BOSS</a> can be used to greatly simplify the process of setting the load order, as it can correctly position thousands of plugins automatically. However, you may still need to order some plugins manually.
 <p>Wrye Bash provides a number of ways for you to set up your load order:
 <ul>
-    <li>Alphabetical sorting by selecting a group of plugins and choosing File->Sort from the right-click menu.
+    <li>Alphabetical sorting by selecting a group of plugins and choosing File-&gt;Sort from the right-click menu.
     <li>Moving plugins up or down the load order by selecting them and using Ctrl-Up or Ctrl-Down respectively. This also works with groups of plugins and preserves the group's internal order.
     <li>Dragging and dropping plugins will also change the load order if the plugins are being sorted by Load Order.
-    <li><i>Oblivion only.</i> Selecting a group of plugins and choosing File->Redate from the right-click menu. This will move the first plugin to the specified date/time and position the others at one minute intervals after it.
+    <li><i>Oblivion only.</i> Selecting a group of plugins and choosing File-&gt;Redate from the right-click menu. This will move the first plugin to the specified date/time and position the others at one minute intervals after it.
     <li><i>Oblivion only.</i> Editing plugin modification dates in the right-hand details panel.
 </ul>
 <p>When running Wrye Bash, you can also lock your load order in place to prevent unintended changes to it by selecting the <a href="#modsLockLoadOrder">Lock Load Order</a>
@@ -506,7 +506,7 @@ from other packages previously overridden by the uninstalled package's
     plugin (having its children deactivated too) etc, you can always hit <code>Ctrl+Z</code> <i>while the list of mods has focus</i> to undo
     the operation or <code>Ctrl+Y</code> to redo it. Bash keeps the load orders (meaning total load order of <i>all</i> installed plugins
     and active state of the plugins) in its internal structures and will persist those on disc on shutting down,
-    in <code>My Games\&lt;Game>\BashLoadOrders.dat</code>, so you can undo/redo on restarting Bash.
+    in <code>My Games\&lt;Game&gt;\BashLoadOrders.dat</code>, so you can undo/redo on restarting Bash.
 <p>The undo/redo feature will try to preserve as many load orders as possible - so unlike undo/redo in other applications if you have an
     initial load order state A then change it to B, then hit undo (so you are back on state A), then change it to C Bash will keep in its
     internal structures the load order states A C B while most other applications would end up with A C. Undo/redo load order state is a
@@ -666,7 +666,7 @@ from other packages previously overridden by the uninstalled package's
 <table>
     <thead><tr><th>Section<th>Description<th>When You Should Use It
     <tbody>
-        <tr><td id="patchAliasModNames">Alias Mod Names<td><i>Oblivion, Fallout 3 and Fallout NV only.</i> Allows Wrye Bash to recognise some common renamings of plugins that are referenced in .csv data files that it imports as part of some Bashed Patch sections. Renamings should be listed in the text box for this section. The format is <code>Old.esp => New.esp</code>.<td>If you have renamed a plugin that is referenced in a CSV file you have selected in the Bashed Patch's configuration. It is recommended that you refrain from renaming plugins, as it can break parts of Wrye Bash and other utilities.
+        <tr><td id="patchAliasModNames">Alias Mod Names<td><i>Oblivion, Fallout 3 and Fallout NV only.</i> Allows Wrye Bash to recognise some common renamings of plugins that are referenced in .csv data files that it imports as part of some Bashed Patch sections. Renamings should be listed in the text box for this section. The format is <code>Old.esp =&gt; New.esp</code>.<td>If you have renamed a plugin that is referenced in a CSV file you have selected in the Bashed Patch's configuration. It is recommended that you refrain from renaming plugins, as it can break parts of Wrye Bash and other utilities.
         <tr><td id="patchReplaceFormIDs">Replace Form IDs<td><i>Oblivion only.</i> Replaces a set of formIDs with another set of formIDs defined by a .csv file.<td>If you use a mod that tells you to use it.
         <tr><td id="patchCoblCatalogs">Cobl Catalogs<td><i>Oblivion only.</i> Updates Cobl's ingredient and effect catalogs to take into account those added by mods you use.<td>If you use Cobl (a.k.a. Common Oblivion).
         <tr><td>Cobl Exhaustion<td><i>Oblivion only.</i> Updates greater powers added by the mods that are listed in the selected .csv file options so that they're compatible with Cobl's Exhaustion feature.<td>If you use Cobl's Exhaustion feature.
@@ -978,9 +978,9 @@ from other packages previously overridden by the uninstalled package's
 <h3 id="trouble-dump">Generating A Bug Dump</h3>
 <p>If Wrye Bash encounters an issue, it will generate a bug dump that will appear in a popup window. If an issue is encountered during startup, Wrye Bash may be unable to create the popup window, and so the bug dump will be saved to a log file, either <code>bash.log</code> or <code>Wrye Bash.exe.log</code> depending on the version of Wrye Bash you use. If no log file is present, then you will have to generate it yourself, using the steps below.
 <ol>
-    <li>Open a command prompt. This can be done by selecting Start->Programs->Accessories->Command Prompt.
+    <li>Open a command prompt. This can be done by selecting Start-&gt;Programs-&gt;Accessories-&gt;Command Prompt.
     <li>Change the working directory to the <code>Mopy</code> directory. E.g. <code>cd /D "C:\Program Files\Bethesda Softworks\Oblivion\Mopy"</code> if Wrye Bash is installed for Oblivion.
-    <li>If using the Python version of Wrye Bash: Run <code>"Wrye Bash Debug.py" -d > bash.log</code>.
+    <li>If using the Python version of Wrye Bash: Run <code>"Wrye Bash Debug.py" -d &gt; bash.log</code>.
     <ul>
         <li>If that does not work, try <code>"C:\python27\python.exe" "Wrye Bash Debug.py" -d</code>. This assumes that you have Python 2.7 installed to the default directory. Adjust the above to reference the correct path if not.
     </ul>
@@ -1161,7 +1161,7 @@ MemoryError</code>
     <li><b>Additional Thanks</b>
     <ul>
         <li>ElminsterEU: Bug catching, technical suggestions.
-        <li><img width="32" height="32" alt="Metallicow's Icon" style="align: AbsMiddle;" src="../bash/images/mcowavi32.png"> Metallicow: Shiny new tool launcher icons, Graphics, Mooo, & the WizBAIN Editor.
+        <li><img width="32" height="32" alt="Metallicow's Icon" style="align: AbsMiddle;" src="../bash/images/mcowavi32.png"> Metallicow: Shiny new tool launcher icons, Graphics, Mooo, &amp; the WizBAIN Editor.
         <li>Tom Suprgan: Several well researched suggestions.
         <li>Sativarg: Proofreading.
         <li>Kmacg94: Additional power exhaustion coverage.

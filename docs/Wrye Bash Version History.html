@@ -94,7 +94,7 @@
 <li>Moved to GitHub from Sourceforge: <a href="https://github.com/wrye-bash">https://github.com/wrye-bash</a>. [Lojack, Utumno, Wrinklyninja]
 <li>Make splash screen optional [lojack5]</li>
 <li>Installers.bat is not backed up when prompting user to backup settings on version change [lojack5]</li>
-<li>Mods Tab: Load -> All throws an exception [lojack5]</li>
+<li>Mods Tab: Load -&gt; All throws an exception [lojack5]</li>
 <li>sort order reverses [lojack5]</li>
 <li>shellMakeDirs may fall into an infinite loop [lojack5]</li>
 <li>Fixed error when copying files from an archive in BAIN. [bluesky404]
@@ -349,7 +349,7 @@
 		<li>Races Patcher refactored a bit: now has racial tweaks you can select and source mods that you can select.
 		<li>new race tweakers:
 		<ul>
-			<li>Bigger Nords & Orcs (moved from tweak actors)
+			<li>Bigger Nords &amp; Orcs (moved from tweak actors)
 			<li>Merge Eyes from similar races
 			<li>Merge Hairs from similar races
 			<li>Playable Eyes
@@ -629,8 +629,8 @@
 </ul>
 	  <li>Names tweaker:
 <ul>
-		<li>New tweak: Proper English Names: Staffs -> Staves.
-		<li>New tweak: Proper English Names: Dwarfs -> Dwarves.
+		<li>New tweak: Proper English Names: Staffs -&gt; Staves.
+		<li>New tweak: Proper English Names: Dwarfs -&gt; Dwarves.
 		<li>Updated NPC/Guard names csvs. (Contributed by Gratis_monsta)
 </ul>
 	  <li>Updated Assorted to Cobl.csv for Replace Form IDs. (Contributed by Gratis_monsta)
@@ -650,7 +650,7 @@
 <ul>
 	  <li>Automatic generation of INI tweak files when installing an INI that doesn't match the CRC of what is already installed
 	  <li>BAIN Wizards: Updated the <a href="Wrye%20Bash%20Technical%20Readme.html#wizardsEditINI">EditINI</a> function to allow comments.
-	  <li>Installer->open readme command added.
+	  <li>Installer-&gt;open readme command added.
 	  <li>Modified <a href="Wrye%20Bash%20Advanced%20Readme.html#bainCleanData">Clean Data</a> command so that it doesn't remove DLC content or Wrye Bash-related files
 	  <li>It also ignores other files that are commonly installed outside of Wrye Bash, such as Construction Set Extender and Sensual Walks animation files
 	  <li>Don't reset subpackage selections if a wizard is started but cancelled
@@ -668,9 +668,9 @@
 	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsCopyModInfo">Copy Mod Info</a> will automatically gather the displayed info on a mod.
 	  <li>Ghost will ghost just the selected mod(s)
 	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsExportPatchConfig">Export Patch Config...</a> exports the selected patch's configuration to a file.
-	  <li>File-><a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateDummyMasters">Create Dummy Masters</a> will generate empty plugins for each missing master a plugin has.  This is useful for loading a Filter patch in TES4Edit.
-	  <li>File-><a href="Wrye%20Bash%20Advanced%20Readme.html#modsNewBashedPatch">New Bashed Patch</a> will generate a new, empty bashed patch with the next name in the sequence (Bashed Patch, 1.esp, etc.)
-	  <li>Mods Tab-><a href="Wrye%20Bash%20Advanced%20Readme.html#modsRemoveDummyMasters">Remove Dummy Masters</a> will delete any empty plugins created using the <a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateDummyMasters">Create Dummy Masters</a> command.
+	  <li>File-&gt;<a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateDummyMasters">Create Dummy Masters</a> will generate empty plugins for each missing master a plugin has.  This is useful for loading a Filter patch in TES4Edit.
+	  <li>File-&gt;<a href="Wrye%20Bash%20Advanced%20Readme.html#modsNewBashedPatch">New Bashed Patch</a> will generate a new, empty bashed patch with the next name in the sequence (Bashed Patch, 1.esp, etc.)
+	  <li>Mods Tab-&gt;<a href="Wrye%20Bash%20Advanced%20Readme.html#modsRemoveDummyMasters">Remove Dummy Masters</a> will delete any empty plugins created using the <a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateDummyMasters">Create Dummy Masters</a> command.
 </ul>
 	<li>Add Master command can now add multiple masters in one go.
 	<li>Fixed Settings backup files should have WB version in their names.
@@ -685,7 +685,7 @@
 	  <li>Added -L/--Language as cmdline options to set Wrye Bash's language.
 </ul>
 	<li>Added warning if user has more than 325 esp/ms/bsa in the data folder and aren't using ghosting (and more strongly worded warning if more than 400).
-	<li>Ini Tab -> list active ini's command added.
+	<li>Ini Tab -&gt; list active ini's command added.
 	<li><a href="Wrye%20Bash%20Advanced%20Readme.html#tools-checker">ModChecker</a>:
 <ul>
 	  <li>Fixed default size to be wide enough to display all buttons.
@@ -699,9 +699,9 @@
 	<li>Progress bars now shown in several cases where the program could be perceived to be hung but was actually processing data
 	<li>Fixed progress bar disappearing for some people while loading the installers tab
 	<li>UI colors are now customizable with the <a href="Wrye%20Bash%20Advanced%20Readme.html#settingsColors">Colors Dialog</a>.  This allows you to change what colors Wrye Bash uses for various informational purposes.  This only configures the custom colors that Wrye Bash uses.  Anything else uses your system defaults, so if you want to change those, you'll need to do it through your OS.
-	<li>Save->Edit Spells will now work with corrupted/malformed/unexpectedly formed mod files; will just skip those mod files rather than fatally choking (and if in debug mode will say the mod is skipped and why).
+	<li>Save-&gt;Edit Spells will now work with corrupted/malformed/unexpectedly formed mod files; will just skip those mod files rather than fatally choking (and if in debug mode will say the mod is skipped and why).
 	<li><a href="Wrye%20Bash%20Advanced%20Readme.html#launchers-custom">Custom launcher buttons</a> now support launching of msi created shortcuts.
-	<li>Mod->Export Script has new option to skip export of comments (and a spiffy new export dialogue).
+	<li>Mod-&gt;Export Script has new option to skip export of comments (and a spiffy new export dialogue).
 	<li>CBash no longer causes random occurrences of googly eyes
 </ul>
 
@@ -786,7 +786,7 @@
   <li>Calling external programs that require administrator privileges is now supported
   <li>Added bash.ini option to automatically adjust column sizes on the main tabs to display the full data/full header.
   <li>Added the GOTY version of the non-SI esm and an alternate 1.1 size as well to the list of accepted ESM versions for ESM version switching (36 bytes smaller than the non-GOTY 1.1 and 46 bytes larger for the alternate).
-  <li>New mod->Export Cell Blocks Info command.
+  <li>New mod-&gt;Export Cell Blocks Info command.
   <li>New start menu icon.
   <li>OBSE is now enabled by default if detected.
   <li>Updated Russian Translation (contributed by DJ_Kovrik).
@@ -966,10 +966,10 @@
   <li>Fixed packing arguments to properly non fatally use 7zExtraCompressionArguments.
   <li>Import Scripts CBash and non-CBash modes fixed to maintain Python 2.5 compatibility.
   <li>Now automatically removes bad tags from mods as per BOSS/BOSS userlist tagging suggestions.
-  <li>updated Wrye Text->Html Function to write valid xhtml 1.0 Strict.
+  <li>updated Wrye Text-&gt;Html Function to write valid xhtml 1.0 Strict.
 <ul>
-    <li>updated html snippets in wizards.txt to turn into valid xhtml 1.0 Strict when ran through Wrye Text->Html converter.
-    <li>updated html snippets in Wrye bash.txt to turn into valid xhtml 1.0 Strict when ran through Wrye Text->Html converter.
+    <li>updated html snippets in wizards.txt to turn into valid xhtml 1.0 Strict when ran through Wrye Text-&gt;Html converter.
+    <li>updated html snippets in Wrye bash.txt to turn into valid xhtml 1.0 Strict when ran through Wrye Text-&gt;Html converter.
 </ul>
   <li>Improved <a href="Wrye%20Bash%20General%20Readme.html#ini">INI Edits tab</a> UI:
 <ul>
@@ -996,7 +996,7 @@
 <ul>
     <li>Fixed viewing/saving modfiles with tejon and other non-ascii author names.
     <li>Fixed project view/scanning for projects containing non-ascii filenames.
-    <li>Fixed project->archive packaging for projects that contain files with non-ascii names.
+    <li>Fixed project-&gt;archive packaging for projects that contain files with non-ascii names.
     <li>Warning added if using Unicode Wrye Bash but using non-unicode wxPython.
     <li>Fixed viewing savefile with non-ascii data (contributed by valda).
     <li>Fixed omod config viewing/editing with non-ascii data.
@@ -1017,7 +1017,7 @@
 <ul>
 <li>Bashed Patch:
 <ul>
-  <li>typo fix for Actor Strength Encumbrance Multiplier (Multifier -> Multiplier).
+  <li>typo fix for Actor Strength Encumbrance Multiplier (Multifier -&gt; Multiplier).
   <li>Tweak Actors:
 <ul>
     <li>Quiet Feet patcher added.
@@ -1100,8 +1100,8 @@
 </ul>
 <li>Saves Tab:
 <ul>
-  <li>Rename Save(s) command added (in the saves menu->file).
-  <li>Re-number Save(s) command added (in the saves menu->file).
+  <li>Rename Save(s) command added (in the saves menu-&gt;file).
+  <li>Re-number Save(s) command added (in the saves menu-&gt;file).
   <li>Rename Player command added.
 </ul>
 <li>General:
@@ -1264,9 +1264,9 @@
 <ul>
     <li>'Armor' and 'Clothes' no longer fail with a keyerror
 <ul>
-      <li>Also fixed misspelling: 'Trowsers' -> 'Trousers'
+      <li>Also fixed misspelling: 'Trowsers' -&gt; 'Trousers'
 </ul>
-    <li>'Lore Friendly Names: Dwarven->Dwemer' fixed
+    <li>'Lore Friendly Names: Dwarven-&gt;Dwemer' fixed
 </ul>
 <ul>
       <li>Expanded to check all text fields except scripts and cell names
@@ -1445,7 +1445,7 @@
   <li>New warnings about NoMerge/Deactivate tagged mods being active at rebuild time (they shouldn't be).
   <li>No warning about NoMerge tagged mods that are non-mergeable anyways.
   <li>4 new GMST changers added to tweak settings
-  <li>New Names tweaker added: 'Lore Friendly Names: Dwarven -> Dwemer' added.
+  <li>New Names tweaker added: 'Lore Friendly Names: Dwarven -&gt; Dwemer' added.
   <li>NPC Tweaker changes:
 <ul>
     <li>Renamed to Tweak Actors.
@@ -1463,7 +1463,7 @@
   <li>Renaming now updates the 'Mods' and 'INI Edits' tabs
   <li>2 bugfixes dealing with filtering (reported by Vindicator)
   <li>Double or middle clicking on an image in a BAIN Wizard will open the full image.
-  <li>You can now create your own 'Markers'.  Right click->Add Marker..., then type the name.  the '==' will be added before and after for you.
+  <li>You can now create your own 'Markers'.  Right click-&gt;Add Marker..., then type the name.  the '==' will be added before and after for you.
   <li>List Packages now has option to only export active packages
   <li>List Packages shows whether package is active or not.
 </ul>
@@ -1498,7 +1498,7 @@
 <ul>
   <li>Fixed sorting on the INI Tweaks tab.
   <li>Added option to sort valid ini tweaks to the top.
-  <li>Added option to see what is causing an INI tweak to be considered invalid (Right Click->List Errors).
+  <li>Added option to see what is causing an INI tweak to be considered invalid (Right Click-&gt;List Errors).
 </ul>
 <li>Check added at start of patch build dialogue to detect (with warning and choice of proceeding or not) missing/delinquent masters.
 <li>Option to show/hide ruleset info from Mod Checker added.
@@ -1571,7 +1571,7 @@
       <li>Allow Option Switches to be used
 </ul>
     <li>23 new specific tool launchers added (thanks to Metallicow for images and paths and suggestions :))
-    <li>number of custom launchers allowed to be defined in INI increased to 18! (also icons included which display custom &lt;num> in nice script (contributed by Metallicow))
+    <li>number of custom launchers allowed to be defined in INI increased to 18! (also icons included which display custom &lt;num&gt; in nice script (contributed by Metallicow))
 </ul>
 </ul>
 <li>Taglist fix (reported by Surazal)
@@ -1835,7 +1835,7 @@
 <ul>
   <li>Added: <a href="Wrye%20Bash%20General%20Readme.html#bain-order">Ctrl-Up/Down</a> now works on the installer tab for reordering
   <li>Fixed (v265): Issue with CELL records that caused some cells to be skipped
-  <li>Fixed: File -> Sort
+  <li>Fixed: File -&gt; Sort
   <li>Fixed: Issue with merging some REGN records
   <li>Fixed (possibly): Content Checker might work with injected records
   <li>Updated: <a href="Wrye%20Bash%20General%20Readme.html#load-set">Ctrl-Up/Down</a> now works when multiple items are selected
@@ -2853,7 +2853,7 @@
 <ul>
 <li>Fix yet another updating bug with Relev,Delevs.
 <li>Add an error check for circular masters.
-<li>Rational Names: OOO.esp >> OOO.esm.
+<li>Rational Names: OOO.esp &gt;&gt; OOO.esm.
 </ul>
 
 <h2>136 [2008/02/03]</h2>
