@@ -96,7 +96,8 @@
     <li><a href="#tools">Miscellaneous Tools</a>
     <ol>
         <li><a href="#tools-settings">Settings Menu</a>
-        <li><a href="#tools-docs">Docs Browser</a>
+        <li><a href="#tools-colors">Color Configuration</a>
+        <li><a href="#tools-docs">Doc Browser</a>
         <li><a href="#tools-checker">Mod Checker</a>
         <li><a href="#tools-swapping">Oblivion.esm Swapping</a>
         <li><a href="#tools-shortcuts">Keyboard Shortcuts</a>
@@ -471,7 +472,10 @@ tab. The directories skipped are:
 
 
 <h3 id="bain-commands">Context Menu Commands</h3>
-<p>The tables below detail the full list of context menu commands available in the Installers tab.
+<div class="prlflex clearf">
+    <figure class="slideshow" style="width:525px; min-height:656px">
+        <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-1.png"> <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-2.png"> <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-3.png"> <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-4.png">
+    </figure>
 <table id="bainHeaderCommands">
     <thead>
         <tr><th colspan="3">Column Header Context Menu
@@ -484,7 +488,21 @@ tab. The directories skipped are:
         <tr><td>Modified<td>Sort packages by date modified.
         <tr><td>Size<td>Sort packages by size.
         <tr><td>Files<td>Sort packages by number of files they contain.
-        <tr><td rowspan="5">Columns<td>Package<td>Display the Package (name) column.
+    </tr>
+    <tr>
+        <td rowspan="8">Columns</td>
+        <td>Manual</td>
+        <td>Manually customize column width.</td>
+    </tr>
+    <tr>
+        <td>Fit Contents</td>
+        <td>Columns automatically adjust width to fit their contents.</td>
+    </tr>
+    <tr>
+        <td>Fit Header</td>
+        <td>Columns automatically adjust width to fit all columns in view.</td>
+    </tr>
+        <tr><td>Package<td>Display the Package (name) column.
         <tr><td>Order<td>Display the Order column.
         <tr><td>Modified<td>Display the (date) Modified column.
         <tr><td>Size<td>Display the Size column.
@@ -563,9 +581,9 @@ tab. The directories skipped are:
                 grain of salt
             </ul>
         <tr><td colspan="2" id="bainWizardIconOverlay">Wizard Icon Overlay<td>If checked, installers with a Wizard will have a magic wand image displayed over their icons.
-        <tr><td colspan="2" id="bainSkipOBSEPlugins">Skip OBSE Plugins<td>If this is checked, files to go in the Data\OBSE\Plugins folder will not be installed  (for other games replace OBSE with SKSE etc)
-        <tr><td colspan="2">Skip SKSE/Script Dragon Plugins<td><i>Skyrim only.</i> If this is checked, files to go in the Data\SKSE\Plugins or Data\asi folder will not be installed.
-        <tr><td rowspan="10" id="bainGlobalSkips">Global Skips
+        <tr><td rowspan="12" id="bainGlobalSkips">Global Skips
+        <tr><td id="bainSkipOBSEPlugins">Skip OBSE Plugins<td><em>Games other than Skyrim.</em>If this is checked, files to go in the Data\OBSE\Plugins folder will not be installed  (for other games replace OBSE with FOSE etc)
+        <tr><td>Skip SKSE/Script Dragon Plugins<td><em>Skyrim only.</em> If this is checked, files to go in the Data\SKSE\Plugins or Data\asi folder will not be installed.
         <tr><td id="bainSkipScreenshots">Skip Screenshots<td>If checked, then files from a Data\Screenshots directory will be skipped.
         <tr>
           <td id="bainSkipScriptSources">Skip Script Sources</td>
@@ -580,6 +598,11 @@ tab. The directories skipped are:
         <tr><td id="bainSkipBSLFiles">Skip BSL Files<td><i>Skyrim and Skyrim SE only.</i> If checked, BSL Files will be skipped.
         <tr><td  colspan="2" id="bainAutonameStringTranslationFiles">Auto-name String Translation Files<td><i>Skyrim only.</i> If checked, string translation files will be renamed so that they are loaded for the language Skyrim is currently run for, unless there are existing translation files for that language.
 </table>
+</div>
+<div class="prlflex clearf">
+    <figure class="slideshow" style="width:413px; min-height:445px">
+        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-1.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-2.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-3.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-4.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-5.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-6.png"> <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-7.png">
+    </figure>
 <table id="bainPackageCommands">
     <thead>
         <tr>
@@ -772,6 +795,7 @@ tab. The directories skipped are:
         </tr>
     </tbody>
 </table>
+</div>
 <table>
     <thead>
         <tr><th colspan="2">Sub-Package Context Menu
@@ -798,11 +822,10 @@ tab. The directories skipped are:
 
 <h2 id="mods">Mods Tab</h2>
 <h3 id="mods-details">The Plugin Details Panel</h3>
-<figure>
-<img src="../bash/images/readme/mods-plugin-details-panel.png" alt="plugin details panel"/>
-<figcaption>The plugin details panel on the right hand side of the Mods tab.</figcaption>
-</figure>
-<p>The plugin details panel contains the following:
+<div class="prlflex clearf">
+    <figure style="width: 318px; min-height: 551px">
+      <img alt="plugin details panel" src="../bash/images/readme/mods-plugin-details-panel.png">
+    </figure>
 <table>
     <thead><tr><th>Item<th>Description
     <tbody>
@@ -833,8 +856,9 @@ tab. The directories skipped are:
         <tr><td>Current LO<td>Current load order in relation to the load order of the Active Plugins. Active Plugins should correspond with plugins.txt.
         <tr><td>Bash Tags<td>This field lists any Bash Tags that are assigned to the selected plugin. Right-clicking will display a list of Bash Tags and allow you to add or remove tags by checking or unchecking them.
 </table>
+</div>
 
-<h3 id="mod-masters-symbols">Color scheme for Plugin Masters (MI &amp; Current LO)</h3>
+<h3 class="clearfb" id="mod-masters-symbols">Color scheme for Plugin Masters (MI & Current LO)</h3>
 
 <p>In the table below suppose you see details for displayed_mod.esp which depends on [Oblivion.esm, displayed_mod.esm, some_other.esp, some_other2.esp]
     in this order. So the MIs displayed in the master list for Oblivion.esm, displayed_mod.esm, some_other.esp, some_other2.esp are 0, 1, 2, 3.
@@ -4175,15 +4199,18 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 <h2 id="saves">Saves Tab</h2>
-<figure>
-<img src="../bash/images/readme/saves.png" alt="Saves Tab"/>
-<figcaption>Wrye Bash's Saves tab.</figcaption>
-</figure>
 
 <h3 id="saves-overview">Overview</h3>
+<figure>
+        <img alt="Saves Tab" src="../bash/images/readme/saves.png">
+        <figcaption>
+          Wrye Bash's Saves tab.
+        </figcaption>
+      </figure>
 <p>The Saves tab allows you to manage many aspects related to your game's saves. Save files are found in the <code>My Games\[Game]\Saves</code> directory and have the file extension <code>.ess</code>. When you quicksave or autosave, the game backs up the previous quick/autosave by replacing the file extension with <code>.bak</code>. This backup may be restored by restoring its original file extension.
 <p>If you have Pluggy and/or the game's Script Extender installed, each of your save files will have a corresponding <q>cosave</q> containing the Pluggy/OBSE/SKSE-specific data. These cosaves have file extensions <code>.pluggy</code>, <code>.obse</code>, <code>.skse</code> for Pluggy, OBSE and SKSE respectively.
 <p>The Saves tab is divided into two sections: the main panel lists your save files and displays some of their details in its columns. The Save Details panel on the right displays some more information relating to the currently selected save file. It comprises of the following sections:
+        <div class="prtflex clearf">
 <table>
     <thead><tr><th>Section<th>Description
     <tbody>
@@ -4213,6 +4240,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Current LO<td>Current load order in relation to the load order of the Active Plugins. Active Plugins should correspond with plugins.txt.
         <tr><td>Notes<td>This section can be used to keep notes on the save file.
 </table>
+</div>
 
 <h3 id="saves-symbols">Color scheme for Save Game Files</h3>
 <table>
@@ -4245,10 +4273,14 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 <h3 id="saves-face">Face Import</h3>
-<figure>
-<img src="../bash/images/readme/wryebash_03.png" alt="Face Import from Esp"/>
-<figcaption>Wrye Bash's Face Import dialog.</figcaption>
-</figure>
+  <div class="bbimgr clearf">
+    <figure>
+      <img alt="Face Import from Esp" src="../bash/images/readme/wryebash_03.png">
+      <figcaption>
+        Wrye Bash's Face Import dialog.
+      </figcaption>
+    </figure>
+  </div>
 <p>Faces may be imported from saves to saves or plugins, or from plugins to saves. This allows you to preserve a character's appearance should you wish to restart a character, to roleplay as a particular character, or to turn your character into an NPC that may be encountered during playing, among other uses.
 <p>To import a face to a save:
 <ol>
@@ -4389,12 +4421,12 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 <h2 id="screenshots">Screenshots Tab</h2>
+<h3 id="screenshots-overview">Overview</h3>
 <figure class="slideshow">
 <img src="../bash/images/readme/screenshots-1.png" alt="Screenshots Tab"/>
 <img src="../bash/images/readme/screenshots-2.png" alt="Screenshots Tab"/>
-<figcaption style="padding-top:655px;">Wrye Bash's Screenshots tab.</figcaption>
+<figcaption style="padding-top:640px;">Wrye Bash's Screenshots tab.</figcaption>
 </figure>
-<h3 id="screenshots-overview">Overview</h3>
 <p>The Screenshots tab allows you to preview any screenshots taken in-game using the built-in Print Screen functionality. These screenshots are saved as bitmap files (.bmp). Selecting a screenshot from the list on the left will display it on the right. Screenshots can be converted from bitmaps into a few other formats using context menu commands.
 
 <h3 id="screenshots-alt-path">Change screenshots directory (Oblivion)</h3>
@@ -4476,17 +4508,20 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 <h2 id="people">People Tab</h2>
+<h3 id="people-overview">Overview</h3>
 <figure class="slideshow">
 <img src="../bash/images/readme/people-1.png" alt="People tab"/>
 <img src="../bash/images/readme/people-2.png" alt="People tab"/>
-<figcaption style="padding-top:655px;">Wrye Bash's People tab.</figcaption>
+<figcaption style="padding-top:640px;">Wrye Bash's People tab.</figcaption>
 </figure>
-<h3 id="people-overview">Overview</h3>
 <p>The People tab functions as a simple database that can be used to keep notes on various people (eg. why you blocked a forum user, or what a good mod someone made).
 <p>People are listed in the column on the left, and the large text box on the right can be used for writing notes on the selected person. Notes are saved automatically as you type them, but otherwise the text box behaves as a simple text editor such as Notepad.
 <p>The Karma column displays the karma level you have set for them. Karma is a simple way of rating your disposition towards a person. The Header column displays the first 75 characters of text in a person's notes. Clicking a column header will sort by that column.
 
-<h3 id="people-symbols">What Symbols &amp; Colours Mean</h3>
+<div class="prlflex imgrst">
+    <div style="position:absolute; margin-top:1.7em; padding:4px 0.6em; height:1.4em; width:98%; background-color: rgb(203, 229, 130); z-index:-1"></div>
+<div style="min-width:275px">
+<h3 id="people-symbols" style="padding-left:23px">What Symbols &amp; Colours Mean</h3>
 <table>
     <thead>
         <tr><th colspan="2">Checkbox Colours
@@ -4500,8 +4535,9 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td><img src="../bash/images/checkbox_orange_off.png" alt="Orange"/><td>Person has -3 or -4 karma.
         <tr><td><img src="../bash/images/checkbox_red_off.png" alt="Red"/><td>Person has -5 karma.
 </table>
-
-<h3 id="people-commands">Context Menu Commands</h3>
+</div>
+<div>
+<h3 id="people-commands" style="padding-left:23px">Context Menu Commands</h3>
 <table>
     <thead>
         <tr><th colspan="2">Column Header &amp; Person Context Menus
@@ -4514,6 +4550,8 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Columns<td>This submenu allows you to choose which columns are visible.
         <tr><td>Karma<td>This submenu allows you to set a karma level for a person, ranging from +5 to -5.
 </table>
+</div>
+</div>
 
 
 <h2 id="tools">Miscellaneous Tools</h2>
@@ -4568,12 +4606,12 @@ and masterlist relative priority and role see the LOOT docs.
   <tr><td colspan="2">Debug Mode<td>Opens up a window to which debugging information is written.
   <tr><td colspan="2" id="settingsDumpTranslator">Dump Translator<td>Generates a new translation file for your locale. See <a href="#international">Internationalisation</a> for more information.
 </table>
-<figure class="slideshow">
-<img src="../bash/images/readme/settings-1-colours-dialogue-1.png" alt="Colors Dialog"/>
-<img src="../bash/images/readme/settings-1-colours-dialogue-2.png" alt="Colors Dialog"/>
-<figcaption style="padding-top:400px;">The Colors dialog accessible through Wrye Bash's Settings menu.</figcaption>
-</figure>
-<table>
+<h3 id="tools-colors">Color Configuration</h3>
+<div class="prlflex smltbl clearf">
+  <figure class="slideshow" style="width:768px; min-height:390px">
+    <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colours-dialogue-1.png"> <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colours-dialogue-2.png">
+  </figure>
+<table style="width:98%">
     <thead>
         <tr><th colspan="2">Colors Dialog Buttons
         <tr><th>Button<th>Function
@@ -4586,8 +4624,8 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Import...<td>Imports a color scheme from a text file previously exported. <a href="#settingsApplyAll">Apply All</a> must still be used for the changes to take effect.
         <tr><td>OK<td>Closes the dialog. Does not apply any changes made.
 </table>
-
-<h3 id="tools-docs">Doc Browser</h3>
+</div>
+<h3 class="clearfb" id="tools-docs">Doc Browser</h3>
 <figure class="slideshow">
 <img src="../bash/images/readme/doc-browser-1.png" alt="doc browser">
 <img src="../bash/images/readme/doc-browser-2.png" alt="doc browser">
@@ -4611,11 +4649,15 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 id="tools-checker">Mod Checker</h3>
-<figure>
-<img src="../bash/images/readme/mod-checker-1.png" alt="Mod Checker"/>
-<figcaption>Wrye Bash's Mod Checker</figcaption>
-</figure>
+<h3 class="clearfb" id="tools-checker">Mod Checker</h3>
+<div class="bbimgr clearf">
+  <figure style="width:475px">
+    <img alt="Mod Checker" src="../bash/images/readme/mod-checker-1.png">
+    <figcaption>
+      Wrye Bash's Mod Checker
+    </figcaption>
+  </figure>
+</div>
 <p>The Mod Checker checks your active and merged plugins for errors, and provides warnings for any found, as well as configuration recaps and suggestions. It can be opened by clicking the <a href="Wrye%20Bash%20General%20Readme.html#launchersModChecker">Mod Checker button</a> in the status bar.
 <p>At the top of the report is the Active Mod Files section, which lists your load order. It also displays any warnings that are applicable beneath the plugin(s) that they are applicable to. These warnings are either regarding missing masters or delinquent masters.
 <ul>
