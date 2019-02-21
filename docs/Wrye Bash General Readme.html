@@ -24,8 +24,8 @@
 <body>
 <h1>Wrye Bash General Readme</h1>
 
-<h2 style="margin-top:0;margin-bottom:1em;">Contents</h2>
-<ol style="float:left;margin:0;margin-right:4em;">
+<h2 class="contents">Contents</h2>
+<ol class="contentsmenu1">
     <li><a href="#intro">Introduction</a>
     <ol>
         <li><a href="#intro-glossary">Glossary</a>
@@ -53,13 +53,14 @@
     <li><a href="#patch">Setting Up A Bashed Patch</a>
     <ol>
         <li><a href="#patch-overview">Overview</a>
+        <li><a href="#patch-configuration">Bash Configuration</a>
         <li><a href="#patch-merging">Merging Plugins</a>
         <li><a href="#patch-importing">Importing From Plugins</a>
         <li><a href="#patch-tweaking">Applying Tweaks</a>
         <li><a href="#patch-other">Other Bashed Patch Options</a>
     </ol>
 </ol>
-<ol start="7" style="float:left;margin-top:0;">
+<ol start="7" class="contentsmenu2">
     <li><a href="#ini">Applying Ini File Edits</a>
     <ol>
         <li><a href="#ini-overview">Overview</a>
@@ -171,6 +172,7 @@
 </ul>
 
 <h2 id="bain">Installing Mods</h2>
+<h3 id="bain-overview">Overview</h3>
 <figure class="slideshow">
 <img alt="Installers Tab" src="../bash/images/readme/installers-1.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-2.png"/>
@@ -180,11 +182,10 @@
 <img alt="Installers Tab" src="../bash/images/readme/installers-6.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-7.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-8.png"/>
-<figcaption style="padding-top:650px;">Wrye Bash's Installers tab.</figcaption>
+<figcaption style="padding-top:635px;">Wrye Bash's Installers tab.</figcaption>
 </figure>
 
-<h3 id="bain-overview">Overview</h3>
-<p>Wrye Bash mod installer are known as <abbr title="Bash Installers">BAIN</abbr> (BAsh INstallers), and are presented on the Installers
+<p>Wrye Bash mod installer are known as <strong><abbr title="Bash Installers">BAIN</abbr></strong> (<strong>BA</strong>sh <strong>IN</strong>stallers), and are presented on the Installers Tab. The first time the Installers tab is opened, a dialog will appear asking if BAIN should be initialized. If you click <q>Yes</q>, BAIN will be initialised, which can take some time. After that, the information refresh performed when the Installers tab is opened is much faster.</p>
     Tab. The first time the Installers tab is opened, a dialog will appear asking if BAIN should be initialized. If you click <q>Yes</q>,
     BAIN will be initialised, which can take some time. After that, the information refresh performed when the Installers tab is opened is
     much faster.
@@ -567,18 +568,24 @@ from other packages previously overridden by the uninstalled package's
 
 <h2 id="patch">Setting Up A Bashed Patch</h2>
 <h3 id="patch-overview">Overview</h3>
+<div class="prlflex tap clearf">
     <figure class="slideshow" style="width:657px; min-height:610px;">
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-1.png"/>
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-2.png"/>
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-3.png"/>
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-4.png"/>
+    <figcaption style="padding-top: 613px">Wrye Bash's Bashed Patch configuration dialog.</figcaption>
     </figure>
+<div style="margin-left:1em; margin-top: -1em;">
 <p>A Bashed Patch is a configurable plugin with three main functions:
 <ul>
     <li>Merging plugins into itself. Merged plugins can be deactivated, avoiding the 255 plugin limit.
     <li>Importing specific types of data records from plugins. This can be used to avoid compatibility issues.
     <li>Applying tweaks to the game. This avoids the need to use other mods to apply the same tweaks.
 </ul>
+</div>
+</div>
+<h3 id="patch-configuration">Bash Configuration</h3>
 <p>A Bashed Patch is created by Wrye Bash the first time you run it, with the plugin being called <q><strong>Bashed Patch, 0.esp</strong></q>. It is configured using the plugin context menu commands <a href="#modsRebuildPatch">Rebuild Patch...</a> or <a href="#modsRebuildPatchCBash">Rebuild Patch (CBash *Beta*)...</a>. <strong>You should rebuild your Bashed Patch every time you change your load order, before playing the game.</strong> The Bashed Patch should be last in your load order, unless you have plugins that explicitly state that they must load last.
 <p>The configuration dialog consists of a list of major sections to the left, and the contents of the selected section to the right, with the build and save buttons at the bottom. The sections and their items have checkboxes: checking a section will include all its checked items in the Bashed Patch. Unchecked sections and items will not be included. Some sections don't have any items, and so just need the section checkbox checked.
 <p>A short description of each section and some items is displayed near the bottom of the window if the section/item is hovered over. Bolded items are new since the last time the Bashed Patch was built. Wrye Bash will try to auto-configure most sections, but some will still need tweaking.
@@ -662,11 +669,12 @@ from other packages previously overridden by the uninstalled package's
 </table>
 
 <h2 id="ini">Applying Ini File Edits</h2>
+<h3 id="ini-overview">Overview</h3>
 <figure class="slideshow">
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-edits-1.png"/>
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-oblivion.png"/>
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-all_natural.png"/>
-<figcaption style="padding-top:650px;">Wrye Bash's INI Edits tab, editing Oblivion.ini, Oblivion's configuration file, and All Natural.ini, a mod's configuration file. (Animated slideshow.)</figcaption>
+<figcaption style="padding-top:635px;">Wrye Bash's INI Edits tab, editing Oblivion.ini, Oblivion's configuration file, and All Natural.ini, a mod's configuration file. (Animated slideshow.)</figcaption>
 </figure>
 
 <p>The Ini Edits tab allows the user to quickly apply edits to Oblivion.ini, Skyrim.ini or Fallout4Custom.ini, depending on your game, and mod-added ini files, including those containing scripts used to configure mods. Edits are applied from ini tweak files, which are just a text file that contains only the lines of the ini that you wish to change. Ini tweaks are stored in the <code>Data\Ini Tweaks</code> folder, and may be installed through BAIN or placed there manually.
@@ -1158,7 +1166,7 @@ MemoryError</code>
       <li><img alt="GhostWheel's Icon" src="../bash/images/uespavi32.png"><span><a href="http://mw.modhistory.com/search-au-Ghostwheel">GhostWheel</a></span></li>
       <li><img alt="Resetgun's Icon" src="../bash/images/uespavi32.png"><span><a href="https://www.nexusmods.com/users/99351">Resetgun</a>, aka mpuonti</span></li>
       <li><img alt="Rick's Icon" src="../bash/images/uespavi32.png"><span><a href="https://en.uesp.net/wiki/User:Rick">Rick</a></span></li>
-      <li><img alt="Python Kings' Icon" src="../bash/images/bash_32_2.png"><span>ScripterRon</span></li>
+      <li><img alt="Scripter Ron's Icon" src="../bash/images/bash_32_2.png"><span><a href="https://www.nexusmods.com/users/123768">ScripterRon</a></span></li>
       <li><img alt="Monkey God's Icon" src="../bash/images/wrye_monkey_64.jpg"><span><a href="http://wryemusings.com"><strong>Wrye</strong></a></span></li>
     </ul>
   </li>

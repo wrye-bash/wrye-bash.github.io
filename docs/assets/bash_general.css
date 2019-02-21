@@ -1,11 +1,62 @@
-ul li { vertical-align: middle; }
+/*
+Specific Page Overrides
+*/
+.prlflex.tap figure {
+  max-width: 100%;
+}
+.prlflex.tap img {
+  max-width: 100%;
+}
+.prlflex.tap {
+  justify-content: flex-start;
+}
 
-ul li img { margin-left: 0.4em; margin-right: 0.4em; max-height: 0.9em; max-width: 0.9em; vertical-align: middle; }
+/*
+Credits Styling Block
+*/
+ul li {
+  vertical-align: middle;
+}
+ul li img {
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  max-height: 0.9em;
+  max-width: 0.9em;
+  vertical-align: middle;
+}
+ul li span {
+  vertical-align: middle;
+}
+ul.nodot li {
+  list-style: none;
+  margin-left: -20px;
+}
+img.bigcred {
+  max-height: 32px;
+  max-width: 32px;
+}
+img.monkeygod {
+  max-height: 64px;
+  max-width: 64px;
+}
 
-ul li span { vertical-align: middle; }
+/*
+Extracted inlines from Advanced Readme are contained here
+*/
 
-ul.nodot li { list-style: none; margin-left: -20px; }
+/* H2s */
+.contents {
+  margin-bottom: 1em;
+  margin-top: 0;
+}
 
-img.bigcred { max-height: 32px; max-width: 32px; }
-
-img.monkeygod { max-height: 64px; max-width: 64px; }
+/* Lists */
+.contentsmenu1 {
+  float: left;
+  margin: 0;
+  margin-right: 4em;
+}
+.contentsmenu2 {
+  float: left;
+  margin-top:0 ;
+}
