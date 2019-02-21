@@ -1,2 +1,25 @@
-h2 {margin-left:0; padding:0; background:inherit; font-size:1.1em; margin-top:3em;}
-li {margin-bottom:0.2em;}
+/*
+Main Overrides
+*/
+h2 {
+  margin-left: 0;
+  padding: 0;
+  background: inherit;
+  font-size: 1.1em;
+  margin-top: 3em;
+}
+li {
+  margin-bottom: 0.2em;
+}
+
+/*
+Extracted inlines from Version Readme are listed below
+*/
+/* Text Formatting */
+.history-veranc {
+  font-style: italic;
+  font-weight: bold;
+}
+.v295_1-gmemng {
+  color: brown;
+}

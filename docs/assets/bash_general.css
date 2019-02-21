@@ -1,17 +1,4 @@
 /*
-Specific Page Overrides
-*/
-.prlflex.tap figure {
-  max-width: 100%;
-}
-.prlflex.tap img {
-  max-width: 100%;
-}
-.prlflex.tap {
-  justify-content: flex-start;
-}
-
-/*
 Credits Styling Block
 */
 ul li {
@@ -41,15 +28,21 @@ img.monkeygod {
 }
 
 /*
-Extracted inlines from Advanced Readme are contained here
+Main Overrides
 */
-
-/* H2s */
-.contents {
-  margin-bottom: 1em;
-  margin-top: 0;
+.prlflex.tap figure {
+  max-width: 100%;
+}
+.prlflex.tap img {
+  max-width: 100%;
+}
+.prlflex.tap {
+  justify-content: flex-start;
 }
 
+/*
+Extracted inlines from General Readme are listed below
+*/
 /* Lists */
 .contentsmenu1 {
   float: left;
@@ -59,4 +52,79 @@ Extracted inlines from Advanced Readme are contained here
 .contentsmenu2 {
   float: left;
   margin-top:0 ;
+}
+
+/* Figure Captions */
+.bain-overview-figcap {
+  padding-top: 635px;
+}
+.patch-overview-figcap {
+  padding-top: 613px;
+}
+.ini-overview-figcap {
+  padding-top: 635px;
+}
+.launchers-figcap {
+  padding-top: 80px;
+}
+
+/* Consistency Formatting */
+.patch-overview-txtbox {
+  margin-left: 1em;
+  margin-top: -1em;
+}
+
+/* Text Formatting */
+.bain-structure-txtcnt {
+  text-align: center;
+}
+.bain-symbols-blutxt {
+  color: #000080;
+}
+.bain-symbols-grytxt {
+  color: #BEBEBE;
+}
+.load-symbols-blutxt {
+  color: blue;
+}
+.load-symbols-grntxt {
+  color: green;
+}
+.load-symbols-prptxt {
+  color: purple;
+}
+.load-symbols-ittxt {
+  font-style: italic;
+}
+.load-symbols-ultxt {
+  text-decoration: underline;
+}
+
+/* Background Formatting */
+.bain-symbols-orgbg {
+  background: #FFBB33;
+}
+.bain-symbols-ylwbg {
+  background: yellow;
+}
+.bain-symbols-grybg {
+  background: #E0E0E0;
+}
+.load-symbols-pnkbg {
+  background: #FFDCDC;
+}
+.load-symbols-redkbg {
+  background: #FF6464;
+}
+.load-symbols-grybg {
+  background: #E8E8E8;
+}
+.ini-symbols-orgbg {
+  background-color: #FFD5AA
+}
+.ini-symbols-ylwbg {
+  background-color: #FFFFBF;
+}
+.ini-symbols-grnbg {
+  background-color: #C1FFC1;
 }

@@ -90,7 +90,7 @@
     <li><a href="#license">License</a>
     <li><a href="#advanced">Advanced Readme Topics</a>
 </ol>
-<div style="clear:both;"></div>
+<div class="clear"></div>
 
 <h2 id="intro">Introduction</h2>
 <p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion, Fallout 3, Fallout New Vegas, TES V: Skyrim, Fallout 4 and SSE: Skyrim Special Edition. Its features include:
@@ -182,7 +182,7 @@
 <img alt="Installers Tab" src="../bash/images/readme/installers-6.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-7.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-8.png"/>
-<figcaption style="padding-top:635px;">Wrye Bash's Installers tab.</figcaption>
+<figcaption class="bain-overview-figcap">Wrye Bash's Installers tab.</figcaption>
 </figure>
 
 <p>Wrye Bash mod installer are known as <strong><abbr title="Bash Installers">BAIN</abbr></strong> (<strong>BA</strong>sh <strong>IN</strong>stallers), and are presented on the Installers Tab. The first time the Installers tab is opened, a dialog will appear asking if BAIN should be initialized. If you click <q>Yes</q>, BAIN will be initialised, which can take some time. After that, the information refresh performed when the Installers tab is opened is much faster.</p>
@@ -226,7 +226,7 @@ are:
         <tr><td>screenshots<td>its contents will be copied inside Data/Docs
     <thead><tr><th colspan="2">Vanilla game directories present on all games
     <tbody>
-        <tr><td colspan="2"><div style="text-align: center;">meshes, music, sound, textures, video</div>
+        <tr><td colspan="2"><div class="bain-structure-txtcnt">meshes, music, sound, textures, video</div>
 </table>
 
 but there are game specific directories as well (all directory detection is <em>case insensitive</em>):
@@ -376,11 +376,11 @@ from other packages previously overridden by the uninstalled package's
 <table>
     <thead><tr><th>Text Formatting<th>Meaning
     <tbody>
-        <tr><td style="color:#000080;">Navy Blue<td>The package contains sub-packages.
-        <tr><td style="color:#BEBEBE;">Grey<td>BAIN does not recognise the structure of this package so cannot install it.
-        <tr><td style="background:#FFBB33;">Orange Background<td>The install is dirty. This will occur for packages for which the configuration has been altered (either by altering active sub-packages and esmps, or by altering the package itself). This can be repaired by running <a href="#bainAnneal">Anneal</a> or <a href="#bainAnnealAll">Anneal All</a>.
-        <tr><td style="background:yellow;">Yellow Background<td>The package has "underrides" i.e. some of its installed files <em>should</em> be overridden by higher order packages. This may happen after reordering mods that have already been installed. It can be repaired by running <a href="#bainAnneal">Anneal</a> or <a href="#bainAnnealAll">Anneal All</a>.
-        <tr><td style="background:#E0E0E0;">Grey Background<td>Some files present in the package will <em><strong>not</strong></em> be installed. This can be due to having a complex structure only partially handled by BAIN, or having file types that BAIN skips. This can sometimes be fixed by telling BAIN that the package <a href="#bainHasExtraDirectories">Has Extra Directories</a> by ticking that option in the right-click menu.
+        <tr><td class="bain-symbols-blutxt">Navy Blue<td>The package contains sub-packages.
+        <tr><td class="bain-symbols-grytxt">Grey<td>BAIN does not recognise the structure of this package so cannot install it.
+        <tr><td class="bain-symbols-orgbg">Orange Background<td>The install is dirty. This will occur for packages for which the configuration has been altered (either by altering active sub-packages and esmps, or by altering the package itself). This can be repaired by running <a href="#bainAnneal">Anneal</a> or <a href="#bainAnnealAll">Anneal All</a>.
+        <tr><td class="bain-symbols-ylwbg">Yellow Background<td>The package has "underrides" i.e. some of its installed files <em>should</em> be overridden by higher order packages. This may happen after reordering mods that have already been installed. It can be repaired by running <a href="#bainAnneal">Anneal</a> or <a href="#bainAnnealAll">Anneal All</a>.
+        <tr><td class="bain-symbols-grybg">Grey Background<td>Some files present in the package will <em><strong>not</strong></em> be installed. This can be due to having a complex structure only partially handled by BAIN, or having file types that BAIN skips. This can sometimes be fixed by telling BAIN that the package <a href="#bainHasExtraDirectories">Has Extra Directories</a> by ticking that option in the right-click menu.
 </table>
 
 <h3 id="bain-commands">Useful Context Menu Commands</h3>
@@ -519,14 +519,14 @@ from other packages previously overridden by the uninstalled package's
 <table>
     <thead><tr><th>Text Formatting<th>Meaning
     <tbody>
-        <tr><td style="color:blue;">Blue text<td>A .esm plugin.
-        <tr><td style="color:green;">Green text<td>A mergeable plugin.
-        <tr><td style="color:purple;">Purple text<td>A plugin that should not be merged (ie. tagged with NoMerge).
-        <tr><td style="background:#FFDCDC;">Pink background<td><em>Oblivion only.</em> A plugin that shares its modification date with another plugin. Not a problem unless both plugins are active.
-        <tr><td style="background:#FF6464;">Red background<td>An active plugin that should remain deactivated (ie. tagged with Deactivate) or, for Oblivion only, an active plugin that shares its modification date with another active plugin. This must be corrected so that they have different modification dates or else it may break your load order.
-        <tr><td style="background:#E8E8E8;">Grey background<td>A <a href="#modsAutoGhost">ghosted</a> plugin.
-        <tr><td style="font-style:italic;">Slanted text<td>A plugin that is recommended to be imported and deactivated (ie. tagged with Deactivate).
-        <tr><td style="text-decoration:underline;">Underlined text<td>A plugin identified as having dirty edits (Identical to Master, Deleted References, or otherwise necessary cleaning).
+        <tr><td class="load-symbols-blutxt">Blue text<td>A .esm plugin.
+        <tr><td class="load-symbols-grntxt">Green text<td>A mergeable plugin.
+        <tr><td class="load-symbols-prptxt">Purple text<td>A plugin that should not be merged (ie. tagged with NoMerge).
+        <tr><td class="load-symbols-pnkbg">Pink background<td><em>Oblivion only.</em> A plugin that shares its modification date with another plugin. Not a problem unless both plugins are active.
+        <tr><td class="load-symbols-redkbg">Red background<td>An active plugin that should remain deactivated (ie. tagged with Deactivate) or, for Oblivion only, an active plugin that shares its modification date with another active plugin. This must be corrected so that they have different modification dates or else it may break your load order.
+        <tr><td class="load-symbols-grybg">Grey background<td>A <a href="#modsAutoGhost">ghosted</a> plugin.
+        <tr><td class="load-symbols-ittxt">Slanted text<td>A plugin that is recommended to be imported and deactivated (ie. tagged with Deactivate).
+        <tr><td class="load-symbols-ultxt">Underlined text<td>A plugin identified as having dirty edits (Identical to Master, Deleted References, or otherwise necessary cleaning).
 </table>
 
 <h3 id="load-commands">Useful Context Menu Commands</h3>
@@ -574,9 +574,9 @@ from other packages previously overridden by the uninstalled package's
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-2.png"/>
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-3.png"/>
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-4.png"/>
-    <figcaption style="padding-top: 613px">Wrye Bash's Bashed Patch configuration dialog.</figcaption>
+    <figcaption class="patch-overview-figcap">Wrye Bash's Bashed Patch configuration dialog.</figcaption>
     </figure>
-<div style="margin-left:1em; margin-top: -1em;">
+<div class="patch-overview-txtbox">
 <p>A Bashed Patch is a configurable plugin with three main functions:
 <ul>
     <li>Merging plugins into itself. Merged plugins can be deactivated, avoiding the 255 plugin limit.
@@ -674,7 +674,7 @@ from other packages previously overridden by the uninstalled package's
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-edits-1.png"/>
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-oblivion.png"/>
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-all_natural.png"/>
-<figcaption style="padding-top:635px;">Wrye Bash's INI Edits tab, editing Oblivion.ini, Oblivion's configuration file, and All Natural.ini, a mod's configuration file. (Animated slideshow.)</figcaption>
+<figcaption class="ini-overview-figcap">Wrye Bash's INI Edits tab, editing Oblivion.ini, Oblivion's configuration file, and All Natural.ini, a mod's configuration file. (Animated slideshow.)</figcaption>
 </figure>
 
 <p>The Ini Edits tab allows the user to quickly apply edits to Oblivion.ini, Skyrim.ini or Fallout4Custom.ini, depending on your game, and mod-added ini files, including those containing scripts used to configure mods. Edits are applied from ini tweak files, which are just a text file that contains only the lines of the ini that you wish to change. Ini tweaks are stored in the <code>Data\Ini Tweaks</code> folder, and may be installed through BAIN or placed there manually.
@@ -695,9 +695,9 @@ from other packages previously overridden by the uninstalled package's
 <table>
     <thead><tr><th>Text Formatting<th>Meaning
     <tbody>
-        <tr><td style="background-color:#FFD5AA;">Orange Background<td>The specific heading or tweak is invalid for the current ini file.
-        <tr><td style="background-color:#FFFFBF;">Yellow Background<td>The specific variable value does not match the value in the current ini file.
-        <tr><td style="background-color:#C1FFC1;">Green Background<td>The specific variable value matches the value in the current ini file.
+        <tr><td class="ini-symbols-orgbg">Orange Background<td>The specific heading or tweak is invalid for the current ini file.
+        <tr><td class="ini-symbols-ylwbg">Yellow Background<td>The specific variable value does not match the value in the current ini file.
+        <tr><td class="ini-symbols-grnbg">Green Background<td>The specific variable value matches the value in the current ini file.
 </table>
 <h3 id="ini-commands">Buttons &amp; Context Menu Commands</h3>
 <table>
@@ -747,7 +747,7 @@ from other packages previously overridden by the uninstalled package's
 <img alt="launcher" src="../bash/images/readme/toolbar-3-hover-modchecker.png"/>
 <img alt="launcher" src="../bash/images/readme/toolbar-2-hover-settings.png"/>
 <img alt="launcher" src="../bash/images/readme/toolbar-1-hover-helpfile.png"/>
-<figcaption style="padding-top:80px;">Wrye Bash's launcher bar, at the bottom of its main window.</figcaption>
+<figcaption class="launchers-figcap">Wrye Bash's launcher bar, at the bottom of its main window.</figcaption>
 </figure>
 <p>At the bottom left of Bash's main window you'll find launch buttons for your game and other applications if they're installed. You'll also find a few toggle buttons and some Wrye Bash feature buttons. Each of the application buttons will be present if the corresponding application is present in the game install directory, or in their default install location if the application is not game-specific.
 <p>Clicking an application's icon will launch it, and clicking a toggle button will change the state of the toggle. Clicking a Wrye Bash feature button will open that feature's window.
