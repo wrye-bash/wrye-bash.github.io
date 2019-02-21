@@ -1,0 +1,76 @@
+/*
+Extracted inlines from Advanced Readme are contained here
+*/
+
+/* H2s */
+.contents {
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+/* Lists */
+.contentsmenu1 {
+  float: left;
+  margin: 0;
+  margin-right: 4em;
+}
+.contentsmenu2 {
+  float: left;
+  margin-top:0 ;
+}
+
+/* Figures */
+.mods-details-figure {
+  width: 318px;
+  min-height: 551px;
+}
+.tools-checker-figure {
+  width: 475px;
+}
+
+/* Figure Captions */
+.screenshots-overview-figcap {
+  padding-top: 640px;
+}
+.launchers-hide-figcap {
+  padding-top: 95px;
+}
+.people-overview-figcap {
+  padding-top: 640px;
+}
+.tools-settings-figcap {
+  padding-top: 400px;
+}
+.tools-docs-figcap {
+  padding-top: 520px;
+}
+
+/* Tables */
+.people-tables {
+  min-width: 275px;
+}
+.tools-colors-table {
+  width: 98%;
+}
+
+/* Consistency Formatting */
+.people-tables-bar {
+  background-color: rgb(203, 229, 130); 
+  height: 1.6em; 
+  margin-top: 1.7em;
+  padding: 4px 0.6em; 
+  position: absolute;
+  width: 110%;
+  z-index:-1;
+}
+.people-tabpad {
+  padding-left: 23px;
+}
+
+/* Text Formatting */
+.install-components {
+  color: red;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}

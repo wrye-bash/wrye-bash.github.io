@@ -3,6 +3,9 @@ html {
     background: #ffffcc;
     font-size: 0.9em;
 }
+body {
+    overflow-x: hidden;
+  }
 h1, h2, h3 {
     background: #9acd32;
     margin-left: -8px;
