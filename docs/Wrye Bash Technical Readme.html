@@ -194,10 +194,10 @@
 <p class="indent">Return values:
 <ul class="indent">
 	<li><code>-1</code> - The esp/m does not exist.
-	<li><code>0</code> - The esp/m is not active, imported, or merged. Its checkbox in Wrye Bash's Mods tab is <img src="../bash/images/checkbox_green_off.png" alt="Inactive"/>.
-	<li><code>1</code> - The esp/m is not active, but has portions imported into the Bashed Patch. Its checkbox in Wrye Bash's Mods tab is <img src="../bash/images/checkbox_green_imp.png" alt="Imported"/>.
-	<li><code>2</code> - The esp/m is active. Its checkbox in Wrye Bash's Mods tab is <img src="../bash/images/checkbox_green_on.png" alt="Active"/>.
-	<li><code>3</code> - The esp/m is merged into the Bashed Patch. Its checkbox in Wrye Bash's Mods tab is <img src="../bash/images/checkbox_green_inc.png" alt="Merged"/>.
+	<li><code>0</code> - The esp/m is not active, imported, or merged. Its checkbox in Wrye Bash's Mods tab is <img alt="Inactive" src="../bash/images/checkbox_green_off.png"/>.
+	<li><code>1</code> - The esp/m is not active, but has portions imported into the Bashed Patch. Its checkbox in Wrye Bash's Mods tab is <img alt="Imported" src="../bash/images/checkbox_green_imp.png"/>.
+	<li><code>2</code> - The esp/m is active. Its checkbox in Wrye Bash's Mods tab is <img alt="Active" src="../bash/images/checkbox_green_on.png"/>.
+	<li><code>3</code> - The esp/m is merged into the Bashed Patch. Its checkbox in Wrye Bash's Mods tab is <img alt="Merged" src="../bash/images/checkbox_green_inc.png"/>.
 </ul>
 <p><dfn id="wizardsEditINI">EditINI</dfn> - Tells Wrye Bash to create an ini tweak file with some tweaks in it. If the file that you tell Wrye Bash to apply the tweak to is from the current installer or is the game's ini file, then Wrye Bash will also automatically apply the tweak, otherwise, it will just be generated for the user to apply manually.
 <code class="box">EditINI(file_name, section, setting, value [,comment])</code>
@@ -552,7 +552,7 @@ variable ^= value
 <h4>Boolean Operators</h4>
 <p>Boolean operators can be used to test the logical truth of values.
 <p><dfn>And</dfn>: <code>&amp;</code>, <code>and</code>. Returns <code>True</code> if both sides of the expression are true and <code>False</code> otherwise.
-<code class="box">var1 & var2</code>
+<code class="box">var1 &amp; var2</code>
 <code class="box">var1 and var2</code>
 <p><dfn>Or</dfn>: <code>|</code>, <code>or</code>. Returns <code>True</code> if either side of the expression is true and <code>False</code> otherwise.
 <code class="box">var1 | var2</code>
@@ -964,8 +964,8 @@ o Plugin2.esp  //[comment]
 <p>The <code>SUGGEST</code> command is intended as a way of providing non-critical suggestions. Its syntax is similar to that of the <code>CONFIG</code> command, but it has different rule types available for usage. The rule types are:
 <ul>
 	<li><code>x</code>: <q>Inclusion</q> rule type. The specified plugin must be active. If the plugin is not active, the Mod Checker will output a message.
-	<li><code>-</code>: <q>Exclusion</q> rule type. The specified plugin must <b>not</b> be active. If the plugin is active, the Mod Checker will output a message.
-	<li><code>+</code>: <q>Merge Only</q> rule type. The specified plugin must be merged but <b>not</b> active. If the plugin is active or inactive and not merged, the Mod Checker will output a message.
+	<li><code>-</code>: <q>Exclusion</q> rule type. The specified plugin must <strong>not</strong> be active. If the plugin is active, the Mod Checker will output a message.
+	<li><code>+</code>: <q>Merge Only</q> rule type. The specified plugin must be merged but <strong>not</strong> active. If the plugin is active or inactive and not merged, the Mod Checker will output a message.
 	<li><code>e</code>: <q>Existence</q> rule type. The specified file must exist. The file can be any file type, with the file path being given relative to the Data folder. If the file does not exist, the Mod Checker will output a message.
 </ul>
 <code class="box ruleset">&gt;&gt; SUGGEST
@@ -986,7 +986,7 @@ e Plugin4.esp  //[comment]
 <p>The <code>ASSUME</code> command inserts the assumption that the given plugin exists into any <code>IF</code> statements following the command.
 <ul>
 	<li><code>ASSUME</code> commands last until the next <code>ASSUME</code> command or until the end of the file, whichever occurs first.
-	<li><code>ASSUME</code> commands are <b>not</b> additive: each <code>ASSUME</code> command completely replaces the previous one.
+	<li><code>ASSUME</code> commands are <strong>not</strong> additive: each <code>ASSUME</code> command completely replaces the previous one.
 	<li>To cancel the effect of an <code>ASSUME</code> command, use an <code>ASSUME</code> command with no mod listed for it.
 	<li>To assume the existence of multiple plugins, list them on separate lines after the <code>ASSUME</code> command, like how is done for the <code>IF</code> command.
 </ul>

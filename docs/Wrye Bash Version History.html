@@ -583,7 +583,7 @@
 </ul>
 	<li>New command line argument '-g' or '--game'.  Used to specify which game Wrye Bash should manage.  For example, using:
 <ul>
-	  <li><code><span style="color:brown;">"Wrye Bash.exe"</span> -<i>g</i> <i>oblivion</i></code>
+	  <li><code><span style="color:brown;">"Wrye Bash.exe"</span> -<em>g</em> <em>oblivion</em></code>
 	  <li>Will tell Wrye Bash to manage your Oblivion installation.
 </ul>
 </ul>
@@ -807,7 +807,7 @@
     <li><a href="Wrye%20Bash%20General%20Readme.html#patchImportNPCFaces">NPC Face data</a> should properly be merged, vice overridden.
     <li>Fixed merging of QUST records from Filter mods.
 </ul>
-  <li><a href="Wrye%20Bash%20General%20Readme.html#patchTweakAssorted">Tweak Assorted</a><b>: Default Icons</b> updated to skip records that should not have icons (stageless quests, non-playable clothing, armor, and items).
+  <li><a href="Wrye%20Bash%20General%20Readme.html#patchTweakAssorted">Tweak Assorted</a><strong>: Default Icons</strong> updated to skip records that should not have icons (stageless quests, non-playable clothing, armor, and items).
   <li>Added ability to import Bashed Patch config from CBash to Python and Python to CBash.
   <li>Added the ability to build a Python Bashed Patch when CBash is active.  This now requires that a Python based <a href="Wrye%20Bash%20Advanced%20Readme.html#modsMarkMergeable">Mark Mergeable</a> to be automatically executed before rebuilding.
 <ul>
@@ -841,8 +841,8 @@
     <li>--no-psyco: disable Psyco import.
     <li>-C/--Cbash-mode: force cbash mode (requires CBash.dll to be named one of Rename_CBash.dll, CBash.dll or _CBash.dll).
     <li>-P/--Python-mode: force python mode (whether or not CBash.dll exists).
-    <li>-U/--Unicode: equivalent to setting <b>bEnableUnicode</b> to <i><b>True</b></i> in bash.ini (but the cmdline options override the ini when specified).
-    <li>-A/--Ansi: equivalent to setting <b>bEnableUnicode</b> to <i><b>False</b></i> in bash.ini (but the cmdline options override the ini when specified).
+    <li>-U/--Unicode: equivalent to setting <strong>bEnableUnicode</strong> to <em><strong>True</strong></em> in bash.ini (but the cmdline options override the ini when specified).
+    <li>-A/--Ansi: equivalent to setting <strong>bEnableUnicode</strong> to <em><strong>False</strong></em> in bash.ini (but the cmdline options override the ini when specified).
     <li>-i/--include-changed-images: includes changed images in mopy/images in backup/restore (if present in backup file) operation.
     <li>-I/--include-all-images: include all images in mopy/images in backup/restore (if present in backup file) operation.
 </ul>
@@ -852,7 +852,7 @@
 
 <h2>292 [2011/06/10] [Gratis_monsta,Leandro Conde,myk002,PacificMorrowind,Lojack,VadersApp,valda] [rev 1176]</h2>
 <ul>
-<li><b>CBash</b> is live!  The default install now uses CBash.
+<li><strong>CBash</strong> is live!  The default install now uses CBash.
 <li><a href="Wrye%20Bash%20Advanced%20Readme.html#patch">Bashed Patch</a>:
 <ul>
   <li><a href="Wrye%20Bash%20General%20Readme.html#patchRaceRecords">Race Patcher</a>
@@ -932,18 +932,18 @@
       <li><a href="Wrye%20Bash%20Technical%20Readme.html#wizardsRequireVersions">RequireVersions</a>
       <li>This enables the use of expressions as arguments to Keywords.  For example, previously the following was impossible:
 <ul>
-        <li><b>name</b> = "00 Base "
-        <li><a href="Wrye%20Bash%20Technical%20Readme.html#wizardsSelectSubPackage">SelectSubPackage</a>(<b>name</b>+"Textures")
+        <li><strong>name</strong> = "00 Base "
+        <li><a href="Wrye%20Bash%20Technical%20Readme.html#wizardsSelectSubPackage">SelectSubPackage</a>(<strong>name</strong>+"Textures")
 </ul>
 </ul>
-    <li>Function <a href="Wrye%20Bash%20Technical%20Readme.html#wizardsDataFileExists">DataFileExists</a> extended to allow testing of multiple files with one function call.  It will return <i>True</i> if all of the files exist, and <i>False</i> if one or more of the files does not exist.  Additionally, <a href="Wrye%20Bash%20Technical%20Readme.html#wizardsDataFileExists">DataFileExists</a> will also detected ghosted ESPs and ESMs now.
-    <li>Changed the default for <i><b>Auto-Anneal/Install Wizards</b></i> to be checked.  Be sure to check this setting, and set it to your preference.
+    <li>Function <a href="Wrye%20Bash%20Technical%20Readme.html#wizardsDataFileExists">DataFileExists</a> extended to allow testing of multiple files with one function call.  It will return <em>True</em> if all of the files exist, and <em>False</em> if one or more of the files does not exist.  Additionally, <a href="Wrye%20Bash%20Technical%20Readme.html#wizardsDataFileExists">DataFileExists</a> will also detected ghosted ESPs and ESMs now.
+    <li>Changed the default for <em><strong>Auto-Anneal/Install Wizards</strong></em> to be checked.  Be sure to check this setting, and set it to your preference.
 </ul>
   <li>Added a cancel button to the Refresh Data progress bar.
   <li>New option 'Auto-Refresh Bethsoft Content' will tell BAIN to also scan Vanilla Oblivion BSAs, ESMs, and ESPs.
   <li>Extracting OMODs to projects:  If you drag and drop omod(s) into the BAIN window, they will be extracted into projects.
-  <li>new ini option <b>bClearRO</b> to enable/disable automatic clearing of readOnly flags from mods directory - will speed things up to disable but risk error on uninstalling in older installs/non-BAIN installed installations
-  <li>new ini option <b>sOblivionTexturesBSAName</b> in case you've for some reason renamed you oblivion - textures - compressed.bsa to something else.
+  <li>new ini option <strong>bClearRO</strong> to enable/disable automatic clearing of readOnly flags from mods directory - will speed things up to disable but risk error on uninstalling in older installs/non-BAIN installed installations
+  <li>new ini option <strong>sOblivionTexturesBSAName</strong> in case you've for some reason renamed you oblivion - textures - compressed.bsa to something else.
 </ul>
 <li><a href="Wrye%20Bash%20Advanced%20Readme.html#saves">Saves Tab</a>:
 <ul>
@@ -953,7 +953,7 @@
 </ul>
 <li>General:
 <ul>
-  <li>Fixed <b>s7zExtraCompressionArguments</b> to actually get the value from the ini (typo in ini which meant the value wasn't getting recognized as present).
+  <li>Fixed <strong>s7zExtraCompressionArguments</strong> to actually get the value from the ini (typo in ini which meant the value wasn't getting recognized as present).
   <li>Fixed packing arguments to properly non fatally use 7zExtraCompressionArguments.
   <li>Import Scripts CBash and non-CBash modes fixed to maintain Python 2.5 compatibility.
   <li>Now automatically removes bad tags from mods as per BOSS/BOSS userlist tagging suggestions.
@@ -977,12 +977,12 @@
   <li>New automatic taglist generator to generate the taglist from the masterlist.
   <li>New option to see all the tags on all installed/selected mods.
   <li>Taglist updated to BOSS rev 2608.
-  <li>Removed Balo and the Replacers Tab from the UI.  To re-enable, set <b>bEnableBalo</b> or <b>bEnableReplacers</b> to <i><b>True</b></i> as applicable in bash.ini
+  <li>Removed Balo and the Replacers Tab from the UI.  To re-enable, set <strong>bEnableBalo</strong> or <strong>bEnableReplacers</strong> to <em><strong>True</strong></em> as applicable in bash.ini
 <ul>
     <li>These features may be removed in future versions.
 </ul>
-  <li>Wrye Bash will now automatically reset all BSA timestamps to 01-01-2006.  To disable this, set <b>bResetBSATimestamps</b> to <i><b>False</b></i> in bash.ini
-  <li>In cases where the <b>bUseMyGameDirectory</b> is 0 in oblivion.ini Wrye Bash will now read/write plugins.txt in the Oblivion (or Nehrim as the case may be) folder instead of appdata folder.
+  <li>Wrye Bash will now automatically reset all BSA timestamps to 01-01-2006.  To disable this, set <strong>bResetBSATimestamps</strong> to <em><strong>False</strong></em> in bash.ini
+  <li>In cases where the <strong>bUseMyGameDirectory</strong> is 0 in oblivion.ini Wrye Bash will now read/write plugins.txt in the Oblivion (or Nehrim as the case may be) folder instead of appdata folder.
   <li>Unicode improvements: (all only applicable in unicode mode)
 <ul>
     <li>Fixed viewing/saving modfiles with tejon and other non-ascii author names.
@@ -997,7 +997,7 @@
   <li>Steam support improvement: now launches Oblivion via Oblivion.exe rather than obselauncher.exe (as is required with Steam).
   <li>Selectable jpeg quality in the <a href="Wrye%20Bash%20Advanced%20Readme.html#screenshots">Screenshots Tab</a>.
   <li>Wrye Bash will check directory permissions at startup, and give an error if the correct permissions are not available.
-  <li>Advanced ini options for compatibility with mTES4 Manager: <b>sInstallersData</b> and <b>sBashModData</b> to specify where <i><b>Installers.dat</b></i>, <i><b>Converters.dat</b></i>, etc are stored by Wrye Bash.
+  <li>Advanced ini options for compatibility with mTES4 Manager: <strong>sInstallersData</strong> and <strong>sBashModData</strong> to specify where <em><strong>Installers.dat</strong></em>, <em><strong>Converters.dat</strong></em>, etc are stored by Wrye Bash.
   <li>Added an option to the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-checker">Mod Checker</a> to scan for deleted references, and if CBash is enabled, Identical to Master records.  The number of ITM records reported in this check will usually be slightly less than TES4Edit will report, due to not checking GRUP records.
   <li>New mod command <a href="Wrye%20Bash%20Advanced%20Readme.html#modsListPatchConfig">List Patch Config...</a>, for posting your Bashed Patch configuration on the forums.
   <li>Readme updated and thoroughly spellchecked (in American English).
@@ -1428,7 +1428,7 @@
     <li>R.AddSpells tag added; imports race spells additions.
     <li>R.ChangeSpells tag added; imports race spell as totally new list.
     <li>R.Head added; imports race head record.
-    <li>NPC Hairlength will also be randomized when random hair/eyes are assigned (and even if both of those are pre-set) <b>if</b> hair length is 0.0 or None.
+    <li>NPC Hairlength will also be randomized when random hair/eyes are assigned (and even if both of those are pre-set) <strong>if</strong> hair length is 0.0 or None.
     <li>another not insignificant optimization.
 </ul>
   <li>Merge dialogue no longer shows mergeable mods that load after the patch (those are not and have never been merged anyways)
@@ -1461,7 +1461,7 @@
 <li>INI Edits:
 <ul>
   <li>Now supports applying tweaks to any Ini
-  <li>Supports script type Ini files.  Can modify any <b>set</b> or <b>setGS</b> command.
+  <li>Supports script type Ini files.  Can modify any <strong>set</strong> or <strong>setGS</strong> command.
   <li>Files ending in '.ace','.tgz','.tar','.tar.gz','.omod' will no longer be installed by BAIN. (requested by myk002)
 </ul>
 <li>comtypes is optional now.  It is required for a couple function but most have workarounds enabled (i.e. Bashed Patch log loads in default internet browser) and Wrye Bash will work without it (features currently without workarounds are: the PM Archive panel, Doc Browser).
@@ -1497,7 +1497,7 @@
 <li>Fixed major bug and a slight optimization in Race Patcher.
 <li>Slight optimization to translation feature (only affects you if you have a Non-English OS).
 <li>Some more random strings made translatable.
-<li>New tag <b>Deactivate</b>: suggests when you should import &amp; deactivate (if mergeable or mergeable but with NoMerge you always should merge &amp; deactivate).
+<li>New tag <strong>Deactivate</strong>: suggests when you should import &amp; deactivate (if mergeable or mergeable but with NoMerge you always should merge &amp; deactivate).
 <li>Fix for potential type of bashsettings.dat corruption
 <li>NPC patchers optimized.
 </ul>
@@ -1851,7 +1851,7 @@
   <li><a href="Wrye%20Bash%20General%20Readme.html#load-overview">Activating Mods</a>: Mods may now be activated/deactivated with the space bar
   <li>Many context menu choices now work with multiple selections:
 <ul>
-    <li><b>Note:</b> Most multiple selection choices will skip/ignore "Oblivion.esm" and "Oblivion_1.1.esm"
+    <li><strong>Note:</strong> Most multiple selection choices will skip/ignore "Oblivion.esm" and "Oblivion_1.1.esm"
     <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsAutoGhost">Don't Ghost</a>
     <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsBackup">Backup</a>
     <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsDuplicate">Duplicate</a>
@@ -2426,14 +2426,14 @@
 
 <h2>197 [2008/07/27]</h2>
 <ul>
-<li><i><b>Warning: Dev Version release!</b></i>
+<li><em><strong>Warning: Dev Version release!</strong></em>
 <li>Debug Ralgor changes and adapt some more code to new object structure.
 <li>Added: Skill record handling.
 </ul>
 
 <h2>196 [2008/07/26] [Ralgor]</h2>
 <ul>
-<li><i><b>Warning: Dev Version release!</b></i>
+<li><em><strong>Warning: Dev Version release!</strong></em>
 <li>Add support for cell and world blocks.
 <li>Switch mod file record handling to new style objects.
 <li>Add ability to use psyco.
@@ -2661,10 +2661,10 @@
 
 <h2>160 [2008/04/20]</h2>
 <ul>
-<li><i><b>Extreme Refactoring</b></i>
+<li><em><strong>Extreme Refactoring</strong></em>
 <ul>
   <li>Many base functions separated out into new bolt and balt libraries.
-  <li>Many base functions revised and improved. <i><b>especially</b></i> bolt.Path.
+  <li>Many base functions revised and improved. <em><strong>especially</strong></em> bolt.Path.
   <li>Miscellaneous code cleanup/enhancement.
 </ul>
 <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsExportNames">Export Names</a> and <a href="Wrye%20Bash%20Advanced%20Readme.html#modsImportNames">Import Names</a> now export "NO NAME" as needed.
@@ -2802,7 +2802,7 @@
 
 <h2>142 [2008/02/27]</h2>
 <ul>
-<li>Add support for renaming, duplicating and deleting .pluggy files associated with savefiles. (Other file commands (backup, snapshot hide/unhide are <i><b>not</b></i> supported.)
+<li>Add support for renaming, duplicating and deleting .pluggy files associated with savefiles. (Other file commands (backup, snapshot hide/unhide are <em><strong>not</strong></em> supported.)
 <li>Simplify ordering heuristic (ignore parent order).
 <li>Change default groups to canonical Balo groups. (Won't affect users who have modified their group list in any way.)
 <li>Modify Faction Morph patcher to support recent Wrye Morph changes.
@@ -2971,7 +2971,7 @@
 
 <h2>116 [2007/12/09]</h2>
 <ul>
-<li><a href="Wrye%20Bash%20General%20Readme.html#savesRepairFactions">Repair Factions</a>: Bug fix part IV. I <i>think</i> it's fixed this time.
+<li><a href="Wrye%20Bash%20General%20Readme.html#savesRepairFactions">Repair Factions</a>: Bug fix part IV. I <em>think</em> it's fixed this time.
 <li>Fix a minor bug with Delete Spells when some masters are missing.
 </ul>
 
@@ -3177,7 +3177,7 @@
 <ul>
   <li>Renamed, resorted all patch components for increased clarity. Like components are now grouped together and named similarly.
   <li>Moved bow and potion tweakers to Tweak Assorted.
-  <li>Merge Mods will now merge specified mods in even if they're also activated. (Previously, activated mods that were marked for merging, were <i>not</i> merged.)
+  <li>Merge Mods will now merge specified mods in even if they're also activated. (Previously, activated mods that were marked for merging, were <em>not</em> merged.)
 </ul>
 <li>Misc. additions, tweaks
 <ul>
@@ -4060,10 +4060,10 @@
 
 <h2>0.09 [2006/04/30]</h2>
 <ul>
-<li><b>Face Export/Import</b> <i><b>[BETA!]</b></i>
+<li><strong>Face Export/Import</strong> <em><strong>[BETA!]</strong></em>
 <ul>
   <li>Import now imports face, eyes, hair, haircolor, hairlength and gender. Race is not imported because it would require tweaking additional records (player's powers, etc.)
-  <li><b>Note:</b> Old code rewritten: it's possible that new bugs have been introduced.
+  <li><strong>Note:</strong> Old code rewritten: it's possible that new bugs have been introduced.
 </ul>
 <li>New/Improved
 <ul>
@@ -4075,7 +4075,7 @@
 <ul>
 <li>New/Improved
 <ul>
-<li><i><b>Beta!</b></i> Export face from save to esp.
+<li><em><strong>Beta!</strong></em> Export face from save to esp.
 </ul>
 </ul>
 
@@ -4091,7 +4091,7 @@
 <ul>
 <li>New/Improved
 <ul>
-<li><i><b>BETA!</b></i> Import face from one save into another.
+<li><em><strong>BETA!</strong></em> Import face from one save into another.
 </ul>
 </ul>
 
@@ -4132,7 +4132,7 @@
 
 <h2>0.01 [2006/04/13]</h2>
 <ul>
-<li><i><b>First Release!</b></i>
+<li><em><strong>First Release!</strong></em>
 </ul>
 </body>
 
