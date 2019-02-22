@@ -108,6 +108,12 @@ code.box {
 td > code.box {
     margin: 0;
 }
+td.thf {
+    text-align: center;
+}
+.tabttl {
+    background: #88aaff;
+}
 
 /*
 Block Formatting
