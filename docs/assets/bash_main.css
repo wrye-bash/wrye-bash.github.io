@@ -99,10 +99,10 @@ code {
     padding: 2px 5px;
 }
 code.box {
-    display: table;
+    display: block;
     line-height: 20px;
-    margin: 1em 0 0 3em;
-    padding: 5px 10px;
+    /* margin: 1em 0 0 3em; */
+    /* padding: 5px 10px; */
     white-space: pre;
 }
 td > code.box {
@@ -161,18 +161,10 @@ Slideshow Formatting
 Flexbox Formatting
 */
 .prlflex {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    align-items: flex-start;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    flex-direction: row;
+    justify-content: flex-start;
     margin: 0;
 }
 .prlflex figure {
@@ -229,7 +221,7 @@ Consistency Formatting
 .clearf::after, .clearfb::before {
     clear: both;
     content: "";
-    display: table;
+    display: block;
 }
 .ovrflwh {
     overflow: hidden;
@@ -250,16 +242,15 @@ Editing Utility Formatting
 /*
     Pay no attention to the code behind the comments!
 */
-/*
+
 @supports(position:sticky) {
     h2, h3 {
         position: sticky;
-        index: 10;
     }
-    h2, h3 ::before ::after {
+    h2::before, h2::after, h3::before, h3::after {
         clear: both;
         content: "";
-        display: table;
+        display: block;
     }
     h2 {
         z-index: 10;
@@ -270,7 +261,7 @@ Editing Utility Formatting
         top: 51px;
     }
 }
-*/
+
 /*
 .prlflex .slideshow {
     --vwcalc:calc(50vw - 33px);

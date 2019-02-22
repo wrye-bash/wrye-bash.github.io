@@ -37,7 +37,7 @@ Main Overrides
   max-width: 100%;
 }
 .prlflex.tap {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 /*
