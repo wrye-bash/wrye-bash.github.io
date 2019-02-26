@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -19,13 +20,18 @@
   <meta content="Wrye Bash Documentation" name="msapplication-tooltip">
   <meta content="assets/browserconfig.xml" name="msapplication-config">
   <meta content="#ffffcc" name="theme-color">
+  <script src="assets/jslibs/chklib.js" type="module"></script>
 <title>Wrye Bash General Readme</title>
 </head>
 <body>
 <h1>Wrye Bash General Readme</h1>
 
-<h2 class="contents">Contents</h2>
-<ol class="contentsmenu1">
+<wbchap>
+    <h2>Contents</h2><wbcontbgn></wbcontbgn>
+    <wbsect>
+<div class="prlflex">
+<menu1>
+<ol>
     <li><a href="#intro">Introduction</a>
     <ol>
         <li><a href="#intro-glossary">Glossary</a>
@@ -60,7 +66,9 @@
         <li><a href="#patch-other">Other Bashed Patch Options</a>
     </ol>
 </ol>
-<ol start="7" class="contentsmenu2">
+</menu1>
+<menu2>
+<ol start="7">
     <li><a href="#ini">Applying Ini File Edits</a>
     <ol>
         <li><a href="#ini-overview">Overview</a>
@@ -90,9 +98,16 @@
     <li><a href="#license">License</a>
     <li><a href="#advanced">Advanced Readme Topics</a>
 </ol>
-<div class="clear"></div>
+</menu2>
+</div>
+<chaptend></chaptend>
+</wbsect>
+</wbchap>
 
-<h2 id="intro">Introduction</h2>
+
+<wbchap>
+    <h2 id="intro">Introduction</h2><wbcontbgn></wbcontbgn>
+    <wbsect>
 <p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion, Fallout 3, Fallout New Vegas, TES V: Skyrim, Fallout 4 and SSE: Skyrim Special Edition. Its features include:
 <ul>
     <li>A mod installation and conflict manager
@@ -104,9 +119,11 @@
     <li>Many, many more features
 </ul>
 <p>Wrye Bash can appear daunting at first. To help make it more manageable, the documentation has been split into a few readmes that are targeted towards different usage requirements.
-<p>This readme covers only the most commonly used features, so that the average user can start using Wrye Bash without being overwhelmed. Information on the less commonly used features and more technical details of the features covered in this readme may be found in the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a>. Information on some of the syntaxes and file formats that Wrye Bash uses are found in the <a href="Wrye%20Bash%20Technical%20Readme.html">Technical Readme</a>. Finally, Wrye Bash's version history is stored in the <a href="Wrye%20Bash%20Version%20History.html">Version History</a> document.
+<p>This readme covers only the most commonly used features, so that the average user can start using Wrye Bash without being overwhelmed. Information on the less commonly used features and more technical details of the features covered in this readme may be found in the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a>. Information on some of the syntaxes and file formats that Wrye Bash uses are found in the <a href="Wrye%20Bash%20Technical%20Readme.html">Technical Readme</a>. Finally, Wrye Bash's version history is stored in the <a href="Wrye%20Bash%20Version%20History.html">Version History</a> document.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="intro-glossary">Glossary</h3>
+<websect><h3 id="intro-glossary">Glossary</h3><wbcontbgn></wbcontbgn>
 <p>Modding for Oblivion and Skyrim has a wonderful history of confusing terminology. The list below details some terms commonly used when dealing with mods.
 <ul>
     <li><strong>The game</strong> is the game that Wrye Bash is running for, either Oblivion, Fallout3, FalloutNV, Skyrim, Fallout4 or Skyrim SE.
@@ -126,10 +143,15 @@
     <li><strong>ITMs</strong> are Identical To Master records, ie. data in a plugin for something that is identical to the data for that thing in the plugin's master(s). Usually a type of unintended edit, known as a <q>dirty edit</q>, which can break the functionality of other mods that require the record in question to have a specific value, but which have that value overridden by an ITM record.
     <li><strong>UDRs</strong> are Undeleted and Disabled References. Deleted References can cause crashing, and this can be avoided by first undeleting and then disabling them instead. A type of <q>dirty edit</q>. This acronym is generally misused - the UDR acronym is frequently used to refer to the deleted references, rather than their fixed counterparts. For example, <q>Scan For UDRs</q> will scan for deleted references, not undeleted and disabled references, and BOSS will report the UDR count for a plugin, which is actually the number of deleted references that can be fixed.
 </ul>
-<p>This readme will also use the placeholder <strong>[Game]</strong>. Replace this with <q>Oblivion</q>, <q>Fallout 3</q>, <q>Fallout NV</q>, <q>Skyrim</q>, <q>Fallout 4</q> or <q>Skyrim SE</q> depending on which game Wrye Bash is running for. Additional terminology specific to Wrye Bash's functions will be introduced as required. Also, links that are followed by <img alt="External Link Icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII="/> go to pages that are not part of the Wrye Bash documentation.
+<p>This readme will also use the placeholder <strong>[Game]</strong>. Replace this with <q>Oblivion</q>, <q>Fallout 3</q>, <q>Fallout NV</q>, <q>Skyrim</q>, <q>Fallout 4</q> or <q>Skyrim SE</q> depending on which game Wrye Bash is running for. Additional terminology specific to Wrye Bash's functions will be introduced as required. Also, links that are followed by <img alt="External Link Icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII="/> go to pages that are not part of the Wrye Bash documentation.</p>
+<wbchapend></wbchapend>
+</websect>
+</wbchap>
 
 
-<h2 id="install">Installation</h2>
+<wbchap>
+    <h2 id="install">Installation</h2><wbcontbgn></wbcontbgn>
+    <wbsect>
 <p>The simplest way to install Wrye Bash is using the installer, as it installs Wrye Bash and its dependencies automatically. However, the instructions below are provided if a manual install method is preferred.
 <p><strong>Note:</strong> There are two versions of Wrye Bash available: the Python version and the Standalone version. Both are the same program, but the Standalone version has fewer dependencies and so is recommended for most people.
 <p><strong>Windows Vista, 7, 8 &amp; 10 users:</strong> Windows' User Account Control feature may interfere with the running of Wrye Bash and other utilities. See the <a href="#trouble-permissions">File Permissions</a> section for solutions.
@@ -152,8 +174,14 @@
     <a href="Wrye%20Bash%20Advanced%20Readme.html#install-alternate">Alternative Install Locations</a> if you wish to install to a different directory.
     <li>Navigate to the Mopy directory and run Wrye Bash by double-clicking <q>Wrye Bash Launcher.pyw</q>.
 </ol>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="uninstall">Uninstallation</h2>
+
+<wbchap>
+    <h2 id="uninstall">Uninstallation</h2><wbcontbgn></wbcontbgn>
+<wbsect>
 <p>The ease with which Wrye Bash can be removed is dependent on how much you use it to manage your modded game.
 <ul>
     <li>If you use a Bashed Patch, you will need to remove any dependencies on it from your saves before uninstalling Wrye Bash in order to avoid in-game issues. This may be near-impossible to do, depending on what is in your Bashed Patch.
@@ -170,9 +198,14 @@
     <li><code>Documents\My Games\[Game]</code> - Only delete the <code>BashProfiles.dat</code>, <code>BashProfiles.dat.bak</code>, <code>BashSettings.dat</code>, <code>BashSettings.dat.bak</code>, <code>Messages.dat</code>, <code>Messages.dat.bak</code>, <code>People.dat</code> and <code>People.dat.bak</code> files and the <code>Saves\Bash</code> folder.
     <li><code>[Game] Mods</code> (in the same folder as [Game]) - The <code>Bash Installers</code> folder stores the mods you've installed via BAIN.
 </ul>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="bain">Installing Mods</h2>
-<h3 id="bain-overview">Overview</h3>
+
+<wbchap>
+    <h2 id="bain">Installing Mods</h2><wbcontbgn></wbcontbgn>
+    <wbsect><h3 id="bain-overview">Overview</h3><wbcontbgn></wbcontbgn>
 <figure class="slideshow">
 <img alt="Installers Tab" src="../bash/images/readme/installers-1.png"/>
 <img alt="Installers Tab" src="../bash/images/readme/installers-2.png"/>
@@ -209,9 +242,11 @@
 </ol>
 
 <p>Now BAIN will try to classify the packages it detected in Bash Installers into its package formats - if it fails the package will display as unrecognized and will have to
-be restructured.
+be restructured.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-structure">BAIN-Compatible installer layout</h3>
+<wbsect><h3 id="bain-structure">BAIN-Compatible installer layout</h3><wbcontbgn></wbcontbgn>
 
 <p>When scanning an installer (package or project) BAIN follows some rules to decide what's in there and if it can be installed. BAIN
  will search for specific directories and file extensions (espml, bsa/ba2, ini). The directories BAIN is aware of, independently of the game,
@@ -260,8 +295,10 @@ will be skipped (and their content listed in Skipped tab). There are also some d
         <tr><td>Complex/Simple<td>A complex installer with only one top-level subdirectory. It is treated as a simple installer, starting at this
             top level subdirectory. Examples include mods packaged with a top-level Data directory.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-convert">Restructuring Packages to be BAIN-Compatible</h3>
+<wbsect><h3 id="bain-convert">Restructuring Packages to be BAIN-Compatible</h3><wbcontbgn></wbcontbgn>
 <p>The easiest way to tell if a package needs manual converting to be compatible with BAIN is to try installing it. If it is listed in the Package list with a grey checkbox and name, then BAIN cannot install it. Due to BAIN's flexibility, many mods are already packaged in ways that are compatible, but for those that are not, there are a few possible cases:
 <ul>
     <li>The mod has a <abbr title="BAIN Conversion File">BCF</abbr>. BCFs are special packages that tell BAIN how to restructure the mod to be compatible with BAIN without the user having to do any work.
@@ -278,9 +315,11 @@ will be skipped (and their content listed in Skipped tab). There are also some d
     <li>Optionally choose a name for the converted archive(s).
     <li>Once Wrye Bash has finished the conversion, the converted archive(s) will appear in the BAIN package list ready for install. You can now delete the original archive(s).
 </ol>
-<p>If a package is unrecognised by BAIN and has no associated BCF, its contents will have to be rearranged so that the structure matches one of the three types of BAIN-compatible package structures.
+<p>If a package is unrecognised by BAIN and has no associated BCF, its contents will have to be rearranged so that the structure matches one of the three types of BAIN-compatible package structures.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-install">Installing/Uninstalling Via BAIN</h3>
+<wbsect><h3 id="bain-install">Installing/Uninstalling Via BAIN</h3><wbcontbgn></wbcontbgn>
 <p>Packages must first be placed in the <code>[Game] Mods\Bash Installers</code> directory. This can either be done via Windows Explorer, or by dragging and dropping the package into the Wrye Bash window when the Installers tab is open. If you drag and drop, you will be asked whether you want to copy the package or move it.
 <p>If a package contains a Wizard (ie. there is <img alt="a wand icon" src="../bash/images/wizard.png"/> overlaid on its checkbox):
 <ol>
@@ -335,9 +374,11 @@ listed lower in the installation order will not uninstall the lower
 mod's files. See the next section, BAIN Package Order for more on
 this. However, if the Auto-Anneal option is enabled (the default), then files
 from other packages previously overridden by the uninstalled package's
- files will be automatically restored.
+ files will be automatically restored.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-order">BAIN Package Order</h3>
+<wbsect><h3 id="bain-order">BAIN Package Order</h3><wbcontbgn></wbcontbgn>
 <p>The Install Order of packages in BAIN is important as this decides which package gets its files installed in the case of resource
     conflicts.Packages may be listed in Install Order by left-clicking on the <q>Order</q> column header. If two packages try to install the
     same file, then the package installing later in the list will have its file overwrite the file of the package installing earlier in the
@@ -352,11 +393,14 @@ from other packages previously overridden by the uninstalled package's
 <p>BAIN allows you to easily adjust the conflict status of packages by moving their order around. This can be done by dragging and dropping
     packages within the list, or by right-clicking packages and selecting the <a href="#bainMoveTo">Move To...</a> option. You can also
     select multiple packages and move them, in which case they will be moved as a group, retaining their order relative to one another in
-    their new location. A third option is to select the package(s) and use Ctrl-Up or Ctrl-Down to move them up or down respectively.
+    their new location. A third option is to select the package(s) and use Ctrl-Up or Ctrl-Down to move them up or down respectively.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-symbols">What Symbols &amp; Colours Mean</h3>
+<wbsect><h3 id="bain-symbols">What Symbols &amp; Colours Mean</h3><wbcontbgn></wbcontbgn>
 <p>BAIN uses the colours of packages in the package list and the state of their checkboxes to convey information about their status to the user. A checkbox state may be combined with any checkbox or text colour, and the possible states and colours are described in the tables below.
 <p><strong>Note:</strong> Installed packages are marked with a plus, eg. <img alt="Green Plus" src="../bash/images/checkbox_green_inc.png" width="16" height="16"/>. Corrupt or incomplete packages are marked with a cross, eg. <img alt="Red X" src="../bash/images/checkbox_red_x.png" width="16" height="16"/>. Packages that begin and end with <q>==</q>, eg. <q>==Last==</q>, are marker packages. They don't represent an archive or folder and so contain no files, but may be used to organise the package list.
+
 <table>
     <thead><tr><th>Checkbox Shape<th>Meaning
     <tbody>
@@ -382,8 +426,10 @@ from other packages previously overridden by the uninstalled package's
         <tr><td class="bain-symbols-ylwbg">Yellow Background<td>The package has "underrides" i.e. some of its installed files <em>should</em> be overridden by higher order packages. This may happen after reordering mods that have already been installed. It can be repaired by running <a href="#bainAnneal">Anneal</a> or <a href="#bainAnnealAll">Anneal All</a>.
         <tr><td class="bain-symbols-grybg">Grey Background<td>Some files present in the package will <em><strong>not</strong></em> be installed. This can be due to having a complex structure only partially handled by BAIN, or having file types that BAIN skips. This can sometimes be fixed by telling BAIN that the package <a href="#bainHasExtraDirectories">Has Extra Directories</a> by ticking that option in the right-click menu.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="bain-commands">Useful Context Menu Commands</h3>
+<wbsect><h3 id="bain-commands">Useful Context Menu Commands</h3><wbcontbgn></wbcontbgn>
 <p>The following commands found in the package and column header context (ie. right-click) menus are often useful for many users.
 <table>
     <thead>
@@ -431,14 +477,22 @@ from other packages previously overridden by the uninstalled package's
         <tr><td id="bainApply">Conversions<td>Apply<td>Applies a BAIN Conversion File.
         <tr><td colspan="2">List Structure<td>Generates a list of the files and directories in a package. Useful for posting package structure on forums, eg. when troubleshooting an install.
 </table>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
 
-<h2 id="load">Setting Up Load Order</h2>
+<wbchap>
+<h2 id="load">Setting Up Load Order</h2><wbcontbgn></wbcontbgn>
+<wbsect>
 <figure>
 <img alt="Mods Tab" src="../bash/images/readme/mods-1.png"/>
 <figcaption>Wrye Bash's Mods tab.</figcaption>
 </figure>
-<h3 id="load-overview">Overview</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect><h3 id="load-overview">Overview</h3><wbcontbgn></wbcontbgn>
 <p>Wrye Bash displays your installed plugins in its <q>Mods</q> tab. Your load order of active installed plugins, which Wrye Bash marks with a
     ticked checkbox, is important as it decides what plugin 'wins' any conflict between plugins, with later loading plugins overriding those
     that change the same thing. A mod loading later in the list will have a greater number in the Load Order column, and will "win"
@@ -461,9 +515,11 @@ from other packages previously overridden by the uninstalled package's
     <li> esls load among esms in the order of the plugins txt.
     <li> only extension matters - Bash does not look at the esl flag. Name your esls esls.
 </ol>
- Special cc** esls are read from Fallout4/Skyrim.ccc file
+<p>Special cc** esls are read from Fallout4/Skyrim.ccc file</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="load-set">Setting The Load Order</h3>
+<wbsect><h3 id="load-set">Setting The Load Order</h3><wbcontbgn></wbcontbgn>
 <p>Setting up a correct load order that minimises detrimental conflicts that could cause issues in-game can be a difficult and time-consuming process. Effective load-ordering often requires a knowledge of what each plugin in your load order contains so that you can position the plugins to minimise these conflicts. For simple mods, the description in the mod's readme will usually be sufficient to determine the records it contains, but to be sure a utility such as TES4Edit is required.
 <p><a href="http://boss-developers.github.io">BOSS</a> can be used to greatly simplify the process of setting the load order, as it can correctly position thousands of plugins automatically. However, you may still need to order some plugins manually.
 <p>Wrye Bash provides a number of ways for you to set up your load order:
@@ -484,9 +540,11 @@ from other packages previously overridden by the uninstalled package's
 <img alt="toolbar hide launcher" src="../bash/images/readme/toolbar-12-rclick-hide-boss.png"/>
 <figcaption>BOSS's Launch Using GUI option.</figcaption>
 </figure>
-<p>The <q>Launch Using GUI</q> toggles the use of the command line interface for BOSS with the BOSS GUI. Giving quick and easy access to the additional features the GUI provides such as the <q>Edit User Rules</q> option.
+<p>The <q>Launch Using GUI</q> toggles the use of the command line interface for BOSS with the BOSS GUI. Giving quick and easy access to the additional features the GUI provides such as the <q>Edit User Rules</q> option.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="load-undo">Undo and redo Load Order changes</h3>
+<wbsect><h3 id="load-undo">Undo and redo Load Order changes</h3><wbcontbgn></wbcontbgn>
 <p>Bash features a sophisticated undo/redo load order feature, comprising both load order changes <em>of active <strong>or</strong> inactive
     plugins</em> and activating/de-activating plugins. Whether you activate a plugin, drag and drop it in another position, deactivate a
     plugin (having its children deactivated too) etc, you can always hit <code>Ctrl+Z</code> <em>while the list of mods has focus</em> to undo
@@ -496,9 +554,11 @@ from other packages previously overridden by the uninstalled package's
 <p>The undo/redo feature will try to preserve as many load orders as possible - so unlike undo/redo in other applications if you have an
     initial load order state A then change it to B, then hit undo (so you are back on state A), then change it to C Bash will keep in its
     internal structures the load order states A C B while most other applications would end up with A C. Undo/redo load order state is a
-    relatively new feature (available in 307 beta) so it may have rough edges.
+    relatively new feature (available in 307 beta) so it may have rough edges.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="load-symbols">What Symbols &amp; Colours Mean</h3>
+<wbsect><h3 id="load-symbols">What Symbols &amp; Colours Mean</h3><wbcontbgn></wbcontbgn>
 <p>Like in the Installers tab, Wrye Bash uses colour-coding and other formatting effects to convey information about the state of plugins. The different types of formatting used and their meanings are explained here.
 <table>
     <thead><tr><th>Checkbox Type<th>Meaning
@@ -528,8 +588,10 @@ from other packages previously overridden by the uninstalled package's
         <tr><td class="load-symbols-ittxt">Slanted text<td>A plugin that is recommended to be imported and deactivated (ie. tagged with Deactivate).
         <tr><td class="load-symbols-ultxt">Underlined text<td>A plugin identified as having dirty edits (Identical to Master, Deleted References, or otherwise necessary cleaning).
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="load-commands">Useful Context Menu Commands</h3>
+<wbsect><h3 id="load-commands">Useful Context Menu Commands</h3><wbcontbgn></wbcontbgn>
 <p>The context menus for the column headers and plugins contain a large number of commands, most of which are unlikely to be of use to the average user so are not detailed here.
 <table>
     <thead>
@@ -564,10 +626,14 @@ from other packages previously overridden by the uninstalled package's
         <tr><td id="modsRebuildPatch">Rebuild Patch...<td>Rebuild the selected Bashed Patch using the Python patcher.
         <tr><td id="modsRebuildPatchCBash">Rebuild Patch (CBash *Beta*)...<td><em>Oblivion only.</em> Rebuild the selected Bashed Patch using the CBash patcher.
 </table>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
 
-<h2 id="patch">Setting Up A Bashed Patch</h2>
-<h3 id="patch-overview">Overview</h3>
+<wbchap>
+<h2 id="patch">Setting Up A Bashed Patch</h2><wbcontbgn></wbcontbgn>
+<wbsect><h3 id="patch-overview">Overview</h3><wbcontbgn></wbcontbgn>
 <div class="prlflex tap clearf">
     <figure class="slideshow" style="width:657px; min-height:610px;">
     <img alt="Bashed Patch" src="../bash/images/readme/bashed-patch-dialogue-1.png"/>
@@ -585,7 +651,10 @@ from other packages previously overridden by the uninstalled package's
 </ul>
 </div>
 </div>
-<h3 id="patch-configuration">Bash Configuration</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect><h3 id="patch-configuration">Bash Configuration</h3><wbcontbgn></wbcontbgn>
 <p>A Bashed Patch is created by Wrye Bash the first time you run it, with the plugin being called <q><strong>Bashed Patch, 0.esp</strong></q>. It is configured using the plugin context menu commands <a href="#modsRebuildPatch">Rebuild Patch...</a> or <a href="#modsRebuildPatchCBash">Rebuild Patch (CBash *Beta*)...</a>. <strong>You should rebuild your Bashed Patch every time you change your load order, before playing the game.</strong> The Bashed Patch should be last in your load order, unless you have plugins that explicitly state that they must load last.
 <p>The configuration dialog consists of a list of major sections to the left, and the contents of the selected section to the right, with the build and save buttons at the bottom. The sections and their items have checkboxes: checking a section will include all its checked items in the Bashed Patch. Unchecked sections and items will not be included. Some sections don't have any items, and so just need the section checkbox checked.
 <p>A short description of each section and some items is displayed near the bottom of the window if the section/item is hovered over. Bolded items are new since the last time the Bashed Patch was built. Wrye Bash will try to auto-configure most sections, but some will still need tweaking.
@@ -605,17 +674,23 @@ from other packages previously overridden by the uninstalled package's
         <tr><td>Export<td>Saves your Bashed Patch's configuration into an external file for backup.
         <tr><td>Import<td>Restores your Bashed Patch's configuration from an exported patch configuration.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="patch-merging">Merging Plugins</h3>
+<wbsect>
+<h3 id="patch-merging">Merging Plugins</h3><wbcontbgn></wbcontbgn>
 <p>Plugins that contain only certain types of data records can be merged into the Bashed Patch. This then allows these plugins to be deactivated, freeing up space in your load order.
 <p>If you're merging plugins in, you do not need the plugins active to do so.  In fact, trying to merge them in Bash will 1 - ask you to deactivate them
     before hand, and 2 - deactivate them even if you refused that prompt after the Bashed Patch has been created.
     So if you're merging plugins, leave them inactive before building, then select to merge them in the Bashed Patch build dialog.  Don't worry,
     all the algorithms for the rest of the patchers still work as you'd expect on plugins merged this way.
 <p>You should check the checkboxes of all the plugins listed in the <q>Merge Patches</q> section, and ensure the section is checked too.
-<p><strong>Do not remove merged mods from your Data folder.</strong> They will need to be present when you next rebuild your Bashed Patch.
+<p><strong>Do not remove merged mods from your Data folder.</strong> They will need to be present when you next rebuild your Bashed Patch.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="patch-importing">Importing From Plugins</h3>
+<wbsect>
+<h3 id="patch-importing">Importing From Plugins</h3><wbcontbgn></wbcontbgn>
 <p>Plugins can be tagged with Bash Tags that tell Wrye Bash that they contain certain changes that should be preserved even if another mod also changes the same things. This is usually because the changes are important to the functionality of the mod. Wrye Bash then allows you to choose which plugins should have which types of changes preserved, by selecting from the various Import sections when building a Bashed Patch.
 <p>If a section's description in the table below begins with <q>Preserves</q> and two or more mods in its list change the same thing, then the later-loading plugin will override the other plugin(s). Otherwise changes are merged.
 <table>
@@ -639,8 +714,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td id="patchImportSpellStats">Import Spell Stats<td><em>Oblivion only.</em> Preserves the changes made by the mods selected to items in order to fix bugs or rebalance them.<td>Always, unless you are told otherwise by a mod's readme. There is an element of user preference, for instance if you are using several mods that overhaul spell stats. In such cases, choose whichever mods' stats you prefer.
         <tr><td>Import Stats<td><em>All but Fallout 4.</em> Preserves the changes made by the mods selected to spells in order to fix bugs or rebalance them.<td>Always, unless you are told otherwise by a mod's readme. There is an element of user preference, for instance if you are using several mods that overhaul item stats. In such cases, choose whichever mods' stats you prefer.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="patch-tweaking">Applying Tweaks</h3>
+<wbsect>
+<h3 id="patch-tweaking">Applying Tweaks</h3><wbcontbgn></wbcontbgn>
 <p>The Bashed Patch lets you independently tweak a large number of game settings. Each tweak has a description that is visible when you select it. Some tweaks have several possible values, with the current value given in [square brackets] in the tweak name. Right-clicking these tweaks will display a menu from which you can selected a different value. The tweaks are catagorised into different sections.
 <table>
     <thead><tr><th>Section<th>Description<th>When You Should Use It
@@ -651,8 +729,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td id="patchTweakNames">Tweak Names<td><em>Oblivion only.</em> Contains a set of tweaks that changes the names of things in the game. Most change the names to change how they are sorted in your inventory.<td>The decision is entirely based on user preference.
         <tr><td id="patchTweakSettings">Tweak Settings<td><em>All but Fallout 4.</em> Contains a set of tweaks that changes various global and non-global game settings. <td>In Oblivion, the <strong>UOP Vampire Aging and Face Fix.esp</strong> tweak is recommended for all users. Beyond that, the decision is entirely based on user preference.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="patch-other">Other Bashed Patch Options</h3>
+<wbsect>
+<h3 id="patch-other">Other Bashed Patch Options</h3><wbcontbgn></wbcontbgn>
 <p>The Bashed Patch also gives you a number of other sections providing additional functionality besides the above merging, importing and tweaking. These options are described below.
 <table>
     <thead><tr><th>Section<th>Description<th>When You Should Use It
@@ -667,9 +748,15 @@ from other packages previously overridden by the uninstalled package's
         <tr><td id="patchRaceRecords">Race Records<td><em>Oblivion only.</em> Some mods make changes to races and want those changes to be preserved even if another mod changes the same race. This ensures that those changes are kept. It also checks for and fixes various errors such as googly eyes and missing hair or eyes. It also has a section of race tweaks which the user can select as desired.<td>Always, even if there are no mods listed on the right.
         <tr><td id="patchSEWorldTests">SEWorld Tests<td><em>Oblivion only.</em> Fixes quests that aren't suspended while your character is in the Shivering Isles. This doesn't apply to mod-added quests, it only restores suspension to vanilla quests where mods have removed it.<td>Always. If you don't have Shivering Isles, the option won't do anything, in which case it doesn't hurt to have it enabled.
 </table>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="ini">Applying Ini File Edits</h2>
-<h3 id="ini-overview">Overview</h3>
+
+<wbchap>
+<h2 id="ini">Applying Ini File Edits</h2><wbcontbgn></wbcontbgn>
+<wbsect>
+<h3 id="ini-overview">Overview</h3><wbcontbgn></wbcontbgn>
 <figure class="slideshow">
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-edits-1.png"/>
 <img alt="INI Edits Tab" src="../bash/images/readme/ini-oblivion.png"/>
@@ -680,9 +767,12 @@ from other packages previously overridden by the uninstalled package's
 <p>The Ini Edits tab allows the user to quickly apply edits to Oblivion.ini, Skyrim.ini or Fallout4Custom.ini, depending on your game, and mod-added ini files, including those containing scripts used to configure mods. Edits are applied from ini tweak files, which are just a text file that contains only the lines of the ini that you wish to change. Ini tweaks are stored in the <code>Data\Ini Tweaks</code> folder, and may be installed through BAIN or placed there manually.
 <p>The drop-down box allows you to select the current ini file. The <q>Browse...</q> option in the drop-down box can be used to select an ini file not listed.
 <p>Selecting a tweak will display its contents in the middle column, and highlights the changes it applies to the current ini file in the right column. To apply a tweak, right click it and select <a href="#tweakApply">Apply</a>.
-<p><strong>Warning:</strong> Incorrect Oblivion.ini or Skyrim.ini settings can cause bugs, CTDs or other damage to your game. Advanced settings in particular tend to be machine-specific and should not be casually copied from one computer to another.
+<p><strong>Warning:</strong> Incorrect Oblivion.ini or Skyrim.ini settings can cause bugs, CTDs or other damage to your game. Advanced settings in particular tend to be machine-specific and should not be casually copied from one computer to another.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="ini-symbols">What Symbols &amp; Colours Mean</h3>
+<wbsect>
+<h3 id="ini-symbols">What Symbols &amp; Colours Mean</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead><tr><th>Checkbox Style<th>Meaning
     <tbody>
@@ -699,7 +789,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td class="ini-symbols-ylwbg">Yellow Background<td>The specific variable value does not match the value in the current ini file.
         <tr><td class="ini-symbols-grnbg">Green Background<td>The specific variable value matches the value in the current ini file.
 </table>
-<h3 id="ini-commands">Buttons &amp; Context Menu Commands</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="ini-commands">Buttons &amp; Context Menu Commands</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead>
         <tr><th colspan="2">Ini Edits Tab
@@ -735,8 +829,14 @@ from other packages previously overridden by the uninstalled package's
             <code>Data/INI Tweaks</code> folder, otherwise it opens the tweak with the default text editor for .ini files.
         <tr><td>Delete<td>Delete the tweak. Default (hardcoded) Bash ini tweaks can't be deleted.
 </table>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="launchers">Launching Applications</h2>
+
+<wbchap>
+<h2 id="launchers">Launching Applications</h2><wbcontbgn></wbcontbgn>
+<wbsect>
 <figure class="slideshow">
 <img alt="launcher" src="../bash/images/readme/toolbar-10-hover-obse-toggle.png"/>
 <img alt="launcher" src="../bash/images/readme/toolbar-9-hover-autoquit.png"/>
@@ -750,8 +850,12 @@ from other packages previously overridden by the uninstalled package's
 <figcaption class="launchers-figcap">Wrye Bash's launcher bar, at the bottom of its main window.</figcaption>
 </figure>
 <p>At the bottom left of Bash's main window you'll find launch buttons for your game and other applications if they're installed. You'll also find a few toggle buttons and some Wrye Bash feature buttons. Each of the application buttons will be present if the corresponding application is present in the game install directory, or in their default install location if the application is not game-specific.
-<p>Clicking an application's icon will launch it, and clicking a toggle button will change the state of the toggle. Clicking a Wrye Bash feature button will open that feature's window.
-<h3 id="launchers-toggles">Toggle Buttons</h3>
+<p>Clicking an application's icon will launch it, and clicking a toggle button will change the state of the toggle. Clicking a Wrye Bash feature button will open that feature's window.</p>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="launchers-toggles">Toggle Buttons</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead><tr><th>Icon (On)<th>Icon (Off)<th>Toggles<th>Behaviour
     <tbody>
@@ -768,7 +872,11 @@ from other packages previously overridden by the uninstalled package's
             <td>Auto-Quit
             <td>If checked this will cause Bash to quit when launching the game. This is useful if you're concerned about memory usage.
 </table>
-<h3 id="launchers-game">Game &amp; Editor Launchers</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="launchers-game">Game &amp; Editor Launchers</h3><wbcontbgn></wbcontbgn>
 <p>The game and editor icons displayed will depend on which supported game you have Wrye Bash installed for. Using Wrye Bash's game launcher opens the game itself, rather than the game's launcher.
 <table>
     <thead>
@@ -780,7 +888,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td><img alt="Oblivion CS icon" src="../bash/images/tescs32.png" width="32" height="32"/><td><a href="http://cs.elderscrolls.com/constwiki/index.php/The_Elder_Scrolls_Construction_Set">TES Construction Set</a>
             <td><img alt="Creation Kit icon" src="../bash/images/creationkit32.png" width="32" height="32"/><td><a href="http://www.creationkit.com/">Skyrim Creation Kit</a>
 </table>
-<h3 id="launchers-utils">Game-Specific Utilities</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="launchers-utils">Game-Specific Utilities</h3><wbcontbgn></wbcontbgn>
 <p>Tes4Edit, Tes4Trans and Tes4view are just different modes of Tes4Edit.exe and will be available if Tes4Edit.exe is available. Tes4Gecko &amp; Oblivion Book Creator will be available if the windows path variable <code>JAVA_HOME</code> points to a valid java install (or the javaw.exe is present in Windows\System32) and their .jar file is present in Oblivion install directory or for OBC in the data directory (you can override those default paths in bash.ini). The BOSS launcher has some options if BOSS v2 is installed:
 <ul>
  <li>Right-clicking the BOSS icon and selecting <q id="launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</q> will cause Wrye Bash to temporarily disable Lock Load Order
@@ -835,7 +947,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td><img alt="tool image" src="../bash/images/tools/interactivemapofcyrodiil32.png" width="32" height="32"/><td><a href="https://www.nexusmods.com/oblivion/mods/3961">Interactive Map of Cyrodiil and Shivering Isles</a>
             <td><td>
 </table>
-<h3 id="launchers-apps">Other Applications</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="launchers-apps">Other Applications</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead>
         <tr><th colspan="2">Model Tools<th colspan="2">Texture Tools<th colspan="2">Audio Tools<th colspan="2">Misc
@@ -958,7 +1074,11 @@ from other packages previously overridden by the uninstalled package's
                 <td><td>
                     <td><td>
 </table>
-<h3 id="launchers-features">Wrye Bash Feature Launchers</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3 id="launchers-features">Wrye Bash Feature Launchers</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead><tr><th>Icon<th>Feature<th>Description
     <tbody>
@@ -975,15 +1095,24 @@ from other packages previously overridden by the uninstalled package's
             <td>Help
             <td>Show this help file in the default web browser.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="manually-add">Manually adding tools to the Launcher Bar</h3>
+<wbsect>
+<h3 id="manually-add">Manually adding tools to the Launcher Bar</h3><wbcontbgn></wbcontbgn>
 <p>To do this find and Right Click on a tools .exe file, and choose send to desktop
 <p>Copy this Icon from the desktop and paste it into the Mopy \ Apps \ folder ( The temporary desktop icon copy can now be deleted )
 <p>When you next run Wrye Bash the icon will be in the Launcher Bar, and you can Drag and drop the new icon to a desired position
-<p>Be careful not to use up all the available space and prevent tooltip messages appearing next to the Launcher Bar
+<p>Be careful not to use up all the available space and prevent tooltip messages appearing next to the Launcher Bar</p>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="trouble">Troubleshooting</h2>
-<h3 id="trouble-dump">Generating A Bug Dump</h3>
+
+<wbchap>
+<h2 id="trouble">Troubleshooting</h2><wbcontbgn></wbcontbgn>
+<wbsect>
+<h3 id="trouble-dump">Generating A Bug Dump</h3><wbcontbgn></wbcontbgn>
 <p>If Wrye Bash encounters an issue, it will generate a bug dump that will appear in a popup window. If an issue is encountered during startup, Wrye Bash may be unable to create the popup window, and so the bug dump will be saved to a log file, either <code>bash.log</code> or <code>Wrye Bash.exe.log</code> depending on the version of Wrye Bash you use. If no log file is present, then you will have to generate it yourself, using the steps below.
 <ol>
     <li>Open a command prompt. This can be done by selecting Start-&gt;Programs-&gt;Accessories-&gt;Command Prompt.
@@ -994,9 +1123,12 @@ from other packages previously overridden by the uninstalled package's
     </ul>
     If using the Standalone version of Wrye Bash: Run <code>"Wrye Bash.exe" -d</code>.
 </ol>
-<p>The log file will detail the cause of the problem that is stopping Wrye Bash from starting. Read it and the rest of this section to see if the problem is something you can fix yourself. If not, report it to an official Wrye Bash thread for support.
+<p>The log file will detail the cause of the problem that is stopping Wrye Bash from starting. Read it and the rest of this section to see if the problem is something you can fix yourself. If not, report it to an official Wrye Bash thread for support.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="trouble-permissions">File Permissions</h3>
+<wbsect>
+<h3 id="trouble-permissions">File Permissions</h3><wbcontbgn></wbcontbgn>
 <p>If you are running Windows Vista or later, Wrye Bash (and other modding programs) may be prevented from working correctly by the UAC security feature.  There are four common workarounds to this problem:
 <ol>
     <li>Install the game outside <q>Program Files</q> or <q>Program Files (x86)</q>. UAC prevents unauthorised edits to these folders, so by installing the game outside of them, you remove it from UAC's reach, allowing you to use mods more easily. Steam users can move their Steam installation and games using <a href="https://support.steampowered.com/kb_article.php?ref=7418-YUBN-8129">these instructions</a>.
@@ -1039,8 +1171,11 @@ from other packages previously overridden by the uninstalled package's
     <li>In the lower box, check the box opposite <q>Full Control</q> in the <q>Allow</q> column. Press OK to exit. If a UAC prompt appears, allow the change.
     <li>In the <q>Properties</q> window, select OK to exit. You should now have Full Control permissions over your chosen folder.
 </ol>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="trouble-backup">Backing Up &amp; Restoring Settings</h3>
+<wbsect>
+<h3 id="trouble-backup">Backing Up &amp; Restoring Settings</h3><wbcontbgn></wbcontbgn>
 <p>The easiest method is to just run the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools">Backup Settings</a> and/or <a href="Wrye%20Bash%20Advanced%20Readme.html#tools">Restore Settings</a> commands, which are available in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-settings">Settings menu</a>. These commands do not backup/restore any mod files or saves, just the Wrye Bash settings/data. When run, the commands ask you for the location you wish to back up to or restore from.
 <p>If you wish to manually back up your settings, the directories Wrye Bash stores files in are below.
 <table>
@@ -1053,8 +1188,11 @@ from other packages previously overridden by the uninstalled package's
         <tr><td>Documents\My Games\[Game]					<td>Contains Wrye Bash settings. It is important to back this up.
         <tr><td>[Game] Mods (in the same folder as [Game])<td>Contains BAIN packages and other Wrye Bash settings. it is important to back this up.
 </table>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="trouble-report">How To Report Bugs Helpfully</h3>
+<wbsect>
+<h3 id="trouble-report">How To Report Bugs Helpfully</h3><wbcontbgn></wbcontbgn>
 <p>Bugs should be reported in an official Wrye Bash thread (links can be found in the <a href="#contact">Contact</a> section of this document). In order to best help you, the following information is required.
 <ul>
     <li>Your Wrye Bash version. This includes whether it's the Python or Standalone install, the version number and the SVN number (the latter only if using the SVN).
@@ -1070,13 +1208,16 @@ from other packages previously overridden by the uninstalled package's
         <li>Your <a href="#patch">Bashed Patch</a> config. Get this by right clicking on the <a href="#patch">Bashed Patch</a> and selecting <a href="Wrye%20Bash%20Advanced%20Readme.html#modsListPatchConfig">List Patch Config...</a>.
     </ul>
 </ul>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3 id="trouble-known">Known Bugs</h3>
+<wbsect>
+<h3 id="trouble-known">Known Bugs</h3><wbcontbgn></wbcontbgn>
 <p>Wrye Bash, being a complex program, has its share of bugs.
     Visit our <a href="https://github.com/wrye-bash/wrye-bash/issues">issue tracker</a> for know bugs and enhancement requests.
 Respect developer's time - keep discussions there short, sweet and technical. No walls of text or forum chit chat.
 
-<h3 id="trouble-mistakes">Common Issues</h3>
+<h3 id="trouble-mistakes">Common Issues</h3><wbcontbgn></wbcontbgn>
 <table>
     <thead><tr><th>Issue<th>Cause<th>Solution
     <tbody>
@@ -1112,18 +1253,31 @@ MemoryError</code>
         <tr><td>Wrye Bash will not start, and no Bug Dump can be generated<td>Wrye Bash is installed in a directory with unicode characters, and the Python interpreter has problems importing files in such directories.<td>Reinstall Wrye Bash to a directory without unicode characters.
         <tr><td>File not found errors<td>Mapped paths and junction links can confuse Wrye Bash, leading to file not found errors.<td>Avoid using mapped paths and junction links for your game install.
 </table>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
 
-<h2 id="credits">Credits</h2>
-<h3>Creator</h3>
+<wbchap>
+<h2 id="credits">Credits</h2><wbcontbgn></wbcontbgn>
+<wbsect>
+<h3>Creator</h3><wbcontbgn></wbcontbgn>
 <ul class="nodot">
   <li><img alt="Monkey God's Icon" class="monkeygod" src="../bash/images/wrye_monkey_64.jpg"><span><a href="http://wryemusings.com"><strong>Wrye</strong>:</a> Monkey God of Modding!</span></li>
 </ul>
-<h3>Current Maintainer</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3>Current Maintainer</h3><wbcontbgn></wbcontbgn>
 <ul class="nodot">
   <li><img alt="Utumno's Icon" class="bigcred" src="../bash/images/utmnavi32.jpg"><span><a href="https://github.com/Utumno">Utumno:</a> Complete refactoring of the codebase, performance.</span></li>
 </ul>
-<h3>Authors and Contributors</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3>Authors and Contributors</h3><wbcontbgn></wbcontbgn>
 <ul class="nodot">
   <li><img alt="BeermotorWB's Icon" src="../bash/images/brmtavi32.png"><span><a href="https://github.com/BeermotorWB">BeermotorWB:</a> Installer directory refinement</span></li>
   <li><img alt="Badhair's Icon" src="../bash/images/gencavi32.png"><span><a href="https://github.com/Badhair">Badhair:</a> OBSE cofile reading code, various optimizations etc.</span></li>
@@ -1147,7 +1301,11 @@ MemoryError</code>
   <li><img alt="Waruddar's Icon" src="../bash/images/waruavi32.gif"><span><a href="https://www.nexusmods.com/users/456936">Waruddar:</a> Extensive additions/improvements/fixes, primary author of CBash</span></li>
   <li><img alt="Valda's Icon" src="../bash/images/vldaavi32.jpg"><span><a href="https://github.com/valda">Valda:</a> Assisted with Fallout 3/New Vegas support, including new patchers</span></li>
 </ul>
-<h3>Additional Credits</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3>Additional Credits</h3><wbcontbgn></wbcontbgn>
 <ul class="nodot">
   <li>
     <strong>Translators</strong>
@@ -1215,7 +1373,11 @@ MemoryError</code>
     </ul>
   </li>
 </ul>
-<h3>Homage Credits</h3>
+<wbsectend></wbsectend>
+</wbsect>
+
+<wbsect>
+<h3>Homage Credits</h3><wbcontbgn></wbcontbgn>
 <p>AKA ideas and stuff stolen from other people.</p>
 <ul class="nodot">
   <li>
@@ -1249,16 +1411,31 @@ MemoryError</code>
     </ul>
   </li>
 </ul>
-<h2 id="contact">Contact</h2>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
+
+
+<wbchap>
+<h2 id="contact">Contact</h2><wbcontbgn></wbcontbgn>
+<wbsect>
 <p>If you have a question/comment about Wrye Bash, it's best to post it on the <a
 		href="https://www.afkmods.com/index.php?/topic/4966-wrye-bash-all-games/">current Wrye Bash topic</a> on the
-	AFK Mods forum.
+	AFK Mods forum.</p>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
 
-<h2 id="license">License</h2>
-<p>Wrye Bash is released under Version 2 of the GNU General Public License. See enclosed <a href="license.txt">license.txt</a> file for license details, or visit the <a href="http://www.gnu.org/copyleft/gpl.html">GNU Website</a> for information on all their licenses.
+<wbchap>
+<h2 id="license">License</h2><wbcontbgn></wbcontbgn>
+<wbsect>
+<p>Wrye Bash is released under Version 2 of the GNU General Public License. See enclosed <a href="license.txt">license.txt</a> file for license details, or visit the <a href="http://www.gnu.org/copyleft/gpl.html">GNU Website</a> for information on all their licenses.</p>
+<wbsectend></wbsectend>
+</wbsect>
 
-<h3>Packaged Programs</h3>
+<wbsect>
+<h3>Packaged Programs</h3><wbcontbgn></wbcontbgn>
 <p>Additionally, Wrye Bash comes packaged with the following programs:
 <ul>
     <li>Mozilla's chardet library.
@@ -1300,8 +1477,14 @@ MemoryError</code>
         <li>Usage: Wrye Bash uses lzma.exe from the SDK to unpack OBMM compressed data streams.
     </ul>
 </ul>
+<wbchapend></wbchapend>
+</wbsect>
+</wbchap>
 
-<h2 id="advanced">Advanced Readme Topics</h2>
+
+<wbchap>
+<h2 id="advanced">Advanced Readme Topics</h2><wbcontbgn></wbcontbgn>
+<wbsect>
 <p>This final section gives a brief summary of what may be found in the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a>. Some of the topics covered are:
 <ul>
     <li>Installers:
