@@ -4,36 +4,14 @@ Root Formatting
 html {
     background: #ffffcc;
     font-family: "Arial", "sans-serif";
-    font-size: 0.9em;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 body {
-    overflow-x: hidden;
-  }
-h1, h2, h3 {
-    background: #9acd32;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: 1em;
-    padding: 0.5em;
+    font-size: 0.9em;
 }
-h1 {
-    margin-bottom: 0.5em;
-    margin-top: -8px;
-    padding-left: 1.5em;
-}
-h2 {
-    margin-top: 2em;
-    padding-left: 2em;
-}
-h2.contents {
-    margin-bottom: 1em;
-    margin-top: 0;
-}
-h3 {
-    background: #CBE582;
-    font-size: 1.1em;
-    margin-top: 1.6em;
-    padding: 0.4em;
+abbr {
+    cursor: help;
 }
 a:link {
     text-decoration: none;
@@ -41,35 +19,66 @@ a:link {
 a:hover {
     text-decoration: underline;
 }
-img {
-    border: 0;
-    /* max-width: calc(100vw - 33px); */
-}
 a[href^="http"]:after {
     content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=");
     padding-left: 2px;
 }
+img {
+    border: 0;
+    margin: auto;
+    /* max-width: calc(100% - 33px); */
+    max-width: calc(100vw - 33px);
+}
+p {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
 q {
     font-style: italic;
 }
-abbr {
-    cursor: help;
+
+/*
+Header Control Formatting
+*/
+h1, h2, h3 {
+    background: #9acd32;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+}
+h1 {
+    margin-bottom: 0.5rem;
+    margin-top: -8px;
+    padding-left: 2.75rem;
+}
+h2 {
+    /* height: 2rem; */
+    
+    margin-top: 2.75rem;
+    padding-left: 2.75rem;
+}
+h3 {
+    background: #CBE582;
+    font-size: 0.95rem;
+    margin-top: 1.6rem;
+    padding: 0.5rem;
 }
 
 /*
 List Formatting
 */
 li ol, li ul {
-    margin-top: 0.4em;
+    margin-top: 0.4rem;
 }
 li {
-    margin-bottom: 10px;
+    padding-bottom: 0.625rem;
 }
 ol ol {
     list-style: lower-alpha;
 }
 ol ol li {
-    margin-bottom: 0.2em;
+    padding-bottom: 0.18rem;
 }
 
 /*
@@ -78,7 +87,7 @@ Table Formatting
 table {
     background: #fdfdfd;
     border-collapse: collapse;
-    margin: 1em;
+    margin: 0.9rem;
 }
 thead {
     background: #8af;
@@ -141,7 +150,7 @@ figure {
 }
 figcaption {
     font-style: italic;
-    margin-bottom: 2em;
+    margin-bottom: 1.8rem;
 }
 
 /*
@@ -167,6 +176,7 @@ Flexbox Formatting
     justify-content: flex-start;
     margin: 0;
 }
+/* Ensuring <figure> scales to fit other content */
 .prlflex figure {
     -webkit-box-flex: 0;
         -ms-flex: none;
@@ -175,12 +185,17 @@ Flexbox Formatting
     max-width: 35vw;
     min-width: 200px;
 }
+/* Ensuring <img> scales to fit other content */
 .prlflex img {
     max-width: 35vw;
     min-width: 200px;
     position: absolute;
     /* padding-top: 2em; */
 }
+.prlflex > menu1, .prlflex > menu2 {
+    display: block;
+}
+/* Ensuring <table> spaces correctly */
 .prlflex table {
     margin-top: 0;
 }
@@ -213,7 +228,7 @@ Float Formatting
 Consistency Formatting
 */
 .indent {
-    margin-left:2em;
+    margin-left: 1.8rem;
 }
 .clear {
     clear: both;
@@ -234,34 +249,78 @@ Editing Utility Formatting
 .missing {
     background: red;
     color: white;
-    border: 0.25em solid black;
+    border: 0.225rem solid black;
 }
+
+/*
+Sticky Formatting
+
+> This extra formatting is necessary in order for headers to stick and push correctly.
+> If the user's browser supports sticky position, but javascript is disabled, use CSS magic number measurements.
+> If the user's browser doesn't support sticky, page operates as previously.
+> Spacers are used in place of margins to provide clearance. If user's browser doesn't support sticky, spacers do nothing and page defaults to original margin styles.
+
+- Wrappers -
+<wbchap></wbchap> : Wrapper for any section that starts with H2, containing the header.
+<wbsect></wbsect> : Wrapper for any section that starts with H3 or content just after H2, containing the H3 header.
+- Spacers -
+<wbcontbgn></wbcontbgn> : Used immediately after ANY header tag
+<wbsectend></wbsectend> : Used as last item in section (H3) container
+<wbchapend></wbchapend> : Used instead of <wbsectend> as last item in chapter (H2) ending section (H3) container
+
+<wbchap>
+<h2>Chapter Example</h2><wbcontbgn></wbcontbgn>
+    <wbsect>
+    <h3>Example</h3><wbcontbgn></wbcontbgn>
+        Example content stuff
+        <wbsectend></wbsectend>
+    </wbsect>
+    <wbsect>
+    <h3>Example</h3><wbcontbgn></wbcontbgn>
+        Example content stuff
+        <wbchapend></wbchapend>
+    </wbsect>
+</wbchap>
+*/
+@supports (position:sticky) {
+    h2, h3 {
+        margin-bottom: -1px;
+        margin-top: 0;
+        position: sticky;
+    }
+    h2 {
+        top: -1px;
+        z-index: 100;        
+    }
+    h3 {
+        top: 3rem;
+        z-index: 50;
+    }
+    wbchap, wbsect {
+        display: block;
+    }
+    wbcontbgn {        
+        margin-bottom: 1rem;
+    }
+    wbsectend {
+        height: 1.6rem;
+    }
+    wbchapend {
+        height: 2rem;
+    }
+    wbcontbgn, wbsectend, wbchapend {
+        clear: both;
+        content: "";
+        display: block;
+    }
+}
+
 
 
 
 /*
     Pay no attention to the code behind the comments!
 */
-
-@supports(position:sticky) {
-    h2, h3 {
-        position: sticky;
-    }
-    h2::before, h2::after, h3::before, h3::after {
-        clear: both;
-        content: "";
-        display: block;
-    }
-    h2 {
-        z-index: 10;
-        top: -1px;
-    }
-    h3 {
-        z-index: 5;
-        top: 51px;
-    }
-}
-
 /*
 .prlflex .slideshow {
     --vwcalc:calc(50vw - 33px);
