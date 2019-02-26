@@ -4826,6 +4826,7 @@ and masterlist relative priority and role see the LOOT docs.
 
 <h3 id="international-format">Translator File Format</h3>
 <p>Below is an excerpt from a translator file.
+<div class="international-format-cdebox">
 <code class="box">=== basher.py, 3711
 Active profile cannot be removed.
 &gt;&gt;&gt;&gt;
@@ -4835,6 +4836,7 @@ Delete profile %s and the %d save files it contains?
 &gt;&gt;&gt;&gt;
 DELETE PROFILE %s AND THE %d SAVE FILES IT CONTAINS?
 </code>
+</div>
 <p>The above contains two separate translation entries. Each entry begins with the source code file and line number the string to be translated is found on.
 <p>The file line is followed by the original text string on a new line, which is then followed by a line containing only <code>&gt;&gt;&gt;&gt;</code>. The translation entry ends with a final line containing the translated text string.
 <p><strong>Note:</strong> It is important that the formatting characters are not removed or moved or added to. Formatting characters are those that start with a percentage sign or a backslash, eg. <code> %s %d %08X \n</code>. If a formatting character is missing, Wrye Bash will throw an exception, which is bad.
