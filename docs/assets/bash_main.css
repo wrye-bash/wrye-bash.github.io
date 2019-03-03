@@ -170,10 +170,19 @@ Slideshow Formatting
 Flexbox Formatting
 */
 .prlflex {
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     margin: 0;
 }
 /* Ensuring <figure> scales to fit other content */
@@ -278,14 +287,16 @@ Sticky Formatting
     <wbsect>
     <h3>Example</h3><wbcontbgn></wbcontbgn>
         Example content stuff
-        <wbchapend></wbchapend>
+        <wbcontend></wbcontend>
     </wbsect>
 </wbchap>
 */
-@supports (position:sticky) {
+/*
+@supports ((position: -webkit-sticky) or (position: sticky)) {
     h2, h3 {
         margin-bottom: -1px;
         margin-top: 0;
+        position: -webkit-sticky;
         position: sticky;
     }
     h2 {
@@ -302,18 +313,16 @@ Sticky Formatting
     wbcontbgn {        
         margin-bottom: 1rem;
     }
-    wbsectend {
+    wbcontend {
         height: 1.6rem;
     }
-    wbchapend {
-        height: 2rem;
-    }
-    wbcontbgn, wbsectend, wbchapend {
+    wbcontbgn, wbcontend {
         clear: both;
         content: "";
         display: block;
     }
 }
+*/
 
 
 
