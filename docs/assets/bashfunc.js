@@ -1,149 +1,171 @@
-/* eslint-disable no-unused-vars */
+/*eslint-disable no-console */
+/*eslint-disable no-unused-vars */
 /*jslint browser:true*/
 "use strict";
 
-// Support vars
-var wbSupportCSS = Boolean((window.CSS && window.CSS.supports) || window.supportsCSS || false);
-var wbSupportCSSRule = Boolean((window.CSSRule) || false);
-var wbSupportAtSup = Boolean((window.CSSRule.SUPPORTS_RULE) || false);
-// Support functions
-function hasAtSup() {
-//  console.log("CSS Support:", wbSupportCSS, ", CSSRule Support:", wbSupportCSSRule, ", Has @support:", wbSupportAtSup);
-  return wbSupportCSS && wbSupportCSSRule && wbSupportAtSup;
+
+/*
+* Javascript-available Initialization
+*/
+//* BREAK: IE<9
+var wbDateYear = new Date().getFullYear();
+if (!wbSupAEL) throw new Error("Woah there partner, it's " + wbDateYear + " and your browser's looking a little outdated. Wrye Bash may have come out in 2006, but we have higher standards these days!");
+//* Init: Resource vars
+var wbFade;
+var wbFigures;
+var wbNavCls;
+var wbNavMnu;
+var wbNavSubLst;
+//* Init: Support vars
+// var wbIsChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+// var wbIsFirefox = typeof InstallTrigger !== "undefined";
+// var wbIsOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0;
+// var wbIsSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window["safari"] || (typeof safari !== "undefined" && safari.pushNotification));
+// var wbIsBlink = (wbIsChrome || wbIsOpera) && !!window.CSS;
+// var wbIsIE = /*@cc_on!@*/false || !!document.documentMode;
+// var wbIsEdge = !wbIsIE && !!window.StyleMedia;
+// var wbSupportAtSup = Boolean((window.CSSRule.SUPPORTS_RULE) || false);
+// var wbSupportCSS = Boolean((window.CSS && window.CSS.supports) || window.supportsCSS || false);
+// var wbSupportCSSRule = Boolean((window.CSSRule) || false);
+// var wbSupportRdyChk = Boolean((document.attachEvent) || (document.addEventListener) || false);
+// console.log(document.readyState, "wbIsFirefox", wbIsFirefox, ", wbIsChrome", wbIsChrome, ", wbIsSafari", wbIsSafari);
+
+/*
+* Resource Functions
+*/
+//* Ready Check 
+function wbPgRdy(doTheThing) {
+	if (document.readyState != "loading") return doTheThing();
+	if (document.addEventListener) document.addEventListener("DOMContentLoaded", doTheThing);
 }
-function hasRuleSup(wbRule1, wbRule2) {
-//  console.log("Checking support for:  \"",wbRule1,":",wbRule2,"\" =",CSS.supports(wbRule1, wbRule2));
-  return CSS.supports(wbRule1, wbRule2);
+//* Supports
+// function wbHasAtSup() { return wbSupportCSS && wbSupportCSSRule && wbSupportAtSup; }
+// function wbHasRuleSup(wbRule1,wbRule2) { return CSS.supports(wbRule1,wbRule2); }
+//* Report Stylesheets
+/*
+Object.keys(document.styleSheets).forEach(function(i) {
+	console.log([i],document.styleSheets[i]);
+});
+*/
+
+
+/*
+* Begin Heavy Manipulation
+*/
+//* DOM Has Loaded Frame
+wbPgRdy(function() {
+	// Set: DOM Resource vars
+	wbDOMRVar();
+	// Set: DOMContent Listeners
+	wbDOMList();
+	// Init: Slideshow
+	wbFigGrab();
+	// Test Button
+	wbNavTest();
+});
+//* Set: DOM Resource vars
+function wbDOMRVar() {
+	wbFade = document.getElementById("fade");
+	wbFigures = document.getElementsByClassName("slideshow");
+	wbNavCls = document.getElementById("closebutton");
+	wbNavMnu = document.getElementById("navmenu");
+	wbNavSubLst = document.getElementsByClassName("list");
+}
+//* Set: DOMContent Listeners
+function wbDOMList() {
+	wbFade.addEventListener("click", wbNavClose);
+	wbNavCls.addEventListener("click", wbNavClose);
+	Object.keys(wbNavSubLst).forEach(function(i) {
+		console.log(wbNavSubLst[i]);
+		wbNavSubLst[i].addEventListener("click", wbNavSubAcc);
+	})
 }
 
 
 /*
-Slideshow Code
+* Navmenu Functions
 */
-function nextImage(imgs) {
-    for (var i = 0; i < imgs.length; i++) {
-        if (imgs[0].style.opacity == "") {
-            imgs[0].style.opacity = "1";
-            break;
-        }
-        else if (imgs[i].style.opacity == "1" || imgs[i].style.opacity == "") {
-            imgs[i].style.opacity = "0";
-            if (i + 1 < imgs.length) {
-                imgs[i + 1].style.opacity = "1";
-            } else {
-                imgs[0].style.opacity = "1";
-            }
-            break;
-        }
-    }
-    setTimeout(nextImage, 5000, imgs);
+//* Test Button
+function wbNavTest() {
+	var wbNavTst = document.getElementById("spantest");
+	wbNavTst.addEventListener("click", wbNavOpen);
 }
-var wbFigures = document.getElementsByClassName("slideshow");
-function figuresSlide(i) {
-    return function () {
-        nextImage(wbFigures[i].getElementsByTagName("img"));
-    };
+function wbNavOpen() {
+	console.log("opening");
+	wbNavMnu.style.left = "0";
+	// wbFade.style.display = "block";
+	wbFade.style.opacity = "1";
+	wbFade.style.visibility = "visible";
 }
-if (wbFigures != null) {
-    for (var i = 0; i < wbFigures.length; i++) {
-        if (wbFigures[i].className == "slideshow") {
-            var wbWrapper = figuresSlide(i);
-        }
-        setTimeout(wbWrapper(i), 5000);
-    }
+function wbNavClose() {
+	console.log("closing");
+	wbNavMnu.style.left = "-250px";
+	// wbFade.style.display = "none";
+	wbFade.style.opacity = "0";
+	wbFade.style.visibility = "hidden";
 }
-
-/* 
-Sticky Code
-
-if (hasRuleSup("position","sticky")) {
-// Gathering vars for sticky positioning
-    var wbH1T = document.getElementsByTagName("H1");
-    var wbH2T = document.getElementsByTagName("H2");
-    var wbH3T = document.getElementsByTagName("H3");
-// Resource vars for sticky positioning
-    var wbH3H = wbH2T[0].offsetHeight;
-// Setting H2 styles
-    Object.keys(wbH2T).forEach(function(index) {
-        wbH2T[index].style.marginBottom = - 1 + "px";
-        wbH2T[index].style.marginTop = "0";
-        wbH2T[index].style.position = "sticky";
-        wbH2T[index].style.top =  - 1 + "px";
-        wbH2T[index].style.zIndex = 100;
-    });
-// Setting H3 styles
-    Object.keys(wbH3T).forEach(function(index) {
-        wbH3T[index].style.marginBottom = - 1 + "px";
-        wbH3T[index].style.marginTop = "0";
-        wbH3T[index].style.position = "sticky";
-        wbH3T[index].style.top = wbH3H - 2 + "px";
-        wbH3T[index].style.zIndex = 50;
-    });
-// Setting anchor link offsets for stickied H3s
-    document.addEventListener('click', function(event) {
-        if (event.target.tagName !== 'A') return;
-        var href = event.target.getAttribute('href') || '';
-        if (href === '#' || !href.startsWith('#')) return;
-        var target = document.getElementById(href.slice(1));
-        if (!target || target.tagName !== 'H3') return;
-        setTimeout(offsetAnchor, 10);
-    });
-// Offsets readme cross-page anchor links
-    window.setTimeout(offsetAnchor, 5);
-// String vars for sticky blocks and spacing
-    var wbBodyStart = "<wbchap><wbsect>";
-    var wbH2Before = "<wbcontend></wbcontend></wbsect></wbchap><wbchap>"
-    var wbH2After = "<wbcontbgn></wbcontbgn><wbsect>"
-    var wbH3Before = "<wbcontend></wbcontend></wbsect><wbsect>"
-    var wbH3After = "<wbcontbgn></wbcontbgn>"
-    var wbBodyEnd = "<wbcontend></wbcontend></wbsect></wbchap>";
-// Applying boxes and spacers
-    Object.keys(wbH1T).forEach(function(index) {
-        wbH1T[index].insertAdjacentHTML('afterend', wbBodyStart);
-    });
-    Object.keys(wbH2T).forEach(function(index) {
-        wbH2T[index].insertAdjacentHTML('beforebegin', wbH2Before);
-        wbH2T[index].insertAdjacentHTML('afterend', wbH2After);
-    });
-    Object.keys(wbH3T).forEach(function(index) {
-        wbH3T[index].insertAdjacentHTML('beforebegin', wbH3Before);
-        wbH3T[index].insertAdjacentHTML('afterend', wbH3After);
-    });
-    document.body.insertAdjacentHTML('beforeend', wbBodyEnd);
-// Block vars
-    var wbChp = document.getElementsByTagName("wbchap");
-    var wbSct = document.getElementsByTagName("wbsect");
-// Spacer vars
-    var wbCB = document.getElementsByTagName("wbcontbgn");
-    var wbCE = document.getElementsByTagName("wbcontend");
-    // Applying box and spacer styles
-    Object.keys(wbChp).forEach(function(index) {
-        wbChp[index].style.display = "block";
-    });
-    Object.keys(wbSct).forEach(function(index) {
-        wbSct[index].style.display = "block";
-    });
-    Object.keys(wbCB).forEach(function(index) {
-        wbCB[index].style.clear = "both";
-        wbCB[index].style.content = "";
-        wbCB[index].style.display = "block";
-        wbCB[index].style.marginBottom = 1 + "rem";
-    });
-    Object.keys(wbCE).forEach(function(index) {
-        wbCE[index].style.clear = "both";
-        wbCE[index].style.content = "";
-        wbCE[index].style.display = "block";
-        wbCE[index].style.marginBottom = 1.6 + "rem";
-    });
-
-}
-else {
-    throw new Error("\"position: sticky\" isn't supported by this browser.");
-}
-// Archor link offset function
-function offsetAnchor() {
-    if (location.hash.length !== 0) {
-        window.scrollTo(window.scrollX, window.scrollY - (wbH3H - 2));
+function wbNavSubAcc(sect) {
+  sect.stopPropagation();
+  if (sect.currentTarget.classList.contains("active")) {
+    sect.currentTarget.classList.remove("active");
+  } else if (sect.currentTarget.parentElement.parentElement.classList.contains("active")) {
+    sect.currentTarget.classList.add("active");
+  } else {
+    Object.keys(wbNavSubLst).forEach(function(i) {
+		wbNavSubLst[i].classList.remove("active");
+    })
+    sect.currentTarget.classList.add("active");
   }
-} 
+}
+
+
+
+/*
+* Slideshow Functions
 */
+//* Init: Slideshow
+function wbFigGrab() {
+	if (wbFigures != null) {
+		Object.keys(wbFigures).forEach(function(i) {
+			if (wbFigures[i].className == "slideshow") var wbWrapper = wbFigSlide(i);
+			setTimeout(wbWrapper(i), 5000);
+		});
+	}
+}
+function wbFigSlide(i) {
+	return function() { wbNxtImg(wbFigures[i].getElementsByTagName("img")); };
+}
+function wbNxtImg(wbImgs) { for (var i = 0; i < wbImgs.length; i++) {
+		if (wbImgs[0].style.opacity == "") { wbImgs[0].style.opacity = "1"; break; }
+		if (wbImgs[i].style.opacity == "1" || wbImgs[i].style.opacity == "") { 
+			wbImgs[i].style.opacity = "0";
+			if (i + 1 < wbImgs.length) { wbImgs[i + 1].style.opacity = "1"; break; }
+		wbImgs[0].style.opacity = "1"; }
+	}	 
+	setTimeout(wbNxtImg, 5000, wbImgs);
+}
+
+
+// var brwsList = {Opera:[wbIsOpera], Firefox:[wbIsFirefox], Safari:[wbIsSafari], IE:[wbIsIE], Edge:[wbIsEdge], Chrome:[wbIsChrome], Blink:[wbIsBlink]};
+
+// function whichOne(brws) {
+// 	var brwsrtn;
+// 	Object.keys(brws).some(function(i) {
+//   console.log(i + ": " + brws[i]);
+// 	if (brws[i] == "true") brwsrtn = i;
+// 		})
+//   return brwsrtn;
+// }
+
+// var output = "Detecting browsers by ducktyping:<hr>";
+// output += "isFirefox: " + isFirefox + "<br>";
+// output += "isChrome: " + isChrome + "<br>";
+// output += "isSafari: " + isSafari + "<br>";
+// output += "isOpera: " + isOpera + "<br>";
+// output += "isIE: " + isIE + "<br>";
+// output += "isEdge: " + isEdge + "<br>";
+// output += "isBlink: " + isBlink + "<br>";
+// output += "<br><br>";
+// output += "Truthy Toggle, Browser is:<hr>";
+// output += whichOne(brwsList) + "<br>";
+// document.body.innerHTML = output;

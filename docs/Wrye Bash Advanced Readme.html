@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="assets/bashinit.js"></script>
   <link href="assets/bash_main.css" rel="stylesheet" type="text/css">
   <link href="assets/bash_advanced.css" rel="stylesheet" type="text/css">
+  <script src="assets/bashfunc.js"></script>
   <link href="assets/bash.webmanifest" rel="manifest" type="application/manifest+json">
   <link href="images/webicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" type="image/png">
   <link href="images/webicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
@@ -22,22 +24,31 @@
 <title>Wrye Bash Advanced Readme</title>
 </head>
 <body>
+<div id="fade"></div>
 <h1>Wrye Bash Advanced Readme</h1>
 
-<h2 class="contents">Contents</h2>
-<ol class="contentsmenu1">
-    <li><a href="#intro">Introduction</a>
-    <ol>
+<h2 id="contents">Contents</h2>
+<span style="font-size:1rem;cursor:pointer" id="spantest">&rarr; Menu Test</span>
+<div id="navmenu" class="navboxrhrz">
+    <div class="navcontbar">
+        <div class="navhead">
+            <a href="javascript:void(0)" class="clsx" id="closebutton">&larr;</a>
+            <h2>Advanced Readme</h2>
+        </div>
+        <div class="navcontent">
+            <ol class="contentsmenu1 menu">
+    <li class="list"><a href="#intro">Introduction</a>
+    <ol class="items">
         <li><a href="#intro-title">Title Bar Info</a>
     </ol>
-    <li><a href="#install">Advanced Installation</a>
-    <ol>
+    <li class="list"><a href="#install">Advanced Installation</a>
+    <ol class="items">
         <li><a href="#install-alternate">Alternative Install Locations</a>
         <li><a href="#install-components">Python Components</a>
         <li><a href="#install-loot-api">LOOT API</a>
     </ol>
-    <li><a href="#bain">Installers Tab</a>
-    <ol>
+    <li class="list"><a href="#bain">Installers Tab</a>
+    <ol class="items">
         <li><a href="#bain-ui">The User Interface In Detail</a>
         <li><a href="#bain-refresh">BAIN Refresh</a>
         <li><a href="#bain-skipped">Skipped Files</a>
@@ -48,15 +59,15 @@
         <li><a href="#bain-monitor">Monitor External Installation</a>
         <li><a href="#bain-commands">Context Menu Commands</a>
     </ol>
-    <li><a href="#mods">Mods Tab</a>
-    <ol>
+    <li class="list"><a href="#mods">Mods Tab</a>
+    <ol class="items">
         <li><a href="#mods-details">The Plugin Details Panel</a>
         <li><a href="#mod-masters-symbols">Color scheme for Plugin Masters (MI &amp; Current LO)</a>
         <li><a href="#mods-csv">CSV Files</a>
         <li><a href="#mods-commands">Context Menu Commands</a>
     </ol>
-    <li><a href="#patch">Advanced Bashed Patch</a>
-    <ol>
+    <li class="list"><a href="#patch">Advanced Bashed Patch</a>
+    <ol class="items">
         <li><a href="#patch-view">Viewing &amp; Editing The Bashed Patch</a>
         <li><a href="#patch-tags">Bash Tags</a>
         <li><a href="#patch-filter">Merge Filtering</a>
@@ -66,9 +77,9 @@
         <li><a href="#patch-lists">Leveled Lists</a>
     </ol>
 </ol>
-<ol start="6" class="contentsmenu2">
-    <li><a href="#saves">Saves Tab</a>
-    <ol>
+<ol start="6" class="contentsmenu2 menu">
+    <li class="list"><a href="#saves">Saves Tab</a>
+    <ol class="items">
         <li><a href="#saves-overview">Overview</a>
         <li><a href="#saves-symbols">Color scheme for Save Game Files</a>
         <li><a href="#saves-masters-symbols">Color scheme for Save Game Masters (MI &amp; Current LO)</a>
@@ -76,25 +87,25 @@
         <li><a href="#saves-face">Face Import</a>
         <li><a href="#saves-commands">Context Menu Commands</a>
     </ol>
-    <li><a href="#screenshots">Screenshots Tab</a>
-    <ol>
+    <li class="list"><a href="#screenshots">Screenshots Tab</a>
+    <ol class="items">
         <li><a href="#screenshots-overview">Overview</a>
         <li><a href="#screenshots-alt-path">Change screenshots directory (Oblivion)</a>
         <li><a href="#screenshots-commands">Context Menu Commands</a>
     </ol>
-    <li><a href="#launchers">Advanced Launchers</a>
-    <ol>
+    <li class="list"><a href="#launchers">Advanced Launchers</a>
+    <ol class="items">
         <li><a href="#launchers-hide">Hiding Launchers</a>
         <li><a href="#launchers-custom">Custom Launchers</a>
     </ol>
-    <li><a href="#people">People Tab</a>
-    <ol>
+    <li class="list"><a href="#people">People Tab</a>
+    <ol class="items">
         <li><a href="#people-overview">Overview</a>
         <li><a href="#people-symbols">What Symbols &amp; Colours Mean</a>
         <li><a href="#people-commands">Context Menu Commands</a>
     </ol>
-    <li><a href="#tools">Miscellaneous Tools</a>
-    <ol>
+    <li class="list"><a href="#tools">Miscellaneous Tools</a>
+    <ol class="items">
         <li><a href="#tools-settings">Settings Menu</a>
         <li><a href="#tools-colors">Color Configuration</a>
         <li><a href="#tools-docs">Doc Browser</a>
@@ -103,15 +114,20 @@
         <li><a href="#tools-shortcuts">Keyboard Shortcuts</a>
         <li><a href="#tools-arguments">Command Line Arguments</a>
     </ol>
-    <li><a href="#international">Internationalisation</a>
-    <ol>
+    <li class="list"><a href="#international">Internationalisation</a>
+    <ol class="items">
         <li><a href="#international-overview">Overview</a>
         <li><a href="#international-format">Translator File Format</a>
     </ol>
 </ol>
-<div class="clear"></div>
+</div>
+</div>
+<div class="navtab"></div>
+</div>
 
-<h2 id="intro">Introduction</h2>
+
+<div class="clear"></div>
+<h2 id="intro">Introduction <a class="back2top" href="#contents">Back to top</a></h2>
 <p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion, Fallout 3, Fallout New Vegas, TES V: Skyrim, Fallout 4 and SSE: Skyrim Special Edition. Its features include:
 <ul>
     <li>A mod installation and conflict manager
@@ -129,7 +145,7 @@
     how Wrye Bash functions. It assumes the reader has previously read the General Readme.
 <p>Note that the <a href="#people">People</a> tab is hidden by default. You can toggle the visibility of the tabs in Wrye Bash's main tab bar by right-clicking the tab bar and checking or unchecking the options in the context menu displayed.
 
-<h3 id="intro-title">Title Bar Info</h3>
+<h3 id="intro-title">Title Bar Info <a class="back2top" href="#contents">Back to top</a></h3>
 <p>As a quick note that doesn't really belong anywhere else, Wrye Bash's title bar contains some useful information. The title is formatted as:
 <p><code>Wrye Bash [Bash Version] [Install Type] [Game Modifier], Cbash v[CBash Version]: [Save Profile] [Version Indicator]</code>
 <p>The square bracketed information is:
@@ -143,8 +159,8 @@
     <li><code>[Version Indicator]</code>: This is only displayed when Wrye Bash is running for Oblivion. It indicates the version of Oblivion.esm currently being used. This is related to the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-swapping">Oblivion.esm Swapping</a> feature.
 </ul>
 
-<h2 id="install">Advanced Installation</h2>
-<h3 id="install-alternate">Alternative Install Locations</h3>
+<h2 id="install">Advanced Installation <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="install-alternate">Alternative Install Locations <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash can be installed in any folder, and actually if you do manage multiple games the preferred way of installing Bash is to have a
     single installation and redirect Bash via the command line and/or ini. But in this case you must tell Bash where the game folder is.
     Bash checks (in this order) the <code>-o</code> argument, the sOblivionPath ini option and the position of the Mopy folder (namely
@@ -168,7 +184,7 @@
 <p>For more settings (such as changing the Wrye Bash Installers Path), please read the Bash_Default.ini.
 
 
-<h3 id="install-components">Python Components</h3>
+<h3 id="install-components">Python Components <a class="back2top" href="#contents">Back to top</a></h3>
 <p>If you are installing the Python version of Wrye Bash and wish to install the Python dependencies separately, the following must be installed.
 <p class="install-components">Note that the 32-bit versions are required even if you are on a 64-bit operating system.
 <ul>
@@ -205,7 +221,7 @@
   </ul>
 </ul>
 
-<h3 id="install-loot-api">LOOT API</h3>
+<h3 id="install-loot-api">LOOT API <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash comes with the LOOT API Python Module v1.2.0 bundled, but Python users can update to a more recent compatible version if one is available. To do so:
 <ol>
     <li>Check if a more recent v1.x release is available on <a href="https://github.com/loot/loot-api-python/releases">GitHub</a>. Releases with a different major version number (releases are major.minor.patch) than the version Wrye Bash bundles are incompatible and cannot be upgraded to.
@@ -216,8 +232,8 @@
 </ol>
 <p>Standalone users cannot upgrade their bundled LOOT API because its <code>loot_api.pyd</code> file is compiled into the standalone executable.
 
-<h2 id="bain">Installers Tab</h2>
-<h3 id="bain-ui">The User Interface In Detail</h3>
+<h2 id="bain">Installers Tab <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="bain-ui">The User Interface In Detail <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The Installers tab is split into three main sections: on the left is the Package List, and the right is split between the Information Tabs at the top and the Comments field at the bottom. The Information Tabs and Comments sections display information specific to the currently selected package. Much of the contents of the Information Tabs depends on the install status and order of the package. The information tabs are detailed in the table below.
 <table>
     <thead>
@@ -236,7 +252,7 @@
 <p>The Comments field is provided as an area in which notes may be kept on packages. It is useful for keeping track of what packages do, what your favourite install options are, etc.
 
 
-<h3 id="bain-refresh">BAIN Refresh</h3>
+<h3 id="bain-refresh">BAIN Refresh <a class="back2top" href="#contents">Back to top</a></h3>
 <p>To perform its magicks BAIN needs to know what's inside two directories: the game Data/ directory and its subdirectories and the Bash Installers folder (where the packages are). The Data
     directory scanning is done once per run of Wrye Bash, when the Installers tab is first opened, because walking this potentially huge directory and checking sizes and modification times
     does take a while. The Bash Installers folder however will be scanned whenever the installers tab regains focus after losing it (ie. you select another program's window, then switch back
@@ -263,7 +279,7 @@
     ready (see <a href="https://github.com/wrye-bash/wrye-bash/issues/265">relevant issue</a>).
 
 
-<h3 id="bain-skipped">Skipped Files</h3>
+<h3 id="bain-skipped">Skipped Files <a class="back2top" href="#contents">Back to top</a></h3>
 <p>BAIN skips the installation of some files and directories. The types of files skipped are:
 <ul>
     <li>Silent skips. These are <em>not</em> listed on the <q>Skipped</q> panel on the right and are:
@@ -294,7 +310,7 @@
 </ul>
 
 
-<h3 id="bain-data-dir-skipped">Skipped Data subdirectories and uninstall quirks</h3>
+<h3 id="bain-data-dir-skipped">Skipped Data subdirectories and uninstall quirks <a class="back2top" href="#contents">Back to top</a></h3>
 <p>When scanning the contents of the Data folder BAIN will skip some of its subdirectories either by default or based on <a href="#bainGlobalSkips">Global Skips</a> in the installer
 tab. The directories skipped are:
 
@@ -348,7 +364,7 @@ tab. The directories skipped are:
     skipped files for this package and be able to uninstall them.
 
 
-<h3 id="bain-se">Script Extender Plugin Installation</h3>
+<h3 id="bain-se">Script Extender Plugin Installation <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Script Extender (OBSE, SKSE) plugins (.dll, .dlx extensions) may be installed through BAIN if the following conditions are met:
 <ul>
     <li>The package (or subpackage in the case of a Complex Bain) contains the OBSE plugin file inside <code>OBSE\Plugins\</code> (for
@@ -359,14 +375,14 @@ tab. The directories skipped are:
 <p>The list of allowed and disallowed Script Extender plugins can be imported and exported using the <a href="#settingsImportList">Import list of allowed/disallowed OBSE plugin dlls</a> and <a href="#settingsExportList">Export list of allowed/disallowed OBSE plugin dlls</a> options in Wrye Bash's <a href="#tools-settings">Settings</a> menu.
 
 
-<h3 id="bain-omod">OMOD Conversion Data</h3>
+<h3 id="bain-omod">OMOD Conversion Data <a class="back2top" href="#contents">Back to top</a></h3>
 <p>If a mod author is building a mod that supports BAIN, manual and OMOD installs, they can use the <a href="#bainOmodInfo">Omod Info...</a> option in the package context menu to create or update the OMOD config file.
 <p>If a mod author wishes to include a screenshot for use by the OMOD, they simply need to copy the screenshot saved as a JPEG to the OMOD Conversion Data folder and rename it to <q>screenshot</q> with no file extension.
 <p>An OMOD installation script may also be created by creating a text file named <q>script.txt</q> and writing the script in any text editor. Testing is still best done in OBMM though.
 <p>The OMOD config file is the only true requirement for an OMOD to be created from OMOD Conversion Data. The screenshot and installation script can be used to enhance an OMOD. Note that the <q>info.txt</q> file that OMODs create when exporting Conversion Data in OBMM is unnecessary, and is provided for purely informational purposes.
 
 
-<h3 id="bain-bcf">BAIN Conversion Files</h3>
+<h3 id="bain-bcf">BAIN Conversion Files <a class="back2top" href="#contents">Back to top</a></h3>
 <p><abbr title="BAIN Conversion Files">BCFs</abbr> are effectively automated archive converters, converting an existing archive or several archives into a new layout. They can be used to make BAIN-incompatible archives compatible, or make compatible archives easier to install. As they don't contain any files that are found in the existing archive(s), the only copyright/permissions that apply are those that the BCF creator stipulates, which generally makes distribution easier. BCFs are also usually much smaller, only containing new files that it adds (commonly <q>package.txt</q> and ini file tweaks) and a <q>BCF.dat</q> that tells Wrye Bash how to reorganise the archive(s).
 <p>To create a BCF:
 <ol>
@@ -388,7 +404,7 @@ tab. The directories skipped are:
     <li>BCFs use data CRCs to verify the integrity of source archives. These use the contents of an archive, but not the name or type of the archive, so a source archive may be renamed or recompressed without affecting its ability to be used by a BCF. Wrye Bash displays the data CRCs of packages on the General Info tab for this reason.
 </ul>
 
-<h3 id="bain-monitor">Monitor External Installation</h3>
+<h3 id="bain-monitor">Monitor External Installation <a class="back2top" href="#contents">Back to top</a></h3>
 
 <p>Wrye Bash can monitor your game's Data directory to detect any changes made by an external application or manual installation. It will
     take the new or changed files and create a new BAIN package that can be handled, installed, and uninstalled just like any other standard
@@ -461,7 +477,7 @@ tab. The directories skipped are:
 </ul>
 
 
-<h3 id="bain-commands">Context Menu Commands</h3>
+<h3 id="bain-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="prlflex clearf">
     <figure class="slideshow" style="width:525px; min-height:656px">
         <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-1.png">
@@ -819,8 +835,8 @@ tab. The directories skipped are:
 </table>
 
 
-<h2 id="mods">Mods Tab</h2>
-<h3 id="mods-details">The Plugin Details Panel</h3>
+<h2 id="mods">Mods Tab <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="mods-details">The Plugin Details Panel <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="prlflex clearf">
     <figure class="mods-details-figure">
       <img alt="plugin details panel" src="../bash/images/readme/mods-plugin-details-panel.png">
@@ -857,7 +873,7 @@ tab. The directories skipped are:
 </table>
 </div>
 
-<h3 class="clearfb" id="mod-masters-symbols">Color scheme for Plugin Masters (MI &amp;Current LO)</h3>
+<h3 class="clearfb" id="mod-masters-symbols">Color scheme for Plugin Masters (MI &amp;Current LO) <a class="back2top" href="#contents">Back to top</a></h3>
 
 <p>In the table below suppose you see details for displayed_mod.esp which depends on [Oblivion.esm, displayed_mod.esm, some_other.esp, some_other2.esp]
     in this order. So the MIs displayed in the master list for Oblivion.esm, displayed_mod.esm, some_other.esp, some_other2.esp are 0, 1, 2, 3.
@@ -881,7 +897,7 @@ tab. The directories skipped are:
             sure that you have not inadvertently renamed or removed the plugin.
 </table>
 
-<h3 id="mods-csv">CSV Files</h3>
+<h3 id="mods-csv">CSV Files <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash uses CSV files for many of its plugin data related features. CSV files are a very widely supported type of spreadsheet file, and once exported may be edited in programs like Microsoft Excel, LibreOffice Calc or even in text editors such as Notepad or Notepad++.
 <p>CSV files are used by the Import/Export... commands as this allows much easier editing of record data in large batches or in systematic manners than in the Construction Set. The data may be exported, edited in the CSV, then imported again. The following notes apply to CSV files.
 <ul>
@@ -905,7 +921,7 @@ tab. The directories skipped are:
 
 
 
-<h3 id="mods-commands">Context Menu Commands</h3>
+<h3 id="mods-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The tables below detail the full list of context menu commands available in the Mods tab.
 <table>
     <thead>
@@ -1135,12 +1151,12 @@ tab. The directories skipped are:
 </table>
 
 
-<h2 id="patch">Advanced Bashed Patch</h2>
+<h2 id="patch">Advanced Bashed Patch <a class="back2top" href="#contents">Back to top</a></h2>
 <p>You can have multiple Bashed Patches, though one is generally enough per <a href="#saves-profiles">save profile</a> or character. The only requirement for Wrye Bash recognising a plugin as a Bashed Patch is that its <q>Author</q> field is set to <q>BASHED PATCH</q>, so you can name a Bashed Patch whatever you want.
-<h3 id="patch-view">Viewing &amp; Editing The Bashed Patch</h3>
+<h3 id="patch-view">Viewing &amp; Editing The Bashed Patch <a class="back2top" href="#contents">Back to top</a></h3>
 <p>As the Bashed Patch commonly has .esp files as masters, viewing and editing it can be more complicated than for the average plugin. If you wish to view its contents, it is easiest to use <a href="https://www.nexusmods.com/oblivion/mods/11536">TES4Edit</a>, which can also be used to edit most types of data in plugins. To edit it using the Construction Set or Creation Kit (required when editing scripts), you'll need to first use the <a href="#modsEsmifyMasters">Esmify Masters</a> command on it. Be sure to use <q>Espify Masters</q> before attempting to play the game.
 
-<h3 id="patch-tags">Bash Tags</h3>
+<h3 id="patch-tags">Bash Tags <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash uses a tagging system to determine what mods can and should have which records available for importing into the Bashed Patch. These Bash Tags are specified by mod authors in the header descriptions of their plugins, or are applied using data from LOOT's masterlist and userlist files.
 In decreasing priority the Bash tags sources are:
 
@@ -3916,7 +3932,7 @@ and masterlist relative priority and role see the LOOT docs.
     </tbody>
 </table>
 
-<h3 id="patch-filter">Merge Filtering</h3>
+<h3 id="patch-filter">Merge Filtering <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Merge filtering is an advanced option that allows records in a merged mod to be selectively filtered according to the current load order. For example, a patch mod could be created to rebalance weapons from several different weapon-adding mods. This feature would allow the patch to be used even if you didn't use all the mods, and the Bashed Patch would just apply the bits for the mods you do use. This saves the need for a separate patch plugin for each mod.
 <p>Merge filtering has requisite conditions that must be fulfilled for a plugin to take advantage of it, and some limitations. These conditions and limitations are:
 <ul>
@@ -3928,7 +3944,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 id="patch-iim">Item Interchange Mode</h3>
+<h3 id="patch-iim">Item Interchange Mode <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Item Interchange Mode is a 'hack' (a horribly inelegant and inconsistent implementation of a feature that nonetheless works) to support Vacuity's Item Interchange mod.
 <p>Activation of the mode for a plugin relies on the following conditions:
 <ul>
@@ -3944,7 +3960,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 id="patch-tweaks">Tweak Options In Detail</h3>
+<h3 id="patch-tweaks">Tweak Options In Detail <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Each <q>Tweak...</q> section has a table below that details the options found within it.
 <p>Tweaks are game dependant, most apply for Oblivion, not all of them will be available for Skyrim / Fallout.
 <table>
@@ -4154,7 +4170,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h3 id="patch-csv">Default CSV Files</h3>
+<h3 id="patch-csv">Default CSV Files <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The following CSV files are supplied with Wrye Bash and are can be used when building your Bashed Patch.
 <table>
     <thead>
@@ -4181,7 +4197,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h3 id="patch-lists">Leveled Lists</h3>
+<h3 id="patch-lists">Leveled Lists <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The leveled list patcher is slightly odd in comparison to the others: it's effectively an <q>Import...</q> patcher, but its options are decided automatically by default.
 <p>First, a bit of background. When different plugins alter the same leveled list, only the last loaded plugin's changes get applied. This tends not to be what is wanted. The leveled list patcher circumvents the issue by instead merging all the changes made to leveled lists and having this merged set of changes applied.
 <p>The leveled list merging is dictated by related Bash Tags, and functions as follows.
@@ -4197,8 +4213,8 @@ and masterlist relative priority and role see the LOOT docs.
 <p>To manually override the Delev/Relev Bash Tags for a plugin, right-click it in the section list and check or uncheck the relevant options as desired. To return to the automatic setting, select the <q>Auto</q> option in the right-click menu.
 
 
-<h2 id="saves">Saves Tab</h2>
-<h3 id="saves-overview">Overview</h3>
+<h2 id="saves">Saves Tab <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="saves-overview">Overview <a class="back2top" href="#contents">Back to top</a></h3>
 <figure>
         <img alt="Saves Tab" src="../bash/images/readme/saves.png">
         <figcaption>
@@ -4238,7 +4254,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Notes<td>This section can be used to keep notes on the save file.
 </table>
 
-<h3 id="saves-symbols">Color scheme for Save Game Files</h3>
+<h3 id="saves-symbols">Color scheme for Save Game Files <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th>Checkbox Colour<th>Meaning
@@ -4250,7 +4266,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td><img alt="Red" src="../bash/images/checkbox_red_on.png"/><td>A master is missing. You should check to make sure that you have not inadvertently renamed or removed the plugin.
 </table>
 
-<h3 id="saves-masters-symbols">Color scheme for Save Game Masters (MI &amp; Current LO)</h3>
+<h3 id="saves-masters-symbols">Color scheme for Save Game Masters (MI &amp; Current LO) <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th>Checkbox Colour<th>Meaning
@@ -4261,14 +4277,14 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td><img alt="Red" src="../bash/images/checkbox_red_on.png"/><td>A plugin is missing. If unintended then you should check to make sure that you have not inadvertently renamed or removed the plugin.
 </table>
 
-<h3 id="saves-profiles">Save Profiles</h3>
+<h3 id="saves-profiles">Save Profiles <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Save profiles are like player accounts, in that they consist of a load order plus a set of save files. They can be used to allow safe and easy switching between different characters than may use different combinations of mods, or between different stages of the same character's life (where different mods have been used in each stage). They can also associate different versions of Oblivion.esm with different save profiles, using <a href="#tools-swapping">Oblivion.esm Swapping</a>.
 <p>To create or modify save profiles, use the <a href="#savesEditProfiles">Edit Profiles...</a> command in the <q>Profile</q> submenu of the column header context menu. You can create a new save profile using <q>Add</q>, delete the selected existing save profile using <q>Remove</q> and rename the selected save profile using <q>Rename</q>. The central text field can be used to store notes on the selected save profile.
 <p>To select a save profile, select it from the list visible in the <q>Profile</q> submenu of the column header context menu.
 <p>To assign save files to a save profile, use the <a href="#savesMoveTo">Move To</a> or <a href="#savesCopyTo">Copy To</a> submenus in the save file context menu. This will also assign any related cosave files.
 
 
-<h3 id="saves-face">Face Import</h3>
+<h3 id="saves-face">Face Import <a class="back2top" href="#contents">Back to top</a></h3>
   <div class="bbimgr clearf">
     <figure>
       <img alt="Face Import from Esp" src="../bash/images/readme/wryebash_03.png">
@@ -4315,7 +4331,7 @@ and masterlist relative priority and role see the LOOT docs.
     </ul>
 </ul>
 
-<h3 id="saves-commands">Context Menu Commands</h3>
+<h3 id="saves-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th colspan="3">Column Header Context Menu
@@ -4416,8 +4432,8 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h2 id="screenshots">Screenshots Tab</h2>
-<h3 id="screenshots-overview">Overview</h3>
+<h2 id="screenshots">Screenshots Tab <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="screenshots-overview">Overview <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="Screenshots Tab" src="../bash/images/readme/screenshots-1.png"/>
 <img alt="Screenshots Tab" src="../bash/images/readme/screenshots-2.png"/>
@@ -4425,7 +4441,7 @@ and masterlist relative priority and role see the LOOT docs.
 </figure>
 <p>The Screenshots tab allows you to preview any screenshots taken in-game using the built-in Print Screen functionality. These screenshots are saved as bitmap files (.bmp). Selecting a screenshot from the list on the left will display it on the right. Screenshots can be converted from bitmaps into a few other formats using context menu commands.
 
-<h3 id="screenshots-alt-path">Change screenshots directory (Oblivion)</h3>
+<h3 id="screenshots-alt-path">Change screenshots directory (Oblivion) <a class="back2top" href="#contents">Back to top</a></h3>
 <p>By default, Oblivion stores its screenshots in Oblivion's root folder but allows you to change the default directory via an ini setting.
     You can change the ini setting by directly editing Oblivion.ini or by using the "Next Shot" column menu item in the Screenshots tab.
     For instance Oblivion Reloaded uses Oblivion\Screenshots. To change the screenshots directory to Oblivion\Screenshots by editing the
@@ -4448,7 +4464,7 @@ and masterlist relative priority and role see the LOOT docs.
 <p><strong>IMPORTANT</strong>: The base filename "Screenshot" (or any other base name you like) must be included in the path or Oblivion's
     native screenshots will not work - that is pressing the Prt Scr key will do nothing.
 
-<h3 id="screenshots-commands">Context Menu Commands</h3>
+<h3 id="screenshots-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th colspan="2">Column Header Context Menu
@@ -4471,8 +4487,8 @@ and masterlist relative priority and role see the LOOT docs.
             will also abort the rename.
 </table>
 
-<h2 id="launchers">Advanced Launchers</h2>
-<h3 id="launchers-hide">Hiding Launchers</h3>
+<h2 id="launchers">Advanced Launchers <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="launchers-hide">Hiding Launchers <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="toolbar hide launcher" src="../bash/images/readme/toolbar-11-rclick-hide-gamelauncher.png"/>
 <img alt="toolbar hide launcher" src="../bash/images/readme/toolbar-12-rclick-hide-autoquit.png"/>
@@ -4486,7 +4502,7 @@ and masterlist relative priority and role see the LOOT docs.
 <p>You can unhide launchers hidden through the right-click option using the Settings menu. See the <a href="#tools-settings">Settings Menu</a> for more information.
 
 
-<h3 id="launchers-custom">Custom Launchers</h3>
+<h3 id="launchers-custom">Custom Launchers <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Custom launcher buttons may be added by putting a shortcut to the application you wish to have a launcher for in the <code>Mopy\Apps</code> directory. Wrye Bash will then use the following information from the shortcut:
 <ul>
     <li>Icon
@@ -4503,8 +4519,8 @@ and masterlist relative priority and role see the LOOT docs.
 
 
 
-<h2 id="people">People Tab</h2>
-<h3 id="people-overview">Overview</h3>
+<h2 id="people">People Tab <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="people-overview">Overview <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="People tab" src="../bash/images/readme/people-1.png"/>
 <img alt="People tab" src="../bash/images/readme/people-2.png"/>
@@ -4517,7 +4533,7 @@ and masterlist relative priority and role see the LOOT docs.
 <div class="prlflex imgrst">
     <div class="people-tables-bar"></div>
 <div class="people-tables">
-<h3 id="people-symbols" class="people-tabpad">What Symbols &amp; Colours Mean</h3>
+<h3 id="people-symbols" class="people-tabpad">What Symbols &amp; Colours Mean <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th colspan="2">Checkbox Colours
@@ -4533,7 +4549,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 </div>
 <div>
-<h3 id="people-commands" class="people-tabpad">Context Menu Commands</h3>
+<h3 id="people-commands" class="people-tabpad">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <table>
     <thead>
         <tr><th colspan="2">Column Header &amp; Person Context Menus
@@ -4550,9 +4566,9 @@ and masterlist relative priority and role see the LOOT docs.
 </div>
 
 
-<h2 id="tools">Miscellaneous Tools</h2>
+<h2 id="tools">Miscellaneous Tools <a class="back2top" href="#contents">Back to top</a></h2>
 
-<h3 id="tools-settings">Settings Menu</h3>
+<h3 id="tools-settings">Settings Menu <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colour_highlighted.png"/>
 <img alt="Colors Dialog" src="../bash/images/readme/settings-2-tabs_highlighted.png"/>
@@ -4602,7 +4618,7 @@ and masterlist relative priority and role see the LOOT docs.
   <tr><td colspan="2">Debug Mode<td>Opens up a window to which debugging information is written.
   <tr><td colspan="2" id="settingsDumpTranslator">Dump Translator<td>Generates a new translation file for your locale. See <a href="#international">Internationalisation</a> for more information.
 </table>
-<h3 id="tools-colors">Color Configuration</h3>
+<h3 id="tools-colors">Color Configuration <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="prlflex smltbl clearf">
   <figure class="slideshow" style="width:768px; min-height:390px">
     <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colours-dialogue-1.png">
@@ -4622,7 +4638,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>OK<td>Closes the dialog. Does not apply any changes made.
 </table>
 </div>
-<h3 class="clearfb" id="tools-docs">Doc Browser</h3>
+<h3 class="clearfb" id="tools-docs">Doc Browser <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="doc browser" src="../bash/images/readme/doc-browser-1.png">
 <img alt="doc browser" src="../bash/images/readme/doc-browser-2.png">
@@ -4646,7 +4662,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 class="clearfb" id="tools-checker">Mod Checker</h3>
+<h3 class="clearfb" id="tools-checker">Mod Checker <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="bbimgr clearf">
   <figure class="tools-checker-figure">
     <img alt="Mod Checker" src="../bash/images/readme/mod-checker-1.png">
@@ -4688,7 +4704,7 @@ and masterlist relative priority and role see the LOOT docs.
 </table>
 
 
-<h3 id="tools-swapping">Oblivion.esm Swapping</h3>
+<h3 id="tools-swapping">Oblivion.esm Swapping <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Oblivion.esm swapping is a feature that allows mod authors to switch between different versions of Oblivion.esm on the fly. This is useful as it allows mod authors to make plugins that are totally SI-independent (as the Shivering Isles patches Oblivion.esm instead of using a new plugin). It can also be used to avoid the need for a fully patched Oblivion to run a plugin, but this usage is <strong>not recommended</strong>. If you want a plugin to work on older versions of Oblivion, use the <a href="#modsVersion0.8">Version 0.8</a> command on it.
 <p>The main requirement for swapping to work is that you have the necessary copies of the different Oblivion.esm files. <strong>This is only possible if you copy and rename Oblivion.esm before installing Shivering Isles.</strong> There are three accepted versions of Oblivion.esm in addition to the latest SI one. These are determined by their file size:
 <ul>
@@ -4705,7 +4721,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ul>
 
 
-<h3 id="tools-shortcuts">Keyboard Shortcuts</h3>
+<h3 id="tools-shortcuts">Keyboard Shortcuts <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The following keyboard shortcuts can be used when a list on Bash has focus (work almost on all lists unless otherwise noted).
 <table>
     <thead><tr><th>Shortcut<th>Function
@@ -4721,7 +4737,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td><code>ctrl-y</code><td>Redo load order state change (Mods)
 </table>
 
-<h3 id="tools-arguments">Command Line Arguments</h3>
+<h3 id="tools-arguments">Command Line Arguments <a class="back2top" href="#contents">Back to top</a></h3>
 <p>The following table lists all command-line arguments Wrye Bash
     understands.
 <p>
@@ -4811,8 +4827,8 @@ and masterlist relative priority and role see the LOOT docs.
                 display any prompts or message dialogs.
 </table>
 
-<h2 id="international">Internationalisation</h2>
-<h3 id="international-overview">Overview</h3>
+<h2 id="international">Internationalisation <a class="back2top" href="#contents">Back to top</a></h2>
+<h3 id="international-overview">Overview <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash has built-in support for translation into other languages, using text files that tell it which English strings in the source code should be translated, and into what. These text files are found in <code>Mopy\bash\l10n\</code>. New translations or updates to existing translations should be presented to the Wrye Bash team so that they may be included in future releases.
 <p>To begin translating, or to update an existing translation, use the following steps.
 <ol>
@@ -4824,7 +4840,7 @@ and masterlist relative priority and role see the LOOT docs.
 </ol>
 
 
-<h3 id="international-format">Translator File Format</h3>
+<h3 id="international-format">Translator File Format <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Below is an excerpt from a translator file.
 <div class="international-format-cdebox">
 <code class="box">=== basher.py, 3711
@@ -4841,6 +4857,5 @@ DELETE PROFILE %s AND THE %d SAVE FILES IT CONTAINS?
 <p>The file line is followed by the original text string on a new line, which is then followed by a line containing only <code>&gt;&gt;&gt;&gt;</code>. The translation entry ends with a final line containing the translated text string.
 <p><strong>Note:</strong> It is important that the formatting characters are not removed or moved or added to. Formatting characters are those that start with a percentage sign or a backslash, eg. <code> %s %d %08X \n</code>. If a formatting character is missing, Wrye Bash will throw an exception, which is bad.
 
-<script src="assets/bashfunc.js"></script>
 </body>
 </html>
