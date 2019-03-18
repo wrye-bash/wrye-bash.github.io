@@ -117,23 +117,17 @@ body {
 	overflow-y: auto;
 }
 .scrlbarWK #box, .scrlbarFF #box {
-	/* background-color: #ffffcc; */
 	margin-left: 13px;
-	/* padding-left: 1rem;
-	padding-right: 13px;
-	position: relative;
-	overflow-x: hidden;
-	overflow-y: auto; */
 }
 #footer {
-	vertical-align: middle;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: rgba(154, 205, 50, 1);
 	width: 100%;
-	flex: 0 0 26px;
+	flex: 0 0 38px;
 	font-size: 0.75rem;
 	margin: auto;
-	padding-top: 7px;
 	font-weight: bold;
 }
 
@@ -411,7 +405,7 @@ Javascript-enabled Formatting
 	bottom: 5px;
 	left: 29px;
 	z-index: 2;
-	padding: 3px;
+	padding: 5px;
 	border-radius: 5px;
 	font-size: 1rem;
 	cursor: pointer;

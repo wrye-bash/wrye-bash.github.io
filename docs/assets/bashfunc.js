@@ -101,14 +101,12 @@ function wbNavTest() {
 }
 //* Menu
 function wbNavOpen() {
-	console.log("opening");
 	wbNavMnu.style.left = "0";
 	// wbFade.style.display = "block";
 	wbFade.style.opacity = "1";
 	wbFade.style.visibility = "visible";
 }
 function wbNavClose() {
-	console.log("closing");
 	wbNavMnu.style.left = "-250px";
 	// wbFade.style.display = "none";
 	wbFade.style.opacity = "0";
