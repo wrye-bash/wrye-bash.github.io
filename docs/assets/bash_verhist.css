@@ -1,15 +1,19 @@
 /*
 Main Overrides
 */
-h2 {
+/* h2 {
   margin-left: 0;
   padding: 0;
   background: inherit;
   font-size: 1.1em;
   margin-top: 3em;
-}
+} */
 li {
   margin-bottom: 0.2em;
+}
+.JS-on #fade, .JS-on .navhead, .JS-on #spantest {
+	display: none;
+	visibility: hidden;
 }
 
 /*

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="assets/bashinit.js"></script>
   <link href="assets/bash_main.css" rel="stylesheet" type="text/css">
   <link href="assets/bash_technical.css" rel="stylesheet" type="text/css">
+  <script src="assets/bashfunc.js" async defer></script>
   <link href="assets/bash.webmanifest" rel="manifest" type="application/manifest+json">
   <link href="images/webicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" type="image/png">
   <link href="images/webicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
@@ -22,33 +24,53 @@
 <title>Wrye Bash Technical Readme</title>
 </head>
 
-<body>
-<h1>Wrye Bash Technical Readme</h1>
 
-<h2 class="contents">Contents</h2>
-<ol>
-	<li><a href="#intro">Introduction</a>
-	<li><a href="#wizards">BAIN Wizards</a>
-	<ol>
-		<li><a href="#wizards-overview">Overview</a>
-		<li><a href="#wizards-dialog">Dialogues</a>
-		<li><a href="#wizards-language">Language Structure</a>
-		<li><a href="#wizards-functions">Functions</a>
-		<li><a href="#wizards-keywords">Keywords</a>
-		<li><a href="#wizards-operators">Operators</a>
-		<li><a href="#wizards-constants">Standard Constants</a>
-		<li><a href="#wizards-escape">Escape Sequences</a>
-		<li><a href="#wizards-examples">Examples</a>
-		<li><a href="#wizards-obmm">Wizards vs. OBMM Scripts</a>
-	</ol>
-	<li><a href="#rulesets">Mod Checker Rulesets</a>
-	<ol>
-		<li><a href="#rulesets-overview">Overview</a>
-		<li><a href="#rulesets-syntax">Syntax</a>
-		<li><a href="#rulesets-example">Example</a>
-	</ol>
-</ol>
-<div class="clear"></div>
+<body>
+
+<div id="box">
+
+<div id="fade"></div>
+<div id="spantest">Menu Test</div>
+<h1>Wrye Bash Technical Readme <a id="jstoggle" href="javascript:void(0)">(Javascript Toggle)</a></h1>
+
+<h2 id="contents">Contents</h2>
+<div id="navmenu" class="navboxrhrz">
+    <div class="navcontbar">
+        <div class="navhead">
+            <a href="javascript:void(0)" class="clsx" id="closebutton">&larr;</a>
+            <h2>General Readme</h2>
+        </div>
+        <div class="navcontent">
+            <ol class="contentsmenu1 menu">
+                <li class="list"><a href="#intro">Introduction</a>
+                    <ol class="items">
+                        <li><a href="#intro-glossary">Glossary</a>
+                    </ol>
+                <li class="list"><a href="#darn">DarNified Formatting</a>
+                <li class="list"><a href="#wizards">BAIN Wizards</a>
+                    <ol class="items">
+                        <li><a href="#wizards-overview">Overview</a>
+                        <li><a href="#wizards-dialog">Dialogues</a>
+                        <li><a href="#wizards-language">Language Structure</a>
+                        <li><a href="#wizards-functions">Functions</a>
+                        <li><a href="#wizards-keywords">Keywords</a>
+                        <li><a href="#wizards-operators">Operators</a>
+                        <li><a href="#wizards-constants">Standard Constants</a>
+                        <li><a href="#wizards-escape">Escape Sequences</a>
+                        <li><a href="#wizards-examples">Examples</a>
+                        <li><a href="#wizards-obmm">Wizards vs. OBMM Scripts</a>
+                    </ol>
+                <li class="list"><a href="#rulesets">Mod Checker Rulesets</a>
+                    <ol class="items">
+                        <li><a href="#rulesets-overview">Overview</a>
+                        <li><a href="#rulesets-syntax">Syntax</a>
+                        <li><a href="#rulesets-example">Example</a>
+                    </ol>
+            </ol>
+        </div>
+    </div>
+<div class="navtab"></div>
+</div>
 
 <h2 id="intro">Introduction</h2>
 <p>Wrye Bash is a powerful mod management utility for TES IV: Oblivion, Fallout 3, Fallout New Vegas, TES V: Skyrim, Fallout 4 and SSE: Skyrim Special Edition. Its features include:
@@ -1064,6 +1086,13 @@ x DLCShiveringIsles.esp // **Activate.** Required.
 x FF_REAL_Thirst, Cob.esp // Patch FF Real Thirst to work with Cobl water wells.
 </code>
 
+</div>
+<div id="footer">
+        <a href="Wrye Bash General Readme.html">General</a>&#160;
+        &#x2726;&#160;<a href="Wrye Bash Advanced Readme.html">Advanced</a>&#160;
+        &#x2726;&#160;Technical&#160;
+        &#x2726;&#160;<a href="Wrye Bash Version History.html">Versions</a>
+    </div>
 </body>
 
 </html>
