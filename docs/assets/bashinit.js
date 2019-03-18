@@ -20,14 +20,8 @@ var wbIsFirefox = typeof InstallTrigger !== "undefined";
 var wbIsSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window["safari"] || (typeof safari !== "undefined" && safari.pushNotification));
 //* Check scrollbar style support and apply
 function wbScrlApply() {
-	if (wbIsFirefox && CSS.supports("scrollbar-color", "#000 #000")) {
-		wbRoot.classList.add("scrlbarFF");
-		wbRoot.style.marginLeft = "0.8125rem";
-	}
-	if ((wbIsChrome || wbIsSafari)) {
-		wbRoot.classList.add("scrlbarWK");
-		wbRoot.style.marginLeft = "0.8125rem";
-	}
+	if (wbIsFirefox && CSS.supports("scrollbar-color", "#000 #000")) return wbRoot.classList.add("scrlbarFF");
+	if ((wbIsChrome /* || wbIsSafari */)) return wbRoot.classList.add("scrlbarWK");
 }
 
 //* Engage

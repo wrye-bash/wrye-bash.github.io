@@ -60,7 +60,8 @@ wbPgRdy(function() {
 	wbDOMList();
 	// Init: Slideshow
 	wbFigGrab();
-	// Test Button
+	// Test Buttons
+	wbJSSwitch();
 	wbNavTest();
 });
 //* Set: DOM Resource vars
@@ -76,7 +77,7 @@ function wbDOMList() {
 	wbFade.addEventListener("click", wbNavClose);
 	wbNavCls.addEventListener("click", wbNavClose);
 	Object.keys(wbNavSubLst).forEach(function(i) {
-		console.log(wbNavSubLst[i]);
+		// console.log(wbNavSubLst[i]);
 		wbNavSubLst[i].addEventListener("click", wbNavSubAcc);
 	})
 }
@@ -85,11 +86,20 @@ function wbDOMList() {
 /*
 * Navmenu Functions
 */
-//* Test Button
+//* Test Buttons
+function wbJSSwitch() {
+	var wbJSTog = document.getElementById("jstoggle");
+	wbJSTog.addEventListener("click", wbJSToggle);
+}
+function wbJSToggle() {
+	if (wbRoot.classList.contains("JS-on")) return wbRoot.classList.remove("JS-on");
+	if (!wbRoot.classList.contains("JS-on")) return wbRoot.classList.add("JS-on");
+}
 function wbNavTest() {
 	var wbNavTst = document.getElementById("spantest");
 	wbNavTst.addEventListener("click", wbNavOpen);
 }
+//* Menu
 function wbNavOpen() {
 	console.log("opening");
 	wbNavMnu.style.left = "0";

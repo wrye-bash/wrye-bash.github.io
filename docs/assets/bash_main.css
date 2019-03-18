@@ -16,11 +16,11 @@ html {
 body {
 	position: relative;
 	height: 100%;
-	background: #ffffcc;
-	background-color: #ffffcc;
+	/* background: #ffffcc;
+	background-color: #ffffcc; */
 	font-family: "Arial", "sans-serif";
-	font-size: 0.9em;		/* 14.4px */
-	overflow-y: auto;
+	font-size: 0.9rem;		/* 14.4px */
+	/* overflow-y: auto; */
 	padding-right: 1rem;
 	padding-left: 1rem;		/* 16px */
 	margin: 0;
@@ -92,6 +92,49 @@ h3 {
 	margin-top: 1.875rem;			/* 30px */
 	padding: 0.5rem;				/* 8px */
 	padding-left: 1.5rem;			/* 24px */
+}
+
+
+/*
+Footer Control Formatting
+*/
+html {
+	margin: 0 !important;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	/* margin-left: 13px; */
+}
+#box {
+	background-color: #ffffcc;
+	margin-left: 0;
+	padding-left: 1rem;
+	padding-right: 13px;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.scrlbarWK #box, .scrlbarFF #box {
+	/* background-color: #ffffcc; */
+	margin-left: 13px;
+	/* padding-left: 1rem;
+	padding-right: 13px;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto; */
+}
+#footer {
+	vertical-align: middle;
+	text-align: center;
+	background-color: rgba(154, 205, 50, 1);
+	width: 100%;
+	flex: 0 0 26px;
+	font-size: 0.75rem;
+	margin: auto;
+	padding-top: 7px;
+	font-weight: bold;
 }
 
 
@@ -318,6 +361,15 @@ H2 .back2top, H3 .back2top {
 	right: 1.5rem;
 	top: 0;
 }
+H1 #jstoggle {
+	bottom: 0;
+	font-size: 0.75rem;
+	height: calc(0.75rem + 3px);
+	margin: auto;
+	position: absolute;
+	right: 1.5rem;
+	top: 0;
+}
 /*
 Javascript-enabled Formatting
 */
@@ -354,13 +406,15 @@ Javascript-enabled Formatting
 	display: block;
 	visibility: visible;
 	background: rgba(154, 0, 0, 0.75);
-	position:fixed;
+	position: fixed;
 	color: #fff;
-	bottom: 10px;
-	left: 20px;
-	z-index: 1;
-	padding: 5px;
+	bottom: 5px;
+	left: 29px;
+	z-index: 2;
+	padding: 3px;
 	border-radius: 5px;
+	font-size: 1rem;
+	cursor: pointer;
 }
 .JS-on #navmenu {
 	background-color: rgba(254, 205, 50, 0);
