@@ -501,8 +501,8 @@ Javascript-enabled Formatting
 	margin-top: -5rem;		/* 80px */
 	opacity: 0;
 	position: fixed;
-	-webkit-transition: visibility 0.5s ease,opacity 0.5s ease;
-	transition: visibility 0.5s ease,opacity 0.5s ease;
+	-webkit-transition: visibility 0.5s ease, opacity 0.5s ease;
+	transition: visibility 0.5s ease, opacity 0.5s ease;
 	width: 200%;
 	z-index: 5;
 }
