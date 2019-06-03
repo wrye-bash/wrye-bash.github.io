@@ -4,7 +4,6 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <link href="assets/bash_main.css" rel="stylesheet" type="text/css">
   <link href="assets/bash_general.css" rel="stylesheet" type="text/css">
   <link href="assets/bash.webmanifest" rel="manifest" type="application/manifest+json">
@@ -29,14 +28,14 @@
 <body>
 <div id="header"><h1>Wrye Bash General Readme</h1> <a id="jstoggle" href="javascript:void(0)">(Javascript Toggle)</a></div>
 
-<div id="box"><!-- Scrolling content begin -->
+<div id="box">
+<!-- Scrolling content begin -->
 
 <div id="fade"></div>
-<div id="spantest">Menu Test</div>
-<div id="oldie">Alright Dr. Hammond, let's talk about the dinosaur in the room. We need to invest in newer technology!</div>
 
 <h2 id="contents">Contents</h2>
 <div id="navmenu" class="navboxrhrz">
+    <div id="navtab">M<br>E<br>N<br>U</div>
     <div class="navcontbar">
         <div class="navhead">
             <a href="javascript:void(0)" class="clsx" id="closebutton">&larr;</a>
@@ -110,7 +109,6 @@
             </ol>
         </div>
     </div>
-    <div class="navtab"></div>
 </div>
 
 <div class="clear"></div>
@@ -217,8 +215,8 @@
 <p>If BAIN is disabled, ie. if you clicked <q>No</q> on the dialog that was displayed the first time you selected the Installers tab, it can be re-enabled by right clicking on a column header in the Installers tab and selecting <a href="Wrye%20Bash%20Advanced%20Readme.html#bainEnabled">Enabled</a>.
 
 <p>Installers need to be placed in the <code>Bash Installers</code> directory which is created the first time Bash runs inside the <code>"Game" Mods</code> directory. This directory is by default
-    created on the same level as your game directory (that is if your game exe is located in "C:\GAMES\TESIV\Oblivion" then by default Bash will create the "C:\GAMES\TESIV\Oblivion Mods\"
-    directory on first run, but you can point Bash to create this "Game" Mods directory wherever you want (or point it to an existing one) via the <code>sOblivionMods</code> ini setting. Do
+    created on the same level as your game directory (that is, if your game exe is located in "C:\GAMES\TESIV\Oblivion", then by default Bash will create the "C:\GAMES\TESIV\Oblivion Mods\"
+    directory on first run), but you can point Bash to create this "Game" Mods directory wherever you want (or point it to an existing one) via the <code>sOblivionMods</code> ini setting. Do
     <em>not</em> however put it inside the game Data directory, as the game may well be confused and scan it adding to performance deterioration, mods thrashing.
 <p>To add an installer to Wrye Bash Installers, you can either manually copy and paste the zip to the Bash Installers Directory, or just drag and drop the zip onto the Installers tab.
 <p>Bash will scan the Bash Installers directory and pick up all subfolders and all <code>.zip</code>, <code>.7z</code> or <code>.rar</code> archives - except for:
@@ -1152,7 +1150,7 @@ MemoryError</code>
   <li><img alt="Breeze582000's Icon" src="../bash/images/brezavi32.gif"><span><a href="https://www.nexusmods.com/users/245234">Breeze582000:</a> brzMonitor, which inspired Bashmon</span></li>
   <li><img alt="CptMcSplody's Icon" src="../bash/images/cptmavi32.jpg"><span><a href="https://github.com/CptMcSplody">CptMcSplody:</a> Patcher refinement, updating LOOT integration, cell handling</span></li>
   <li><img alt="Daidalos' Icon" src="../bash/images/dlosavi32.png"><span><a href="https://github.com/D4id4los">Daidalos:</a> LOOT API updates, obscure crash and typo corrections</span></li>
-  <li><img alt="FelesNoctis' Icon" src="../bash/images/flsnavi32.jpg"><span><a href="https://github.com/FelesNoctis">FelesNoctis:</a> Documentation editor for v307 and beyond, including cleanup, optimization, updates, and additional images</span></li>
+  <li><img alt="FelesNoctis' Icon" src="../bash/images/flsnavi32.jpg"><span><a href="https://github.com/FelesNoctis">FelesNoctis:</a> Documentation editor for v307+, image updates</span></li>
   <li><img alt="GandaG's Icon" src="../bash/images/gndaavi32.jpg"><span><a href="https://github.com/GandaG">GandaG:</a> Refactoring and data clean tuneups</span></li>
   <li><img alt="Haama's Icon" src="../bash/images/genravi32.png"><span><a href="https://github.com/Haama">Haama:</a> OBSE cofile definitions, various fixes, improvements etc</span></li>
   <li><img alt="Infernio's Icon" src="../bash/images/ifniavi32.png"><span><a href="https://github.com/Infernio">Infernio:</a> BSA handling updates and refactoring</span></li>
@@ -1375,10 +1373,12 @@ MemoryError</code>
 </ul>
 <p>The Advanced Readme is a more technical document aimed more towards mod authors and advanced users of Wrye Bash than the average user. If you find yourself wanting to know more, or not understanding why something in Wrye Bash behaves the way it does, then the answer you seek may be found in the <a href="Wrye%20Bash%20Advanced%20Readme.html">Advanced Readme</a>.</p>
 
-</div><!-- Scrolling content end -->
+<!-- Scrolling content end -->
+</div>
 
 <div id="footer">
-General&#160;&#x2726;&#160;<a href="Wrye Bash Advanced Readme.html">Advanced</a>&#160;&#x2726;&#160;<a href="Wrye Bash Technical Readme.html">Technical</a>&#160;&#x2726;&#160;<a href="Wrye Bash Version History.html">Versions</a>
+    General&#160;&#x2726;&#160;<a href="Wrye Bash Advanced Readme.html">Advanced</a>&#160;&#x2726;&#160;<a href="Wrye Bash Technical Readme.html">Technical</a>&#160;&#x2726;&#160;<a href="Wrye Bash Version History.html">Versions</a>
+    <div id="oldie">Javascript disabled, menu and slideshows nonfunctional.</div>
 </div>
 </body>
 </html>
