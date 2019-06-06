@@ -144,7 +144,7 @@
     <li><strong>Data Conflicts</strong> occur when two mod plugins alter the same game data. This type of conflict can be managed by altering the load order of plugins.
     <li><strong>BSAs</strong> are Bethesda Softwork Archives, with <code>.bsa</code> file extensions. They can be used to store resource files such as textures and meshes.
     <li><strong>ITMs</strong> are Identical To Master records, ie. data in a plugin for something that is identical to the data for that thing in the plugin's master(s). Usually a type of unintended edit, known as a <q>dirty edit</q>, which can break the functionality of other mods that require the record in question to have a specific value, but which have that value overridden by an ITM record.
-    <li><strong>UDRs</strong> are Undeleted and Disabled References. Deleted References can cause crashing, and this can be avoided by first undeleting and then disabling them instead. A type of <q>dirty edit</q>. This acronym is generally misused - the UDR acronym is frequently used to refer to the deleted references, rather than their fixed counterparts. For example, <q>Scan For UDRs</q> will scan for deleted references, not undeleted and disabled references, and BOSS will report the UDR count for a plugin, which is actually the number of deleted references that can be fixed.
+    <li><strong>UDRs</strong> are Undeleted and Disabled References. Deleted References can cause crashing, and this can be avoided by first undeleting and then disabling them instead. A type of <q>dirty edit</q>. This acronym is generally misused - the UDR acronym is frequently used to refer to the deleted references, rather than their fixed counterparts. For example, <q>Scan For UDRs</q> will scan for deleted references, not undeleted and disabled references, and BOSS/LOOT will report the UDR count for a plugin, which is actually the number of deleted references that can be fixed.
 </ul>
 <p>This readme will also use the placeholder <strong>[Game]</strong>. Replace this with <q>Oblivion</q>, <q>Fallout 3</q>, <q>Fallout NV</q>, <q>Skyrim</q>, <q>Fallout 4</q> or <q>Skyrim SE</q> depending on which game Wrye Bash is running for. Additional terminology specific to Wrye Bash's functions will be introduced as required. Also, links that are followed by <img alt="External Link Icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII="/> go to pages that are not part of the Wrye Bash documentation.</p>
 
@@ -496,8 +496,8 @@ from other packages previously overridden by the uninstalled package's
 </ul>
 <p>When running Wrye Bash, you can also lock your load order in place to prevent unintended changes to it by selecting the <a href="#modsLockLoadOrder">Lock Load Order</a>
     option in the column header right-click menu. Note that this will prevent other utilities from changing the load order, so uncheck this option if you use such a
-    utility to set your load order. If you use BOSS to manage your load order and you also use Lock Load Order, ensure
-    <a href="#launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</a> is also enabled to allow BOSS to function correctly.
+    utility to set your load order. If you use BOSS/LOOT to manage your load order and you also use Lock Load Order, ensure
+    <a href="#launchersBOSSDisableLockLoadOrder">BOSS Disable Lock Load Order</a> is also enabled to allow BOSS/LOOT to function correctly.
 <p>Note that for Skyrim Wrye Bash will automatically undo any changes to load order done made by the Skyrim launcher or any utility that does not follow the textfile-based
     load order standard in order to maintain a fully coherent load order. This effectively means that unintended changes are prevented.
 <figure>
@@ -577,7 +577,7 @@ from other packages previously overridden by the uninstalled package's
     <tbody>
         <tr><td>List Masters...<td>Outputs a list of the selected plugin's masters.
         <tr><td>List Bash Tags...<td>Outputs a BBCode-formatted list of all the Bash Tags applied to the selected plugin, and where/how the Bash Tags was specified. It can be useful for debugging a broken load order.
-        <tr><td>Create BOSS Report...<td>Outputs the plugin filename, <abbr title="Cyclic Redundancy Check">CRC</abbr>, and <abbr title="Identical To Master record">ITM</abbr>/<abbr title="Undeleted and Disabled Reference">UDR</abbr> count for easy reporting of the plugin to an official BOSS thread.
+        <tr><td>Create BOSS Report...<td>Outputs the plugin filename, <abbr title="Cyclic Redundancy Check">CRC</abbr>, and <abbr title="Identical To Master record">ITM</abbr>/<abbr title="Undeleted and Disabled Reference">UDR</abbr> count for easy reporting of the plugin to an official LOOT thread.
         <tr><td>Copy Mod Info...<td>Outputs a report on the selected plugins(s) with the info from the currently displayed columns.
         <tr><td>Don't Ghost<td>Don't ghost this plugin when it is inactive, even if <a href="#modsAutoGhost">Auto-Ghost</a> is enabled.
         <tr><td>Ghost<td>Ghost this plugin when it is inactive even if <a href="#modsAutoGhost">Auto-Ghost</a> is disabled.
@@ -950,7 +950,7 @@ from other packages previously overridden by the uninstalled package's
                 <td><td>
                     <td><td>
         <tr><td><td>
-            <td><img alt="tool image" src="../bash/images/tools/pixelstudiopro32.png" width="32" height="32"/><td><a href="https://www.softpedia.com/get/Multimedia/Graphic/Graphic-Editors/Pixel32.shtml>Pixel Studio Pro</a>
+            <td><img alt="tool image" src="../bash/images/tools/pixelstudiopro32.png" width="32" height="32"/><td><a href="https://www.softpedia.com/get/Multimedia/Graphic/Graphic-Editors/Pixel32.shtml">Pixel Studio Pro</a>
                 <td><td>
                     <td><td>
         <tr><td><td>
