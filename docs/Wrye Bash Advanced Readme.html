@@ -194,9 +194,9 @@
 <p class="install-components">Note that the 32-bit versions are required even if you are on a 64-bit operating system.
 <ul>
     <li><a href="https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi">Python 2.7.15</a>: Versions prior to 2.7.15 may work with Wrye Bash, but have not been tested. Updating is recommended for bug and security fixes.
-    <li><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 Unicode for Python 2.7</a>: (do <strong>not</strong> get a newer version)
+    <li><a href="https://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/wxPython2.8-win32-unicode-2.8.12.1-py27.exe">wxPython 2.8.12.1 Unicode for Python 2.7</a>: (do <strong>not</strong> get a newer version)
     <li><a href="https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/pywin32-220.win32-py2.7.exe/download">PyWin32</a>: This component is required for Wizards to function. If you do not wish to use Wizards, then it need not be installed.
-    <li><a href="http://sourceforge.net/projects/comtypes/files/comtypes/0.6.2/comtypes-0.6.2.win32.exe/download">Comtypes 0.6.2</a>: This is an optional component, it is used to enable rendering of HTML via an ActiveX control.  The  following features are affected if comtypes is not installed:
+    <li><a href="https://sourceforge.net/projects/comtypes/files/comtypes/0.6.2/comtypes-0.6.2.win32.exe/download">Comtypes 0.6.2</a>: This is an optional component, it is used to enable rendering of HTML via an ActiveX control.  The  following features are affected if comtypes is not installed:
         <ul>
             <li>The DocBrowser will display raw text when displaying an HTML readme.
             <li>The ModChecker report will be text instead of HTML.
@@ -570,8 +570,8 @@ tab. The directories skipped are:
             timestamps on the Bethsoft BSAs are changed. However, disabling this setting is the only way to allow BAIN to install Vanilla
             ESPs, ESMs, and BSAs. For example, DLC plugins which have been cleaned with xEdit and packed into a BAIN. Preferred setting:
             enabled (that is, <em>skip</em> installation of bethsoft content).
-        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td>(Only for Oblivion) - Uses Quarn'ss
-            <a href="http://devnull.sweetdanger.com/archiveinvalidation/">BSA redirection technique</a> to avoid bugs with the engines
+        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td>(Only for Oblivion) - Uses Quarn's
+            <a href="https://web.archive.org/web/20190104233345/https://devnull.sweetdanger.com/archiveinvalidation.html">BSA redirection technique (offline)</a> to avoid bugs with the engines
             texture getting system. This is compatible with both OBMM and Quarn's original BSA redirection approaches.
         <tr><td colspan="2" id="bainCleanDataDirectory">Clean Data Directory<td>If this is checked, then any empty subfolders of the Data directory will be deleted. This reduces some clutter (especially after uninstalling packages). Removing unused data directories also improves game performance.
         <tr><td colspan="2" id="bainShowInactiveConflicts">Show Inactive Conflicts<td>If checked, then the conflicts report will show
@@ -1108,7 +1108,7 @@ tab. The directories skipped are:
             of this mod to the new master. Useful for splitting mods into esm/esp pairs.<br><br><strong>Warning:</strong> For advanced mod authors only.
             You should only use this if you know exactly what you're doing: adding a master through Bash does not update record FormIDs,
             so new content added by the mod will now seem added by the mod's new master (the "cedes ownership" part above) - resulting in
-            the mod marked as mergeable - info from Arthmoor and Lojack here: http://forums.bethsoft.com/topic/1536340-wrye-bash-thread-105/page-3#entry24345148
+            the mod marked as mergeable - info from Arthmoor and Lojack here: <a href="https://web.archive.org/web/20190307225455/https://forums.bethsoft.com/topic/1536340-wrye-bash-thread-105/page-3#entry24345148">Wrye Bash - Thread #105, post #80</a>
             see previous posts for the confusion that this might cause. As Lojack points out if you're doing that sort of low level adding of masters,
             you should be using xEdit.
         <tr><td colspan="2" id="modsCopyToEsm">Copy To Esm/Esp<td>Creates a .esp copy of a .esm or vice versa.
@@ -4682,7 +4682,7 @@ and masterlist relative priority and role see the LOOT docs.
     <li>Missing masters occur when a plugin that an active plugin depends on is not active. This results in an immediate CTD when the game is launched.
     <li>Delinquent masters occur when a plugin's master loads after the plugin itself. This should be fixed to prevent issues in-game.
 </ul>
-<p>The next section of the report details the output of any rulesets installed. These are text files that contain a set of instructions that tell the Mod Checker what to look for and what to say in the report if anything is found. Currently the only ruleset distributed by Wrye Bash is for Cobl. Rulesets are stored in <code>Data\Bash Patches</code> and end in <q>Rules.txt</q>. Information on ruleset syntax can be found at <a href="http://www.uesp.net/wiki/Tes4Mod:Wrye_Bash/Mod_Checker">UESP: Wrye Bash Mod Checker</a>.
+<p>The next section of the report details the output of any rulesets installed. These are text files that contain a set of instructions that tell the Mod Checker what to look for and what to say in the report if anything is found. Currently the only ruleset distributed by Wrye Bash is for Cobl. Rulesets are stored in <code>Data\Bash Patches</code> and end in <q>Rules.txt</q>. Information on ruleset syntax can be found at <a href="https://web.archive.org/web/20120428235951/http://www.uesp.net:80/wiki/Tes4Mod:Wrye_Bash/Mod_Checker">UESP: Wrye Bash Mod Checker</a>.
 <p>The rest of the report details any plugin groups that have been set up. Each group's section contains the following information:
 <ul>
     <li>Notes: These are various notes on the plugin group, as entered by the user.
