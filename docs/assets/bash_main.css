@@ -9,7 +9,7 @@ html.JS-on, .JS-on body {
 	overflow: hidden;
 }
 html {
-	color: #000000;
+	color: rgba(0, 0, 0, 1);
 	height: 100%;
 	margin: 0;
 }
@@ -30,11 +30,11 @@ abbr {
 	cursor: help;
 }
 a:link {
-	color: #0000EE;
+	color: rgba(0, 0, 238, 1);
 	text-decoration: none;
 }
 a:visited {
-	color: #551A8B;
+	color: rgba(85, 26, 139, 1);
 }
 a:hover {
 	text-decoration: underline;
@@ -76,7 +76,7 @@ body {
 	padding: 0;
 }
 #box {
-	background-color: #ffffcc;
+	background-color: rgba(255, 255, 204, 1);
 	-webkit-box-flex: 0;
 	-ms-flex: 0 1 auto;
 	        flex: 0 1 auto;
@@ -96,7 +96,7 @@ body {
 Header Control Formatting
 */
 h1, h2, h3 {
-	background: #9acd32;
+	background: rgba(154, 205, 50, 1);
 	margin: 0;
 	margin-left: -1.5rem;				/* -24px */
 	margin-right: -1.5rem;				/* -24px */
@@ -115,7 +115,7 @@ h2 {
 	font-size: 1.35rem;
 }
 h3 {
-	background: #CBE582;
+	background: rgba(203, 229, 130, 1);
 	font-size: 1rem;				/* 18px (16px + 2px tails) */
 	margin-top: 1.875rem;			/* 30px */
 	padding: 0.5rem;				/* 8px */
@@ -137,7 +137,7 @@ h3 {
 		flex: 0 0 57px;
 	font-size: 0.75rem;
 	margin: auto;
-	border-bottom: 1px solid #ffc;
+	border-bottom: 1px solid rgba(255, 255, 204, 1);
 }
 #header a {
 	display: block;
@@ -152,7 +152,7 @@ a#jstoggle {
     height: 0.75rem;
     margin: auto;
     right: 1.5rem;
-    top: 22px;
+	top: 22px;
 	/* Toggle off */
 	display: none;
 }
@@ -178,7 +178,7 @@ Footer Control Formatting
 	font-size: 0.75rem;
 	margin: auto;
 	font-weight: bold;
-	border-top: 1px solid #ffc;
+	border-top: 1px solid rgba(255, 255, 204, 1);
 }
 #footer a {
 	font-size: 0.75rem;
@@ -228,17 +228,17 @@ ol ol li {
 Table Formatting
 */
 table {
-	background: #fdfdfd;
+	background: rgba(253, 253, 253, 1);
 	border-collapse: collapse;
 	margin: 0.9rem;				/* 14.4px */
 }
 thead {
-	background: #8af;
+	background: rgba(136, 170, 255, 1);
 	font-weight: bold;
 }
 td, th {
-	border: 0.0625rem solid black;	  /* 1px */
-	padding: 0.3125rem;					/* 5px */
+	border: 0.0625rem solid rgba(0, 0, 0, 1);	  /* 1px */
+	padding: 0.3125rem;								/* 5px */
 	vertical-align: top;
 }
 
@@ -247,8 +247,8 @@ td, th {
 Code Box Formatting
 */
 code {
-	background: #ddd;
-	color: #000;
+	background: rgba(221, 221, 221, 1);
+	color: rgba(0, 0, 0, 1);
 	font-weight: bold;
 	display: inline-block;
 	padding: 0.125rem 0.3125rem;		/* 2px 5px */
@@ -265,7 +265,7 @@ td.thf {
 	text-align: center;
 }
 .tabttl {
-	background: #88aaff;
+	background: rgba(136, 170, 255, 1);
 }
 
 
@@ -465,7 +465,6 @@ Javascript-enabled Formatting
 	z-index: 5;
 }
 .JS-on #navmenu {
-	background-color: rgba(254, 205, 50, 0);
 	height: 100%;
 	left: -15.625rem;			/* 250px */
 	position: fixed;
@@ -514,8 +513,8 @@ Javascript-enabled Formatting
 }
 
 .JS-on #navtab {
-	background-color: rgba(154, 205, 50, 1);
-	border: 1px solid #ffffcc;
+	background-color: rgba(203, 229, 130, 1);
+	border: 1px solid rgba(255, 255, 204, 1);
 	border-left: 0;
 	border-radius: 0 3px 3px 0;
 	display: block;
@@ -535,7 +534,7 @@ Javascript-enabled Formatting
 }
 
 .JS-on .navcontbar {
-	border-right: 1px solid #ffffcc;
+	border-right: 1px solid rgba(255, 255, 204, 1);
 	height: 100%;
 	width: 249px;
 }
@@ -594,7 +593,7 @@ Javascript-enabled Formatting
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	vertical-align: sub;
-	background-color: #CBE582;
+	background-color: rgba(203, 229, 130, 1);
 	-webkit-transition: background-color 300ms linear;
 	transition: background-color 300ms linear;
 	clear: both;
@@ -602,7 +601,7 @@ Javascript-enabled Formatting
 }
 .JS-on .menu .list a {
 	text-decoration: none;
-	color: #000;
+	color: rgba(0, 0, 0, 1);
 	display: block;
 	height: 100%;
 	max-width: 100%;
@@ -610,13 +609,13 @@ Javascript-enabled Formatting
 	        box-sizing: border-box;
 }
 .JS-on .menu .list > a {
-	border-top: 1px solid #ffc;
+	border-top: 1px solid rgba(255, 255, 204, 1);
 	padding: 10px 0px 10px 15px;
 	font-size: 1rem;
 	font-weight: bold;
 }
 .JS-on .menu .list .items {
-	background-color: #ffc;
+	background-color: rgba(255, 255, 204, 1);
 	max-height: 0px;
 	overflow: hidden;
 	margin: 0;
@@ -636,12 +635,12 @@ Javascript-enabled Formatting
 	margin: 5px 0px;
 }
 .JS-on .contentsmenu2.menu .list:last-child {
-	border-bottom: 1px solid #ffc;
+	border-bottom: 1px solid rgba(255, 255, 204, 1);
 }
 .JS-on .menu .active > .items {
 	display: block;
 	max-height: 250px;
-	color: #000;
+	color: rgba(0, 0, 0, 1);
 	clear: both;
 	float: left;
 }
@@ -657,7 +656,7 @@ Javascript-enabled Formatting
 .JS-on .menu .active > .items .active > .items {
 }
 .JS-on .menu .active.list {
-	background-color: #a9c360;
+	background-color: rgba(169, 195, 96, 1);
 	-webkit-transition: background-color 300ms linear;
 	transition: background-color 300ms linear;
 }
@@ -667,12 +666,12 @@ Javascript-enabled Formatting
 Editing Utility Formatting
 */
 blockquote {
-	background: #e6e6fa;
+	background: rgba(230, 230, 250, 1);
 	display: table;
 	padding: 0.3125rem 1.875rem 0.3125rem 0.625rem;	/* 5px 30px 5px 10px */
 }
 .missing {
-	background: red;
-	color: white;
-	border: 0.25rem solid black;	/* 4px */
+	background: rgba(255, 0, 0, 1);
+	color: rgba(255, 255, 255, 1);
+	border: 0.25rem solid rgba(0, 0, 0, 1);	/* 4px */
 }

@@ -68,19 +68,19 @@ Extracted inlines from General Readme are listed below
   text-align: center;
 }
 .bain-symbols-blutxt {
-  color: #000080;
+  color: rgba(0, 0, 128, 1);
 }
 .bain-symbols-grytxt {
-  color: #BEBEBE;
+  color: rgba(190, 190, 190, 1);
 }
 .load-symbols-blutxt {
-  color: blue;
+  color: rgba(0, 0, 255, 1);
 }
 .load-symbols-grntxt {
-  color: green;
+  color: rgba(0, 128, 0, 1);
 }
 .load-symbols-prptxt {
-  color: purple;
+  color: rgba(128, 0, 128, 1);
 }
 .load-symbols-ittxt {
   font-style: italic;
@@ -91,29 +91,29 @@ Extracted inlines from General Readme are listed below
 
 /* Background Formatting */
 .bain-symbols-orgbg {
-  background: #FFBB33;
+  background: rgba(255, 187, 51, 1);
 }
 .bain-symbols-ylwbg {
-  background: yellow;
+  background: rgba(255, 255, 0, 1);
 }
 .bain-symbols-grybg {
-  background: #E0E0E0;
+  background: rgba(224, 224, 224, 1);
 }
 .load-symbols-pnkbg {
-  background: #FFDCDC;
+  background: rgba(255, 220, 220, 1);
 }
 .load-symbols-redkbg {
-  background: #FF6464;
+  background: rgba(255, 100, 100, 1);
 }
 .load-symbols-grybg {
-  background: #E8E8E8;
+  background: rgba(232, 232, 232, 1);
 }
 .ini-symbols-orgbg {
-  background-color: #FFD5AA
+  background-color: rgba(255, 213, 170, 1);
 }
 .ini-symbols-ylwbg {
-  background-color: #FFFFBF;
+  background-color: rgba(255, 255, 191, 1);
 }
 .ini-symbols-grnbg {
-  background-color: #C1FFC1;
+  background-color: rgba(193, 255, 193, 1);
 }
