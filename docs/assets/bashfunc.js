@@ -52,7 +52,6 @@ function wbDOMList() {
 	wbFade.addEventListener("click", wbNavClose);
 	wbNavCls.addEventListener("click", wbNavClose);
 	Object.keys(wbNavSubLst).forEach(function(i) {
-		// console.log(wbNavSubLst[i]);
 		wbNavSubLst[i].addEventListener("click", wbNavSubAcc);
 	})
 	wbNavTab.addEventListener("click", wbNavOpen);
@@ -74,7 +73,6 @@ function wbJSToggle() {
 //* Menu
 function wbNavOpen() {
 	wbNavMnu.style.left = "0";
-	// wbFade.style.display = "block";
 	wbFade.style.opacity = "1";
 	wbFade.style.visibility = "visible";
 	wbNavTab.removeEventListener("click", wbNavOpen);
@@ -82,22 +80,32 @@ function wbNavOpen() {
 }
 function wbNavClose() {
 	wbNavMnu.style.left = "-250px";
-	// wbFade.style.display = "none";
 	wbFade.style.opacity = "0";
 	wbFade.style.visibility = "hidden";
 	wbNavTab.removeEventListener("click", wbNavClose);
 	wbNavTab.addEventListener("click", wbNavOpen);
 }
 function wbNavSubAcc(sect) {
-  sect.stopPropagation();
-  if (sect.currentTarget.classList.contains("active")) { sect.currentTarget.classList.remove("active");
-  } else if (sect.currentTarget.parentElement.parentElement.classList.contains("active")) { sect.currentTarget.classList.add("active");
-  } else {
-    Object.keys(wbNavSubLst).forEach(function(i) { wbNavSubLst[i].classList.remove("active"); })
-    sect.currentTarget.classList.add("active");
-  }
+	sect.stopPropagation();
+/* Single Depth Menus */
+	if (!sect.currentTarget.classList.contains("active")) {
+		Object.keys(wbNavSubLst).forEach(function(i) { wbNavSubLst[i].classList.remove("active"); })
+		sect.currentTarget.classList.add("active");
+	}
+/* Original Menu Code */
+/* 
+	if (sect.currentTarget.classList.contains("active")) {
+		sect.currentTarget.classList.remove("active");
+	}
+	else if (sect.currentTarget.parentElement.parentElement.classList.contains("active")) {
+		sect.currentTarget.classList.add("active");
+	}
+	else {
+		Object.keys(wbNavSubLst).forEach(function(i) { wbNavSubLst[i].classList.remove("active"); })
+		sect.currentTarget.classList.add("active");
+	}
+*/
 }
-
 
 
 /*

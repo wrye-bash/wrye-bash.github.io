@@ -144,7 +144,7 @@ h3 {
 	font-size: 0.75rem;
 	font-weight: bold;
 }
-#jstoggle {
+a#jstoggle {
     position: absolute;
     text-align: right;
     z-index: 1;
@@ -153,6 +153,8 @@ h3 {
     margin: auto;
     right: 1.5rem;
     top: 22px;
+	/* Toggle off */
+	display: none;
 }
 
 
