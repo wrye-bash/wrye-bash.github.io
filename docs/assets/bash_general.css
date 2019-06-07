@@ -31,10 +31,10 @@ img.monkeygod {
 Main Overrides
 */
 .prlflex.tap figure {
-  max-width: 100%;
+  max-width: 99%;
 }
 .prlflex.tap img {
-  max-width: 100%;
+  max-width: 99%;
 }
 .prlflex.tap {
   justify-content: center;

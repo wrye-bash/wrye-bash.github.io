@@ -1,7 +1,5 @@
 code.box {
-  display: table;
-  line-height: 1.25rem;				/* 20px */
-  margin: 0.875rem 0 0 1.125rem;	/* 14px 18px */
-  padding: 0.3125rem 0.625rem;		/* 5px 10px */
-  white-space: pre;
+	display: table;
+	margin: 0.875rem 0 0 1.125rem;	/* 14px 18px */
+	padding: 0.3125rem 0.625rem;		/* 5px 10px */
 }

@@ -30,30 +30,39 @@ Extracted inlines from Advanced Readme are listed below
 /* Tables */
 .people-tables {
   min-width: 17.1875rem;			/* 30px */
+  margin-top: 1.875rem;				/* 30px */
+}
+#people-commands {
+	margin-right: -100%;
+	padding-left: 1.0625rem;		/* 17px */
+}
+#people-symbols {
+	padding-left: 13.5625rem;		/* 217px */
+	margin-left: -12.5rem;			/* -200px */
 }
 .tools-colors-table {
   max-width: 98%;
 }
 
 /* Consistency Formatting */
-.people-tables-bar {
-  background-color: rgb(203, 229, 130); 
-  height: 1.6em; 
-  margin-top: 1.7em;
-  padding: 4px 0.6em; 
-  position: absolute;
-  width: 110%;
-  z-index:-1;
-}
 .people-tabpad {
-  padding-left: 23px;
+  margin: 0;
+  margin-bottom: 1rem;				/* 16px */
 }
 .international-format-cdebox {
   width: 25rem;						/* 400px */
 }
+code.box {
+  display: table;
+  line-height: 1.25rem;				/* 20px */
+  margin: 0.875rem 0 0 1.125rem;	/* 14px 18px */
+  padding: 0.3125rem 0.625rem;		/* 5px 10px */
+  white-space: pre;
+}
 
 /* Text Formatting */
 .install-components {
+  color: rgba(223, 0, 0, 1);
   font-size: 1rem;					/* 16px */
   font-style: italic;
   font-weight: bold;
