@@ -5,10 +5,10 @@ ul li {
   vertical-align: middle;
 }
 ul li img {
-  margin-left: 0.4em;
-  margin-right: 0.4em;
-  max-height: 0.9em;
-  max-width: 0.9em;
+  margin-left: 0.375rem;			/* 6px */
+  margin-right: 0.375rem;			/* 6px */
+  max-height: 0.8125rem;			/* 13px */
+  max-width: 0.8125rem;				/* 13px */
   vertical-align: middle;
 }
 ul li span {
@@ -16,15 +16,15 @@ ul li span {
 }
 ul.nodot li {
   list-style: none;
-  margin-left: -20px;
+  margin-left: -1.25rem;			/* 20px */
 }
 img.bigcred {
-  max-height: 32px;
-  max-width: 32px;
+  max-height: 2rem;					/* 32px */
+  max-width: 2rem;					/* 32px */
 }
 img.monkeygod {
-  max-height: 64px;
-  max-width: 64px;
+  max-height: 4rem;					/* 64px */
+  max-width: 4rem;					/* 64px */
 }
 
 /*
@@ -45,13 +45,13 @@ Extracted inlines from General Readme are listed below
 */
 /* Figure Captions */
 .bain-overview-figcap {
-  padding-top: 635px;
+  padding-top: 39.6875rem;			/* 635px */
 }
 .patch-overview-figcap {
-  padding-top: 613px;
+  padding-top: 38.3125rem;			/* 613px */
 }
 .ini-overview-figcap {
-  padding-top: 635px;
+  padding-top: 39.6875rem;			/* 635px */
 }
 .launchers-figcap {
   padding-top: 80px;
@@ -59,8 +59,8 @@ Extracted inlines from General Readme are listed below
 
 /* Consistency Formatting */
 .patch-overview-txtbox {
-  margin-left: 1em;
-  margin-top: -1em;
+  margin-left: 1rem;				/* 16px */
+  margin-top: -0.875rem;			/* -14px */
 }
 
 /* Text Formatting */

@@ -79,7 +79,7 @@ function wbNavOpen() {
 	wbNavTab.addEventListener("click", wbNavClose);
 }
 function wbNavClose() {
-	wbNavMnu.style.left = "-250px";
+	wbNavMnu.style.left = "-15.625rem";		// 250px
 	wbFade.style.opacity = "0";
 	wbFade.style.visibility = "hidden";
 	wbNavTab.removeEventListener("click", wbNavClose);

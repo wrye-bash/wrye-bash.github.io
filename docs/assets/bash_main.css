@@ -133,11 +133,9 @@ h3 {
 	display: flex;
 	background-color: rgba(154, 205, 50, 1);
 	width: 100%;
-	-ms-flex: 0 0 57px;
-		flex: 0 0 57px;
-	font-size: 0.75rem;
+	flex: 0 0 3.5625rem;			/* 57px */
 	margin: auto;
-	border-bottom: 1px solid rgba(255, 255, 204, 1);
+	border-bottom: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
 }
 #header a {
 	display: block;
@@ -151,8 +149,7 @@ a#jstoggle {
     font-size: 0.75rem;
     height: 0.75rem;
     margin: auto;
-    right: 1.5rem;
-	top: 22px;
+	top: 1.375rem;					/* 22px */
 	/* Toggle off */
 	display: none;
 }
@@ -178,12 +175,12 @@ Footer Control Formatting
 	font-size: 0.75rem;
 	margin: auto;
 	font-weight: bold;
-	border-top: 1px solid rgba(255, 255, 204, 1);
+	border-top: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
 }
 #footer a {
 	font-size: 0.75rem;
 	font-weight: bold;
-	padding-top: 1px;
+	padding-top: 0.0625rem;			/* 1px */
 	text-decoration: none;
 }
 #footer #oldie {
@@ -192,8 +189,7 @@ Footer Control Formatting
     z-index: 1;
     font-size: 0.625rem;
 	margin: auto;
-	padding-top: 1px;
-    right: 1.5rem;
+	padding-top: 0.0625rem;			/* 1px */
 
 }
 .JS-on #footer #oldie {
@@ -315,7 +311,7 @@ Slideshow Formatting
 .contentsmenu1 {
 	float: left;
 	margin: 0;
-	margin-right: 4em;
+	margin-right: 3.625rem;		/* 58px */
 }
 .contentsmenu2 {
 	float: left;
@@ -515,9 +511,9 @@ Javascript-enabled Formatting
 
 .JS-on #navtab {
 	background-color: rgba(203, 229, 130, 1);
-	border: 1px solid rgba(255, 255, 204, 1);
+	border: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
 	border-left: 0;
-	border-radius: 0 3px 3px 0;
+	border-radius: 0 0 0.25rem 0;	/* 4px */
 	display: block;
 	font-weight: bold;
 	font-size: 1rem;
@@ -525,7 +521,7 @@ Javascript-enabled Formatting
 	margin: 0;
 	padding: 0.1875rem 0.125rem;
 	position: absolute;
-	left: 250px;
+	left: 15.625rem;				/* 250px */
 	text-align: center;
 	top: 3.125rem;
 	vertical-align: middle;
@@ -535,9 +531,9 @@ Javascript-enabled Formatting
 }
 
 .JS-on .navcontbar {
-	border-right: 1px solid rgba(255, 255, 204, 1);
+	border-right: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
 	height: 100%;
-	width: 249px;
+	width: 15.5625rem;			/* 249px */
 }
 .JS-on .navcontent {
 	background-color: rgba(203, 229, 130, 0.75);
@@ -581,13 +577,13 @@ Javascript-enabled Formatting
 .JS-on .menu {
 	padding: 0;
 	list-style: none;
-	width: 250px;
+	width: 15.625rem;			/* 250px */
 	max-width: 100%;
 	clear: both;
 	display: table;
 }
 .JS-on .menu .list {
-	font-size: 14px;
+	font-size: 0.875rem;		/* 14px */
 	border: 0;
 	position: relative;
 	width: 100%;
@@ -610,37 +606,36 @@ Javascript-enabled Formatting
 	        box-sizing: border-box;
 }
 .JS-on .menu .list > a {
-	border-top: 1px solid rgba(255, 255, 204, 1);
-	padding: 10px 0px 10px 15px;
-	font-size: 1rem;
+	border-top: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
+	padding: 0.625rem 0 0.625rem 0.9375rem;	/* 10px 0 10px 15px */
 	font-weight: bold;
 }
 .JS-on .menu .list .items {
 	background-color: rgba(255, 255, 204, 1);
-	max-height: 0px;
+	max-height: 0;
 	overflow: hidden;
 	margin: 0;
 	-webkit-transition: max-height 500ms ease-in-out;
 	transition: max-height 500ms ease-in-out;
-	padding-left: 20px;
-	padding-right: 10px;
-	width: calc(100% - 30px);
+	padding-left: 1.25rem;			/* 20px */
+	padding-right: 0.625rem;		/* 10px */
+	width: calc(100% - 1.875rem);	/* -30px */
 	max-width: 100%;
 }
 .JS-on .menu .list .items li {
 	list-style-type: "\27a4";
 	margin: 0;
-	padding-left: 5px;
+	padding-left: 0.3125rem;	/* 5px */
 }
 .JS-on .menu .list .items a {
-	margin: 5px 0px;
+	margin: 0.3125rem 0;		/* 5px */
 }
 .JS-on .contentsmenu2.menu .list:last-child {
-	border-bottom: 1px solid rgba(255, 255, 204, 1);
+	border-bottom: 0.0625rem solid rgba(255, 255, 204, 1);	/* 1px */
 }
 .JS-on .menu .active > .items {
 	display: block;
-	max-height: 250px;
+	max-height: 15.625rem;		/* 250px */
 	color: rgba(0, 0, 0, 1);
 	clear: both;
 	float: left;
@@ -648,11 +643,11 @@ Javascript-enabled Formatting
 .JS-on .menu .active > .items li {
 	list-style-type: "\27a4";
 	margin: 0;
-	padding-left: 5px;
+	padding-left: 0.3125rem;	/* 5px */
 }
 .JS-on .menu .active > .items li:last-child {
 	border-color: transparent;
-	padding-bottom: 0px;
+	padding-bottom: 0;
 }
 .JS-on .menu .active > .items .active > .items {
 }
