@@ -32,7 +32,7 @@ Extracted inlines from Advanced Readme are listed below
   min-width: 275px;
 }
 .tools-colors-table {
-  width: 98%;
+  max-width: 98%;
 }
 
 /* Consistency Formatting */

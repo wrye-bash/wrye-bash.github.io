@@ -80,9 +80,9 @@ body {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 1 auto;
 	        flex: 0 1 auto;
+	justify-content: right;
 	margin-left: 0;
-	padding-left: 1rem;
-	padding-right: 13px;
+	padding: 0 1rem;
 	position: relative;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -230,7 +230,7 @@ Table Formatting
 table {
 	background: rgba(253, 253, 253, 1);
 	border-collapse: collapse;
-	margin: 0.9rem;				/* 14.4px */
+	margin: 0.9rem 0;				/* 14.4px */
 }
 thead {
 	background: rgba(136, 170, 255, 1);
@@ -257,6 +257,9 @@ code.box {
 	display: block;
 	line-height: 1.25rem;				/* 20px */
 	white-space: pre;
+}
+table code.box {
+	display: block;
 }
 td > code.box {
 	margin: 0;
@@ -334,9 +337,7 @@ Flexbox Formatting
 	-webkit-box-direction: normal;
 	    -ms-flex-direction: row;
 	        flex-direction: row;
-	-webkit-box-pack: start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
+	justify-content: center;
 	margin: 0;
 }
 /* Ensuring <figure> scales to fit other content */
@@ -344,8 +345,7 @@ Flexbox Formatting
 	-webkit-box-flex: 0;
 	    -ms-flex: none;
 	        flex: none;
-	margin: 0;
-	max-width: 35vw;
+	margin: 0 1rem 0 0;
 	min-width: 12.5rem;		/* 200px */
 }
 /* Ensuring <img> scales to fit other content */
@@ -360,6 +360,7 @@ Flexbox Formatting
 /* Ensuring <table> spaces correctly */
 .prlflex table {
 	margin-top: 0;
+	margin-right: 0;
 }
 .prlflex.imgrst img {
 	min-width: 0;
