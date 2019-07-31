@@ -131,7 +131,7 @@ h2 .back2top, h3 .back2top {
 }
 #header {
   background-color: rgba(154, 205, 50, 1);
-  background-image: url("../../../Mopy/bash/images/bash_head.png");
+  background-image: url("../../bash/images/bash_head.png");
   background-position: 0.75rem 0.75rem;	/* 12px 12px */
   background-repeat: no-repeat;
   background-size: 1.875rem 2.0625rem;	/* 30px 33px */
@@ -146,7 +146,7 @@ h2 .back2top, h3 .back2top {
   z-index: 15;
 }
 #header a {
-  display: block;	
+  display: block;
   font-size: 0.75rem;				/* 12px */
   font-weight: bold;
 }
@@ -601,7 +601,7 @@ a#jstoggle {
   z-index: 1;
   right: 1.5rem;					/* 24px */
   top: 1.375rem;					/* 22px */
-  
+
   /** Toggle off **/
   display: none;
 }
@@ -632,7 +632,7 @@ blockquote {
   background: rgba(255, 0, 0, 1);
   border-color: rgba(0, 0, 0, 1);
   border-width: 0.25rem;			/* 4px */
-  border-style: solid;	 
+  border-style: solid;
   color: rgba(255, 255, 255, 1);
 
   /** Toggle off **/

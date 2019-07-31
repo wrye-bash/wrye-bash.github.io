@@ -1,0 +1,9 @@
+# OS files etc
+desktop.ini
+.dropbox
+.DS_Store
+
+# IDE files
+.idea/
+# if a symlink
+.idea
