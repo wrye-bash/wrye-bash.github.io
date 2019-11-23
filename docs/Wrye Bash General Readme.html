@@ -148,6 +148,7 @@
     <li><strong>ESP</strong> (case-insensitive) refers to any file with a <code>.esp</code> extension. It is an acronym for Elder Scrolls Plugin.</li>
     <li><strong>ESL</strong> (case-sensitive) refers to any file with a flag called the ESL flag set. Files with the extension <code>.esl</code> are treated as ESLs whether they have the flag or not. Only Fallout 4 and Skyrim&colon; Special Edition currently support these. Certain restrictions apply as to which plugins can be ESL-flagged. They do not take up a regular load order slot, theoretically allowing up to 4096 plugins to be loaded.</li>
     <li><strong>.esl</strong> (case-sensitive) refers to files with the extension <code>.esl</code>. These automatically receive the ESL and ESM flags. Only Fallout 4 and Skyrim&colon; Special Edition currently support them.</li>
+    <li><strong>ESU</strong> (case-insensitive) refers to any file with a <code>.esu</code> extension. These are an unofficial type of plugin used by xEdit. It is an acronym for Elder Scrolls Update.</li>
     <li><strong>Plugin</strong> refers to any of the above file types.</li>
     <li><strong>Master</strong> refers to any plugins that another plugin is dependent on to function. (It can also refer to an ESM file, as it used to be that only ESMs could be masters, until mod authors developed methods of using ESP files as masters too. The latter definition will not be used in this documentation.)</li>
     <li><strong>The game's master file</strong> refers to the ESM that must be loaded for the game to function. A short table showing the master file for each game follows:</li>
@@ -166,7 +167,7 @@
     <li><strong>Conflicts</strong> occur when two different mods try to change the same game variable or resource, which could be anything from a specific object in game to a script or a texture. Conflicts can cause problems, including CTDs or save game corruption, but they are not inherently bad, and most modding is the result of purposeful conflicts.</li>
     <li><strong>Resource Conflicts</strong> occur when two mods contain two different files that go in the same place, so one mod's file overwrites the others's file. This type of conflict can be managed by altering the install order of mods.</li>
     <li><strong>Data Conflicts</strong> occur when two mod plugins alter the same game data. This type of conflict can be managed by altering the load order of plugins or creating patches.</li>
-    <li><strong>BSAs</strong> are Bethesda Softwork Archives, with <code>.bsa</code> file extensions. They can be used to store resource files such as textures and meshes.</li>
+    <li><strong>BSAs</strong> are Bethesda Softwork Archives, with <code>.bsa</code> (<strong>All but Fallout 4</strong>) or <code>.ba2</code> (<strong>Fallout 4</strong>) file extensions. They can be used to store resource files such as textures and meshes.</li>
     <li><strong>ITMs</strong> are Identical To Master records, ie. data in a plugin for something that is identical to the data for that thing in the plugin's master(s). Usually a type of unintended edit, known as a <q>dirty edit</q>, which can break the functionality of other mods that require the record in question to have a specific value, but which have that value overridden by an ITM record.</li>
     <li><strong>UDRs</strong> are Undeleted and Disabled References. Deleted References can cause crashes, and this can be avoided by first undeleting and then disabling them instead. A type of <q>dirty edit</q>. Note that this acronym does not refer to the deleted references themselves - it actually refers to their fixed counterparts. For example, <q>Scan For UDRs</q> will scan for deleted references, not undeleted and disabled references, and BOSS/LOOT will report the UDR count for a plugin, which is actually the number of deleted references that can be fixed.</li>
 </ul>
@@ -214,6 +215,7 @@
 <ul>
     <li><code>[Game]\Mopy</code> - If you've edited any localisation files in the <code>l10n</code> folder that you want to keep, back them up.
     <li><code>[Game]\Data\Bash Patches</code> - If you've exported any CSV files that you want to keep, back them up.
+    <li><code>[Game]\Data\BashTags</code> - If you've manually created any tag files that you want to keep, back them up.</li>
     <li><code>[Game]\Data\Docs</code>
     <li><code>[Game]\Data\INI Tweaks</code>
     <li><code>Documents\My Games\[Game]</code> - Only delete the <code>BashProfiles.dat</code>, <code>BashProfiles.dat.bak</code>, <code>BashSettings.dat</code>, <code>BashSettings.dat.bak</code>, <code>Messages.dat</code>, <code>Messages.dat.bak</code>, <code>People.dat</code> and <code>People.dat.bak</code> files and the <code>Saves\Bash</code> folder.
@@ -263,33 +265,35 @@ be restructured.</p>
 <h3 id="bain-structure">BAIN-Compatible installer layout <a class="back2top" href="#contents">Back to top</a></h3>
 
 <p>When scanning an installer (package or project) BAIN follows some rules to decide what's in there and if it can be installed. BAIN
- will search for specific directories and file extensions (espml, bsa/ba2, ini). The directories BAIN is aware of, independently of the game,
-are:
-
+    will search for specific directories and file extensions (bsa/ba2, ini, all plugin extensions). All directory detection is <em>case insensitive</em>.
+    Directories BAIN is aware of, independently of the game, are:</p>
 <table>
-    <thead><tr><th>Bash directories<th>Notes
+    <thead><tr><th>Wrye Bash Directory</th><th>Notes</th></tr></thead>
     <tbody>
-        <tr><td>bash patches<td>Bash will install files in this folder from packages, usually in the form of .csv files
-        <tr><td>docs<td>Its contents will be copied inside Data/Docs
-        <tr><td>ini tweaks<td>ini tweaks inside this will be installed in Data/Ini Tweaks/ and appear on the INI Tab - do <strong>not</strong> include subfolders in ini tweaks/
-        <tr><td>screenshots<td>its contents will be copied inside Data/Docs
-        <tr class="tabttl"><th colspan="2">Vanilla game directories present on all games
+        <tr><td>bashtags</td><td>Its contents will be copied inside <code>Data/BashTags</code>.</td></tr>
+        <tr><td>bash patches</td><td>BAIN will install files in this folder from packages, usually in the form of <code>.csv</code> files.</td></tr>
+        <tr><td>docs</td><td>Its contents will be copied inside <code>Data/Docs</code>.</td></tr>
+        <tr><td>ini tweaks</td><td>INI tweaks inside this will be installed in <code>Data/Ini Tweaks/</code> and appear on the INI Tab - do <strong>not</strong> include subfolders in <code>ini tweaks</code>.</td></tr>
+        <tr><td>screenshots</td><td>Its contents will be copied inside <code>Data/Docs</code>.</td></tr>
+        <tr class="tabttl"><th colspan="2">Game Directories Supported For All Games</th>
     <tbody>
-        <tr><td colspan="2"><div class="bain-structure-txtcnt">meshes, music, sound, textures, video</div>
+        <tr><td colspan="2"><div class="bain-structure-txtcnt">ini, meshes, music, sound, textures, video</div></td></tr>
+    </tbody>
 </table>
 
-but there are game specific directories as well (all directory detection is <em>case insensitive</em>):
+<p>There are also game-specific directories:</p>
 
 <table>
-    <thead><tr><th>Game<th>Extra Game Directories<th>Bonus Directories (tools or modders)
+    <thead><tr><th>Game</th><th>Extra Game Directories</th></tr></thead>
     <tbody>
-        <tr><td>Oblivion<td>distantlod, facegen, fonts, menus, shaders, trees<td>_tejon, ini, obse, pluggy, scripts, streamline
-        <tr><td>Fallout 3<td>facegen, lodsettings, menus, shaders<td>ini, fose, scripts
-        <tr><td>Fallout&colon; New Vegas<td>facegen, lodsettings, menus, shaders<td>ini, nvse, scripts
-        <tr><td>Skyrim<td>dialogueviews, grass, interface, lodsettings, scripts, seq, shadersfx, strings<td>asi, calientetools (BodySlide), ini, skse, skyproc patchers, tools (Bodyslide, FNIS), dyndolod
-        <tr><td>Enderal&colon; Forgotten Stories</td><td>dialogueviews, grass, interface, lodsettings, scripts, seq, shadersfx, strings</td><td>asi, calientetools (BodySlide), ini, skse, skyproc patchers, tools (Bodyslide, FNIS), dyndolod</td></tr>
-        <tr><td>Fallout 4<td>interface, lodsettings, materials, misc, programs, scripts, seq, shadersfx, strings, vis<td>f4se, ini, mcm (Fallout 4 MCM), tools (BodySlide, FNIS)
-        <tr><td>Skyrim&colon; Special Edition<td>dialogueviews, grass, interface, lodsettings, scripts, seq, shadersfx, strings<td>asi, calientetools (BodySlide), ini, skse, skyproc patchers, tools (BodySlide, FNIS), dyndolod
+        <tr><td>Oblivion</td><td>_tejon, distantlod, facegen, fonts, menus, obse, pluggy, scripts, shaders, streamline, trees</td></tr>
+        <tr><td>Fallout 3</td><td>config, distantlod, facegen, fonts, fose, menus, uio, scripts, shaders, trees</td></tr>
+        <tr><td>Fallout&colon; New Vegas</td><td>config, distantlod, facegen, fonts, menus, nvse, uio, scripts, shaders, trees</td></tr>
+        <tr><td>Skyrim</td><td>asi, calientetools, dialogueviews, dyndolod, grass, interface, lodsettings, scripts, seq, shadersfx, skse, skyproc patchers, strings, tools</td></tr>
+        <tr><td>Enderal&colon; Forgotten Stories</td><td>asi, calientetools, dialogueviews, dyndolod, grass, interface, lodsettings, scripts, seq, shadersfx, skse, skyproc patchers, strings, tools</td></tr>
+        <tr><td>Fallout 4</td><td>f4se, interface, lodsettings, materials, mcm, misc, programs, scripts, seq, shadersfx, strings, tools, vis</td></tr>
+        <tr><td>Skyrim&colon; Special Edition</td><td>asi, calientetools, dialogueviews, dyndolod, grass, interface, lodsettings, scripts, seq, shadersfx, skse, skyproc patchers, strings, tools</td></tr>
+    </tbody>
 </table>
 
 All these directories (either in the Global or Extra and Bonus Game directories) constitute the <strong>standard game directories</strong> for this game. If
@@ -498,9 +502,9 @@ from other packages previously overridden by the uninstalled package's
         order!</strong> Install order determines which package's files overwrite other packages files when they conflict.
 <p>Although in general "Load Order" stands for the load order of the <em>active</em> plugins, all installed plugins have a load order assigned
     to them. In Oblivion, Fallout 3 and Fallout&colon; New Vegas this is based on the modification time of the plugin,
-    in Skyrim and Enderal&colon; Forgotten Stories it is based to a text-file based standard the community agreed on,
-    while Fallout 4 and all later games dump all installed plugins in its plugins.txt, marking active ones with an asterisk.
-    Bash needs plugin load order even for inactive plugins to correctly merge inactive mods in the Bashed Patch, for instance.
+    in Skyrim and Enderal&colon; Forgotten Stories it is based on a text-file based standard the community agreed on,
+    while Fallout 4 and all later games dump all installed plugins in its plugins.txt, marking active ones with an asterisk (<code>*</code>).
+    Bash needs plugin load order even for inactive plugins to correctly merge inactive mods in the Bashed Patch, for instance.</p>
 <p>Plugins may be activated by clicking their checkbox so that it is ticked, or by selecting a plugin or group of plugins and pressing the
     space bar on your keyboard. Plugins may be deactivated by again clicking their checkbox or pressing the spacebar. If a group of selected
     plugins contains a mix of active and inactive plugins, pressing the space bar once will activate them all, thereafter it will function as normal.
@@ -508,6 +512,8 @@ from other packages previously overridden by the uninstalled package's
 <p>When setting the load order, make sure that Wrye Bash is displaying your plugins sorted by Load Order. Do so by clicking on the <q>Load Order</q> column header near the top of the tab. You can also display the plugins sorted by other attributes by clicking on any of the other column headers. Clicking twice will reverse the display order for any column but Load Order. The load order of plugins is given in hexadecimal digits, from 00 to FE, which is 0 to 254 in decimal. (This number also forms the first two digits of a record's Form ID.)
 <p>Note that you can only have a maximum of 255 plugins active at any one time, including your game's master file.
     Wrye Bash displays a plugin count in its status bar, to the right hand side, in the format <code>Mods: [active]/[installed]</code>.
+<p>Generally speaking, if you end up with an invalid load order of some kind, Wrye Bash will automatically fix it upon booting or refreshing,
+    but a backup copy (with the <code>.bak</code> extension) will be made before doing so.</p>
 <p>With the advent of <strong>ESL files</strong>, the load order system was modified.
 The following list contains the most important facts you need to know about how Wrye Bash handles ESL files:</p>
 <ol>
@@ -557,7 +563,9 @@ Just like the game's masters, this load order is hardcoded, and so it cannot be 
     relatively new feature (available in 307 beta) so it may have rough edges.</p>
 
 <h3 id="load-symbols">What Symbols &amp; Colours Mean <a class="back2top" href="#contents">Back to top</a></h3>
-<p>Like in the Installers tab, Wrye Bash uses colour-coding and other formatting effects to convey information about the state of plugins. The different types of formatting used and their meanings are explained here.
+<p>Like in the Installers tab, Wrye Bash uses colour-coding and other formatting effects to convey information about the state of plugins.
+    The different types of formatting used and their meanings are explained here.
+    Many of these can be changed in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-colors">Color Configuration</a> menu.</p>
 <table>
     <thead><tr><th>Checkbox Type<th>Meaning
     <tbody>
@@ -569,22 +577,28 @@ Just like the game's masters, this load order is hardcoded, and so it cannot be 
 <table>
     <thead><tr><th>Checkbox Colours<th>Meaning
     <tbody>
-        <tr><td><img alt="Blue" src="../bash/images/checkbox_blue_on.png" width="16" height="16"/><td>The plugin's masters are all in exactly the same order as is specified in the plugin.
-        <tr><td><img alt="Green" src="../bash/images/checkbox_green_on.png" width="16" height="16"/><td>The plugin's masters are in the same order as is specified in the plugin, but their precise positions are different (ie. there are other mods between them). This is not an issue, and can be considered to be just as good as having a blue checkbox.
-        <tr><td><img alt="Orange" src="../bash/images/checkbox_orange_on.png" width="16" height="16"/><td>Some of the plugin's masters are in a different order than what is specified in the plugin. This will generally be handled automatically by the game, but it may result in changes in-game.
-        <tr><td><img alt="Red" src="../bash/images/checkbox_red_on.png" width="16" height="16"/><td>One or more of the plugin's masters is missing. This will generally cause the game to crash on startup, and must be corrected.
+<tr><td><img alt="Blue" src="../bash/images/checkbox_blue_on.png" width="16" height="16"/></td><td>The plugin's masters are all in exactly the same order as is specified in the plugin.</td></tr>
+        <tr><td><img alt="Green" src="../bash/images/checkbox_green_on.png" width="16" height="16"/></td><td>The plugin's masters are in the same order as is specified in the plugin, but their precise positions are different (ie. there are other mods between them). This is not an issue, and can be considered to be just as good as having a blue checkbox.
+        <tr><td><img alt="Yellow" src="../bash/images/checkbox_yellow_on.png" width="16" height="16"></td><td>Some of the plugin's masters are in a different order than what is specified in the plugin. This will be handled automatically by the game, but may hint at an incorrect load order on either your or the mod author's end.</td></tr>
+        <tr><td><img alt="Orange" src="../bash/images/checkbox_orange_on.png" width="16" height="16"/></td><td>This plugin loads before one or more of its masters. This will either cause the game to crash or cause mods to load in unexpected ways and must be corrected.</td>
+        <tr><td><img alt="Red" src="../bash/images/checkbox_red_on.png" width="16" height="16"/></td><td>One or more of the plugin's masters is missing. This will generally cause the game to crash on startup, and must be corrected.</td>
 </table>
 <table>
-    <thead><tr><th>Text Formatting<th>Meaning
+    <thead><tr><th>Text Formatting</th><th>Meaning</th></tr></thead>
     <tbody>
-        <tr><td class="load-symbols-blutxt">Blue text<td>A .esm plugin.
-        <tr><td class="load-symbols-grntxt">Green text<td>A mergeable plugin.
-        <tr><td class="load-symbols-prptxt">Purple text<td>A plugin that should not be merged (ie. tagged with NoMerge).
-        <tr><td class="load-symbols-pnkbg">Pink background<td><em>Oblivion only.</em> A plugin that shares its modification date with another plugin. Not a problem unless both plugins are active.
-        <tr><td class="load-symbols-redkbg">Red background<td>An active plugin that should remain deactivated (ie. tagged with Deactivate) or, for Oblivion only, an active plugin that shares its modification date with another active plugin. This must be corrected so that they have different modification dates or else it may break your load order.
-        <tr><td class="load-symbols-grybg">Grey background<td>A <a href="#modsAutoGhost">ghosted</a> plugin.
-        <tr><td class="load-symbols-ittxt">Slanted text<td>A plugin that is recommended to be imported and deactivated (ie. tagged with Deactivate).
-        <tr><td class="load-symbols-ultxt">Underlined text<td>A plugin identified as having dirty edits (Identical to Master, Deleted References, or otherwise necessary cleaning).
+        <tr><td class="load-symbols-blutxt">Blue Text</td><td>A master - refer to ESM documentation at the start of this document for more information.</td></tr>
+        <tr><td class="load-symbols-grntxt">Green Text</td><td>A mergeable plugin <em>(for games without ESL support)</em> or one that can be ESL-flagged <em>(for games with ESL support)</em>.</td></tr>
+        <tr><td class="load-symbols-pnktxt">Pink Text</td><td>An ESL-flagged plugin. <em>Only shown for games with ESL support.</em></td></tr>
+        <tr><td class="load-symbols-prptxt">Purple Text</td><td>An ESL-flagged plugin that is also a master. The color is a combination of the blue one for masters and the pink one for ESLs.</td></tr>
+        <tr><td class="load-symbols-ylwtxt">Yellow Text</td><td>A plugin that should not be merged (ie. tagged with <code>NoMerge</code> - <em>only shown in games without ESL support</em>).</td></tr>
+        <tr><td class="load-symbols-pnkbg">Pink Background</td><td><em>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</em> A plugin that shares its modification date with another plugin.
+            Not a problem unless both plugins are active.</td></tr>
+        <tr><td class="load-symbols-redkbg">Red Background</td><td>An active plugin that should remain deactivated (ie. tagged with <code>Deactivate</code>) or, <em>for Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</em>,
+            an active plugin that shares its modification date with another active plugin. This must be corrected so that they have different modification dates or else it may break your load order.</td></tr>
+        <tr><td class="load-symbols-grybg">Grey Background</td><td>A <a href="#modsAutoGhost">ghosted</a> plugin.</td></tr>
+        <tr><td class="load-symbols-ittxt">Slanted Text</td><td>A plugin that is recommended to be imported and deactivated (ie. tagged with Deactivate).</td></tr>
+        <tr><td class="load-symbols-ultxt">Underlined Text</td><td>A plugin identified as having dirty edits (Identical to Master, Deleted References, or otherwise necessary cleaning).</td></tr>
+    </tbody>
 </table>
 
 <h3 id="load-commands">Useful Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
@@ -690,7 +704,7 @@ Just like the game's masters, this load order is hardcoded, and so it cannot be 
         <tr><td id="patchImportInventory">Import Inventory<td><em>All but Fallout 4.</em> Merges the changes made to the items in an actor's inventory by all the mods selected.<td>Always, unless you are told otherwise by a mod's readme.
         <tr><td id="patchImportNPCFaces">Import NPC Faces<td><em>Oblivion only.</em> Preserves the changes made to NPC faces by the mods selected.<td>The decision is entirely based on user preference. Choose whichever mods' NPC faces you prefer.
         <tr><td id="patchImportNames">Import Names<td><em>All but Fallout 4.</em> Preserves the changes made to various names throughout the game by the mods selected.<td>The decision is entirely based on user preference. Choose whichever mods' names you prefer.
-        <tr><td id="patchImportRelations">Import Relations<td><em>Oblivion, Fallout 3 and Fallout&colon; New Vegas only.</em> Preserves the changes made by the mods selected to how factions interact.<td>Always, unless you are told otherwise by a mod's readme.
+        <tr><td id="patchImportRelations">Import Relations<td><em>Oblivion only.</em> Preserves the changes made by the mods selected to how factions interact.<td>Always, unless you are told otherwise by a mod's readme.
         <tr><td>Import Roads<td><em>Oblivion only.</em> Preserves the changes made by the mods selected to the landscape's roads.<td>Always, unless you are told otherwise by a mod's readme.
         <tr><td>Import Scripts<td><em>Oblivion only.</em> Preserves the changes made by the mods selected to the scripts attached to things in the game.<td>Always, unless you are told otherwise by a mod's readme.
         <tr><td id="patchImportSounds">Import Sounds<td><em>All but Fallout 4.</em> Preserves the changes made by the mods selected to various sounds in the game.<td>The decision is entirely based on user preference. Choose whichever mods' sounds you prefer.
@@ -1159,6 +1173,7 @@ Just like the game's masters, this load order is hardcoded, and so it cannot be 
     <tbody>
         <tr><td>[Game]\Mopy								<td>Main Bash files. If you're working on any localisation files in <code>Mopy\l10n</code> you may want to back them up.
         <tr><td>[Game]\Data\Bash Patches					<td>Contains CSV files used by the import/export functions. Back up any CSV files you've exported and want to keep.
+        <tr><td>[Game]\Data\BashTags					<td>Contains text files with Bash Tag overrides. Only needs backing up if you added any custom files (i.e. ones not installed through BAIN).</td></tr>
         <tr><td>[Game]\Data\Docs							<td>Contains mod readmes. Doesn't need backing up.
         <tr><td>[Game]\Data\INI Tweaks					<td>Contains ini tweaks. Only needs backing up if you've added custom ini tweaks.
         <tr><td>Documents\My Games\[Game]					<td>Contains Wrye Bash settings. It is important to back this up.

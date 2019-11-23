@@ -852,7 +852,7 @@ tab. The directories skipped are:
             the buggy patch behaves correctly.
         <tr><td>Author<td>Who made the selected plugin.
         <tr><td>Description<td>Commonly used for a short description of what the selected plugin does, plus the version number and any Bash Tags the author sets.
-        <tr><td>Masters List<td>The Masters list show the plugins (.esm or .esp) that the currently selected plugin depends on, the load order
+        <tr><td>Masters List<td>The Masters list shows the plugins that the currently selected plugin depends on, the load order
         (Mod Index) of that master in the plugin file, and the current load order of the master plugin if present and active.<br /><br />
         Plugins' entries in the Masters List may be renamed to reflect name changes of the plugins themselves. To rename a master, first allow editing from the
         masters list column context menu and then either left-click the plugin entry and edit it in the column display, or right-click the
@@ -933,9 +933,9 @@ tab. The directories skipped are:
             <tr><th colspan="2">Command<th>Description
         </thead>
         <tbody>
-            <tr><td rowspan="6">Active Mods<td id="modsLoadAll">Activate All<td>Activates all the plugins in the mod list. If more than 255 mods are
+            <tr><td rowspan="6">Load Order</td><td id="modsLoadAll">Activate All</td><td>Activates all the plugins in the mod list. If more than 255 mods are
                 present Bash will activate all it can from the bashed patches, then non mergeable and then mergeable mods then will display an
-                error message. Bash will try to activate mods in their load order.
+                error message. Bash will try to activate mods in their load order.</td></tr>
             <tr><td>De-activate All<td>Deactivates all the plugins in the mod list. Some plugins will not be deactivated (for instance Fallout 4
             DLCs) as the game force loads them when present.
             <tr><td>Activate Selected<td>Activate only the mods selected in the mod list interface - warning: their masters won't be activated !
@@ -980,37 +980,52 @@ tab. The directories skipped are:
     </figure>
     <table>
         <thead>
-            <tr><th colspan="3">Plugin Context Menu
-            <tr><th colspan="2">Command<th>Description
+            <tr><th colspan="3">Plugin Context Menu</th></tr>
+            <tr><th colspan="2">Command<th>Description</th></tr>
         </thead>
         <tbody>
-            <tr><td rowspan="11">File<td id="modsCreateDummyMasters">Create Dummy Masters...<td>Creates an empty plugin for each missing master a mod has.  This is useful for allowing TES4Edit to open a 'Filter' patch without having all of the required masters. These dummy plugins can later be removed using the <a href="#modsRemoveDummyMasters">Remove Dummy Masters</a> command.
-            <tr><td id="modsBackup">Backup<td>Creates a backup of the selected plugin in <code>[Game] Mods\Bash Mod Data\Backups</code>. On first run, the backed-up plugin has <code>f</code> appended to its file extension, giving <code>.espf</code> or <code>.esmf</code>.
-            <tr><td id="modsDuplicate">Duplicate...<td>Creates a duplicate of the selected plugin in the Data folder.
-            <tr><td id="modsSnapshot">Snapshot...<td>Creates a snapshot copy of the selected plugin in <code>Bash\Snapshots</code>. Snapshot filenames are appended with <code>-n</code> where n is a number between 01 and 99. Eg. the first snapshot of <code>Plugin.esp</code> is <code>Plugin-01.esp</code>. The number is incremented each time the plugin has a snapshot taken. Additionally, if there is a version line in the plugin's description field, then the snapshot number will be appended to the version number in the same manner.
-            <tr><td>Delete<td><strong>Permanently</strong> deletes the selected plugin, and any backups of it, but not snapshots.
-            <tr><td>Hide<td>Moves the selected plugin to the <code>[Game] Mods/Bash Mod Data/Hidden</code> subdirectory. If the plugin's author
-                is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there. If not and the
-                plugin's group is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there
-                instead. Otherwise it will be placed inside Bash Mod Data/Hidden.
-            <tr><td>Redate...<td>Change the modification time of the selected plugin. If more than one plugin is selected, then all the plugins will have their modification times altered, with the first in the list being set to the specified time and the rest at one minute intervals from that time.
-            <tr><td>Sort<td>Set the load order of the selected plugins starting at the lowest ordered mod, sorting them alphabetically.
-            <tr><td>Revert To Backup<td>Reverts the selected plugin to the last backup made of it.
-            <tr><td>Revert To First Backup<td>Reverts the selected plugin to the first backup made of it.
-            <tr><td>Revert To Snapshot...<td>Reverts the selected plugin to a selected snapshot.
-            <tr><td rowspan="9">Groups<td>Export Group<td>Exports the selected plugin's groups to a CSV file as plugin name/groups pairs.
-                <tr><td>Import Group<td>This will set the groups for selected mods as specified in a csv file (as created by the Export Groups command). If selected mods are not assigned a group in the file nothing happens.
-                <tr><td rowspan="6">Edit Groups...<td>Add: add a new group to existing groups. Group names can be in Unicode.
-                <tr><td>Rename: rename selected group. Mods that belong to it will have the group renamed.
-                <tr><td>Remove: delete selected group. Deleting a group removes it from mods that belong to it.
-                <tr><td>Refresh: pick up assigned groups and add them to the existing ones. Use it after importing groups from a file to update available groups.
-                <tr><td>Sync: sync the list of available groups to the assigned ones - in other words delete unassigned groups.
-                <tr><td>Default: reset the list of available groups to the default ones. This won't delete non default assigned groups. It's a feature. Use Refresh to pick up your groups and add them to the defaults.
-                <tr><td>Groups Menu<td>Set a group for the selected plugin(s). Groups that are assigned to the selected plugins appear checked.
-                They provide no automatic functionality, other than to place hidden plugins in group folders provided those folders already
-                exist. Use them to group plugins together so you can disable or enable them at once, etc. Note to old timers:
-                <abbr title="Bash Auto Load Ordering">BALO</abbr> has been removed taking balo groups for the ride - those of you who remember
-                them, shed a tear goodbye.
+            <tr><td rowspan="11">File</td>
+                <td id="modsCreateDummyMasters">Create Dummy Masters...</td><td>Creates an empty plugin for each missing master a mod has.
+                    This is useful for allowing TES4Edit to open a 'Filter' patch without having all of the required masters. These dummy
+                plugins can later be removed using the <a href="#modsRemoveDummyMasters">Remove Dummy Masters</a> command.</td></tr>
+                <tr><td id="modsBackup">Backup</td><td>Creates a backup of the selected plugin in <code>[Game] Mods\Bash Mod Data\Backups</code>.
+                    On first run, the backed-up plugin has <code>f</code> appended to its file extension, giving e.g. <code>.espf</code>.</td></tr>
+                <tr><td id="modsDuplicate">Duplicate...</td><td>Creates a duplicate of the selected plugin in the Data folder.</td></tr>
+                <tr><td id="modsSnapshot">Snapshot...</td><td>Creates a snapshot copy of the selected plugin in <code>Bash\Snapshots</code>.
+                    Snapshot filenames are appended with <code>-n</code> where n is a number between 01 and 99. Eg. the first snapshot of
+                    <code>Plugin.esp</code> is <code>Plugin-01.esp</code>. The number is incremented each time the plugin has a snapshot
+                    taken. Additionally, if there is a version line in the plugin's description field, then the snapshot number will be
+                    appended to the version number in the same manner.</td></tr>
+                <tr><td>Delete</td><td><strong>Permanently</strong> deletes the selected plugin, and any backups of it, but not snapshots.</td></tr>
+                <tr><td>Hide</td><td>Moves the selected plugin to the <code>[Game] Mods/Bash Mod Data/Hidden</code> subdirectory. If the plugin's author
+                    is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there. If not and the
+                    plugin's group is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there
+                    instead. Otherwise it will be placed inside Bash Mod Data/Hidden.</td></tr>
+                <tr><td>Redate...</td><td>Change the modification time of the selected plugin. If more than one plugin is selected, then all the plugins will
+                    have their modification times altered, with the first in the list being set to the specified time and the rest at one minute intervals
+                    from that time.</td></tr>
+                <tr><td>Sort</td><td>Set the load order of the selected plugins starting at the lowest ordered mod, sorting them alphabetically.</td></tr>
+                <tr><td>Revert To Backup</td><td>Reverts the selected plugin to the last backup made of it.</td></tr>
+                <tr><td>Revert To First Backup</td><td>Reverts the selected plugin to the first backup made of it.</td></tr>
+                <tr><td>Revert To Snapshot...</td><td>Reverts the selected plugin to a selected snapshot.</td></tr>
+            <tr><td rowspan="9">Groups</td>
+                <td>Export Group</td><td>Exports the selected plugin's groups to a CSV file as plugin name/groups pairs.</td></tr>
+                <tr><td>Import Group</td><td>This will set the groups for selected mods as specified in a csv file (as created by the Export Groups command).
+                    If selected mods are not assigned a group in the file nothing happens.</td></tr>
+                <tr><td rowspan="6">Edit Groups...</td>
+                    <td>Add: add a new group to existing groups. Group names can be in Unicode.</td></tr>
+                    <tr><td>Rename: rename selected group. Mods that belong to it will have the group renamed.</td></tr>
+                    <tr><td>Remove: delete selected group. Deleting a group removes it from mods that belong to it.</td></tr>
+                    <tr><td>Refresh: pick up assigned groups and add them to the existing ones. Use it after importing groups from a file to update available
+                        groups.</td></tr>
+                    <tr><td>Sync: sync the list of available groups to the assigned ones - in other words delete unassigned groups.</td></tr>
+                    <tr><td>Default: reset the list of available groups to the default ones. This won't delete non default assigned groups. It's a feature.
+                        Use Refresh to pick up your groups and add them to the defaults.</td></tr>
+                <tr><td>Groups Menu</td><td>Set a group for the selected plugin(s). Groups that are assigned to the selected plugins appear checked.
+                    They provide no automatic functionality, other than to place hidden plugins in group folders provided those folders already
+                    exist. Use them to group plugins together so you can disable or enable them at once, etc. Note to old timers:
+                    <abbr title="Bash Auto Load Ordering">BALO</abbr> has been removed taking BALO groups for the ride - those of you who remember
+                    them, shed a tear goodbye.</td></tr>
             <tr><td colspan="2">Rating<td>A purely cosmetic feature, this allows you to assign different rating values to plugins.
             <tr><td colspan="2">Details...<td>Displays a list of the records in the selected plugin, similar to the Details view in the Construction Set.
             <tr><td colspan="2">List Masters...<td>Outputs a list of the selected plugin's masters.
@@ -1023,16 +1038,25 @@ tab. The directories skipped are:
                 <code>++</code>, <code>**</code> and <code>__</code> respectively.
             <tr><td colspan="2">Jump to installer<td>Jump to the installer of the selected mod, if the Installers tab is displayed and enabled and the
                 plugin has an installer. You can Alt click on the mod to the same effect.
-            <tr><td colspan="2" id="modsDontGhost">Disallow Ghosting<td>Displayed if a single plugin is selected. Don't ghost this plugin when it is inactive, even if Auto-Ghost is enabled. Will unghost a ghosted plugin if enabled.
-            <tr><td colspan="2">Ghost/Unghost<td>Displayed if a single plugin is selected. Manually ghost/unghost this plugin (active ones can't
+            <tr><td colspan="2" id="modsDontGhost">Disallow Ghosting</td><td>Don't ghost the selected plugins when they are inactive, even if Auto-Ghost
+                is enabled. Will unghost the selected plugins if enabled.</td></tr>
+            <tr><td colspan="2">Ghost/Unghost</td><td>Manually ghost/unghost selected plugins (active ones can't
                 be ghosted). Ghosting a plugin will clear its Disallow Ghosting flag (if set). This will survive autoGhost till next restart. If
                 you want your changes to persist, mark the plugin as <a href="#modsDontGhost">disallow ghosting</a>.
-            <tr><td colspan="2">Ghost<td>Displayed if multiple plugins are selected. Ghost selected plugins (no effect on active ones). Unghost all at once is on the todo list, if you wondered.
-            <tr><td rowspan="3">Ghosting<td>Allow Ghosting<td>Displayed if multiple plugins are selected. Unchecks <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.
-            <tr><td>Disallow Ghosting<td>Displayed if multiple plugins are selected. Checks <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.
-            <tr><td>Invert Ghosting<td>Displayed if multiple plugins are selected. Toggles the status of <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.
-            <tr><td colspan="2" id="modsMarkMergeable">Mark Mergeable...<td>Scans the selected plugin(s) to determine if they are mergeable or not. Wrye Bash does this automatically, but this command reports why mods are unmergeable.
-            <tr><td colspan="2">Mark Mergeable (CBash)...<td><em>Oblivion only.</em> Does the same thing as <a href="#modsMarkMergeable">Mark Mergeable...</a>, but uses CBash to scan the plugins. A Bashed Patch built using CBash can merge more plugins, so the results between the two Mark Mergeable commands will differ.
+                Note that you currently can't unghost multiple plugins.</td></tr>
+            <tr><td colspan="2">Allow Ghosting</td><td>Displayed if multiple plugins are selected. Unchecks <a href="#modsDontGhost">Disallow Ghosting</a>
+                for the selected plugins.</td></tr>
+            <tr><td colspan="2">Invert Ghosting</td><td>Displayed if multiple plugins are selected. Toggles the status of
+                <a href="#modsDontGhost">Disallow Ghosting</a> for the selected plugins.</td></tr>
+            <tr><td colspan="2" id="modsMarkMergeable">Mark Mergeable...</td><td><em>Not available for Skyrim&colon; Special Edition &amp; Fallout 4.</em>
+                Scans the selected plugin(s) to determine if they are mergeable or not. Wrye Bash does this automatically, but this command reports why
+                mods are unmergeable.</td></tr>
+            <tr><td colspan="2">Mark Mergeable (CBash)...</td><td><em>Oblivion only.</em> Does the same thing as <a href="#modsMarkMergeable">Mark Mergeable...</a>,
+                but uses CBash to scan the plugins. A Bashed Patch built using CBash can merge more plugins, so the results between the two Mark Mergeable
+                commands will differ.</td></tr>
+            <tr><td colspan="2">Check ESL Qualifications</td><td><em>Skyrim&colon; Special Edition &amp; Fallout 4 only.</em> Checks if the selected plugin(s)
+                can be ESL-flagged using <a href="#modsEslifySelf">Add ESL Flag</a>. Wrye Bash does this automatically, but this command reports why
+                mods can't be ESL-flagged.</td></tr>
             <tr><td colspan="2">Rebuild Patch...<td>Rebuild the selected Bashed Patch using the Python patcher.
             <tr><td colspan="2">Rebuild Patch (CBash *Beta*)...<td><em>Oblivion only.</em> Rebuild the selected Bashed Patch using the CBash patcher.
             <tr><td colspan="2" id="modsListPatchConfig">List Patch Config...<td>Displays a summary of how the selected Bashed Patch is configured.
@@ -1133,6 +1157,10 @@ tab. The directories skipped are:
                 and this is used by Bash so do not mess with it.<br><br><strong>Warning:</strong> Make sure to toggle any plugins back before playing the game, otherwise
                 savegames will get confused, possibly causing bugs and corruption. To toggle the masters back use the same command on the plugin which
                 should now be named Remove ESM Flag.
+            <tr><td colspan="2" id="modsEslifySelf">Add/Remove ESL Flag</td><td><em>Skyrim&colon; Special Edition &amp; Fallout 4 only.</em> Toggles the ESL flag
+                on the selected plugin, either turning it into an ESL if it does not yet have the flag set or turning it back into an ESP if
+                it does have the flag set. This is only possible if the mod is ESL-capable - see the <q>Check ESL Qualifications</q> option
+                for more information.</td></tr>
             <tr><td colspan="2" id="modsEsmifyMasters">Add/Remove ESM Flag To/From Masters<td>This works as <a href="#modsEsmifySelf">Add/Remove ESM Flag</a> does,
                 but toggles a plugin's masters rather than the plugin itself. The load order of plugins will change to reflect their new status but
                 since the modification time won't change they will revert back to their original positions for modification time based load orders.
@@ -1177,21 +1205,51 @@ tab. The directories skipped are:
 <p>As the Bashed Patch commonly has .esp files as masters, viewing and editing it can be more complicated than for the average plugin. If you wish to view its contents, it is easiest to use <a href="https://www.nexusmods.com/oblivion/mods/11536">TES4Edit</a>, which can also be used to edit most types of data in plugins. To edit it using the Construction Set or Creation Kit (required when editing scripts), you'll need to first use the <a href="#modsEsmifyMasters">Add ESM Flag To Masters</a> command on it. Be sure to use <q>Remove ESM Flag From Masters</q> before attempting to play the game.
 
 <h3 id="patch-tags">Bash Tags <a class="back2top" href="#contents">Back to top</a></h3>
-<p>Wrye Bash uses a tagging system to determine what mods can and should have which records available for importing into the Bashed Patch. These Bash Tags are specified by mod authors in the header descriptions of their plugins, or are applied using data from LOOT's masterlist and userlist files.
+<p>Wrye Bash uses a tagging system to determine what mods can and should have which records available for importing into the Bashed Patch. These Bash Tags are specified by mod authors in the header descriptions of their plugins, are applied using data from LOOT's masterlist and userlist files, and are read from text files in the <code>[GAME]\Data\BashTags</code> folder.
 In decreasing priority the Bash tags sources are:
 
 <ol>
-    <li>Manual Bash tags set by user in the Bash mod list
-    <li>Header of ESP or ESM file (also can be edited in bash)
-    <li>userlist.yaml (LOOT)
-    <li>masterlist.yaml (LOOT)
-    <li>taglist.yaml (LOOT)
+    <li>Manual Bash tags set by user in the Bash mod list</li>
+    <li>Header of ESP or ESM file (also can be edited in bash)</li>
+    <li>userlist.yaml (LOOT)</li>
+    <li>masterlist.yaml (LOOT)</li>
+    <li>taglist.yaml (LOOT)</li>
+    <li><code>[GAME]\Data\BashTags\[PLUGIN NAME].txt</code></li>
+    <li>Tags that were manually set in Wrye Bash</li>
 </ol>
 
 <p>Bash comes with the LOOT API Python Module bundled, currently version 1.2.0. It will try and parse the masterlist and userlist files, if it finds them in
     <code>C:\Users\USER\AppData\Local\LOOT\GAME</code> directory. If that fails (the files are not there or come from a different LOOT version than
     the one Bash bundles) it will fallback to the <code>Mopy\Bash Patches\GAME\taglist.yaml</code> file, also bundled, keep it there. For userlist
 and masterlist relative priority and role see the LOOT docs.
+
+<p>For each plugin, Wrye Bash will read the file <code>[GAME]\Data\BashTags\[PLUGIN NAME].txt</code>, if it exists.
+    Tags specified in this file will override ones in the description and the LOOT masterlist.
+    These files are intended for people besides the mod author to share plugin suggestions.
+    For example, a guide creator could create files with fitting Bash Tags and package the <code>BashTags</code> folder as an archive,
+    distribute the archive as a download with the guide, and users can then simply install the archive with BAIN to get the right Bash Tags.</p>
+<p>Wrye Bash has the ability to create these files through its GUI too - right click on a plugin's Bash Tags field in the Mods Tab sidebar and click <q>Copy to Data/BashTags</q> to create or rewrite the matching file, placing all currently active Bash Tags in there.</p>
+<p>The format for these files is simple - each line can specify one or more tags to be added or removed, in which case a minus should be prepended to the tag, separated by commas.
+    An example to demonstrate their usage follows:</p>
+
+<code class="box"># Everything after a '#' is a comment
+# Every line that is not a comment
+# or empty will add or remove tags
+# from the plugin
+
+Delev, Relev # This line will add two
+             # new tags to the plugin...
+
+-C.Water     # ...while this line removes
+             # a tag from the plugin
+
+# Addition and removal can also be
+# done in one line:
+C.Location, -C.LockList
+
+# The result of this file would be:
+# Added: C.Location, Delev, Relev
+# Removed: C.LockList, C.Water</code>
 
 <p>Bash Tags may also be set manually, by right-clicking a plugin's Bash Tags field in the Mods Tab sidebar and checking or unchecking tags in the list displayed. If you wish to revert to automatic tagging, choose <q>Automatic</q> in the right-click list. If you are a mod author, you may wish to use <q>Copy to Description</q> for your mod's plugins before releasing it to ensure that users have the tags applied automatically.
 
@@ -1597,19 +1655,6 @@ and masterlist relative priority and role see the LOOT docs.
                 </ul>
                 <br>
                 <strong>Not available for Fallout 4.</strong>
-            </td>
-        </tr>
-        <tr>
-            <td>Relations</td>
-            <td>Changes faction relationships.</td>
-            <td>Adds, Removes or Modifies the (XNAM) Relation subrecord of Relations in Faction (FACT) records.
-                <ul>
-                    <li>Faction</li>
-                    <li>Modifier</li>
-                </ul>
-                <br>
-                <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -2257,6 +2302,16 @@ and masterlist relative priority and role see the LOOT docs.
                             <li>(ICON) Icon Filename</li>
                         </ul>
                     </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Relations</td>
+            <td>Changes faction relationships.</td>
+            <td>Adds, Removes or Modifies the (XNAM) Relation subrecord of Relations in Faction (FACT) records.
+                <ul>
+                    <li>Faction</li>
+                    <li>Modifier</li>
                 </ul>
             </td>
         </tr>
@@ -4678,7 +4733,10 @@ and masterlist relative priority and role see the LOOT docs.
     <li><code>Delev</code> tagged plugins can remove entries from leveled lists. Any items present in such a plugin's masters but not in the plugin itself will be removed.
     <li><code>Relev</code> tagged plugins can relevel an existing entry (ie. change its levels and/or counts in the list), and can also override previous deletions of entries from leveled lists. However, it does not prevent a later-loading <code>Delev</code> tagged plugin from then removing an entry again.
     <li><code>Delev</code> and <code>Relev</code> tagged mods simply combines the effects of the <code>Delev</code> and <code>Relev</code> Bash Tags.
-    <li>In addition to the above, the leveled list patcher removes any empty sublists from leveled lists, as these would otherwise cause the leveled list to select nothing if such a sublist was picked in-game.
+    <li>In addition to the above, if the <q>Remove Empty Sublists</q> checkbox is ticked, the leveled list patcher will remove any empty sublists from leveled lists.
+    These would otherwise cause the leveled list to select nothing if such a sublist was picked in-game.
+    However, the patcher cannot distinguish between leveled lists that are empty by mistake and ones that get filled at runtime,
+    so this option is only safe to enable if you know your load order does not contain any mods with 'leveled list injectors'.</li>
 </ul>
 <p>It's best to simply ensure that your plugins have the correct tags and leave this section on automatic. To add plugins to or remove plugins from the list, uncheck the <q>Automatic</q> checkbox, and use the <q>Add</q> or <q>Remove</q> buttons. The latter will remove the currently selected plugin.
 <p>To manually override the Delev/Relev Bash Tags for a plugin, right-click it in the section list and check or uncheck the relevant options as desired. To return to the automatic setting, select the <q>Auto</q> option in the right-click menu.
@@ -4702,7 +4760,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Player Info<td>These three lines give the player character's name, their level, days have passed in-game, hours played and current location.
         <tr><td>O/P Flags<td> These two flags appear to the right of the player info, and indicate the presence of cosave files: O is for OBSE cosaves, and P is for Pluggy cosaves.
         <tr><td>Screenshot<td>The screenshot embedded in the save file, taken at the moment of saving.
-        <tr><td>Masters List<td>The Masters list show the plugins (.esm or .esp) that the currently selected save file depends on, the load order
+        <tr><td>Masters List<td>The Masters list shows the plugins that the currently selected save file depends on, the load order
         (Mod Index) of that master in the save file, and the current load order of the master plugin if present and active.<br /><br />
         Masters in the list can be renamed if the corresponding plugin has been renamed. To rename a master, first allow editing from the
         masters list column context menu and then either left-click it and edit it in the column display, or right-click it and select <q>Change To...</q> to select the desired
@@ -4813,7 +4871,7 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><th colspan="3">Save Context Menu
         <tr><th colspan="2">Command<th>Description
     <tbody>
-        <tr><td rowspan="8">File<td>Backup<td>Creates a backup of the selected save file in <code>[Game] Mods\Bash Mod Data\Backups</code>. On first run, the backed-up save file has <code>f</code> appended to its file extension, giving .essf.
+        <tr><td rowspan="7">File<td>Backup<td>Creates a backup of the selected save file in <code>[Game] Mods\Bash Mod Data\Backups</code>. On first run, the backed-up save file has <code>f</code> appended to its file extension, giving .essf.
         <tr><td>Duplicate...<td>Creates a duplicate of the selected save file in the saves folder.
         <tr><td>Delete<td>Permanently deletes the selected save file and any backups of it.
         <tr><td>Hide<td>Moves the selected save file to the <code>My Games\[Game]\Saves\[optional profile dir\]Bash\Hidden</code> directory.
@@ -4821,9 +4879,6 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td>Revert to First Backup<td>Reverts the selected save file to the first backup made of it.
         <tr><td>Rename...<td>Rename the selected save file. bak files are not supported and you can't change the extension (specifying
             another extension will make the rename fail)
-        <tr><td>Re-number Save(s)...<td>Allows the re-numbering of the selected save file(s). If more than one file is selected, the first
-            will be renumbered to the given number and the others will be numbered in increments of one from the given number. The save name
-            must be of the form <code>&lt;Save (case insensitive)&gt;&lt;space&gt;&lt;some digits&gt;&lt;optional text&gt;.&lt;save extension&gt;</code>
         <tr><td colspan="2" id="savesMoveTo">Move To<td>This submenu allows you to specify a save profile to move the selected save(s) to from the active save profile.
         <tr><td colspan="2" id="savesCopyTo">Copy To<td>This submenu allows you to specify a save profile to copy the selected save(s) to, so that it is present in both the active and specified save profiles.
         <tr><td colspan="2" id="savesLoadMasters">Load Masters<td>Synchronizes activated plugins to savegame's masters.
@@ -4848,6 +4903,10 @@ and masterlist relative priority and role see the LOOT docs.
         <tr><td colspan="2" id="savesReweighPotions">Reweigh Potions...<td><em>Oblivion only.</em> Potions created in-game are given a weight that is somewhat arbitrarily selected and potentially high. This command may be used to set all created potions to have a specific weight. Potions created after the use of this command with new names, new effects or new durations will not be affected.
         <tr><td colspan="2" id="savesUpdateNPCLevels">Update NPC Levels...<td><em>Oblivion only.</em> Updates the level information for NPCs stored in the selected savegame to reflect the active load order's NPC level settings. This is required because although NPC levels are set via plugins, once an NPC is encountered its level is stored in the save file, which overrides the plugin levels.
         <tr><td colspan="2">Export Screenshot...<td>Allows you to save the image used as the save file's screenshot as a JPEG.
+        <tr><td colspan="2">Re-number Save(s)...<td>Allows the re-numbering of the selected save file(s). If more than one file is selected,
+            the first will be renumbered to the given number and the others will be numbered in increments of one from the given number.
+            The save name must be of the form
+            <code>&lt;Save (case insensitive)&gt;&lt;space&gt;&lt;some digits&gt;&lt;optional text&gt;.&lt;save extension&gt;</code>
         <tr><td colspan="2" id="savesRemoveBloat">Remove Bloat...<td><em>Oblivion only.</em> <strong>This is an experimental command. It is recommended that saves are backed up before using it on them.</strong> It attempts to determine how much bloating there is in the selected save file and then optionally remove it. If the command reports a large number of created objects, there could be a problem with one of your mods, and such mods should be removed or updated. There are two common types of bloat:
             <ul>
                 <li>Excess created objects can occur through the use of scripting by a mod to duplicate existing objects in-game and a failure by the mod to clean up the duplicates after their use.
@@ -4929,10 +4988,11 @@ and masterlist relative priority and role see the LOOT docs.
 
 <h3 id="screenshots-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="prlflex clearf">
-    <figure class="slideshow" style="width: 305px; min-height: 210px">
+    <figure class="slideshow" style="width: 305px; min-height: 225px">
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-1.png">
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-2.png">
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-3.png">
+        <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-4.png">
     </figure>
     <table>
         <thead>
@@ -4940,8 +5000,10 @@ and masterlist relative priority and role see the LOOT docs.
             <tr><th>Command<th>Description</th></tr>
         </thead>
         <tbody>
-            <tr><td>Open<td>Open the screenshot directory in Windows Explorer.</td></tr>
+            <tr><td>Sort By</td><td>This submenu allows you to choose by which column the screenshot list is sorted. This is equivalent
+                to clicking on a column header.</td></tr>
             <tr><td>Columns</td><td>This submenu allows you to choose which columns are visible in the screenshot list.</td></tr>
+            <tr><td>Open<td>Open the screenshot directory in Windows Explorer.</td></tr>
             <tr><td>Next Shot<td>Set any or all of the base name and number of the next screenshot as well as the screenshot directory.</td></tr>
             <tr><td>JPEG Quality<td>Set the quality of JPEGs created during conversion.</td></tr>
         </tbody>
@@ -5075,7 +5137,8 @@ and masterlist relative priority and role see the LOOT docs.
                 <li>Your application and UI settings.
                 <li>Your people from the People tab.
                 <li>Any translation files you have.
-                <li>All files in the <code>Data\Bashed Patches</code> directory.
+                <li>All files in the <code>Data\Bash Patches</code> directory.
+                <li>All files in the <code>Data\BashTags</code> directory.</li>
                 <li>All INI Tweaks.
             </ul>
         <tr><td colspan="2" id="settingsRestore">Restore Settings...<td>Restores your settings from a backup of your choice. This will force
