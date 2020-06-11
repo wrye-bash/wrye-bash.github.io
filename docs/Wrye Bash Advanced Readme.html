@@ -51,7 +51,6 @@
                     <ol class="items">
                         <li><a href="#install-alternate">Alternative Install Locations</a>
                         <li><a href="#install-components">Python Components</a>
-                        <li><a href="#install-loot-api">LOOT API</a>
                     </ol>
                 <li class="list"><a href="#bain">Installers Tab</a>
                     <ol class="items">
@@ -182,7 +181,7 @@
 <p class="emphasis">Note that the 32-bit versions are required even if you are on a 64-bit operating system.
 <ul>
     <li><a href="https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi">Python 2.7.16</a>: Versions prior to 2.7.16 may work with Wrye Bash, but have not been tested. Updating is recommended for bug and security fixes.
-    <li><a href="https://sourceforge.net/projects/wxpython/files/wxPython/3.0.2.0/wxPython3.0-win32-3.0.2.0-py27.exe">wxPython 3.0.2.0 for Python 2.7</a>: (do <strong>not</strong> get a newer version)
+    <li><a href="https://pypi.org/project/wxPython">wxPython 4.0.7.post2 for Python 2.7</a>: Newer versions may work, older ones will not</li>
     <li><a href="https://pypi.org/project/chardet/">Mozilla's chardet library</a>: Wrye Bash uses this library to help in detecting
         character encodings used when reading and writing encoded Unicode strings.
     <li><a href="https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/pywin32-220.win32-py2.7.exe/download">PyWin32</a>: This component is required for Wizards to function. If you do not wish to use Wizards, then it need not be installed.
@@ -209,17 +208,6 @@
     </ul>
   </ul>
 </ul>
-
-<h3 id="install-loot-api">LOOT API <a class="back2top" href="#contents">Back to top</a></h3>
-<p>Wrye Bash comes with the LOOT API Python Module v1.2.0 bundled, but Python users can update to a more recent compatible version if one is available. To do so:
-<ol>
-    <li>Check if a more recent v1.x release is available on <a href="https://github.com/loot/loot-api-python/releases">GitHub</a>. Releases with a different major version number (releases are major.minor.patch) than the version Wrye Bash bundles are incompatible and cannot be upgraded to.
-    <li>Download and extract the release's <code>*.7z</code> file.
-    <li>Make sure Wrye Bash is not running.
-    <li>Copy the <code>loot_api.dll</code> and <code>loot_api.pyd</code> files you extracted into your Wrye Bash's <code>Mopy</code> folder, replacing the existing files.
-    <li>Start Wrye Bash.
-</ol>
-<p>Standalone users cannot upgrade their bundled LOOT API because its <code>loot_api.pyd</code> file is compiled into the standalone executable.
 
 <h2 id="bain">Installers Tab <a class="back2top" href="#contents">Back to top</a></h2>
 <h3 id="bain-ui">The User Interface In Detail <a class="back2top" href="#contents">Back to top</a></h3>
@@ -478,10 +466,11 @@ tab. The directories skipped are:
 <h3 id="bain-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
 <div class="prlflex clearf">
     <figure class="slideshow" style="width:525px; min-height:656px">
-        <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-1.png">
-        <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-2.png">
-        <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-3.png">
-        <img alt="Installer Header Menu" src="../bash/images/readme/installers-rclick-header-menu-4.png">
+        <img alt="Installers Context Menu" src="../bash/images/readme/installers-rclick-header-menu-1.png">
+        <img alt="Installers Context Menu" src="../bash/images/readme/installers-rclick-header-menu-2.png">
+        <img alt="Installers Context Menu" src="../bash/images/readme/installers-rclick-header-menu-3.png">
+        <img alt="Installers Context Menu" src="../bash/images/readme/installers-rclick-header-menu-4.png">
+        <img alt="Installers Context Menu" src="../bash/images/readme/installers-rclick-header-menu-5.png">
     </figure>
 <table id="bainHeaderCommands">
     <thead>
@@ -514,7 +503,17 @@ tab. The directories skipped are:
         <tr><td>Modified<td>Display the (date) Modified column.
         <tr><td>Size<td>Display the Size column.
         <tr><td>Files<td>Display the (number of) Files column.
-        <tr><td colspan="2" id="bainOpenDir">Open...<td>Opens the Installers directory in Windows Explorer.
+        <tr><td rowspan="3">Files..</td>
+            <td id="bainOpenDir">Open...</td><td>Opens the Installers directory in Windows
+                Explorer.</td></tr>
+            <tr><td id="bainUnhide">Unhide...</td><td>Opens a dialogue window
+                allowing you to select which hidden packages to unhide. Projects are not
+                supported yet.</td></tr>
+            <tr>
+                <td id="bainNewProject">New Project...</td>
+                <td>Displays a dialog that allows you to create a new project
+                    and select some starting files for it.</td>
+            </tr>
         <tr><td colspan="2" id="bainRefreshData">Refresh Data<td>Re-scans the Data directory (and all packages). Scanning of the Data directory is done once per run of Wrye Bash, when the
             Installers tab is first opened. If you manually alter files in the Data directory after that, <em>you had to run this command to update BAIN to reflect the changes</em>. However
             BAIN will now scan the Data directory for changes in files corresponding to the package(s) you run <a href="#bainQuickRefresh">Quick Refresh</a> (or
@@ -530,12 +529,9 @@ tab. The directories skipped are:
             folder, bypassing all skip refresh flags for projects. Notably this will recalculate <abbr title="Cyclic redundancy check, digital signature of the file">CRCs</abbr> for all files
             inside Data and Bash Installers (including project directories). Running this command will likely take <em>aeons</em>, and you seldom need it.
         <tr><td colspan="2" id="bainAddMarker">Add Marker...<td>Creates a marker for organising your packages. The <q>==</q> will be added for you.
-        <tr><td colspan="2" id="bainCreateNewProject">Create New Project...<td>Displays a dialog that allows you to create a new project and select some starting files for it.
         <tr><td colspan="2" id="bainMonitorExternalInstallation">Monitor External Installation...<td>When you absolutely cannot install a mod via BAIN, you can put BAIN into Monitor Mode using this command.  It will scan the Data folder before and after you install the mod, then provide an option to create a Project from the changes it detects.
         <tr><td colspan="2" id="bainListPackages">List Packages...<td>Displays a list of projects and archives and copies the list to your clipboard. This is useful for posting your package order on forums, eg. when troubleshooting an install.
         <tr><td colspan="2" id="bainAnnealAll">Anneal All<td>Installs any missing files for active installers and corrects all install order errors.
-        <tr><td colspan="2" id="bainUnhide">Unhide...<td>Opens a dialogue window allowing you to select which hidden packages to unhide.
-            Projects are not supported yet.
         <tr><td colspan="2" id="bainUninstallAll">Uninstall All Packages<td>Uninstalls all the packages in the package list.
         <tr><td colspan="2" id="bainCleanData">Clean Data<td>Removes files from the Data folder that are not from one of the following sources:
             <ul>
@@ -603,34 +599,44 @@ tab. The directories skipped are:
         <tr><td id="bainSkipLODTextures">Skip LOD Textures<td>If checked, landscape LOD textures will be skipped.
         <tr><td id="bainSkipLODNormals">Skip LOD Normals<td>If checked, landscape LOD normals will be skipped.
         <tr><td id="bainSkipBSLFiles">Skip BSL Files</td><td><em>Skyrim, Enderal&colon; Forgotten Stories and Skyrim&colon; Special Edition only.</em> If checked, BSL Files will be skipped.</td></tr>
-        <tr><td colspan="2" id="bainAutonameStringTranslationFiles">Auto-name String Translation Files</td><td><em>Skyrim, Enderal&colon; Forgotten Stories, Skyrim&colon; Special Edition &amp; Fallout 4 only.</em>
-            If checked, string translation files will be renamed so that they are loaded for the language the game is currently run for,
-            unless there are existing translation files for that language.</td></tr>
+        <tr><td rowspan="3">Global Redirects</td></tr>
+        <tr>
+            <td id="bainRenameStringTranslationFiles">Rename String Translation Files</td>
+            <td><em>Skyrim, Enderal&colon; Forgotten Stories, Skyrim&colon; Special Edition &amp; Fallout 4 only.</em>
+                If checked, string translation files will be renamed so that they are loaded for the language
+                the game is currently run for, unless there are existing translation files for that language.</td>
+        </tr>
+        <tr>
+            <td id="bainRedirectScriptSources">Redirect Script Sources</td>
+            <td><em>Skyrim&colon; Special Edition only.</em> If checked, loose script sources (.psc files) installed
+                to the incorrect folders (<code>source\scripts</code> and <code>source</code>) will be redirected to
+                the correct folder (<code>scripts\source</code>).
+                <a href="#bainSkipScriptSources">Skip Script Sources</a> must be off.</td>
+        </tr>
 </table>
 </div>
 <div class="prlflex clearf">
-    <figure class="slideshow" style="width:459px; min-height:445px">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-1.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-2.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-3.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-4.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-5.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-6.png">
-        <img alt="Installer Package Menu" src="../bash/images/readme/installers-rclick-installer-menu-7.png">
+    <figure class="slideshow" style="width:555px; min-height:386px">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-1.png">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-2.png">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-3.png">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-4.png">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-5.png">
+        <img alt="Installer Context Menu" src="../bash/images/readme/installers-rclick-installer-menu-6.png">
     </figure>
 <table id="bainPackageCommands">
     <thead>
         <tr>
-            <th colspan="3">Package Context Menu</th>
+            <th colspan="4">Package Context Menu</th>
         </tr>
         <tr>
-            <th colspan="2">Command</th>
+            <th colspan="3">Command</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td rowspan="5" id="bainFileMenu">File...</td>
+            <td colspan="2" rowspan="5" id="bainFileMenu">File...</td>
             <td id="bainOpenFile">Open...</td>
             <td>Opens the selected package(s) in the file system.</td>
         </tr>
@@ -649,11 +655,11 @@ tab. The directories skipped are:
         </tr>
         <tr>
             <td id="bainDelete">Delete</td>
-            <td>Deletes the selected package(s). Deleted packages are
-                <strong>not</strong> sent to the Recycling Bin, they are permanently deleted.</td>
+            <td>Deletes the selected package(s). Deleted packages are sent to
+                the Recycling Bin.</td>
         </tr>
         <tr>
-            <td rowspan="4" id="bainOpenAt">Open at</td>
+            <td colspan="2" rowspan="4" id="bainOpenAt">Open at</td>
             <td>Google...</td>
             <td>Attempts to perform a Google search for the selected package's name.</td>
         </tr>
@@ -670,38 +676,17 @@ tab. The directories skipped are:
             <td>Attempts to open the selected package's page on TES Alliance. This command assumes that the trailing digits in a package's name is the package ID at the site.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainAnneal">Anneal</td>
+            <td colspan="3" id="bainOpenReadme">Open Readme</td>
+            <td>If BAIN detects a readme in the selected package, it will be opened.</td>
+        </tr>
+        <tr>
+            <td colspan="3" id="bainAnneal">Anneal</td>
             <td>Installs missing files and corrects install order errors. Note: If an already installed file is changed outside of Wrye Bash control, Wrye Bash will not anneal that file. Anneal is relative to other installed packages. This is because we do not want to override user changes like cleaning plugins and the like. If you do want to override the change use
-                <a href="#bainInstall">Install</a> instead. Note2: The change will be detected immediately in case of ini tweaks, mods or bsas, but on next Bash load for other files (like nifs etc). To detect the change without restarting
+                <a href="#bainInstallCurrent">Install Current</a> instead. Note2: The change will be detected immediately in case of ini tweaks, mods or bsas, but on next Bash load for other files (like nifs etc). To detect the change without restarting
                 <a href="#bainQuickRefresh">(Quick) Refresh</a> the package.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainInstall">Install</td>
-            <td>Fully installs the package except for files that would be overridden by later packages.</td>
-        </tr>
-        <tr>
-            <td rowspan="3" id="bainWizardMenu">Wizard Installer...</td>
-            <td id="bainWizard">Manual Wizard</td>
-            <td>Runs the Wizard for the package, if it has one.</td>
-        </tr>
-        <tr>
-            <td id="bainAutoWizard">Auto Wizard</td>
-            <td>Runs the Wizard for the package, if it has one, selecting the default options.</td>
-        </tr>
-        <tr>
-            <td id="bainViewWizard">View Wizard...</td>
-            <td>Opens the wizard.txt for viewing.</td>
-        </tr>
-        <tr>
-            <td colspan="2" id="bainInstallMissing">Install Missing Files</td>
-            <td>The same as Install, except that it only installs missing files – i.e. it will not override any currently existing files.</td>
-        </tr>
-        <tr>
-            <td colspan="2" id="bainUninstall">Uninstall</td>
-            <td>Uninstalls the package. If Auto-Anneal is active (the default) then files from earlier packages that were previously overridden will be installed as required.</td>
-        </tr>
-        <tr>
-            <td colspan="2" id="bainQuickRefresh">Quick Refresh</td>
+            <td colspan="3" id="bainQuickRefresh">Quick Refresh</td>
             <td>
                 <p>Refreshes all info for the selected package(s), also checking the files that correspond to this package inside the Data directory. It will bypass skip refresh flags on projects (see case A below). BAIN does refresh package information whenever the installer's tab regains focus, except for projects if project skipping is on, but does not scan the Data folder but once on boot.</p> So this command is useful if:
                 <ol type="A">
@@ -716,20 +701,54 @@ tab. The directories skipped are:
             </td>
         </tr>
         <tr>
-            <td colspan="2" id="bainExportACHlist">Export ACHList</td>
-            <td> This exports a file list of the files configured to be installed by this installer (except top level files and docs installed in Data/Docs folder). This list is used when the CK asks for a list of files to make new BSA files, for use when uploading to Bethesda.net. It will generate a
-                <code>installer-name.achlist</code> file inside the Mod Info Exports directory in the game (exe) folder. Mod Info Exports will be created if it doesn't exist. If an achlist with the same name exists it will be overwritten. Import the ACHList Bash generated and it will then package your files into the proper archives for upload. Available only for Skyrim&colon; Special Edition &amp; Fallout 4. </td>
-        </tr>
-        <tr>
-            <td rowspan="10" id="bainPackageMenu">Package..</td>
-            <td id="bainOpenReadme">Open Readme</td>
-            <td>If BAIN detects a readme in the selected package, it will be opened.</td>
-        </tr>
-        <tr>
-            <td id="bainMoveTo">Move To...</td>
+            <td colspan="3" id="bainMoveTo">Move To...</td>
             <td>Moves the selected package(s) to the specified position.</td>
         </tr>
         <tr>
+            <td colspan="3" id="bainInstall">Install...</td>
+            <td>Installs the selected package, preferring a BAIN or FOMOD
+                wizard if it exists.</td>
+        </tr>
+        <tr>
+            <td rowspan="8">Advanced Installation..</td>
+            <td colspan="2" id="bainInstallCurrent">Install Current</td>
+            <td>Fully installs the package except for files that would be overridden by later packages.</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="bainInstallMissing">Install Missing Files</td>
+            <td>The same as Install, except that it only installs missing files – i.e. it will not override any currently existing files.</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="bainInstallLast">Install Last</td>
+            <td>Moves the package to the end of the order list and installs it.</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="bainFomod">FOMOD Installer...</td>
+            <td>Runs the FOMOD wizard for this package, if it has one.</td>
+        </tr>
+        <tr>
+            <td rowspan="4" id="bainWizardMenu">Wizard Installer...</td>
+            <td id="bainWizard">Manual Wizard...</td>
+            <td>Runs the BAIN wizard for the package, if it has one.</td>
+        </tr>
+        <tr>
+            <td>Auto Wizard...</td>
+            <td>Runs the BAIN wizard for the package, if it has one, selecting the default options.</td>
+        </tr>
+        <tr>
+            <td>View Wizard...</td>
+            <td>Archives Only. Opens the wizard.txt for viewing.</td>
+        </tr>
+        <tr>
+            <td>Edit Wizard...</td>
+            <td>Projects Only. Opens the wizard.txt in your system's default <code>.txt</code> editor.</td>
+        </tr>
+        <tr>
+            <td colspan="3" id="bainUninstall">Uninstall</td>
+            <td>Uninstalls the package. If Auto-Anneal is active (the default) then files from earlier packages that were previously overridden will be installed as required.</td>
+        </tr>
+        <tr>
+            <td colspan="2" rowspan="8" id="bainPackageMenu">Package..</td>
             <td id="bainRefresh">Refresh</td>
             <td>As
                 <a href="#bainRefresh">Quick Refresh</a> below. Refresh will however recalculate the
@@ -742,8 +761,9 @@ tab. The directories skipped are:
                     <strong>and</strong> its size</em> - that's super rare, you most probably just need Quick Refresh below.</td>
         </tr>
         <tr>
-            <td id="bainListStructure">List Structure...</td>
-            <td>Generates a list of the files and directories in a package. Useful for posting package structure on forums, eg. when troubleshooting an install.</td>
+            <td id="bainExportACHlist">Export Achlist</td>
+            <td> This exports a file list of the files configured to be installed by this installer (except top level files and docs installed in Data/Docs folder). This list is used when the CK asks for a list of files to make new BSA files, for use when uploading to Bethesda.net. It will generate a
+                <code>installer-name.achlist</code> file inside the Mod Info Exports directory in the game (exe) folder. Mod Info Exports will be created if it doesn't exist. If an achlist with the same name exists it will be overwritten. Import the ACHList Bash generated and it will then package your files into the proper archives for upload. Available only for Skyrim&colon; Special Edition &amp; Fallout 4. </td>
         </tr>
         <tr>
             <td id="bainPackToArchive">Pack to Archive...</td>
@@ -752,6 +772,10 @@ tab. The directories skipped are:
         <tr>
             <td id="bainPackageForRelease">Package For Release...</td>
             <td>Projects only. Just like "Pack to Archive" except it doesn't archive the following: thumbs.db, desktop.ini, and any folder that begins with "--".</td>
+        </tr>
+        <tr>
+            <td id="bainListStructure">List Structure...</td>
+            <td>Generates a list of the files and directories in a package. Useful for posting package structure on forums, eg. when troubleshooting an install.</td>
         </tr>
         <tr>
             <td id="bainSyncFromData">Sync From Data</td>
@@ -768,11 +792,7 @@ tab. The directories skipped are:
                 <a href="#bainShowLowerConflicts">Show Lower Conflicts</a> options were selected. Useful for comparing conflicting resources.</td>
         </tr>
         <tr>
-            <td id="bainInstallLast">Install Last</td>
-            <td>Moves the package to the end of the order list and installs it.</td>
-        </tr>
-        <tr>
-            <td rowspan="2" id="bainConversion">BAIN Conversions</td>
+            <td colspan="2" rowspan="2" id="bainConversion">BAIN Conversions</td>
             <td>Create...</td>
             <td>Archives only. Creates a new Bain Conversion File.</td>
         </tr>
@@ -781,7 +801,7 @@ tab. The directories skipped are:
             <td>[BCF] is the name of a Bain Conversion File listed in the Apply submenu. Selecting a BCF applies it to the selected package.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainHasExtraDirectories">Has Extra Directories</td>
+            <td colspan="3" id="bainHasExtraDirectories">Has Extra Directories</td>
             <td>BAIN only recognises a limited set of subdirectories of the Data folder (the
                 <a href="Wrye%20Bash%20General%20Readme.html#bain-structure">standard game directories</a>), and skips any unrecognised subdirectories. Checking this option will cause BAIN to install unrecognised subdirectories (Unless the files within are on the list of files which are always skipped such as .exe files, see
                 <a href="#bain-skipped">Skipped Files</a>)
@@ -789,23 +809,23 @@ tab. The directories skipped are:
                 <strong>NB:</strong> extra directories will not be taken into account at all when calculating package structure. There must be at least some standard game directory or a data file (plugin, bsa/ba2, ini) in the package for BAIN to recognise its structure.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainOverrideSkips">Override Skips</td>
+            <td colspan="3" id="bainOverrideSkips">Override Skips</td>
             <td>If this is checked, Bain will not skip over files that would normally be skipped due to a
                 <a href="#bainGlobalSkips">global skip option</a>.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainSkipVoices">Skip Voices</td>
+            <td colspan="3" id="bainSkipVoices">Skip Voices</td>
             <td>If this is checked, Bain will skip over any voice files in the package. This is useful if the voice files are empty and/or the user prefers not to use them. If this option is used, then the user should also use Elys'
                 <a href="https://www.nexusmods.com/oblivion/mods/16622">Universal Silent Voice</a> extension to prevent dialog subtitles from fading too rapidly.</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainDontRefresh">Don't Refresh</td>
+            <td colspan="3" id="bainDontRefresh">Don't Refresh</td>
             <td>When refreshing installers (when switching out and in the installers tab), this
                 <em>project</em> won't be scanned for changes. The project will only get refreshed during the first refresh of BAIN on a restart, or by manually refreshing (see
                 <a href="#bainQuickRefresh">Quick Refresh</a> and co)</td>
         </tr>
         <tr>
-            <td colspan="2" id="bainOmodInfo">Omod Info...</td>
+            <td colspan="3" id="bainOmodInfo">Omod Info...</td>
             <td>Projects only. Allows you to read/write omod configuration info.</td>
         </tr>
     </tbody>
@@ -939,38 +959,42 @@ tab. The directories skipped are:
             <tr><th colspan="2">Command<th>Description
         </thead>
         <tbody>
-            <tr><td rowspan="6">Load Order</td><td id="modsLoadAll">Activate All</td><td>Activates all the plugins in the mod list. If more than 255 mods are
-                present Bash will activate all it can from the bashed patches, then non mergeable and then mergeable mods then will display an
-                error message. Bash will try to activate mods in their load order.</td></tr>
-            <tr><td>De-activate All<td>Deactivates all the plugins in the mod list. Some plugins will not be deactivated (for instance Fallout 4
-            DLCs) as the game force loads them when present.
-            <tr><td>Activate Selected<td>Activate only the mods selected in the mod list interface - warning: their masters won't be activated !
-            <tr><td>Save Active Mods List<td>Saves the currently active mods to a new list.
-            <tr><td>Edit Active Mods Lists...<td>Allows the deletion and renaming of active mods lists.
-            <tr><td>[Active Mods List]<td>[Active Mods List] items are listed below the separator in the Active Mods submenu. Clicking a
-                list name will apply the list, trying to activate exactly the plugins that are listed in it.
             <tr><td colspan="2">Sort By<td>This submenu allows you to choose by which column the plugin list is sorted. This is equivalent to clicking on a column header. You can also choose to sort by <q>Type</q>, which will place .esms before .esps regardless of the sorting criteria, or by <q>Selection</q>, which places selected plugins before unselected plugins regardless of criteria.
-            <tr><td colspan="2">Oblivion.esm<td><em>Oblivion only.</em> This submenu relates to <a href="#tools-swapping">Oblivion.esm Swapping</a>.
             <tr><td colspan="2">Columns<td>This submenu allows you to choose which columns are visible in the mod list.
-            <tr><td rowspan="5">File<td>New Bashed Patch...<td>Creates a new Bashed Patch plugin. Useful if you accidentally delete your current one or wish to have more than one.
-            <tr><td>New Mod...<td>Creates an empty plugin.
-            <tr><td>New Mod (masterless)...<td>Creates an empty plugin with no masters.
-            <tr><td>Open...<td>Opens the Data folder in Windows Explorer.
-            <tr><td>Unhide...<td>Opens a dialogue window allowing you to select which hidden plugins to unhide.
+            <tr><td rowspan="5">Files..</td>
+                <td>Open...</td><td>Opens the Data folder in Windows Explorer.</td></tr>
+                <tr><td>Unhide...</td><td>Opens a dialogue window allowing you to select which hidden plugins to unhide.</td></tr>
+                <tr><td>New Bashed Patch...</td><td>Creates a new Bashed Patch plugin. Useful if you accidentally delete your current one or wish to have more than one.</td></tr>
+                <tr><td>New Mod...</td><td>Creates an empty plugin.</td></tr>
+                <tr><td>New Mod (masterless)...</td><td>Creates an empty plugin with no masters.</td></tr>
+            <tr><td rowspan="6">Active Mods</td>
+                <td id="modsLoadAll">Activate All</td><td>Activates all the plugins in the mod list. If more than 255 mods are
+                    present Bash will activate all it can from the bashed patches, then non mergeable and then mergeable mods then will display an
+                    error message. Bash will try to activate mods in their load order.</td></tr>
+                <tr><td>De-activate All</td><td>Deactivates all the plugins in the mod list. Some plugins will not be deactivated (for instance Fallout 4
+                    DLCs) as the game force loads them when present.</td></tr>
+                <tr><td>Activate Selected</td><td>Activate only the mods selected in the mod list interface - warning: their masters won't be activated !</td></tr>
+                <tr><td>Save Active Mods List</td><td>Saves the currently active mods to a new list.</td></tr>
+                <tr><td>Edit Active Mods Lists...</td><td>Allows the deletion and renaming of active mods lists.</td></tr>
+                <tr><td>[Active Mods List]</td><td>[Active Mods List] items are listed below the separator in the Active Mods submenu. Clicking a
+                    list name will apply the list, trying to activate exactly the plugins that are listed in it.</td></tr>
+            <tr><td colspan="2">Oblivion.esm</td><td><em>Oblivion only.</em> This submenu relates to <a href="#tools-swapping">Oblivion.esm Swapping</a>.</td></tr>
             <tr><td colspan="2" id="modsListMods">List Mods<td>This outputs a BBCode-formatted load order, including version information, activation status and major load order errors. It can be useful for debugging a broken load order. If the 'c' keyboard key is pressed when this command is selected, the CRCs of plugins will also be displayed in the output.
             <tr><td colspan="2">List Bash Tags<td>This outputs a BBCode-formatted list of all the Bash Tags applied to the plugins in your load order, and where/how the Bash Tags were specified. It can be useful for debugging a broken load order.
             <tr><td colspan="2" id="modsAutoGhost">Auto-Ghost<td>The game engine has a bug where it reads all the plugins in the Data folder, and this can affect performance when the number of plugins is around 300+. Auto-Ghosting adds a <q>.ghost</q> extension to all inactive plugins automatically to prevent the game engine reading them, and so helping to avoid the performance drop. When a ghosted plugin is activated, the <q>.ghost</q> extension is removed, allowing it to function as normal. Note that other utilities will not recognise ghosted plugins, so there are options available for individual plugins to control which get ghosted.
-            <tr><td colspan="2">Lock Load Order</td><td>This prevents other utilities from altering the plugin load order.
+            <tr><td colspan="2" id="modsLockLoadOrder">Lock Load Order</td><td>This prevents other utilities from altering the plugin load order.
                 More accurately, it detects changes to the load order (modification times for earlier games, text files for later ones)
                 when Wrye Bash starts or is focused (ie. on top of all other program windows) and reverses those changes.</td></tr>
+            <tr><td colspan="2">Lock Active Plugins</td><td>This enhances <a href="#modsLockLoadOrder">Lock Load Order</a> to make it reverse
+                changes to the enabled/disabled status of plugins in your load order as well.</td></tr>
             <tr><td colspan="2">ESL-Flag Bashed Patches</td><td><em>Skyrim&colon; Special Edition &amp; Fallout 4 only.</em> If enabled,
                 then any built Bashed Patches will automatically be ESL-flagged, saving a load order slot.</td></tr>
             <tr><td colspan="2">Debug Mode<td>Activates debug output. Only a few commands will display any debug output, but it may be useful for troubleshooting.
             <tr><td colspan="2" id="modsRemoveDummyMasters">Remove Dummy Masters...<td>Removes all dummy master files created using <a href="#modsCreateDummyMasters">Create Dummy Masters...</a> on a plugin.
-            <tr><td colspan="2">Check mods against LOOT's dirty mod list<td>LOOT's masterlist contains information on dirty plugins that can be
-                used by Wrye Bash to highlight these plugins in the mod list. Checking this setting tells Wrye Bash to use this information if
-                bundled version of LOOT is functional for this game. Note that the detection is based on user's LOOT install masterlists, if
-                those are compatible with bundled LOOT, otherwise Bash falls back to the taglists it comes with.
+            <tr><td colspan="2">Check mods against LOOT's dirty mod list</td><td>LOOT's masterlist contains information on dirty plugins that
+                can be used by Wrye Bash to highlight these plugins in the mod list. Checking this setting tells Wrye Bash to use this
+                information. Note that the detection will try to use masterlists from the user's system-wide LOOT installation, if those
+                exist, otherwise Bash falls back to the taglists it comes bundled with.</td></tr>
             <tr><td colspan="2" id="refreshCRCs">Recalculate CRCs<td>Clean stale CRCs from cache. Workaround for buggy CRC updates in previous
                 versions of Bash. Use for instance when plugins show as mismatched in BAIN when they are not.
         </tbody>
@@ -992,29 +1016,30 @@ tab. The directories skipped are:
             <tr><th colspan="2">Command<th>Description</th></tr>
         </thead>
         <tbody>
-            <tr><td rowspan="11">File</td>
-                <td id="modsCreateDummyMasters">Create Dummy Masters...</td><td>Creates an empty plugin for each missing master a mod has.
-                    This is useful for allowing TES4Edit to open a 'Filter' patch without having all of the required masters. These dummy
-                plugins can later be removed using the <a href="#modsRemoveDummyMasters">Remove Dummy Masters</a> command.</td></tr>
-                <tr><td id="modsBackup">Backup</td><td>Creates a backup of the selected plugin in <code>[Game] Mods\Bash Mod Data\Backups</code>.
-                    On first run, the backed-up plugin has <code>f</code> appended to its file extension, giving e.g. <code>.espf</code>.</td></tr>
-                <tr><td id="modsDuplicate">Duplicate...</td><td>Creates a duplicate of the selected plugin in the Data folder.</td></tr>
-                <tr><td id="modsSnapshot">Snapshot...</td><td>Creates a snapshot copy of the selected plugin in <code>Bash\Snapshots</code>.
-                    Snapshot filenames are appended with <code>-n</code> where n is a number between 01 and 99. Eg. the first snapshot of
-                    <code>Plugin.esp</code> is <code>Plugin-01.esp</code>. The number is incremented each time the plugin has a snapshot
-                    taken. Additionally, if there is a version line in the plugin's description field, then the snapshot number will be
-                    appended to the version number in the same manner.</td></tr>
-                <tr><td>Delete</td><td><strong>Permanently</strong> deletes the selected plugin, and any backups of it, but not snapshots.</td></tr>
-                <tr><td>Hide</td><td>Moves the selected plugin to the <code>[Game] Mods/Bash Mod Data/Hidden</code> subdirectory. If the plugin's author
+            <tr><td rowspan="9">File..</td>
+                <td id="modsDuplicate">Duplicate...</td><td>Creates a duplicate of the selected plugin in the Data folder.</td></tr>
+                <tr><td>Hide...</td><td>Moves the selected plugin to the <code>[Game] Mods/Bash Mod Data/Hidden</code> subdirectory. If the plugin's author
                     is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there. If not and the
                     plugin's group is defined and there is a Bash Mod Data/Hidden subdirectory of the same name, the plugin will be placed there
                     instead. Otherwise it will be placed inside Bash Mod Data/Hidden.</td></tr>
                 <tr><td>Redate...</td><td>Change the modification time of the selected plugin. If more than one plugin is selected, then all the plugins will
                     have their modification times altered, with the first in the list being set to the specified time and the rest at one minute intervals
                     from that time.</td></tr>
-                <tr><td>Sort</td><td>Set the load order of the selected plugins starting at the lowest ordered mod, sorting them alphabetically.</td></tr>
-                <tr><td>Revert To Backup</td><td>Reverts the selected plugin to the last backup made of it.</td></tr>
-                <tr><td>Revert To First Backup</td><td>Reverts the selected plugin to the first backup made of it.</td></tr>
+                <tr>
+                    <td>Delete</td>
+                    <td>Deletes the selected plugin(s) and any backups of them,
+                        but not snapshots. Deleted plugins are sent to the
+                        Recycling Bin.</td>
+                </tr>
+                <tr><td id="modsBackup">Backup</td><td>Creates a backup of the selected plugin in <code>[Game] Mods\Bash Mod Data\Backups</code>.
+                    On first run, the backed-up plugin has <code>f</code> appended to its file extension, giving e.g. <code>.espf</code>.</td></tr>
+                <tr><td>Revert To Backup...</td><td>Reverts the selected plugin to the last backup made of it.</td></tr>
+                <tr><td>Revert To First Backup...</td><td>Reverts the selected plugin to the first backup made of it.</td></tr>
+                <tr><td id="modsSnapshot">Snapshot...</td><td>Creates a snapshot copy of the selected plugin in <code>Bash\Snapshots</code>.
+                    Snapshot filenames are appended with <code>-n</code> where n is a number between 01 and 99. Eg. the first snapshot of
+                    <code>Plugin.esp</code> is <code>Plugin-01.esp</code>. The number is incremented each time the plugin has a snapshot
+                    taken. Additionally, if there is a version line in the plugin's description field, then the snapshot number will be
+                    appended to the version number in the same manner.</td></tr>
                 <tr><td>Revert To Snapshot...</td><td>Reverts the selected plugin to a selected snapshot.</td></tr>
             <tr><td rowspan="9">Groups</td>
                 <td>Export Group</td><td>Exports the selected plugin's groups to a CSV file as plugin name/groups pairs.</td></tr>
@@ -1035,11 +1060,25 @@ tab. The directories skipped are:
                     <abbr title="Bash Auto Load Ordering">BALO</abbr> has been removed taking BALO groups for the ride - those of you who remember
                     them, shed a tear goodbye.</td></tr>
             <tr><td colspan="2">Rating<td>A purely cosmetic feature, this allows you to assign different rating values to plugins.
+            <tr><td colspan="2">Move To...</td><td>Moves the selected plugin(s) to the specified position. Note that the way this works with
+                inactive plugins may seem a bit counter-intuitive. Since inactive plugins do not have indices, it will be moved to occupy
+                the selected position, but since it's inactive, <em>the next active plugin after it</em> is the one that actually receives
+                the position. In practical terms, this means you will often end up moving an inactive plugin to one spot before the one you
+                wanted and adjusting its position via drag and drop or via <code>Ctrl+Arrow Keys</code> will be necessary.</td></tr>
+            <tr><td colspan="2">Order By Name</td><td>Set the load order of the selected plugins starting at the lowest ordered mod, sorting them alphabetically.</td></tr>
             <tr><td colspan="2">Details...<td>Displays a list of the records in the selected plugin, similar to the Details view in the Construction Set.
             <tr><td colspan="2">List Masters...<td>Outputs a list of the selected plugin's masters.
             <tr><td colspan="2">Readme...<td>Attempts to open the selected plugin's associated readme in the <a href="#tools-docs">Doc Browser</a>.
             <tr><td colspan="2">List Bash Tags...<td>Outputs a BBCode-formatted list of all the Bash Tags applied to the selected plugin, and where/how the Bash Tags was specified. It can be useful for debugging a broken load order.
-            <tr><td colspan="2" id="modsCreateBOSSReport">Create BOSS Report...<td>Outputs the plugin filename, <abbr title="Cyclic Redundancy Check">CRC</abbr>, and <abbr title="Identical To Master record">ITM</abbr>/<abbr title="Undeleted and Disabled Reference">UDR</abbr> count for easy reporting of the plugin to an official LOOT thread.
+            <tr>
+                <td colspan="2" id="modsCreateLOOTEntry">Create LOOT Entry...</td>
+                <td>Creates LOOT masterlist entries based on the tags you have
+                    applied to the selected plugin(s). Also tries to figure out
+                    the URL that the plugin came from based on the BAIN package
+                    it was installed from. In <strong>Oblivion only</strong>,
+                    CBash will also be used to check for ITMs and deleted
+                    references.</td>
+            </tr>
             <tr><td colspan="2" id="modsCopyModInfo">Copy Mod Info...<td>Outputs a report on the selected plugins(s) with the info from the currently displayed columns.
             <tr><td colspan="2">List Dependencies<td>Displays and copies to the clipboard a list of mods that have the currently selected
                 mod as master. Active mods are prefixed with their load order while merged, imported and inactive mods are prefixed with
@@ -1143,19 +1182,21 @@ tab. The directories skipped are:
                 </ol>
                 <p>If you've completely swapped from one base plugin to another, you may wish to remove the old dependency. This can be done using TES4Edit's <q>Clean Masters</q> command or TES4Gecko's <q>Edit Master List</q> command. The former only removes totally unused masters while the latter can remove used masters with the appropriate cleanup, and is not an automated procedure.</p>
                 <strong>Note:</strong> You can also use TES4Edit to change the Form IDs using its <q>Batch Change Referencing Records</q> command together with the CSV file created. TES4Edit will also change the definition of a Form ID, rather than just any references to it, unlike Wrye Bash.
-            <tr><td rowspan="6">Mod Cleaning<td>Don't check against BOSS's dirty mod list<td>Overrides the setting in the column header context menu for the specific plugin(s) selected.
+            <tr><td rowspan="6">Mod Cleaning<td>Don't check against LOOT's dirty mod list<td>Overrides the setting in the column header context menu for the specific plugin(s) selected.
             <tr><td id="modsScanForDirtyEdits">Scan for Dirty Edits<td><em>Oblivion only.</em> Scans the selected plugin for Identical To Master records and deleted references, outputting counts of the dirty edits found. The dirty edit counts may differ from the output provided by TES4Edit as that includes other "junk" records in the <abbr title="Identical To Master record">ITM</abbr> count. Wrye Bash does not count these junk records as they are non-harmful.
             <tr><td>Scan for <abbr title="Undeleted and Disabled Reference">UDR</abbr>'s</td><td><em>All but Oblivion.</em> Behaves as the above <a href="#modsScanForDirtyEdits">Scan for Dirty Edits</a>, but only for deleted references.</td></tr>
             <tr><td id="modsRemoveWorldOrphans">Remove World Orphans<td>Some plugins have a mild form of corruption where exterior cells of new worldspaces in an esp master of the plugin are included in the plugin even if they are not edited, but the parent worldspace is not included, creating "orphaned" cells. This command removes these "orphans".
-            <tr><td id="modsNvidiaFogFix">Nvidia Fog Fix<td>Systems with Nvidia graphics cards can suffer a black screen bug when interior cell fog distances are set to 0. This command scans the selected plugin(s) and sets any zero-valued fog distances to 0.001.<br><br><strong>It is advised that mod authors use this on their mods before release.</strong>
-            <tr><td id="modsUndeleteRefs">Undelete Refs<td><strong>This is an experimental feature for advanced mod authors. If you're trying to undelete references, you should probably use TES4Edit instead.</strong> Deleted references can cause crashes. This command undeletes references and disables them instead. However, the undeleted reference does not contain the missing data caused by deletion. TES4Edit can add this data back in.
-            <tr><td colspan="2">Add Master...<td><strong>Note: Currently Disabled.</strong> Adds specified master to the list of masters for the selected plugin, thus ceding ownership of new content
-                of this mod to the new master. Useful for splitting mods into esm/esp pairs.<br><br><strong>Warning:</strong> For advanced mod authors only.
-                You should only use this if you know exactly what you're doing: adding a master through Bash does not update record FormIDs,
-                so new content added by the mod will now seem added by the mod's new master (the "cedes ownership" part above) - resulting in
-                the mod marked as mergeable - info from Arthmoor and Lojack here: <a href="https://web.archive.org/web/20190307225455/https://forums.bethsoft.com/topic/1536340-wrye-bash-thread-105/page-3#entry24345148">Wrye Bash - Thread #105, post #80</a>
-                see previous posts for the confusion that this might cause. As Lojack points out if you're doing that sort of low level adding of masters,
-                you should be using xEdit.
+            <tr>
+                <td id="modsNvidiaFogFix">Nvidia Fog Fix</td>
+                <td><em>Oblivion only.</em> Systems with Nvidia graphics cards
+                    can suffer a black screen bug when interior cell fog
+                    distances are set to 0. This command scans the selected
+                    plugin(s) and sets any zero-valued fog distances to 0.001.
+                    <br><br><strong>It is advised that mod authors use this on
+                        their mods before release.</strong></td>
+            </tr>
+            <tr><td id="modsUndeleteRefs">Undelete Refs<td><strong>Removed.</strong> Use xEdit for cleaning.</td></tr>
+            <tr><td colspan="2">Add Master...<td><strong>Removed.</strong> Use xEdit for such low-level editing.</td></tr>
             <tr><td colspan="2" id="modsCopyToEsm">Copy To Esm/Esp<td>Creates a .esp copy of a .esm or vice versa.
             <tr><td colspan="2" id="modsDecompileAll">Decompile All<td>Undoes the effect of a <q>Compile All</q> performed in the Construction Set. It will not do anything to the game's master file.
             <tr><td colspan="2" id="modsEsmifySelf">Add/Remove ESM Flag<td>The distinction between esp and esm plugins is not dependent on their file
@@ -1173,6 +1214,9 @@ tab. The directories skipped are:
                 but toggles a plugin's masters rather than the plugin itself. The load order of plugins will change to reflect their new status but
                 since the modification time won't change they will revert back to their original positions for modification time based load orders.
                 Be sure to backup your load order for Skyrim and newer games.
+            <tr><td colspan="2" id="modsCreateDummyMasters">Create Dummy Masters...</td><td>Creates an empty plugin for each missing master a mod has.
+                This is useful for allowing TES4Edit to open a 'Filter' patch without having all of the required masters. These dummy
+                plugins can later be removed using the <a href="#modsRemoveDummyMasters">Remove Dummy Masters</a> command.</td></tr>
             <tr><td colspan="2" id="modsVersion0.8">Version 0.8<td>Resets the file version number of the selected plugin so that it can be edited in an older version of the Construction Set, which is required when making certain changes due to bugs in the latest Construction Set.<br><br><strong>Warning:</strong> It is possible that this may cause data loss.
         </tbody>
     </table>
@@ -1214,22 +1258,21 @@ tab. The directories skipped are:
 
 <h3 id="patch-tags">Bash Tags <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Wrye Bash uses a tagging system to determine what mods can and should have which records available for importing into the Bashed Patch. These Bash Tags are specified by mod authors in the header descriptions of their plugins, are applied using data from LOOT's masterlist and userlist files, and are read from text files in the <code>[GAME]\Data\BashTags</code> folder.
-In decreasing priority the Bash tags sources are:
+In increasing priority the Bash Tags sources are:
 
 <ol>
-    <li>Manual Bash tags set by user in the Bash mod list</li>
-    <li>Header of ESP or ESM file (also can be edited in bash)</li>
-    <li>userlist.yaml (LOOT)</li>
+    <li>Description in the header of the plugin (can be edited in WB)</li>
+    <li>taglist.yaml (LOOT) - Only if no LOOT masterlist was found on the user's computer</li>
     <li>masterlist.yaml (LOOT)</li>
-    <li>taglist.yaml (LOOT)</li>
+    <li>userlist.yaml (LOOT)</li>
     <li><code>[GAME]\Data\BashTags\[PLUGIN NAME].txt</code></li>
     <li>Tags that were manually set in Wrye Bash</li>
 </ol>
 
-<p>Bash comes with the LOOT API Python Module bundled, currently version 1.2.0. It will try and parse the masterlist and userlist files, if it finds them in
-    <code>C:\Users\USER\AppData\Local\LOOT\GAME</code> directory. If that fails (the files are not there or come from a different LOOT version than
-    the one Bash bundles) it will fallback to the <code>Mopy\Bash Patches\GAME\taglist.yaml</code> file, also bundled, keep it there. For userlist
-and masterlist relative priority and role see the LOOT docs.
+<p>Bash includes a LOOT masterlist parser. It will try and parse the masterlist and userlist files, if it finds them in the
+    <code>%LOCALAPPDATA%\LOOT\GAME</code> directory. If that fails (e.g. if the files are not there) it will fallback to
+    a <code>Mopy\Bash Patches\GAME\taglist.yaml</code> file bundled with Bash, keep it there. For userlist and masterlist
+    relative priority and role see the LOOT docs.</p>
 
 <p>For each plugin, Wrye Bash will read the file <code>[GAME]\Data\BashTags\[PLUGIN NAME].txt</code>, if it exists.
     Tags specified in this file will override ones in the description and the LOOT masterlist.
@@ -1354,10 +1397,7 @@ C.Location, -C.LockList
                         See the <a href="#ActorsACBSOblivion">Oblivion</a> <q>Actors.ACBS</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#ActorsACBSFO3">Fallout 3</a> <q>Actors.ACBS</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#ActorsACBSFNV">Fallout&colon; New Vegas</a> <q>Actors.ACBS</q> section for more information.
+                        See the <a href="#ActorsACBSFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.ACBS</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsACBSSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Actors.ACBS</q> section for more information.
@@ -1376,10 +1416,7 @@ C.Location, -C.LockList
                         See the <a href="#ActorsAIDataOblivion">Oblivion</a> <q>Actors.AIData</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#ActorsAIDataFO3">Fallout 3</a> <q>Actors.AIData</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#ActorsAIDataFNV">Fallout&colon; New Vegas</a> <q>Actors.AIData</q> section for more information.
+                        See the <a href="#ActorsAIDataFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.AIData</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsAIDataSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Actors.AIData</q> section for more information.
@@ -1507,10 +1544,7 @@ C.Location, -C.LockList
                         See the <a href="#ActorsStatsOblivion">Oblivion</a> <q>Actors.Stats</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#ActorsStatsFO3">Fallout 3</a> <q>Actors.Stats</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#ActorsStatsFNV">Fallout&colon; New Vegas</a> <q>Actors.Stats</q> section for more information.
+                        See the <a href="#ActorsStatsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.Stats</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsStatsSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Actors.Stats</q> section for more information.
@@ -1829,10 +1863,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#DestructibleFO3">Fallout 3</a> <q>Destructible</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#DestructibleFNV">Fallout&colon; New Vegas</a> <q>Destructible</q> section for more information.
+                        See the <a href="#DestructibleFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Destructible</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#DestructibleSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Destructible</q> section for more information.
@@ -1868,10 +1899,7 @@ C.Location, -C.LockList
                         See the <a href="#GraphicsOblivion">Oblivion</a> <q>Graphics</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#GraphicsFO3">Fallout 3</a> <q>Graphics</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#GraphicsFNV">Fallout&colon; New Vegas</a> <q>Graphics</q> section for more information.
+                        See the <a href="#GraphicsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Graphics</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#GraphicsSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Graphics</q> section for more information.
@@ -1935,10 +1963,7 @@ C.Location, -C.LockList
                         See the <a href="#NamesOblivion">Oblivion</a> <q>Names</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#NamesFO3">Fallout 3</a> <q>Names</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#NamesFNV">Fallout&colon; New Vegas</a> <q>Names</q> section for more information.
+                        See the <a href="#NamesFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Names</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#NamesSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Names</q> section for more information.
@@ -2033,10 +2058,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#ObjectBoundsFO3">Fallout 3</a> <q>ObjectBounds</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#ObjectBoundsFNV">Fallout&colon; New Vegas</a> <q>ObjectBounds</q> section for more information.
+                        See the <a href="#ObjectBoundsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>ObjectBounds</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ObjectBoundsSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>ObjectBounds</q> section for more information.
@@ -2076,10 +2098,7 @@ C.Location, -C.LockList
                         See the <a href="#ScriptsOblivion">Oblivion</a> <q>Scripts</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#ScriptsFO3">Fallout 3</a> <q>Scripts</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#ScriptsFNV">Fallout&colon; New Vegas</a> <q>Scripts</q> section for more information.
+                        See the <a href="#ScriptsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Scripts</q> section for more information.
                     </li>
                 </ul>
                 <br>
@@ -2095,10 +2114,7 @@ C.Location, -C.LockList
                         See the <a href="#SoundOblivion">Oblivion</a> <q>Sound</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#SoundFO3">Fallout 3</a> <q>Sound</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#SoundFNV">Fallout&colon; New Vegas</a> <q>Sound</q> section for more information.
+                        See the <a href="#SoundFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Sound</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#SoundSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Sound</q> section for more information.
@@ -2150,10 +2166,7 @@ C.Location, -C.LockList
                         See the <a href="#StatsOblivion">Oblivion</a> <q>Stats</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#StatsFO3">Fallout 3</a> <q>Stats</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#StatsFNV">Fallout&colon; New Vegas</a> <q>Stats</q> section for more information.
+                        See the <a href="#StatsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Stats</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#StatsSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Stats</q> section for more information.
@@ -2172,10 +2185,7 @@ C.Location, -C.LockList
                         See the <a href="#TextOblivion">Oblivion</a> <q>Text</q> section for more information.
                     </li>
                     <li>
-                        See the <a href="#TextFO3">Fallout 3</a> <q>Text</q> section for more information.
-                    </li>
-                    <li>
-                        See the <a href="#TextFNV">Fallout&colon; New Vegas</a> <q>Text</q> section for more information.
+                        See the <a href="#TextFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Text</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#TextSkyrim">Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</a> <q>Text</q> section for more information.
@@ -2890,11 +2900,12 @@ C.Location, -C.LockList
         </tr>
     </tbody>
 </table>
+
 <table>
     <thead>
         <tr>
             <th colspan="3">
-                Bash Tags Available For Fallout 3
+                Bash Tags Available For Fallout 3 &amp; Fallout&colon; New Vegas
             </th>
         </tr>
         <tr>
@@ -2954,6 +2965,7 @@ C.Location, -C.LockList
                     <li>(NPC_ only) Flags:
                         <ul>
                             <li>Auto-Calc Stats</li>
+                            <li>Autocalc Service - <strong>Fallout&colon; New Vegas only</strong></li>
                             <li>Can Be All Races</li>
                             <li>Essential</li>
                             <li>Female</li>
@@ -3085,10 +3097,12 @@ C.Location, -C.LockList
                     <li>(AMMO) Ammunition</li>
                     <li>(ARMO) Armor</li>
                     <li>(BOOK) Book</li>
+                    <li>(CHIP) Casino Chip - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature</li>
                     <li>(DOOR) Door</li>
                     <li>(FURN) Furniture</li>
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(KEYM) Key</li>
                     <li>(LIGH) Light</li>
                     <li>(MISC) Misc. Item</li>
@@ -3170,9 +3184,32 @@ C.Location, -C.LockList
                             <li>(MODL) Model</li>
                         </ul>
                     </li>
+                    <li>(CCRD) Caravan Card - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Model</li>
+                            <li>(ICON) Icon</li>
+                            <li>(MICO) Small Icon</li>
+                            <li>(TX00) High Res Image - Face</li>
+                            <li>(TX01) High Res Image - Back</li>
+                        </ul>
+                    </li>
+                    <li>(CHIP) Casino Chip - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Model</li>
+                            <li>(ICON) Icon</li>
+                            <li>(MICO) Small Icon</li>
+                        </ul>
+                    </li>
                     <li>(CLAS) Class:
                         <ul>
                             <li>(ICON) Icon</li>
+                        </ul>
+                    </li>
+                    <li>(CMNY) Caravan Money - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Model</li>
+                            <li>(ICON) Icon</li>
+                            <li>(MICO) Small Icon</li>
                         </ul>
                     </li>
                     <li>(COBJ) Constructible Object:
@@ -3188,6 +3225,17 @@ C.Location, -C.LockList
                             <li>(NIFZ) Model List</li>
                             <li>(NIFT) Texture File Hashes</li>
                             <li>(EITM) Unarmed Attack Effect</li>
+                        </ul>
+                    </li>
+                    <li>(CSNO) Casino - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Casino Chip Models</li>
+                            <li>(MOD2) Slot Machine Model</li>
+                            <li>(MOD3) Blackjack Table Model</li>
+                            <li>(MODT) Extra Blackjack Table Model</li>
+                            <li>(MOD4) Roulette Table Model</li>
+                            <li>(ICON) Slot Reel Textures</li>
+                            <li>(ICO2) Blackjack Decks</li>
                         </ul>
                     </li>
                     <li>(DOOR) Door:
@@ -3226,6 +3274,13 @@ C.Location, -C.LockList
                     <li>(HDPT) Head Part:
                         <ul>
                             <li>(MODL) Model</li>
+                        </ul>
+                    </li>
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Model</li>
+                            <li>(ICON) Icon</li>
+                            <li>(MICO) Small Icon</li>
                         </ul>
                     </li>
                     <li>(INGR) Ingredient:
@@ -3383,6 +3438,13 @@ C.Location, -C.LockList
                             <li>(MODL) Model</li>
                         </ul>
                     </li>
+                    <li>(REPU) Reputation - <strong>Fallout&colon; New Vegas only</strong>
+                        <ul>
+                            <li>(MODL) Model</li>
+                            <li>(ICON) Icon</li>
+                            <li>(MICO) Small Icon</li>
+                        </ul>
+                    </li>
                     <li>(STAT) Static:
                         <ul>
                             <li>(MODL) Model</li>
@@ -3452,7 +3514,30 @@ C.Location, -C.LockList
                             <li>(MOD3) Scope Model</li>
                             <li>(EFSD) Scope Effect</li>
                             <li>(MOD4) World Model</li>
+                            <li>Model With Mods - <strong>Fallout&colon; New Vegas only</strong>
+                                <ul>
+                                    <li>(MWD1) Mod 1</li>
+                                    <li>(MWD2) Mod 2</li>
+                                    <li>(MWD3) Mod 1 and 2</li>
+                                    <li>(MWD4) Mod 3</li>
+                                    <li>(MWD5) Mod 1 and 3</li>
+                                    <li>(MWD6) Mod 2 and 3</li>
+                                    <li>(MWD7) Mod 1, 2 and 3</li>
+                                </ul>
+                            </li>
+                            <li>(INAM) Impact Dataset</li>
                             <li>(WNAM) First Person Model</li>
+                            <li>First Person Model With Mods - <strong>Fallout&colon; New Vegas only</strong>
+                                <ul>
+                                    <li>(WNM1) Mod 1</li>
+                                    <li>(WNM2) Mod 2</li>
+                                    <li>(WNM3) Mod 1 and 2</li>
+                                    <li>(WNM4) Mod 3</li>
+                                    <li>(WNM5) Mod 1 and 3</li>
+                                    <li>(WNM6) Mod 2 and 3</li>
+                                    <li>(WNM7) Mod 1, 2 and 3</li>
+                                </ul>
+                            </li>
                             <li>(DNAM) Animation Type</li>
                             <li>(DNAM) Grip Animation</li>
                             <li>(DNAM) Reload Animation</li>
@@ -3472,14 +3557,20 @@ C.Location, -C.LockList
                     <li>(ARMO) Armor</li>
                     <li>(AVIF) Actor Value Information</li>
                     <li>(BOOK) Book</li>
+                    <li>(CCRD) Caravan Card - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(CHAL) Challenge - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(CHIP) Casino Chip - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(CLAS) Class</li>
+                    <li>(CMNY) Caravan Money - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(COBJ) Constructible Object</li>
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature</li>
+                    <li>(CSNO) Casino - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(DOOR) Door</li>
                     <li>(EYES) Eyes</li>
                     <li>(FACT) Faction</li>
                     <li>(HAIR) Hair</li>
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(INGR) Ingredient</li>
                     <li>(KEYM) Key</li>
                     <li>(LIGH) Light</li>
@@ -3490,6 +3581,9 @@ C.Location, -C.LockList
                     <li>(NPC_) Non-Player Character</li>
                     <li>(PERK) Perk</li>
                     <li>(RACE) Race</li>
+                    <li>(RCCT) Recipe Category - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(RCPE) Recipe - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(REPU) Reputation - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(SPEL) Actor Effect</li>
                     <li>(TACT) Talking Activator</li>
                     <li>(TERM) Terminal</li>
@@ -3510,6 +3604,9 @@ C.Location, -C.LockList
                     <li>(ARMO) Armor</li>
                     <li>(ASPC) Acoustic Space</li>
                     <li>(BOOK) Book</li>
+                    <li>(CCRD) Caravan Card - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(CHIP) Casino Chip - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(CMNY) Caravan Money - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(COBJ) Constructible Object</li>
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature</li>
@@ -3518,6 +3615,7 @@ C.Location, -C.LockList
                     <li>(FURN) Furniture</li>
                     <li>(GRAS) Grass</li>
                     <li>(IDLM) Idle Marker</li>
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(INGR) Ingredient</li>
                     <li>(KEYM) Key</li>
                     <li>(LIGH) Light</li>
@@ -3548,13 +3646,17 @@ C.Location, -C.LockList
                 <ul>
                     <li>(ACTI) Activator</li>
                     <li>(ALCH) Ingestible</li>
+                    <li>(AMMO) Ammunition - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(ARMO) Armor</li>
                     <li>(BOOK) Book</li>
                     <li>(COBJ) Constructible Object</li>
+                    <li>(CCRD) Caravan Card - <strong>Fallout&colon; New Vegas only</strong></li>
+                    <li>(CHAL) Challenge - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature</li>
                     <li>(DOOR) Door</li>
                     <li>(FURN) Furniture</li>
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(INGR) Ingredient</li>
                     <li>(KEYM) Key</li>
                     <li>(LIGH) Light</li>
@@ -3606,6 +3708,7 @@ C.Location, -C.LockList
                         <ul>
                             <li>(SNAM) Sound - Open</li>
                             <li>(QNAM) Sound - Close</li>
+                            <li>(RNAM) Sound - Looping/Random - <strong>Fallout&colon; New Vegas only</strong></li>
                         </ul>
                     </li>
                     <li>(CREA) Creature:
@@ -3653,7 +3756,7 @@ C.Location, -C.LockList
                     </li>
                     <li>(MGEF) Base Effect:
                         <ul>
-                            <li>DATA
+                            <li>(DATA)
                                 <ul>
                                     <li>Effect Sound</li>
                                     <li>Bolt Sound</li>
@@ -3665,7 +3768,7 @@ C.Location, -C.LockList
                     </li>
                     <li>(PROJ) Projectile:
                         <ul>
-                            <li>DATA
+                            <li>(DATA)
                                 <ul>
                                     <li>Sound</li>
                                     <li>Sound - Countdown</li>
@@ -3702,6 +3805,9 @@ C.Location, -C.LockList
                             <li>(NAM6) Sound - Block</li>
                             <li>(UNAM) Sound - Idle</li>
                             <li>(NAM9) Sound - Equip</li>
+                            <li>(NAM8) Sound - Unequip</li>
+                            <li>(WMS1) Sound - Mod 1 - Shoot 3D - <strong>Fallout&colon; New Vegas only</strong></li>
+                            <li>(WMS1) Sound - Mod 1 - Shoot Dist - <strong>Fallout&colon; New Vegas only</strong></li>
                             <li>(VNAM) Sound Level</li>
                         </ul>
                     </li>
@@ -3738,6 +3844,8 @@ C.Location, -C.LockList
                             <li>(DATA) Value</li>
                             <li>(DATA) Speed</li>
                             <li>(DATA) Clip Rounds</li>
+                            <li>(DAT2) Proj. Per Shot - <strong>Fallout&colon; New Vegas only</strong></li>
+                            <li>(DAT2) Weight - <strong>Fallout&colon; New Vegas only</strong></li>
                         </ul>
                     </li>
                     <li>(ARMA) Armor Addon:
@@ -3746,6 +3854,7 @@ C.Location, -C.LockList
                             <li>(DATA) Value</li>
                             <li>(DATA) Max Condition</li>
                             <li>(DNAM) AR</li>
+                            <li>(DNAM) DT - <strong>Fallout&colon; New Vegas only</strong></li>
                         </ul>
                     </li>
                     <li>(ARMO) Armor:
@@ -3754,6 +3863,7 @@ C.Location, -C.LockList
                             <li>(DATA) Value</li>
                             <li>(DATA) Max Condition</li>
                             <li>(DNAM) AR</li>
+                            <li>(DNAM) DT - <strong>Fallout&colon; New Vegas only</strong></li>
                         </ul>
                     </li>
                     <li>(BOOK) Book:
@@ -3788,1061 +3898,9 @@ C.Location, -C.LockList
                         </ul>
                     </li>
                     <li>(WEAP) Weapon:
-                        <ul>
-                            <li>(DATA) -
-                                <ul>
-                                    <li>Weight</li>
-                                    <li>Value</li>
-                                    <li>Health</li>
-                                    <li>Base Damage</li>
-                                    <li>Clip Size</li>
-                                </ul>
-                            </li>
-                            <li>(DNAM)
-                                <ul>
-                                    <li>Animation multiplier</li>
-                                    <li>Reach</li>
-                                    <li>Ammo Use</li>
-                                    <li>Min Spread</li>
-                                    <li>Spread</li>
-                                    <li>Sight FOV</li>
-                                    <li>Base VATS To-Hit Chance</li>
-                                    <li>Projectile Count</li>
-                                    <li>Min Range</li>
-                                    <li>Max Range</li>
-                                    <li>Animation Attack Multiplier</li>
-                                    <li>Fire Rate</li>
-                                    <li>Override - Action Points</li>
-                                    <li>Rumble - Left Motor Strength</li>
-                                    <li>Rumble - Right Motor Strength</li>
-                                    <li>Rumble - Duration</li>
-                                    <li>Override - Damage to Weapon Mult</li>
-                                    <li>Attack Shots/Sec</li>
-                                    <li>Reload Time</li>
-                                    <li>Jam Time</li>
-                                    <li>Aim Arc</li>
-                                    <li>Rumble - Wavelength</li>
-                                    <li>Limb Dmg Mult</li>
-                                    <li>Sight Usage</li>
-                                    <li>Semi-Automatic Fire Delay Min</li>
-                                    <li>Semi-Automatic Fire Delay Max</li>
-                                </ul>
-                            </li>
-                            <li>(CRDT) Critical Data
-                                <ul>
-                                    <li>Critical Damage</li>
-                                    <li>Crit &percnt; Mult</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="TextFO3">Text</td>
-            <td>Modifies the long-form text (e.g. the text in a book or the text on a loading screen) of things.</td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(AVIF) Actor Value Information:
-                        <ul>
-                            <li>(DESC) Description</li>
-                        </ul>
-                    </li>
-                    <li>(BOOK) Book:
-                        <ul>
-                            <li>(DESC) Book Text</li>
-                        </ul>
-                    </li>
-                    <li>(CLAS) Class:
-                        <ul>
-                            <li>(DESC) Description</li>
-                        </ul>
-                    </li>
-                    <li>(LSCR) Loading Screen:
-                        <ul>
-                            <li>(DESC) Info Text shown while loading</li>
-                        </ul>
-                    </li>
-                    <li>(MESG) Message:
-                        <ul>
-                            <li>(DESC) Message Text</li>
-                        </ul>
-                    </li>
-                    <li>(MGEF) Magic Effect:
-                        <ul>
-                            <li>(DESC) Description</li>
-                        </ul>
-                    </li>
-                    <li>(NOTE) Note:
-                        <ul>
-                            <li>(TNAM) Note Text</li>
-                        </ul>
-                    </li>
-                    <li>(PERK) Perk:
-                        <ul>
-                            <li>(DESC) Description</li>
-                        </ul>
-                    </li>
-                    <li>(TERM) Terminal:
-                        <ul>
-                            <li>(DESC) Description</li>
-                        </ul>
-                    </li>
-                </ul>
-                <br>
-                <strong>Note:</strong> RACE records are not patched by this tag, use R.Description for that.
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th colspan="3">
-                Bash Tags Available For Fallout&colon; New Vegas
-            </th>
-        </tr>
-        <tr>
-            <th>Tag</th>
-            <th>Used When The Mod</th>
-            <th>Specific Record Types/Changes Supported</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- TODO(inf) This is almost identical to FO3, just one extra flag for NPC_
-        However, we currently don't have a good structure in the HTML for showing this - we may want to merge the FO3 and FNV sections? -->
-        <tr>
-            <td id="ActorsACBSFNV">Actors.ACBS</td>
-            <td>Modifies the (ACBS) Configuration subrecord of:
-                <ul>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(CREA) Creature</li>
-                </ul>
-            </td>
-            <td>Changes to the following subrecords in (ACBS) Configuration:
-                <ul>
-                    <li>Barter Gold</li>
-                    <li>Calc Max</li>
-                    <li>Calc Min</li>
-                    <li>Disposition Base</li>
-                    <li>Fatigue</li>
-                    <li>(CREA only) Flags:
-                        <ul>
-                            <li>Allow PC Dialogue</li>
-                            <li>Allow Pickpocket</li>
-                            <li>Biped</li>
-                            <li>Can't Open Doors</li>
-                            <li>Essential</li>
-                            <li>Flies</li>
-                            <li>Immobile</li>
-                            <li>Invulnerable</li>
-                            <li>Is Ghost</li>
-                            <li>No Blood Decal</li>
-                            <li>No Blood Spray</li>
-                            <li>No Combat in Water</li>
-                            <li>No Head</li>
-                            <li>No Knockdowns</li>
-                            <li>No Left Arm</li>
-                            <li>No Low Level Processing</li>
-                            <li>No Right Arm</li>
-                            <li>No Rotating to Head-Track</li>
-                            <li>No Shadow</li>
-                            <li>No VATS Melee</li>
-                            <li>Not Pushable</li>
-                            <li>PC Level Mult</li>
-                            <li>Respawn</li>
-                            <li>Swims</li>
-                            <li>Tilt Front/Back</li>
-                            <li>Tilt Left/Right</li>
-                            <li>Walks</li>
-                            <li>Weapon & Shield</li>
-                        </ul>
-                    </li>
-                    <li>(NPC_ only) Flags:
-                        <ul>
-                            <li>Auto-Calc Stats</li>
-                            <li>Auto-Calc Services</li>
-                            <li>Can Be All Races</li>
-                            <li>Essential</li>
-                            <li>Female</li>
-                            <li>Is CharGen Face Preset</li>
-                            <li>No Blood Decal</li>
-                            <li>No Blood Spray</li>
-                            <li>No Knockdowns</li>
-                            <li>No Low Level Processing</li>
-                            <li>No Rotating to Head-Track</li>
-                            <li>No VATS Melee</li>
-                            <li>Not Pushable</li>
-                            <li>PC Level Mult</li>
-                            <li>Respawn</li>
-                            <li>Use Template</li>
-                        </ul>
-                    </li>
-                    <li>Karma (Alignment)</li>
-                    <li>Level</li>
-                    <li>Speed Multiplier</li>
-                    <li>Template Flags</li>
-                </ul>
-            </td>
-        </tr>
-        <!-- TODO(inf) This is identical to FO3's Actors.AIData - see TODO near ACBS above -->
-        <tr>
-            <td id="ActorsAIDataFNV">Actors.AIData</td>
-            <td>Modifies the (AIDT) AI Data subrecord of:
-                <ul>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(CREA) Creature</li>
-                </ul>
-            </td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(AIDT) AI Data
-                        <ul>
-                            <li>Aggression</li>
-                            <li>Aggro Radius</li>
-                            <li>Aggro Radius Behavior</li>
-                            <li>Assistance</li>
-                            <li>Buys/Sells and Services</li>
-                            <li>Confidence</li>
-                            <li>Energy Level</li>
-                            <li>Maximum Training Level</li>
-                            <li>Mood</li>
-                            <li>Responsibility</li>
-                            <li>Teaches</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="ActorsStatsFNV">Actors.Stats</td>
-            <td>Modifies actor stats (e.g. attributes, health, skills, etc.).</td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(CREA) Creature:
-                        <ul>
-                            <li>(DATA) Stats:
-                                <ul>
-                                    <li>Attributes:
-                                        <ul>
-                                            <li>Agility</li>
-                                            <li>Charisma</li>
-                                            <li>Endurance</li>
-                                            <li>Intelligence</li>
-                                            <li>Luck</li>
-                                            <li>Perception</li>
-                                            <li>Strength</li>
-                                        </ul>
-                                    </li>
-                                    <li>Combat Skill</li>
-                                    <li>Damage</li>
-                                    <li>Health</li>
-                                    <li>Magic Skill</li>
-                                    <li>Stealth Skill</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>(NPC_) Non-Player Character:
-                        <ul>
-                            <li>(DATA) Stats:
-                                <ul>
-                                    <li>Attributes:
-                                        <ul>
-                                            <li>Agility</li>
-                                            <li>Charisma</li>
-                                            <li>Endurance</li>
-                                            <li>Intelligence</li>
-                                            <li>Luck</li>
-                                            <li>Perception</li>
-                                            <li>Strength</li>
-                                        </ul>
-                                    </li>
-                                    <li>Base Health</li>
-                                </ul>
-                            </li>
-                            <li>(DNAM) Skills (Skill Values &amp; Skill Offsets):
-                                <ul>
-                                    <li>Barter</li>
-                                    <li>Big Guns</li>
-                                    <li>Energy Weapons</li>
-                                    <li>Explosives</li>
-                                    <li>Lockpick</li>
-                                    <li>Medicine</li>
-                                    <li>Melee Weapons</li>
-                                    <li>Repair</li>
-                                    <li>Science</li>
-                                    <li>Guns</li>
-                                    <li>Sneak</li>
-                                    <li>Speech</li>
-                                    <li>Survival</li>
-                                    <li>Unarmed</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="DestructibleFNV">Destructible</td>
-            <td>Modifies destructible records.</td>
-            <td>The Destructible subrecord (DEST, DSTD, DMDL, DMDT &amp; DSTF) in the following record types:
-                <ul>
-                    <li>(ACTI) Activator</li>
-                    <li>(ALCH) Ingestible</li>
-                    <li>(AMMO) Ammunition</li>
-                    <li>(ARMO) Armor</li>
-                    <li>(BOOK) Book</li>
-                    <li>(CHIP) Casino Chip</li>
-                    <li>(CONT) Container</li>
-                    <li>(CREA) Creature</li>
-                    <li>(DOOR) Door</li>
-                    <li>(FURN) Furniture</li>
-                    <li>(IMOD) Item Mod</li>
-                    <li>(KEYM) Key</li>
-                    <li>(LIGH) Light</li>
-                    <li>(MISC) Misc. Item</li>
-                    <li>(MSTT) Moveable Static</li>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(PROJ) Projectile</li>
-                    <li>(TACT) Talking Activator</li>
-                    <li>(TERM) Terminal</li>
-                    <li>(WEAP) Weapon</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="GraphicsFNV">Graphics</td>
-            <td>Is a graphics replacer.</td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(ACTI) Activator:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(ALCH) Ingredient:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(AMMO) Ammunition:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(ARMA) Armor Addon:
-                        <ul>
-                            <li>(MODL) Male Biped Model</li>
-                            <li>(MOD2) Male World Model</li>
-                            <li>(ICON) Male Icon Filename</li>
-                            <li>(MICO) Male Small Icon Filename</li>
-                            <li>(MOD3) Female Biped Model</li>
-                            <li>(MOD4) Female World Model</li>
-                            <li>(ICO2) Female Icon Filename</li>
-                            <li>(MIC2) Female Small Icon Filename</li>
-                            <li>(DNAM) 'Modulates Voice' Flag</li>
-                        </ul>
-                    </li>
-                    <li>(ARMO) Armor:
-                        <ul>
-                            <li>(MODL) Male Biped Model</li>
-                            <li>(MOD2) Male World Model</li>
-                            <li>(ICON) Male Icon Filename</li>
-                            <li>(MICO) Male Small Icon Filename</li>
-                            <li>(MOD3) Female Biped Model</li>
-                            <li>(MOD4) Female World Model</li>
-                            <li>(ICO2) Female Icon Filename</li>
-                            <li>(MIC2) Female Small Icon Filename</li>
-                            <li>(DNAM) 'Modulates Voice' Flag</li>
-                            <li>(EITM) Object Effect</li>
-                        </ul>
-                    </li>
-                    <li>(AVIF) Actor Value Information:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(BOOK) Book:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(BPTD) Body Part Data:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(CCRD) Caravan Card:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                            <li>(TX00) High Res Image - Face</li>
-                            <li>(TX01) High Res Image - Back</li>
-                        </ul>
-                    </li>
-                    <li>(CHIP) Casino Chip:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(CLAS) Class:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                        </ul>
-                    </li>
-                    <li>(CMNY) Caravan Money:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(COBJ) Constructible Object:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(CREA) Creature:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(NIFZ) Model List</li>
-                            <li>(NIFT) Texture File Hashes</li>
-                            <li>(EITM) Unarmed Attack Effect</li>
-                        </ul>
-                    </li>
-                    <li>(CSNO) Casino:
-                        <ul>
-                            <li>(MODL) Casino Chip Models</li>
-                            <li>(MOD2) Slot Machine Model</li>
-                            <li>(MOD3) Blackjack Table Model</li>
-                            <li>(MODT) Extra Blackjack Table Model</li>
-                            <li>(MOD4) Roulette Table Model</li>
-                            <li>(ICON) Slot Reel Textures</li>
-                            <li>(ICO2) Blackjack Decks</li>
-                        </ul>
-                    </li>
-                    <li>(DOOR) Door:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(EFSH) Effect Shader:
-                        <ul>
-                            <li>(ICO2) Particle Shader Texture</li>
-                            <li>(ICON) Fill Texture</li>
-                            <li>(NAM7) Holes Texture</li>
-                            <li>(DATA) All</li>
-                        </ul>
-                    </li>
-                    <li>(EXPL) Explosion:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(EITM) Object Effect</li>
-                            <li>(MNAM) Image Space Modifier</li>
-                            <li>(DATA) Light</li>
-                            <li>(DATA) Impact Dataset</li>
-                            <li>(INAM) Placed Impact Object</li>
-                        </ul>
-                    </li>
-                    <li>(FURN) Furniture:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(GRAS) Grass:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(HDPT) Head Part:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(IMOD) Item Mod:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(INGR) Ingredient:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                        </ul>
-                    </li>
-                    <li>(IPCT) Impact:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(DATA) Effect Duration</li>
-                            <li>(DATA) Effect Orientation</li>
-                            <li>(DATA) Angle Threshold</li>
-                            <li>(DATA) Placement Radius</li>
-                            <li>(DATA) Flag - No Decal Data</li>
-                            <li>(DODT) Decal Data
-                                <ul>
-                                    <li>Min Width</li>
-                                    <li>Max Width</li>
-                                    <li>Min Height</li>
-                                    <li>Max Height</li>
-                                    <li>Depth</li>
-                                    <li>Shininess</li>
-                                    <li>Parallax Scale</li>
-                                    <li>Parallax Passes</li>
-                                    <li>Decal Flags
-                                        <ul>
-                                            <li>Parallax</li>
-                                            <li>Alpha - Blending</li>
-                                            <li>Alpha - Testing</li>
-                                        </ul>
-                                    </li>
-                                    <li>Color
-                                        <ul>
-                                            <li>Red</li>
-                                            <li>Green</li>
-                                            <li>Blue</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>(DNAM) Texture Set</li>
-                        </ul>
-                    </li>
-                    <li>(IPDS) Impact Dataset:
-                        <ul>
-                            <li>(DATA) Impacts
-                                <ul>
-                                    <li>Stone</li>
-                                    <li>Dirt</li>
-                                    <li>Grass</li>
-                                    <li>Glass</li>
-                                    <li>Metal</li>
-                                    <li>Wood</li>
-                                    <li>Organic</li>
-                                    <li>Cloth</li>
-                                    <li>Water</li>
-                                    <li>Hollow Metal</li>
-                                    <li>Organic Bug</li>
-                                    <li>Organic Glow</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>(KEYM) Key:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(LIGH) Light:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(DATA) Duration</li>
-                            <li>(DATA) Radius</li>
-                            <li>(DATA) Color
-                                <ul>
-                                    <li>Red</li>
-                                    <li>Green</li>
-                                    <li>Blue</li>
-                                </ul>
-                            </li>
-                            <li>(DATA) Flags</li>
-                            <li>(DATA) Falloff Exponent</li>
-                            <li>(FNAM) Fade</li>
-                        </ul>
-                    </li>
-                    <li>(LSCR) Load Screen:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                        </ul>
-                    </li>
-                    <li>(MGEF) Base Effect:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(DATA) Light</li>
-                            <li>(DATA) Effect Shader</li>
-                            <li>(DATA) Object Display Shader</li>
-                        </ul>
-                    </li>
-                    <li>(MICN) Menu Icon:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(MISC) Misc. Item:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(MSTT) Movable Static:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(NOTE) Note:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                            <li>(MODL) Model</li>
-                            <li>(XNAM) Texture</li>
-                        </ul>
-                    </li>
-                    <li>(NPC_) Non-Player Character:
-                        <ul>
-                            <li>(EITM) Unnarmed Attack Effect</li>
-                        </ul>
-                    </li>
-                    <li>(PERK) Perk:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(PROJ) Projectile:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(DATA) Light</li>
-                            <li>(DATA) Muzzle Flash Light</li>
-                            <li>(DATA) Explosion</li>
-                            <li>(DATA) Muzzle Flash Duration</li>
-                            <li>(DATA) Fade Duration</li>
-                            <li>(NAM1) Muzzle Flash Model</li>
-                        </ul>
-                    </li>
-                    <li>(PWAT) Placeable Water:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(REPU) Reputation:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                        </ul>
-                    </li>
-                    <li>(STAT) Static:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(TACT) Talking Activator:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(TERM) Terminal:
-                        <ul>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(TREE) Tree:
-                        <ul>
-                            <li>(ICON) Icon</li>
-                            <li>(MODL) Model</li>
-                        </ul>
-                    </li>
-                    <li>(TXST) Texture Set:
-                        <ul>
-                            <li>(TX00) Base Image/Transparency</li>
-                            <li>(TX01) Normal Map/Specular</li>
-                            <li>(TX02) Environment Map Mask</li>
-                            <li>(TX03) Glow Map</li>
-                            <li>(TX04) Parallax Map</li>
-                            <li>(TX05) Environment Map</li>
-                            <li>(DNAM) Flag - No Decal Data</li>
-                            <li>(DATA) Flag - No Decal Data</li>
-                            <li>(DODT) Decal Data
-                                <ul>
-                                    <li>Min Width</li>
-                                    <li>Max Width</li>
-                                    <li>Min Height</li>
-                                    <li>Max Height</li>
-                                    <li>Depth</li>
-                                    <li>Shininess</li>
-                                    <li>Parallax Scale</li>
-                                    <li>Parallax Passes</li>
-                                    <li>Decal Flags
-                                        <ul>
-                                            <li>Parallax</li>
-                                            <li>Alpha - Blending</li>
-                                            <li>Alpha - Testing</li>
-                                        </ul>
-                                    </li>
-                                    <li>Color
-                                        <ul>
-                                            <li>Red</li>
-                                            <li>Green</li>
-                                            <li>Blue</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>(WEAP) Weapon:
-                        <ul>
-                            <li>(MODL) Model</li>
-                            <li>(ICON) Icon</li>
-                            <li>(MICO) Small Icon</li>
-                            <li>(EITM) Object Effect</li>
-                            <li>(MOD2) Shell Casing Model</li>
-                            <li>(MOD3) Scope Model</li>
-                            <li>(EFSD) Scope Effect</li>
-                            <li>(MOD4) World Model</li>
-                            <li>(MWD1-7) Model - With Mods</li>
-                            <li>(WNAM) First Person Model</li>
-                            <li>(WNM1-7) First Person Model - With Mods</li>
-                            <li>(DNAM) Animation Type</li>
-                            <li>(DNAM) Grip Animation</li>
-                            <li>(DNAM) Reload Animation</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="NamesFNV">Names</td>
-            <td>Changes the names of things.</td>
-            <td>The Name (FULL) subrecord in the following record types:
-                <ul>
-                    <li>(ACTI) Activator</li>
-                    <li>(ALCH) Ingestible</li>
-                    <li>(AMMO) Ammunition</li>
-                    <li>(ARMO) Armor</li>
-                    <li>(AVIF) Actor Value Information</li>
-                    <li>(BOOK) Book</li>
-                    <li>(CCRD) Caravan Card</li>
-                    <li>(CHAL) Challenge</li>
-                    <li>(CHIP) Casino Chip</li>
-                    <li>(CLAS) Class</li>
-                    <li>(CMNY) Caravan Money</li>
-                    <li>(COBJ) Constructible Object</li>
-                    <li>(CONT) Container</li>
-                    <li>(CREA) Creature</li>
-                    <li>(CSNO) Casino</li>
-                    <li>(DOOR) Door</li>
-                    <li>(EYES) Eyes</li>
-                    <li>(FACT) Faction</li>
-                    <li>(HAIR) Hair</li>
-                    <li>(IMOD) Item Mod</li>
-                    <li>(INGR) Ingredient</li>
-                    <li>(KEYM) Key</li>
-                    <li>(LIGH) Light</li>
-                    <li>(MESG) Message</li>
-                    <li>(MGEF) Base Effect</li>
-                    <li>(MISC) Misc. Item</li>
-                    <li>(NOTE) Note</li>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(PERK) Perk</li>
-                    <li>(RACE) Race</li>
-                    <li>(RCCT) Recipe Category</li>
-                    <li>(RCPE) Recipe</li>
-                    <li>(REPU) Reputation</li>
-                    <li>(SPEL) Actor Effect</li>
-                    <li>(TACT) Talking Activator</li>
-                    <li>(TERM) Terminal</li>
-                    <li>(WEAP) Weapon</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="ObjectBoundsFNV">ObjectBounds</td>
-            <td>Changes the object bounds of things.</td>
-            <td>The (OBND) Object Bounds subrecord in the following record types:
-                <ul>
-                    <li>(ACTI) Activator</li>
-                    <li>(ADDN) Addon Node</li>
-                    <li>(ALCH) Ingestible</li>
-                    <li>(AMMO) Ammunition</li>
-                    <li>(ARMA) Armor Addon</li>
-                    <li>(ARMO) Armor</li>
-                    <li>(ASPC) Acoustic Space</li>
-                    <li>(BOOK) Book</li>
-                    <li>(CCRD) Caravan Card</li>
-                    <li>(CHIP) Casino Chip</li>
-                    <li>(CMNY) Caravan Money</li>
-                    <li>(COBJ) Constructible Object</li>
-                    <li>(CONT) Container</li>
-                    <li>(CREA) Creature</li>
-                    <li>(DOOR) Door</li>
-                    <li>(EXPL) Explosion</li>
-                    <li>(FURN) Furniture</li>
-                    <li>(GRAS) Grass</li>
-                    <li>(IDLM) Idle Marker</li>
-                    <li>(IMOD) Item Mod</li>
-                    <li>(INGR) Ingredient</li>
-                    <li>(KEYM) Key</li>
-                    <li>(LIGH) Light</li>
-                    <li>(LVLC) Leveled Creature</li>
-                    <li>(LVLI) Leveled Item</li>
-                    <li>(LVLN) Leveled NPC</li>
-                    <li>(MISC) Misc. Item</li>
-                    <li>(MSTT) Moveable Static</li>
-                    <li>(NOTE) Note</li>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(PROJ) Projectile</li>
-                    <li>(PWAT) Placeable Water</li>
-                    <li>(SCOL) Static Collection</li>
-                    <li>(SOUN) Sound</li>
-                    <li>(STAT) Static</li>
-                    <li>(TACT) Talking Activator</li>
-                    <li>(TERM) Terminal</li>
-                    <li>(TREE) Tree</li>
-                    <li>(TXST) Texture Set</li>
-                    <li>(WEAP) Weapon</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="ScriptsFNV">Scripts</td>
-            <td>Modifies scripts attached to various things.</td>
-            <td>The Script (SCRI) subrecord in the following record types:
-                <ul>
-                    <li>(ACTI) Activator</li>
-                    <li>(ALCH) Ingestible</li>
-                    <li>(AMMO) Ammunition</li>
-                    <li>(ARMO) Armor</li>
-                    <li>(BOOK) Book</li>
-                    <li>(CCRD) Caravan Card</li>
-                    <li>(CHAL) Challenge</li>
-                    <li>(COBJ) Constructible Object</li>
-                    <li>(CONT) Container</li>
-                    <li>(CREA) Creature</li>
-                    <li>(DOOR) Door</li>
-                    <li>(FURN) Furniture</li>
-                    <li>(INGR) Ingredient</li>
-                    <li>(IMOD) Item Mod</li>
-                    <li>(KEYM) Key</li>
-                    <li>(LIGH) Light</li>
-                    <li>(MISC) Misc. Item</li>
-                    <li>(NPC_) Non-Player Character</li>
-                    <li>(QUST) Quest</li>
-                    <li>(TACT) Talking Activator</li>
-                    <li>(TERM) Terminal</li>
-                    <li>(WEAP) Weapon</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="SoundFNV">Sound</td>
-            <td>Replaces sounds.</td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(ACTI) Activator:
-                        <ul>
-                            <li>(SNAM) Sound - Looping</li>
-                            <li>(VNAM) Sound - Activation</li>
-                        </ul>
-                    </li>
-                    <li>(ADDN) Addon Node:
-                        <ul>
-                            <li>(SNAM) Sound</li>
-                        </ul>
-                    </li>
-                    <li>(ALCH) Ingestible:
-                        <ul>
-                            <li>(ZNAM) Sound - Drop</li>
-                            <li>(YNAM) Sound - Pick Up</li>
-                            <li>(ENIT) Sound - Consume</li>
-                        </ul>
-                    </li>
-                    <li>(ASPC) Acoustic Space:
-                        <ul>
-                            <li>(SNAM) Sound - Looping</li>
-                            <li>(RDAT) Use Sound from region (Interiors Only)</li>
-                        </ul>
-                    </li>
-                    <li>(COBJ) Constructible Object:
-                        <ul>
-                            <li>(YNAM) Sound - Pick Up</li>
-                            <li>(ZNAM) Sound - Drop</li>
-                        </ul>
-                    </li>
-                    <li>(CONT) Container:
-                        <ul>
-                            <li>(SNAM) Sound - Open</li>
-                            <li>(QNAM) Sound - Close</li>
-                            <li>(RNAM) Sound - Random/Looping</li>
-                        </ul>
-                    </li>
-                    <li>(CREA) Creature:
-                        <ul>
-                            <li>(WNAM) Foot Weight</li>
-                            <li>(CSCR) Inherits sound from</li>
-                            <li>Sounds
-                                <ul>
-                                    <li>(CSDT) Sound Type</li>
-                                    <li>(CSDI) Sound</li>
-                                    <li>(CSDC) Sound Chance</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>(DOOR) Door:
-                        <ul>
-                            <li>(SNAM) Sound Open</li>
-                            <li>(ANAM) Sound Close</li>
-                            <li>(BNAM) Sound Looping</li>
-                        </ul>
-                    </li>
-                    <li>(LIGH) Light:
-                        <ul>
-                            <li>(SNAM) Sound</li>
-                        </ul>
-                    </li>
-                    <li>(MGEF) Base Effect:
                         <ul>
                             <li>(DATA)
                                 <ul>
-                                    <li>Effect Sound</li>
-                                    <li>Bolt Sound</li>
-                                    <li>Hit Sound</li>
-                                    <li>Area Sound</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>(SOUN) Sound:
-                        <ul>
-                            <li>(FNAM) Sound Filename</li>
-                            <li>(SNDD) Sound Data</li>
-                        </ul>
-                    </li>
-                    <li>(WATR) Water:
-                        <ul>
-                            <li>(SNAM) Sound</li>
-                        </ul>
-                    </li>
-                    <li>(WEAP) Weapon:
-                        <ul>
-                            <li>(YNAM) Sound - Pick Up</li>
-                            <li>(ZNAM) Sound - Drop</li>
-                            <li>(SNAM) Sound - Gun - Shoot 3D</li>
-                            <li>(XNAM) Sound - Gun - Shoot 2D</li>
-                            <li>(NAM7) Sound - Gun - Shoot 3D Looping</li>
-                            <li>(TNAM) Sound - Melee - Swing/Gun - No ammo</li>
-                            <li>(NAM6) Sound - Block</li>
-                            <li>(UNAM) Sound - Idle</li>
-                            <li>(NAM9) Sound - Equip</li>
-                            <li>(NAM8) Sound - Unequip</li>
-                            <li>(WMS1) Sound - Mod1 - Shoot 3D</li>
-                            <li>(WMS2) Sound - Mod1 - Shoot 2D</li>
-                            <li>(VNAM) Sound Level</li>
-                        </ul>
-                    </li>
-                    <li>(WTHR) Weather:
-                        <ul>
-                            <li>Sounds
-                                <ul>
-                                    <li>(SNAM) Sound
-                                        <ul>
-                                            <li>Sound</li>
-                                            <li>Type</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td id="StatsFNV">Stats</td>
-            <td>Modifies item stats.</td>
-            <td>The following subrecords:
-                <ul>
-                    <li>(ALCH) Ingestible:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(ENIT) Value</li>
-                        </ul>
-                    </li>
-                    <li>(AMMO) Ammunition:
-                        <ul>
-                            <li>(DATA) Value</li>
-                            <li>(DATA) Speed</li>
-                            <li>(DATA) Clip Rounds</li>
-                            <li>(DAT2) Proj. per shot</li>
-                            <li>(DAT2) Weight</li>
-                        </ul>
-                    </li>
-                    <li>(ARMA) Armor Addon:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                            <li>(DATA) Max Condition</li>
-                            <li>(DNAM) AR</li>
-                            <li>(DNAM) DT</li>
-                        </ul>
-                    </li>
-                    <li>(ARMO) Armor:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                            <li>(DATA) Max Condition</li>
-                            <li>(DNAM) AR</li>
-                            <li>(DNAM) DT</li>
-                        </ul>
-                    </li>
-                    <li>(BOOK) Book:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                        </ul>
-                    </li>
-                    <li>(INGR) Ingredient:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(ENIT) Value</li>
-                        </ul>
-                    </li>
-                    <li>(KEYM) Key:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                        </ul>
-                    </li>
-                    <li>(LIGH) Light:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                            <li>(DATA) Time</li>
-                        </ul>
-                    </li>
-                    <li>(MISC) Misc. Item:
-                        <ul>
-                            <li>(DATA) Weight</li>
-                            <li>(DATA) Value</li>
-                        </ul>
-                    </li>
-                    <li>(WEAP) Weapon:
-                        <ul>
-                            <li>(DATA) -
-                                <ul>
                                     <li>Weight</li>
                                     <li>Value</li>
                                     <li>Health</li>
@@ -4878,11 +3936,11 @@ C.Location, -C.LockList
                                     <li>Sight Usage</li>
                                     <li>Semi-Automatic Fire Delay Min</li>
                                     <li>Semi-Automatic Fire Delay Max</li>
-                                    <li>Strength Req</li>
-                                    <li>Regen Rate</li>
-                                    <li>Kill Impulse</li>
-                                    <li>Impulse Dist</li>
-                                    <li>Skill Req</li>
+                                    <li>Strength Req - <strong>Fallout&colon; New Vegas only</strong></li>
+                                    <li>Regen Rate - <strong>Fallout&colon; New Vegas only</strong></li>
+                                    <li>Kill Impulse - <strong>Fallout&colon; New Vegas only</strong></li>
+                                    <li>Impulse Dist - <strong>Fallout&colon; New Vegas only</strong></li>
+                                    <li>Skill Req - <strong>Fallout&colon; New Vegas only</strong></li>
                                 </ul>
                             </li>
                             <li>(CRDT) Critical Data
@@ -4891,7 +3949,7 @@ C.Location, -C.LockList
                                     <li>Crit &percnt; Mult</li>
                                 </ul>
                             </li>
-                            <li>(VATS) VATS
+                            <li>(VATS) VATS - <strong>Fallout&colon; New Vegas only</strong>
                                 <ul>
                                     <li>Skill</li>
                                     <li>Dam. Mult</li>
@@ -4904,8 +3962,8 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
-            <td id="TextFNV">Text</td>
-            <td>Modifies the long-form text (e.g. the text in a book or the text on a loading screen) of things.</td>
+            <td id="TextFO3">Text</td>
+            <td>Modifies long-form text (e.g. the text in a book or the text on a loading screen) of things.</td>
             <td>The following subrecords:
                 <ul>
                     <li>(AVIF) Actor Value Information:
@@ -4918,7 +3976,7 @@ C.Location, -C.LockList
                             <li>(DESC) Book Text</li>
                         </ul>
                     </li>
-                    <li>(CHAL) Challenge:
+                    <li>(CHAL) Challenge - <strong>Fallout&colon; New Vegas only</strong>
                         <ul>
                             <li>(DESC) Description</li>
                         </ul>
@@ -4928,7 +3986,7 @@ C.Location, -C.LockList
                             <li>(DESC) Description</li>
                         </ul>
                     </li>
-                    <li>(IMOD) Item Mod:
+                    <li>(IMOD) Item Mod - <strong>Fallout&colon; New Vegas only</strong>
                         <ul>
                             <li>(DESC) Description</li>
                         </ul>
@@ -4964,29 +4022,10 @@ C.Location, -C.LockList
                         </ul>
                     </li>
                 </ul>
+                <!-- TODO(inf) Once R.Description is ported, uncomment
                 <br>
                 <strong>Note:</strong> RACE records are not patched by this tag, use R.Description for that.
-            </td>
-        </tr>
-        <tr>
-            <td>WeaponMods</td>
-            <td>Changes Weapon Modifications.</td>
-            <td>The following Weapon (WEAP) subrecords:
-                <ul>
-                    <li>(MWD[1-7]) Model Mod</li>
-                    <li>(WNM[1-7]) 1st Person Model Mod</li>
-                    <li>(WMI[1-3]) Weapon mod</li>
-                    <li>(WMS1) Sound Mod 1 - Shoot 3D</li>
-                    <li>(WMS2) Sound Mod 1 - Shoot 2D</li>
-                    <li>(DNAM) Effect Mod [1-3]</li>
-                    <li>(DNAM) Value A Mod [1-3]</li>
-                    <li>(DNAM) Reload Animation Mod</li>
-                    <li>(DNAM) Value B Mod [1-3]</li>
-                    <li>(VATS) Mod Required</li>
-                    <li>(MOD3) Scope Model</li>
-                    <li>(DNAM) Flags 1 - Has Scope</li>
-                    <li>(DNAM) Flags 2 - Scope From Mod</li>
-                </ul>
+                -->
             </td>
         </tr>
     </tbody>
@@ -5632,7 +4671,7 @@ C.Location, -C.LockList
         </tr>
         <tr>
             <td id="TextSkyrim">Text</td>
-            <td>Modifies the long-form text (e.g. the text in a book or the description of a weapon, armor, spell, etc.) of things.</td>
+            <td>Modifies long-form text (e.g. the text in a book or the description of a weapon, armor, spell, etc.) of things.</td>
             <td>The following subrecords:
                 <ul>
                     <li>(ALCH) Ingestible:
@@ -5707,8 +4746,10 @@ C.Location, -C.LockList
                         </ul>
                     </li>
                 </ul>
+                <!-- TODO(inf) Once R.Description is ported, uncomment
                 <br>
                 <strong>Note:</strong> RACE records are not patched by this tag, use R.Description for that.
+                -->
             </td>
         </tr>
     </tbody>
@@ -5952,7 +4993,7 @@ C.Location, -C.LockList
             <td>Actor: Strength Encumbrance Multiplier</td>
             <td>Actor strength * this multiplier = actor encumbrance
                 capacity.</td>
-            <td>All but Fallout 4</td>
+            <td>All but Fallout 3 &amp; Fallout 4</td>
         </tr>
         <tr>
             <td>Actor: Training Limit</td>
@@ -6130,6 +5171,12 @@ C.Location, -C.LockList
                 Fallout 4</td>
         </tr>
         <tr>
+            <td>Combat: Auto Aim Fix</td>
+            <td>Increase Auto Aim settings to a level at which snipers can
+                benefit from them</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
             <td>Combat: Critical Hit Chance</td>
             <td>The chance of a strike being a critical hit. 100% guarantees
                 critical hits, 0% disables them.</td>
@@ -6162,6 +5209,12 @@ C.Location, -C.LockList
                 Fallout 4</td>
         </tr>
         <tr>
+            <td>Combat: NPC Death XP Threshold</td>
+            <td>Percentage of total damage you have to inflict in order to get
+                XP.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
             <td>Combat: Recharge Weapons</td>
             <td>By default, you can recharge weapons during combat. Disallowing
                 that encourages you to be ready for battle ahead of time.</td>
@@ -6180,6 +5233,16 @@ C.Location, -C.LockList
                 crossbows while sneaking.</td>
             <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
                 Special Edition</td>
+        </tr>
+        <tr>
+            <td>Combat: VATS Player Damage Multiplier</td>
+            <td>Multiplier of damage that player receives in VATS.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Combat: VATS Playback Delay</td>
+            <td>Seconds of delay after the VATS Camera finished playback.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Compass: Disable</td>
@@ -6245,9 +5308,25 @@ C.Location, -C.LockList
                 Fallout 4</td>
         </tr>
         <tr>
-            <td>Fatigue from Running/Encumbrance</td>
-            <td>Fatigue cost multiplier for running or encumbrance.</td>
-            <td>Oblivion</td>
+            <td>Gore: Combat Dismember Part Chance</td>
+            <td>The chance that body parts will be dismembered.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Gore: Combat Explode Part Chance</td>
+            <td>The chance that body parts will explode.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Hacking: Maximum Number of Words</td>
+            <td>The maximum number of words appearing in the terminal hacking
+                mini-game.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Hacking: Terminal Speed Adjustment</td>
+            <td>The display speed at the time of terminal hacking.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Leveled Creature Max Level Difference</td>
@@ -6257,7 +5336,7 @@ C.Location, -C.LockList
         <tr>
             <td>Leveled Item Max Level Difference</td>
             <td>Maximum difference to player level for leveled items.</td>
-            <td>Oblivion</td>
+            <td>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Magic: Bolt Speed</td>
@@ -6315,6 +5394,22 @@ C.Location, -C.LockList
             <td>The extra barter gold all vendors have for a master of
                 mercantile.</td>
             <td>Oblivion</td>
+        </tr>
+        <tr>
+            <td>Movement: Base Speed</td>
+            <td>Changes base movement speed.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Movement: Fatigue from Running/Encumbrance</td>
+            <td>Fatigue cost multiplier for running or encumbrance.</td>
+            <td>Oblivion</td>
+        </tr>
+        <tr>
+            <td>Movement: Sneak Multiplier</td>
+            <td>Movement speed is multiplied by this when the actor is
+                sneaking.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Msg: Auto Saving</td>
@@ -6436,6 +5531,11 @@ C.Location, -C.LockList
             <td>All but Fallout 4</td>
         </tr>
         <tr>
+            <td>Player: PipBoy Light Keypress Delay</td>
+            <td>Seconds of delay until the PipBoy light switches on.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
             <td>Player: Sprinting Cost</td>
             <td>Changes the stamina drain that occurs when sprinting.</td>
             <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
@@ -6532,6 +5632,23 @@ C.Location, -C.LockList
                 the night sky.</td>
             <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
                 Special Edition</td>
+        </tr>
+        <tr>
+            <td>Visuals: Shell Camera Distance</td>
+            <td>Maximum distance at which gun arisings (shell case, particle,
+                decal, etc.) show from camera.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Visuals: Shell Litter Count</td>
+            <td>Maximum number of debris (shell case, etc) allowed in
+                cell.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>Visuals: Shell Litter Time</td>
+            <td>Time before shell cases fade away from cells.</td>
+            <td>Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Warning: Exterior Distance to Hostiles</td>
@@ -6731,69 +5848,205 @@ C.Location, -C.LockList
 </ul>
 
 <h3 id="saves-commands">Context Menu Commands <a class="back2top" href="#contents">Back to top</a></h3>
-<table>
-    <thead>
-        <tr><th colspan="3">Column Header Context Menu
-        <tr><th colspan="2">Command<th>Description
-    <tbody>
-        <tr><td colspan="2">Sort By<td>This submenu allows you to choose by which column the save list is sorted. This is equivalent to clicking on a column header.
-        <tr><td colspan="2">Oblivion.esm<td><em>Oblivion only.</em> This submenu relates to <a href="#tools-swapping">Oblivion.esm Swapping</a>. It allows you to swap the active version of Oblivion.esm.
-        <tr><td rowspan="2">Profile<td>Edit Profiles...<td>This submenu allows the creation, editing and removal of <a href="#saves-profiles">save profiles</a>.
-        <tr><td>[Profile]<td>[Profile] is the name of a save profile, which are listed below the separator in the Profile submenu. Clicking a save profile will activate it.
-        <tr><td colspan="2">Columns<td>This submenu allows you to choose which columns are visible in the save list.
-        <tr><td colspan="2">Open...<td>Opens the saves folder in Windows Explorer.
-        <tr><td colspan="2">Unhide...<td>Opens a dialogue window allowing you to select which hidden save files to unhide.
-</table>
-<table>
-    <thead>
-        <tr><th colspan="3">Save Context Menu
-        <tr><th colspan="2">Command<th>Description
-    <tbody>
-        <tr><td rowspan="7">File<td>Backup<td>Creates a backup of the selected save file in <code>[Game] Mods\Bash Mod Data\Backups</code>. On first run, the backed-up save file has <code>f</code> appended to its file extension, giving .essf.
-        <tr><td>Duplicate...<td>Creates a duplicate of the selected save file in the saves folder.
-        <tr><td>Delete<td>Permanently deletes the selected save file and any backups of it.
-        <tr><td>Hide<td>Moves the selected save file to the <code>My Games\[Game]\Saves\[optional profile dir\]Bash\Hidden</code> directory.
-        <tr><td>Revert to Backup<td>Reverts the selected save file to the last backup made of it.
-        <tr><td>Revert to First Backup<td>Reverts the selected save file to the first backup made of it.
-        <tr><td>Rename...<td>Rename the selected save file. bak files are not supported and you can't change the extension (specifying
-            another extension will make the rename fail)
-        <tr><td colspan="2" id="savesMoveTo">Move To<td>This submenu allows you to specify a save profile to move the selected save(s) to from the active save profile.
-        <tr><td colspan="2" id="savesCopyTo">Copy To<td>This submenu allows you to specify a save profile to copy the selected save(s) to, so that it is present in both the active and specified save profiles.
-        <tr><td colspan="2" id="savesLoadMasters">Load Masters<td>Synchronizes activated plugins to savegame's masters.
-        <tr><td colspan="2" id="savesListMasters">List Masters...<td>Lists savegame masters in load order and copies the list to the clipboard. Version numbers are displayed if detected.
-        <tr><td colspan="2" id="savesDiffMasters">Diff Masters...<td>If two savegames are selected, then this will compare the masters of the new save to those of the older save. If one savegame is selected, then this will compare the currently active plugins to the masters of the selected savegame. The comparison details masters that have been removed and added in the newer save since the older save, or removed and added in the load order since the selected save.
-        <tr><td colspan="2" id="savesStatistics">Statistics<td><em>Oblivion only.</em> This produces a set of various technical statistics for the selected savegame. The following information is produced:
-            <ul>
-                <li>Array sizes. These arrays are for each of the major sections in the save file.
-                <li>Created items. These are items created in-game, through scripting or some sort of crafting skill (eg. alchemy, spellmaking).
-                <li>Form IDs. This is a breakdown of the Form ID table in the savegame, sorted by source plugin. The Form ID table maps savegame reference numbers to the Form ID of the referenced record. If a reference is made to a record from a mod that is no longer loaded, the Form ID is replaced with a 0.
-                <li>Record details. This gives a breakdown of the different types of records stored in the save file. The type is given as a number and as text (eg. <code>48 Cell</code>), and then the number of records referenced from each plugin is given below.
-                <li>New ObjectRef Bases. These are objects that belong to the savegame, for example arrows dropped on the ground in-game. They generally are created and destroyed by the game as required, though bad scripting techniques can cause some of them to stick around. The "Base" of an objectRef is the baseid of the object (e.g., the formid of a steel arrow from Oblivion.esm). The objectRef refers to these indirectly through an "iref". Usually this will map back to a formid, but if the original mod has been removed from the load order, then the formid is set to zero. If this has happened, then a count of such "Null Bases" will be shown. After the "Null Base" count (if present) is a list of New ObjectRef Bases where the count is over 100 (e.g., if there are over 100 new arrows lying around). Show is the count, the iref and the base formid. Formid beginning with FF is reference to an object defined by the savegame. Otherwise, the formid will map back to a mod. The first two digits are the modindex, and can be matched to a mod through the "MI" column in the list of savegame masters.
-            </ul>
-        <tr><td colspan="2">.obse Statistics<td><em>Oblivion only.</em> This is similar to <a href="#savesStatistics">Statistics</a> above, but reports statistics for the .pluggy and/or .obse cosave files associated with the selected save.
-        <tr><td colspan="2" id="savesDeleteSpells">Delete Spells...<td><em>Oblivion only.</em> This allows you to delete unused spells from your spell list in the selected save. <strong>Warning:</strong> This cannot be undone. Most spells may be repurchased or recreated, but quest and other special spells will likely have to be added using the console.
-        <tr><td colspan="2">Rename Player...<td><em>Oblivion only.</em> Renames the player's character in the selected save.
-        <tr><td colspan="2">Set Number of Uses for Weapon Enchantments...<td><em>Oblivion only.</em> Allows you to set the number of casts available to any enchanted weapon you created in-game, or that has otherwise been recorded in your savegame.
-        <tr><td colspan="2">Import Face...<td><em>Oblivion only.</em> Relates to <a href="#saves-face">Face Importing</a>. This command allows you to import a face for the save file's player character (and possibly some NPCs) from another save file or from an NPC in a mod.
-        <tr><td colspan="2">Rename Enchanted...<td><em>Oblivion only.</em> Allows you to rename any enchanted items that you have created in-game for the selected save.
-        <tr><td colspan="2" id="savesRenamePotions">Rename Potions...<td><em>Oblivion only.</em> Allows you to rename any potions that you have created in-game for the selected save.
-        <tr><td colspan="2">Rename Spells...<td><em>Oblivion only.</em> Allows you to rename any spells that you have created in-game for the selected save.
-        <tr><td colspan="2" id="savesReweighPotions">Reweigh Potions...<td><em>Oblivion only.</em> Potions created in-game are given a weight that is somewhat arbitrarily selected and potentially high. This command may be used to set all created potions to have a specific weight. Potions created after the use of this command with new names, new effects or new durations will not be affected.
-        <tr><td colspan="2" id="savesUpdateNPCLevels">Update NPC Levels...<td><em>Oblivion only.</em> Updates the level information for NPCs stored in the selected savegame to reflect the active load order's NPC level settings. This is required because although NPC levels are set via plugins, once an NPC is encountered its level is stored in the save file, which overrides the plugin levels.
-        <tr><td colspan="2">Export Screenshot...<td>Allows you to save the image used as the save file's screenshot as a JPEG.
-        <tr><td colspan="2">Re-number Save(s)...<td>Allows the re-numbering of the selected save file(s). If more than one file is selected,
-            the first will be renumbered to the given number and the others will be numbered in increments of one from the given number.
-            The save name must be of the form
-            <code>&lt;Save (case insensitive)&gt;&lt;space&gt;&lt;some digits&gt;&lt;optional text&gt;.&lt;save extension&gt;</code>
-        <tr><td colspan="2" id="savesRemoveBloat">Remove Bloat...<td><em>Oblivion only.</em> <strong>This is an experimental command. It is recommended that saves are backed up before using it on them.</strong> It attempts to determine how much bloating there is in the selected save file and then optionally remove it. If the command reports a large number of created objects, there could be a problem with one of your mods, and such mods should be removed or updated. There are two common types of bloat:
-            <ul>
-                <li>Excess created objects can occur through the use of scripting by a mod to duplicate existing objects in-game and a failure by the mod to clean up the duplicates after their use.
-                <li>Null references are caused when objects from a mod that is removed are present in the game world. These objects then get replaced with null references when the game is next saved with the mod missing.
-            </ul>
-        <tr><td colspan="2" id="savesRepairAbomb">Repair Abomb<td><em>Oblivion only.</em> <q>Abomb Animation Slowing</q> is a slowing of animations that typically occurs around 225 hours into the game, though it may occur earlier or later. This is an engine bug, and this command avoids its effects by resetting a related counter (TesClass Abomb counter is reset to 0x41000000).
-        <tr><td colspan="2">Repair Hair<td><em>Oblivion only.</em> Oblivion has a bug that will cause a crash if your PC's hair comes from a mod that has been removed and you then run showRaceMenu. This command resets your hair to the default for that race and gender, so you can then use showRaceMenu to select a new hair again if you wish.
-</table>
-
+<div class="prlflex clearf">
+    <figure class="slideshow" style="width: 326px; min-height: 233px">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-1.png">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-2.png">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-3.png">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-4.png">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-5.png">
+        <img alt="Saves Context Menu" src="../bash/images/readme/saves-1-rclick-header-menu-6.png">
+    </figure>
+    <table>
+        <thead>
+            <tr><th colspan="3">Column Header Context Menu</th></tr>
+            <tr><th colspan="2">Command</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="2">Sort By</td><td>This submenu allows you to choose by which column the
+                save list is sorted. This is equivalent to clicking on a column header.</td></tr>
+            <tr><td colspan="2">Columns</td><td>This submenu allows you to choose which columns are
+                visible in the save list.</td></tr>
+            <tr><td rowspan="2">Files..</td>
+                <td>Open...</td><td>Opens the saves folder in Windows Explorer.</td></tr>
+                <tr><td>Unhide...</td><td>Opens a dialogue window allowing you to select which hidden
+                    save files to unhide.</td></tr>
+            <tr><td rowspan="2">Profile</td>
+                <td>Edit Profiles...</td><td>This submenu allows the creation, editing and removal of
+                    <a href="#saves-profiles">save profiles</a>.</td></tr>
+                <tr><td>[Profile]<td>[Profile] is the name of a save profile, which are listed below
+                    the separator in the Profile submenu. Clicking a save profile will activate
+                    it.</td></tr>
+            <tr><td colspan="2">Oblivion.esm</td><td><em>Oblivion only.</em> This submenu relates to
+                <a href="#tools-swapping">Oblivion.esm Swapping</a>. It allows you to swap the active
+                version of Oblivion.esm.</td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="prlflex clearf">
+    <figure class="slideshow" style="width: 554px; min-height: 540px">
+        <img alt="Save Context Menu" src="../bash/images/readme/saves-2-rclick-save-1.png">
+        <img alt="Save Context Menu" src="../bash/images/readme/saves-2-rclick-save-2.png">
+        <img alt="Save Context Menu" src="../bash/images/readme/saves-2-rclick-save-3.png">
+        <img alt="Save Context Menu" src="../bash/images/readme/saves-2-rclick-save-4.png">
+    </figure>
+    <table>
+        <thead>
+            <tr><th colspan="3">Save Context Menu</th></tr>
+            <tr><th colspan="2">Command</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            <tr><td rowspan="7">File..</td>
+                <td>Rename...</td><td>Rename the selected save file. <code>.bak</code> files
+                    are not supported and you can't change the extension (specifying another
+                    extension will make the rename fail).</td></tr>
+                <tr><td>Duplicate...</td><td>Creates a duplicate of the selected save file in
+                    the saves folder.</td></tr>
+                <tr><td>Hide...</td><td>Moves the selected save file to the
+                    <code>My Games\[Game]\Saves\[optional profile dir\]Bash\Hidden</code>
+                    directory.</td></tr>
+                <tr>
+                    <td>Delete</td>
+                    <td>Deletes the selected save(s) and any backups of them.
+                        Deleted saves are sent to the Recycling Bin.</td>
+                </tr>
+                <tr><td>Backup</td><td>Creates a backup of the selected save file in
+                    <code>[Game] Mods\Bash Mod Data\Backups</code>. On first run, the backed-up
+                    save file has <code>f</code> appended to its file extension, giving
+                    <code>.essf</code> or <code>.fosf</code>.</td></tr>
+                <tr><td>Revert to Backup...</td><td>Reverts the selected save file to the last
+                    backup made of it.</td></tr>
+                <tr><td>Revert to First Backup...</td><td>Reverts the selected save file to the
+                    first backup made of it.</td></tr>
+            <tr><td colspan="2" id="savesMoveTo">Move To</td><td>This submenu allows you to
+                specify a save profile to move the selected save(s) to from the active save
+                profile.</td></tr>
+            <tr><td colspan="2" id="savesCopyTo">Copy To</td><td>This submenu allows you to
+                specify a save profile to copy the selected save(s) to, so that it is present
+                in both the active and specified save profiles.</td></tr>
+            <tr><td colspan="2" id="savesLoadMasters">Load Masters</td><td>Synchronizes
+                activated plugins to savegame's masters.</td></tr>
+            <tr><td colspan="2" id="savesListMasters">List Masters...</td><td>Lists savegame
+                masters in load order and copies the list to the clipboard. Version numbers
+                are displayed if detected.</td></tr>
+            <tr><td colspan="2" id="savesDiffMasters">Diff Masters...</td><td>If two savegames
+                are selected, then this will compare the masters of the new save to those of
+                the older save. If one savegame is selected, then this will compare the
+                currently active plugins to the masters of the selected savegame. The
+                comparison details masters that have been removed and added in the newer save
+                since the older save, or removed and added in the load order since the
+                selected save.</td></tr>
+            <tr><td colspan="2" id="savesStatistics">Statistics</td><td><em>Oblivion only.</em>
+                This produces a set of various technical statistics for the selected savegame.
+                The following information is produced:
+                <ul>
+                    <li>Array sizes. These arrays are for each of the major sections in the
+                        save file.</li>
+                    <li>Created items. These are items created in-game, through scripting or
+                        some sort of crafting skill (eg. alchemy, spellmaking).</li>
+                    <li>Form IDs. This is a breakdown of the Form ID table in the savegame,
+                        sorted by source plugin. The Form ID table maps savegame reference
+                        numbers to the Form ID of the referenced record. If a reference is
+                        made to a record from a mod that is no longer loaded, the Form ID is
+                        replaced with a 0.</li>
+                    <li>Record details. This gives a breakdown of the different types of
+                        records stored in the save file. The type is given as a number and as
+                        text (eg. <code>48 Cell</code>), and then the number of records
+                        referenced from each plugin is given below.</li>
+                    <li>New ObjectRef Bases. These are objects that belong to the savegame, for
+                        example arrows dropped on the ground in-game. They generally are
+                        created and destroyed by the game as required, though bad scripting
+                        techniques can cause some of them to stick around. The "Base" of an
+                        objectRef is the baseid of the object (e.g., the formid of a steel
+                        arrow from Oblivion.esm). The objectRef refers to these indirectly
+                        through an "iref". Usually this will map back to a formid, but if the
+                        original mod has been removed from the load order, then the formid is
+                        set to zero. If this has happened, then a count of such "Null Bases"
+                        will be shown. After the "Null Base" count (if present) is a list of
+                        New ObjectRef Bases where the count is over 100 (e.g., if there are
+                        over 100 new arrows lying around). Show is the count, the iref and the
+                        base formid. Formid beginning with FF is reference to an object defined
+                        by the savegame. Otherwise, the formid will map back to a mod. The
+                        first two digits are the modindex, and can be matched to a mod through
+                        the "MI" column in the list of savegame masters.</li>
+                </ul></td></tr>
+            <tr><td colspan="2" id="saveDumpSE">Dump .**se Contents</td><td>This is similar to
+                <a href="#savesStatistics">Statistics</a> above, but reports statistics for the
+                <code>.**se</code> cosave file (e.g. <code>.obse</code> for Oblivion or
+                <code>.skse</code> for Skyrim) associated with the selected save.</td></tr>
+            <tr><td colspan="2">Dump .pluggy Contents</td><td><em>Oblivion only.</em> Behaves
+                like <a href="#saveDumpSE">Dump .**se Contents</a>, but for the Pluggy cosave
+                file associated with the selected save.</td></tr>
+            <tr><td colspan="2" id="savesDeleteSpells">Delete Spells...</td><td>
+                <em>Oblivion only.</em> This allows you to delete unused spells from your spell
+                list in the selected save. <strong>Warning:</strong> This cannot be undone. Most
+                spells may be repurchased or recreated, but quest and other special spells will
+                likely have to be added using the console.</td></tr>
+            <tr><td colspan="2">Rename Player...</td><td><em>Oblivion only.</em> Renames the
+                player's character in the selected save.</td></tr>
+            <tr><td colspan="2">Set Number of Uses for Weapon Enchantments...</td><td>
+                <em>Oblivion only.</em> Allows you to set the number of casts available to any
+                enchanted weapon you created in-game, or that has otherwise been recorded in
+                your savegame.</td></tr>
+            <tr><td colspan="2">Import Face...</td><td><em>Oblivion only.</em> Relates to
+                <a href="#saves-face">Face Importing</a>. This command allows you to import a
+                face for the save file's player character (and possibly some NPCs) from another
+                save file or from an NPC in a mod.</td></tr>
+            <tr><td colspan="2">Rename Enchanted...</td><td><em>Oblivion only.</em> Allows you
+                to rename any enchanted items that you have created in-game for the selected
+                save.</td></tr>
+            <tr><td colspan="2" id="savesRenamePotions">Rename Potions...</td><td>
+                <em>Oblivion only.</em> Allows you to rename any potions that you have created
+                in-game for the selected save.</td></tr>
+            <tr><td colspan="2">Rename Spells...</td><td><em>Oblivion only.</em> Allows you to
+                rename any spells that you have created in-game for the selected save.</td></tr>
+            <tr><td colspan="2" id="savesReweighPotions">Reweigh Potions...</td><td>
+                <em>Oblivion only.</em> Potions created in-game are given a weight that is
+                somewhat arbitrarily selected and potentially high. This command may be used to
+                set all created potions to have a specific weight. Potions created after the use
+                of this command with new names, new effects or new durations will not be
+                affected.</td></tr>
+            <tr><td colspan="2" id="savesUpdateNPCLevels">Update NPC Levels...</td><td>
+                <em>Oblivion only.</em> Updates the level information for NPCs stored in the
+                selected savegame to reflect the active load order's NPC level settings. This is
+                required because although NPC levels are set via plugins, once an NPC is
+                encountered its level is stored in the save file, which overrides the plugin
+                levels.</td></tr>
+            <tr><td colspan="2">Export Screenshot...</td><td>Allows you to save the image used
+                as the save file's screenshot as a JPEG.</td></tr>
+            <tr><td colspan="2">Re-number Save(s)...<td>Allows the re-numbering of the selected
+                save file(s). If more than one file is selected, the first will be renumbered to
+                the given number and the others will be numbered in increments of one from the
+                given number. The save name must be of the form
+                <code>&lt;Save (case insensitive)&gt;&lt;space&gt;&lt;some digits&gt;&lt;optional text&gt;.&lt;save extension&gt;</code>.</td></tr>
+            <tr><td colspan="2" id="savesRemoveBloat">Remove Bloat...<td><em>Oblivion only.</em>
+                <strong>This is an experimental command. It is recommended that saves are backed
+                up before using it on them.</strong> It attempts to determine how much bloating
+                there is in the selected save file and then optionally remove it. If the command
+                reports a large number of created objects, there could be a problem with one of
+                your mods, and such mods should be removed or updated. There are two common
+                types of bloat:
+                <ul>
+                    <li>Excess created objects can occur through the use of scripting by a mod
+                        to duplicate existing objects in-game and a failure by the mod to clean
+                        up the duplicates after their use.</li>
+                    <li>Null references are caused when objects from a mod that is removed are
+                        present in the game world. These objects then get replaced with null
+                        references when the game is next saved with the mod missing.</li>
+                </ul></td></tr>
+            <tr><td colspan="2" id="savesRepairAbomb">Repair Abomb<td><em>Oblivion only.</em>
+                <q>Abomb Animation Slowing</q> is a slowing of animations that typically occurs
+                around 225 hours into the game, though it may occur earlier or later. This is
+                an engine bug, and this command avoids its effects by resetting a related
+                counter (TesClass Abomb counter is reset to 0x41000000).</td></tr>
+            <tr><td colspan="2">Repair Hair<td><em>Oblivion only.</em> Oblivion has a bug that
+                will cause a crash if your PC's hair comes from a mod that has been removed and
+                you then run showRaceMenu. This command resets your hair to the default for that
+                race and gender, so you can then use showRaceMenu to select a new hair again if
+                you wish.</td></tr>
+        </tbody>
+    </table>
+</div>
 
 <table>
     <thead>
@@ -6871,19 +6124,25 @@ C.Location, -C.LockList
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-2.png">
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-3.png">
         <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-4.png">
+        <img alt="Screenshots Context Menu" src="../bash/images/readme/screenshots-4-rclick-header-menu-5.png">
     </figure>
     <table>
         <thead>
-            <tr><th colspan="2">Column Header Context Menu</th></tr>
-            <tr><th>Command<th>Description</th></tr>
+            <tr><th colspan="3">Column Header Context Menu</th></tr>
+            <tr><th colspan="2">Command<th>Description</th></tr>
         </thead>
         <tbody>
-            <tr><td>Sort By</td><td>This submenu allows you to choose by which column the screenshot list is sorted. This is equivalent
-                to clicking on a column header.</td></tr>
-            <tr><td>Columns</td><td>This submenu allows you to choose which columns are visible in the screenshot list.</td></tr>
-            <tr><td>Open<td>Open the screenshot directory in Windows Explorer.</td></tr>
-            <tr><td>Next Shot<td>Set any or all of the base name and number of the next screenshot as well as the screenshot directory.</td></tr>
-            <tr><td>JPEG Quality<td>Set the quality of JPEGs created during conversion.</td></tr>
+            <tr><td colspan="2">Sort By</td><td>This submenu allows you to choose by which
+                column the screenshot list is sorted. This is equivalent to clicking on a
+                column header.</td></tr>
+            <tr><td colspan="2">Columns</td><td>This submenu allows you to choose which
+                columns are visible in the screenshot list.</td></tr>
+            <tr><td>Files..</td>
+                <td>Open<td>Open the screenshot directory in Windows Explorer.</td></tr>
+            <tr><td colspan="2">Next Shot<td>Set any or all of the base name and number of
+                the next screenshot as well as the screenshot directory.</td></tr>
+            <tr><td colspan="2">JPEG Quality<td>Set the quality of JPEGs created during
+                conversion.</td></tr>
         </tbody>
     </table>
 </div>
@@ -6891,20 +6150,31 @@ C.Location, -C.LockList
     <figure class="slideshow" style="width: 310px; min-height: 167px">
         <img alt="Screenshot Context Menu" src="../bash/images/readme/screenshots-3-rclick-screenshot-menu-1.png">
         <img alt="Screenshot Context Menu" src="../bash/images/readme/screenshots-3-rclick-screenshot-menu-2.png">
+        <img alt="Screenshot Context Menu" src="../bash/images/readme/screenshots-3-rclick-screenshot-menu-3.png">
     </figure>
     <table>
         <thead>
-            <tr><th colspan="2">Screenshot List Context Menu</th></tr>
-            <tr><th>Command</th><th>Description</th></tr>
+            <tr><th colspan="3">Screenshot List Context Menu</th></tr>
+            <tr><th colspan="2">Command</th><th>Description</th></tr>
         </thead>
         <tbody>
-            <tr><td>Open</td><td>Opens the selected file(s) in the associated program(s).</td></tr>
-            <tr><td>Rename</td><td>Renames the selected file(s). If multiple files are selected, they will be numbered sequentially. If a file
-                already exists with the same name as a file's resulting name, that file will not be renamed. The extension will remain the same
-                and specifying a non image extension will make the rename operation fail - in short, leave the extension alone. Empty filenames
-                will also abort the rename.</td></tr>
-            <tr><td>Delete</td><td>Deletes the selected file(s).</td></tr>
-            <tr><td>Convert</td><td>Converts the selected files to one of the following formats: JPEG, PNG, BMP, TIFF. If a file of the conversion format already exists with the same name as a file to be converted, the conversion will not take place for that file.</td></tr>
+            <tr><td rowspan="3">File..</td>
+                <td>Open...</td><td>Opens the selected file(s) in the associated program(s).</td></tr>
+                <tr><td>Rename...</td><td>Renames the selected file(s). If multiple files are
+                    selected, they will be numbered sequentially. If a file already exists with the
+                    same name as a file's resulting name, that file will not be renamed. The extension
+                    will remain the same and specifying a non-image extension will make the rename
+                    operation fail - in short, leave the extension alone. Empty filenames will also
+                    abort the rename.</td></tr>
+                <tr>
+                    <td>Delete</td>
+                    <td>Deletes the selected screenshot(s). Deleted screenshots
+                        are sent to the Recycling Bin.</td>
+                </tr>
+            <tr><td colspan="2">Convert</td><td>Converts the selected files to one of the following
+                formats: JPEG, PNG, BMP, TIFF. If a file of the conversion format already exists with
+                the same name as a file to be converted, the conversion will not take place for that
+                file.</td></tr>
         </tbody>
     </table>
 </div>
@@ -7069,9 +6339,9 @@ C.Location, -C.LockList
 <figcaption class="tools-docs-figcap">Wrye Bash's Doc Browser.</figcaption>
 </figure>
 <p>The Doc Browser allows you to quickly and easily scan through your mods' documentation. The supported document types are: text files, HTML files and MHT files (HTML archives). To display the Doc Browser, double click any plugin in the main list of the Mods tab.
-<p>When you double-click a plugin, Wrye Bash will open the Doc Browser and attempt to determine which document to associate with it. If it can determine one, it will display it. Otherwise, a blank page will be displayed. To associate a document with a plugin, use the <q>Set Doc...</q> button in the Doc Browser. To disassociate a document with a plugin, use the <q>Forget Doc...</q> button in the Doc Browser.
+<p>When you double-click a plugin, Wrye Bash will open the Doc Browser and attempt to determine which document to associate with it. If it can determine one, it will display it. Otherwise, a blank page will be displayed. To associate a document with a plugin, use the <q>Set Doc...</q> button in the Doc Browser. To disassociate a document with a plugin, use the <q>Forget Doc</q> button in the Doc Browser.
 <p>You can also rename an associated document using the <q>Rename Doc...</q> button to select a new name and/or location. The document will be renamed and/or moved to this location.
-<p>You can edit a document by clicking the <q>Edit Doc...</q> button. The document can then be edited in the viewing window. To finish editing, click the <q>Edit Doc...</q> button again. Changes are automatically saved when you select a new plugin, close the Doc Browser or finish editing.
+<p>You can edit a document by ticking the <q>Allow Editing</q> checkbox. The document can then be edited in the viewing window. To finish editing, uncheck the <q>Allow Editing</q> checkbox again. Changes are automatically saved when you select a new plugin, close the Doc Browser or finish editing.
 <p>A document can be opened in its default external editor by clicking the <q>Open Doc...</q> button.
 <p>A new document can be created for a plugin by clicking the <q>Set Doc...</q> button and choosing a new filename. This creates a document using a blank template that you can then edit. The default template is <code>Data\Docs\My Readme Template</code> if it exists, or if not, <code>Data\Docs\Bash Readme Template.txt</code>. The latter is written in Wrye wiki text format, which will be displayed as HTML when the Doc Browser is not in edit mode.
 <p>To view a different document, select a different plugin in the list on the left of the Doc Browser or in the Mods tab.
@@ -7092,14 +6362,6 @@ C.Location, -C.LockList
     <li>Missing masters occur when a plugin that an active plugin depends on is not active. This results in an immediate CTD when the game is launched.
     <li>Delinquent masters occur when a plugin's master loads after the plugin itself. This should be fixed to prevent issues in-game.
 </ul>
-<p>The next section of the report details the output of any rulesets installed. These are text files that contain a set of instructions that tell the Mod Checker what to look for and what to say in the report if anything is found. Currently the only ruleset distributed by Wrye Bash is for Cobl. Rulesets are stored in <code>Data\Bash Patches</code> and end in <q>Rules.txt</q>. Information on ruleset syntax can be found in the <a href="Wrye%20Bash%20Technical%20Readme.html#rulesets">Technical Readme</a>.
-<p>The rest of the report details any plugin groups that have been set up. Each group's section contains the following information:
-<ul>
-    <li>Notes: These are various notes on the plugin group, as entered by the user.
-    <li>Configuration: This is a summary of the plugin group's configuration. It uses a few symbols to denote the status of plugins, these are: x: active; +: merged; *: imported; -: inactive/unmerged.
-    <li>Suggestions: Specific suggestions for the plugin group. These are typically activating or deactivating certain plugins, or replacing mods with other mods.
-    <li>Warnings: Like suggestions, but the causes are more likely to cause issues. This section will detail what should be activated or deactivated to resolve the problems.
-</ul>
 <div class="prlflex clearf">
   <figure class="slideshow" style="width: 576px; min-height: 596px">
     <img alt="Mod Checker" src="../bash/images/readme/mod-checker-1.png">
@@ -7116,10 +6378,6 @@ C.Location, -C.LockList
         <tr><td>Forward/Back Arrows<td>The Mod Checker report may contain links to other pages. These two buttons allow navigation between pages viewed, similar to the forward/back buttons in a web browser.
         <tr><td>Reload</td><td>Reloads the current page. Works identically to a browser's reload button.</td></tr>
         <tr><td>Mod List<td>Toggles the display of the Active Mod Files list.
-        <tr><td>Rule Sets<td>Toggles the display of the headers for the rulesets installed, even if they produce no other output.
-        <tr><td>Notes<td>Toggles the display of plugin group notes.
-        <tr><td>Configuration<td>Toggles the display of plugin groups' configurations.
-        <tr><td>Suggestions<td>Toggles display of the suggestions produced by plugin groups.
         <tr><td>Version Numbers<td>Toggles display of version numbers where found for the plugins in the Active Mod Files list.
         <tr><td>CRCs<td>Toggles display of the CRCs for the plugins in the Active Mod Files list.
         <tr><td>Scan for Dirty Edits<td>Toggles the scanning of plugins for dirty edits. Effectively runs <a href="#modsScanForDirtyEdits">Scan for Dirty Edits</a> on each of the plugins in the Active Mod Files list and displays the results in the Mod Checker's report.

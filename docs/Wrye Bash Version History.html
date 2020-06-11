@@ -306,7 +306,7 @@
  <li>Various improvements for the WizBAIN Editor. [Metallicow]
  <li>Fixed load order being read incorrectly when Auto-Ghost was enabled. [WrinklyNinja]
  <li>Fixed Bash not opening due to datetime error. [Trira/Metallicow]
- <li>Added <q>Create New Project</q> dialog to Installers tab. [Metallicow]
+ <li>Added <q>New Project</q> dialog to Installers tab. [Metallicow]
  <li>Fixed Bash loading the BOSS API DLLs that are included with BOSS even if they are older than the DLLs included with Bash. [WrinklyNinja]
  <li>Fixed installer's URL for PyWin32 being invalid. [Alt3rn1ty]
  <li>Some more attempts at improving UI responsiveness. [cdcooley]
@@ -451,7 +451,7 @@
 			<li><a href="Wrye%20Bash%20Advanced%20Readme.html#patch-filter">Filter</a>, NoMerge, and Deactivate - These can be used to modify behavior in regards merging and importing records.
 		</ul>
 		<li>Better merging of records with NULL Form IDs, for records that allow it (COBJ and GMST for example).
-		<li>New <a href="Wrye%20Bash%20General%20Readme.html#bain">BAIN</a> option: <a href="Wrye%20Bash%20Advanced%20Readme.html#bain-commands">Auto-name String Translation files</a>:
+		<li>New <a href="Wrye%20Bash%20General%20Readme.html#bain">BAIN</a> option: <a href="Wrye%20Bash%20Advanced%20Readme.html#bainRenameStringTranslationFiles">Auto-name String Translation files</a>:
 		<ul>
 			<li>Will automatically rename .STRINGS, .DLSTRINGS, and .ILSTRINGS files to the correct language for your game, but only if the installer does not already contain String Translation files for your language.
 		</ul>
@@ -663,7 +663,7 @@
 	<li>New mod commands:
 <ul>
 	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsLoadAll">Load All</a> will activate all mods (up to 255 of them, at least)
-	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateBOSSReport">Create BOSS Report</a> will automatically gather the information you need to report a mod to the BOSS thread.
+	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsCreateLOOTEntry">Create BOSS Report</a> will automatically gather the information you need to report a mod to the BOSS thread.
 	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsCopyModInfo">Copy Mod Info</a> will automatically gather the displayed info on a mod.
 	  <li>Ghost will ghost just the selected mod(s)
 	  <li><a href="Wrye%20Bash%20Advanced%20Readme.html#modsExportPatchConfig">Export Patch Config...</a> exports the selected patch's configuration to a file.
@@ -1971,7 +1971,7 @@
 </ul>
 <li><a href="Wrye%20Bash%20General%20Readme.html#launchers-apps">Application Buttons</a>:
 <ul>
-  <li>Tes4Edit Expert option passes -IknowWhatImDoing parameter.
+  <li>Expert Mode option passes -IknowWhatImDoing parameter.
 </ul>
 <li>Replacers Tab: Now hidden by default. (New option to unhide.)
 <li>Wrye Text: ------ lines convert to HRs.
