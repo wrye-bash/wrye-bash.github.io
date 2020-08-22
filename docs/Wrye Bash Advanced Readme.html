@@ -110,10 +110,19 @@
                         <li><a href="#people-symbols">What Symbols &amp; Colours Mean</a>
                         <li><a href="#people-commands">Context Menu Commands</a>
                     </ol>
+                <li class="list"><a href="#settings">Settings</a>
+                    <ol class="items">
+                        <li><a href="#settings-appearance-colors">Appearance: Colors</a></li>
+                        <li><a href="#settings-appearance-language">Appearance: Language</a></li>
+                        <li><a href="#settings-appearance-status-bar">Appearance: Status Bar</a></li>
+                        <li><a href="#settings-backups">Backups</a></li>
+                        <li><a href="#settings-confirmations">Confirmations</a></li>
+                        <li><a href="#settings-general">General</a></li>
+                        <li><a href="#settings-trusted-binaries">Trusted Binaries</a></li>
+                    </ol>
+                </li>
                 <li class="list"><a href="#tools">Miscellaneous Tools</a>
                     <ol class="items">
-                        <li><a href="#tools-settings">Settings Menu</a>
-                        <li><a href="#tools-colors">Color Configuration</a>
                         <li><a href="#tools-docs">Doc Browser</a>
                         <li><a href="#tools-checker">Mod Checker</a>
                         <li><a href="#tools-swapping">Oblivion.esm Swapping</a>
@@ -142,10 +151,10 @@
 <p><code>[Application Name] [Bash Version] [Install Type] [Game Modifier], CBash v[CBash Version]: [Save Profile] [Version Indicator]</code>
 <p>The square bracketed information is:
 <ul>
-    <li><code>[Application Name]</code>: <q>Wrye Bash</q> if <code>Use Alternate Wrye Bash Name</code> is disabled in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-settings">Settings Menu</a>, otherwise this will be a name based on the game Wrye Bash is managing (e.g. <q>Wrye Smash</q> for Skyrim).</li>
+    <li><code>[Application Name]</code>: <q>Wrye Bash</q> if <a href="#settings-use-alt-name">Use Alternate Wrye Bash Name</a> is disabled, otherwise this will be a name based on the game Wrye Bash is managing (e.g. <q>Wrye Smash</q> for Skyrim).</li>
     <li><code>[Bash Version]</code>: This is the version number for the version of Wrye Bash running. Useful when troubleshooting.
     <li><code>[Install Type]</code>: If the Standalone version is running, it will read <q>(Standalone)</q>. If the Python version is running, this part is omitted. See the <a href="#install">Installation</a> section for more information.</li>
-    <li><code>[Game Modifier]</code>: <q>for [Game]</q>, where [Game] is the name of the managed game, if <code>Use Alternate Wrye Bash Name</code> is disabled in the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-settings">Settings Menu</a>. Otherwise, this is not displayed.</li>
+    <li><code>[Game Modifier]</code>: <q>for [Game]</q>, where [Game] is the name of the managed game, if <a href="#settings-use-alt-name">Use Alternate Wrye Bash Name</a> is disabled. Otherwise, this is not displayed.</li>
     <li><code>[CBash Version]</code>: This is the version number for the version of CBash included with the Wrye Bash install. Useful when troubleshooting. See the <a href="#patch">Setting Up A Bashed Patch</a> section for more information.
     <li><code>[Save Profile]</code>: This is the name of the <a href="Wrye%20Bash%20Advanced%20Readme.html#saves-profiles">save profile</a> Wrye Bash is currently using. By default it is <q>Default</q>.
     <li><code>[Version Indicator]</code>: This is only displayed when Wrye Bash is running for Oblivion. It indicates the version of Oblivion.esm currently being used. This is related to the <a href="Wrye%20Bash%20Advanced%20Readme.html#tools-swapping">Oblivion.esm Swapping</a> feature.
@@ -319,7 +328,7 @@ tab. The directories skipped are:
     <tr class="tabttl"><th colspan="3">Per game skipped Data subdirectories
     <tr class="tabttl"><th>Game<th>Skipped Data subdirectories<th>Script extender(s) directories
     <tbody>
-        <tr><td>Oblivion<td>tes4edit backups, tes4edit cache, bgsee, conscribe logs<td>OBSE
+        <tr><td>Oblivion &amp; Nehrim&colon; At Fate's Edge<td>tes4edit backups, tes4edit cache, bgsee, conscribe logs<td>OBSE
         <tr><td>Fallout 3<td>fo3edit backups, fo3edit cache<td>FOSE
         <tr><td>Fallout&colon; New Vegas<td>fnvedit backups, fnvedit cache<td>NVSE
         <tr><td>Skyrim<td>tes5edit backups, tes5edit cache<td>SKSE, SkyProc Patchers, Script Dragon
@@ -358,7 +367,7 @@ tab. The directories skipped are:
     <li>The <a href="#bainSkipSEPlugins">Skip **SE Plugins</a> option found in the Installers tab column header context menu is disabled.</li>
 </ul>
 <p>When attempting to install a specific Script Extender plugin for the first time, Wrye Bash will display a warning dialogue and ask you to confirm or deny the plugin's installation. Thereafter you can uninstall and install the plugin as you like without seeing the warning. These additional requirements are due to the significant (though currently theoretical) dangers of installing executable files.
-<p>The list of allowed and disallowed Script Extender plugins can be imported and exported using the <a href="#settingsImportList">Import list of allowed/disallowed **SE plugin DLLs</a> and <a href="#settingsExportList">Export list of allowed/disallowed **SE plugin DLLs</a> options in Wrye Bash's <a href="#tools-settings">Settings</a> menu.
+<p>The list of allowed and disallowed Script Extender plugins can be imported and exported using the <a href="#settingsImportList">Import list of allowed/disallowed **SE plugin DLLs</a> and <a href="#settingsExportList">Export list of allowed/disallowed **SE plugin DLLs</a> options in Wrye Bash's <a href="#settings">Settings</a> menu.
 
 
 <h3 id="bain-omod">OMOD Conversion Data <a class="back2top" href="#contents">Back to top</a></h3>
@@ -504,7 +513,7 @@ tab. The directories skipped are:
         <tr><td>Size<td>Display the Size column.
         <tr><td>Files<td>Display the (number of) Files column.
         <tr><td rowspan="3">Files..</td>
-            <td id="bainOpenDir">Open...</td><td>Opens the Installers directory in Windows
+            <td id="bainOpenDir">Open Folder...</td><td>Opens the Installers directory in Windows
                 Explorer.</td></tr>
             <tr><td id="bainUnhide">Unhide...</td><td>Opens a dialogue window
                 allowing you to select which hidden packages to unhide. Projects are not
@@ -528,7 +537,7 @@ tab. The directories skipped are:
         <tr><td colspan="2" id="bainFullRefresh">Full Refresh<td>This does a full refresh <em>of all data files</em>, both the contents of the game Data directory tree and Bash Installers
             folder, bypassing all skip refresh flags for projects. Notably this will recalculate <abbr title="Cyclic redundancy check, digital signature of the file">CRCs</abbr> for all files
             inside Data and Bash Installers (including project directories). Running this command will likely take <em>aeons</em>, and you seldom need it.
-        <tr><td colspan="2" id="bainAddMarker">Add Marker...<td>Creates a marker for organising your packages. The <q>==</q> will be added for you.
+        <tr><td colspan="2" id="bainAddMarker">New Marker...<td>Creates a marker for organising your packages. The <q>==</q> will be added for you.
         <tr><td colspan="2" id="bainMonitorExternalInstallation">Monitor External Installation...<td>When you absolutely cannot install a mod via BAIN, you can put BAIN into Monitor Mode using this command.  It will scan the Data folder before and after you install the mod, then provide an option to create a Project from the changes it detects.
         <tr><td colspan="2" id="bainListPackages">List Packages...<td>Displays a list of projects and archives and copies the list to your clipboard. This is useful for posting your package order on forums, eg. when troubleshooting an install.
         <tr><td colspan="2" id="bainAnnealAll">Anneal All<td>Installs any missing files for active installers and corrects all install order errors.
@@ -559,9 +568,9 @@ tab. The directories skipped are:
             timestamps on the Bethsoft BSAs are changed. However, disabling this setting is the only way to allow BAIN to install Vanilla
             ESPs, ESMs, and BSAs. For example, DLC plugins which have been cleaned with xEdit and packed into a BAIN. Preferred setting:
             enabled (that is, <em>skip</em> installation of bethsoft content).
-        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td>(Only for Oblivion) - Uses Quarn's
-            <a href="https://web.archive.org/web/20190104233345/https://devnull.sweetdanger.com/archiveinvalidation.html">BSA redirection technique (offline)</a> to avoid bugs with the engines
-            texture getting system. This is compatible with both OBMM and Quarn's original BSA redirection approaches.
+        <tr><td colspan="2" id="bainBSARedirection">BSA Redirection<td><em>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</em> Uses Quarn's
+            <a href="https://web.archive.org/web/20190104233345/https://devnull.sweetdanger.com/archiveinvalidation.html">BSA redirection technique</a> to avoid bugs with the engine's
+            BSA system. This is compatible with both OBMM and Quarn's original BSA redirection approaches.
         <tr><td colspan="2" id="bainRemoveEmptyDirectories">Remove Empty Directories<td>If this is checked, then any empty subfolders of the Data directory will be deleted. This reduces some clutter (especially after uninstalling packages).
         <tr><td colspan="2" id="bainShowInactiveConflicts">Show Inactive Conflicts<td>If checked, then the conflicts report will show
             conflicts with inactive as well as active installers. Usually only active conflicts are of interest, however sometimes it's
@@ -779,7 +788,11 @@ tab. The directories skipped are:
         </tr>
         <tr>
             <td id="bainSyncFromData">Sync From Data</td>
-            <td>Projects only. Synchronize the project with files from the Data directory. This is essentially the reverse of "Install" for projects since it copies from the Data directory to the project rather than the other way around.</td>
+            <td>Synchronize the package with files from the Data directory.
+                This is essentially the reverse of
+                <a href="#bainInstall">Install...</a> since it copies from the
+                Data directory to the package rather than the other way
+                around.</td>
         </tr>
         <tr>
             <td id="bainUnpackToProject">Unpack To Project(s)...</td>
@@ -867,14 +880,14 @@ tab. The directories skipped are:
     <tbody>
         <tr><td>File Name<td>The filename of the selected plugin. Note that changing this does not change the filename in the Masters Lists of any dependent plugins.
         <tr><td>Modification Time<td>This field is editable, by clicking in the box. After changes are made, click the Save button to commit
-            your changes to the plugin, or Cancel to discard them. Notes : For Oblivion, this affects the load order of the selected plugin.
-            For Skyrim, it has no effect, except that if it is changed for a plugin obtained from Steam Workshop, it will cause the plugin
-            to be redownloaded as Steam Workshop uses modification time to detect file versions. For Skyrim&colon; Special Edition, there was a bug
-            at some point, with DLC Load Order being set by Date / Time Stamp (only the DLCs were affected by this). The only way to
-            re-arrange your Skyrim&colon; Special Edition DLC plugins Load Order was to edit their modification time, so that they follow each other by for
-            example one minute. The bug was fixed in a later patch - but anyway Bash won't let you change neither the load order nor the
-            modification times of the DLCs. The game always loads them before other masters and in the following order:
-            Dawnguard / Hearthfire / Dragonborn. So Bash will timestamp them in one minute intervals following Skyrim/Update esms, so even
+            your changes to the plugin, or Cancel to discard them. Note: For Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon;
+            New Vegas this affects the load order of the selected plugin. For Skyrim, it has no effect, except that if it is changed for a plugin
+            obtained from Steam Workshop, it will cause the plugin to be redownloaded as Steam Workshop uses modification time to detect file
+            versions. For Skyrim&colon; Special Edition, there was a bug at some point, with DLC Load Order being set by Date / Time Stamp (only the
+            DLCs were affected by this). The only way to re-arrange your Skyrim&colon; Special Edition DLC plugins Load Order was to edit their
+            modification time, so that they follow each other by for example one minute. The bug was fixed in a later patch - but anyway Bash won't
+            let you change the load order or the modification times of the DLCs. The game always loads them before other masters and in the following
+            order: Dawnguard -> Hearthfire -> Dragonborn. Bash will timestamp them in one minute intervals following Skyrim/Update esms, so even
             the buggy patch behaves correctly.
         <tr><td>Author<td>Who made the selected plugin.
         <tr><td>Description<td>Commonly used for a short description of what the selected plugin does, plus the version number and any Bash Tags the author sets.
@@ -962,7 +975,7 @@ tab. The directories skipped are:
             <tr><td colspan="2">Sort By<td>This submenu allows you to choose by which column the plugin list is sorted. This is equivalent to clicking on a column header. You can also choose to sort by <q>Type</q>, which will place .esms before .esps regardless of the sorting criteria, or by <q>Selection</q>, which places selected plugins before unselected plugins regardless of criteria.
             <tr><td colspan="2">Columns<td>This submenu allows you to choose which columns are visible in the mod list.
             <tr><td rowspan="5">Files..</td>
-                <td>Open...</td><td>Opens the Data folder in Windows Explorer.</td></tr>
+                <td>Open Folder...</td><td>Opens the Data folder in Windows Explorer.</td></tr>
                 <tr><td>Unhide...</td><td>Opens a dialogue window allowing you to select which hidden plugins to unhide.</td></tr>
                 <tr><td>New Bashed Patch...</td><td>Creates a new Bashed Patch plugin. Useful if you accidentally delete your current one or wish to have more than one.</td></tr>
                 <tr><td>New Mod...</td><td>Creates an empty plugin.</td></tr>
@@ -980,7 +993,29 @@ tab. The directories skipped are:
                     list name will apply the list, trying to activate exactly the plugins that are listed in it.</td></tr>
             <tr><td colspan="2">Oblivion.esm</td><td><em>Oblivion only.</em> This submenu relates to <a href="#tools-swapping">Oblivion.esm Swapping</a>.</td></tr>
             <tr><td colspan="2" id="modsListMods">List Mods<td>This outputs a BBCode-formatted load order, including version information, activation status and major load order errors. It can be useful for debugging a broken load order. If the 'c' keyboard key is pressed when this command is selected, the CRCs of plugins will also be displayed in the output.
-            <tr><td colspan="2">List Bash Tags<td>This outputs a BBCode-formatted list of all the Bash Tags applied to the plugins in your load order, and where/how the Bash Tags were specified. It can be useful for debugging a broken load order.
+            <tr>
+                <td colspan="2">List Bash Tags...</td>
+                <td>This outputs a BBCode-formatted list of all the Bash Tags
+                    applied to the plugins in your load order, and where/how
+                    the Bash Tags were specified. It can be useful for figuring
+                    out which tags come from where.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Export Bash Tags...</td>
+                <td>Exports all currently applied bash tags to a CSV file.
+                    Plugins without tags will not be exported.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Import Bash Tags...</td>
+                <td>Imports applied bash tags from a CSV file. Plugins not
+                    listed in the CSV file will be left untouched.</td>
+            </tr>
+            <tr>
+                <td colspan="2">Clear Manual Bash Tags</td>
+                <td>Removes all manually applied bash tags. Tags from plugin
+                    descriptions, LOOT masterlists and userlists and BashTags
+                    files will be left untouched.</td>
+            </tr>
             <tr><td colspan="2" id="modsAutoGhost">Auto-Ghost<td>The game engine has a bug where it reads all the plugins in the Data folder, and this can affect performance when the number of plugins is around 300+. Auto-Ghosting adds a <q>.ghost</q> extension to all inactive plugins automatically to prevent the game engine reading them, and so helping to avoid the performance drop. When a ghosted plugin is activated, the <q>.ghost</q> extension is removed, allowing it to function as normal. Note that other utilities will not recognise ghosted plugins, so there are options available for individual plugins to control which get ghosted.
             <tr><td colspan="2" id="modsLockLoadOrder">Lock Load Order</td><td>This prevents other utilities from altering the plugin load order.
                 More accurately, it detects changes to the load order (modification times for earlier games, text files for later ones)
@@ -997,6 +1032,10 @@ tab. The directories skipped are:
                 exist, otherwise Bash falls back to the taglists it comes bundled with.</td></tr>
             <tr><td colspan="2" id="refreshCRCs">Recalculate CRCs<td>Clean stale CRCs from cache. Workaround for buggy CRC updates in previous
                 versions of Bash. Use for instance when plugins show as mismatched in BAIN when they are not.
+            <tr>
+                <td colspan="2">Mod Checker...</td>
+                <td>Launches the <a href="#tools-checker">Mod Checker</a>.</td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -1075,9 +1114,9 @@ tab. The directories skipped are:
                 <td>Creates LOOT masterlist entries based on the tags you have
                     applied to the selected plugin(s). Also tries to figure out
                     the URL that the plugin came from based on the BAIN package
-                    it was installed from. In <strong>Oblivion only</strong>,
-                    CBash will also be used to check for ITMs and deleted
-                    references.</td>
+                    it was installed from. In <strong>Oblivion &amp;
+                    Nehrim&colon; At Fate's Edge only</strong>, CBash will also
+                    be used to check for ITMs and deleted references.</td>
             </tr>
             <tr><td colspan="2" id="modsCopyModInfo">Copy Mod Info...<td>Outputs a report on the selected plugins(s) with the info from the currently displayed columns.
             <tr><td colspan="2">List Dependencies<td>Displays and copies to the clipboard a list of mods that have the currently selected
@@ -1098,22 +1137,23 @@ tab. The directories skipped are:
             <tr><td colspan="2" id="modsMarkMergeable">Mark Mergeable...</td><td><em>Not available for Skyrim&colon; Special Edition &amp; Fallout 4.</em>
                 Scans the selected plugin(s) to determine if they are mergeable or not. Wrye Bash does this automatically, but this command reports why
                 mods are unmergeable.</td></tr>
-            <tr><td colspan="2">Mark Mergeable (CBash)...</td><td><em>Oblivion only.</em> Does the same thing as <a href="#modsMarkMergeable">Mark Mergeable...</a>,
-                but uses CBash to scan the plugins. A Bashed Patch built using CBash can merge more plugins, so the results between the two Mark Mergeable
-                commands will differ.</td></tr>
+            <tr><td colspan="2">Mark Mergeable (CBash)...</td><td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Does the same thing as
+                <a href="#modsMarkMergeable">Mark Mergeable...</a>, but uses CBash to scan the plugins. A Bashed Patch built using CBash can merge
+                more plugins, so the results between the two Mark Mergeable commands will differ.</td></tr>
             <tr><td colspan="2">Check ESL Qualifications</td><td><em>Skyrim&colon; Special Edition &amp; Fallout 4 only.</em> Checks if the selected plugin(s)
                 can be ESL-flagged using <a href="#modsEslifySelf">Add ESL Flag</a>. Wrye Bash does this automatically, but this command reports why
                 mods can't be ESL-flagged.</td></tr>
             <tr><td colspan="2">Rebuild Patch...<td>Rebuild the selected Bashed Patch using the Python patcher.
-            <tr><td colspan="2">Rebuild Patch (CBash *Beta*)...<td><em>Oblivion only.</em> Rebuild the selected Bashed Patch using the CBash patcher.
+            <tr><td colspan="2">Rebuild Patch (CBash *deprecated*)...<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Rebuild the selected
+                Bashed Patch using the CBash patcher.
             <tr><td colspan="2" id="modsListPatchConfig">List Patch Config...<td>Displays a summary of how the selected Bashed Patch is configured.
             <tr><td colspan="2" id="modsExportPatchConfig">Export Patch Config...<td>Exports the configuration of the selected Bashed Patch to a file.
-            <tr><td rowspan="13">Export<td>Cell Block Info...<td><em>Oblivion only.</em> Exports a list of cell block Editor IDs and their coordinates in the selected plugin to a CSV file.
+            <tr><td rowspan="13">Export<td>Cell Block Info...<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Exports a list of cell block Editor IDs and their coordinates in the selected plugin to a CSV file.
             <tr><td id="modsExportEditorIDs">Editor Ids...<td><strong>For advanced mod authors only.</strong> Exports the Editor IDs of the records in the selected plugin to a CSV file.
             <tr><td id="modsExportFactions">Factions...<td><strong>For advanced mod authors only.</strong> Exports the factions defined for actors in the selected plugin to a CSV file, which can be imported to a plugin or used in the Bashed Patch's Import Factions option.
             <tr><td id="modsExportNames">Names...<td>Exports the names of the objects in the selected plugin to a CSV file. All the records displayed in the Construction Set's Objects Window are supported - cells and dialogue are not. As well as being useful for the usual large-scale changes, this command is useful for translators. The CSV file can also be used in the Bashed Patch's Import Names option.
             <tr><td id="modsExportNPCLevels">NPC Levels...<td><strong>For advanced mod authors only.</strong> Exports NPC level info from the selected plugin to a CSV file. Only NPCs which are dynamically levelled (ie. offset from the player's level) will be exported.
-            <tr><td>Map Markers...<td><em>Oblivion only.</em> Exports information about the map marker data in the plugin.
+            <tr><td>Map Markers...<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Exports information about the map marker data in the plugin.
             <tr><td>Prices...<td>Exports the prices of objects in the selected plugin to a CSV file.
             <tr><td id="modsExportRelations">Relations...<td><strong>For advanced mod authors only.</strong> Exports the faction relationships in the selected plugin to a CSV file. This does not export race relationships. The CSV file can also be used in the Bashed Patch's Import Relations option.
             <tr><td id="modsExportIngredients">Ingredients...<td>Exports alchemy ingredient record data from the selected plugin to a CSV file.
@@ -1155,7 +1195,7 @@ tab. The directories skipped are:
                     <li>The next three columns are the levelling info.
                     <li>The last four columns are the original NPC levels from the game's master file. If the NPCs are mod-added, these will be blank. These columns are ignored on import.
                 </ul>
-            <tr><td>Map Markers...<td><em>Oblivion only.</em> Imports map marker data from a CSV file into the selected plugin.
+            <tr><td>Map Markers...<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Imports map marker data from a CSV file into the selected plugin.
             <tr><td>Prices...<td>Imports the prices of objects from a CSV file (or other mod) into the selected plugin.
             <tr><td id="modsImportRelations">Relations...<td><strong>For advanced mod authors only.</strong> Imports faction relationships from a CSV file into the selected plugin.
             <tr><td id="modsImportIngredients">Ingredients...<td>Imports alchemy ingredient record data from a CSV file into the selected plugin.
@@ -1183,15 +1223,16 @@ tab. The directories skipped are:
                 <p>If you've completely swapped from one base plugin to another, you may wish to remove the old dependency. This can be done using TES4Edit's <q>Clean Masters</q> command or TES4Gecko's <q>Edit Master List</q> command. The former only removes totally unused masters while the latter can remove used masters with the appropriate cleanup, and is not an automated procedure.</p>
                 <strong>Note:</strong> You can also use TES4Edit to change the Form IDs using its <q>Batch Change Referencing Records</q> command together with the CSV file created. TES4Edit will also change the definition of a Form ID, rather than just any references to it, unlike Wrye Bash.
             <tr><td rowspan="6">Mod Cleaning<td>Don't check against LOOT's dirty mod list<td>Overrides the setting in the column header context menu for the specific plugin(s) selected.
-            <tr><td id="modsScanForDirtyEdits">Scan for Dirty Edits<td><em>Oblivion only.</em> Scans the selected plugin for Identical To Master records and deleted references, outputting counts of the dirty edits found. The dirty edit counts may differ from the output provided by TES4Edit as that includes other "junk" records in the <abbr title="Identical To Master record">ITM</abbr> count. Wrye Bash does not count these junk records as they are non-harmful.
-            <tr><td>Scan for <abbr title="Undeleted and Disabled Reference">UDR</abbr>'s</td><td><em>All but Oblivion.</em> Behaves as the above <a href="#modsScanForDirtyEdits">Scan for Dirty Edits</a>, but only for deleted references.</td></tr>
+            <tr><td id="modsScanForDirtyEdits">Scan for Dirty Edits<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Scans the selected plugin for Identical To Master records and deleted references, outputting counts of the dirty edits found. The dirty edit counts may differ from the output provided by TES4Edit as that includes other "junk" records in the <abbr title="Identical To Master record">ITM</abbr> count. Wrye Bash does not count these junk records as they are non-harmful.
+            <tr><td>Scan for <abbr title="Undeleted and Disabled Reference">UDR</abbr>'s</td><td><em>All but Oblivion &amp; Nehrim&colon; At Fate's Edge.</em> Behaves as the above <a href="#modsScanForDirtyEdits">Scan for Dirty Edits</a>, but only for deleted references.</td></tr>
             <tr><td id="modsRemoveWorldOrphans">Remove World Orphans<td>Some plugins have a mild form of corruption where exterior cells of new worldspaces in an esp master of the plugin are included in the plugin even if they are not edited, but the parent worldspace is not included, creating "orphaned" cells. This command removes these "orphans".
             <tr>
                 <td id="modsNvidiaFogFix">Nvidia Fog Fix</td>
-                <td><em>Oblivion only.</em> Systems with Nvidia graphics cards
-                    can suffer a black screen bug when interior cell fog
-                    distances are set to 0. This command scans the selected
-                    plugin(s) and sets any zero-valued fog distances to 0.001.
+                <td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em>
+                    Systems with Nvidia graphics cards can suffer a black
+                    screen bug when interior cell fog distances are set to 0.
+                    This command scans the selected plugin(s) and sets any
+                    zero-valued fog distances to 0.001.
                     <br><br><strong>It is advised that mod authors use this on
                         their mods before release.</strong></td>
             </tr>
@@ -1343,24 +1384,6 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
-            <td>InventOnly</td>
-            <td>
-                <em>Deprecated. Use Invent in conjunction with IIM instead.</em>
-            </td>
-            <td>
-                <em>N/A</em>
-            </td>
-        </tr>
-        <tr>
-            <td>Merge</td>
-            <td>
-                <em>Obsolete. This tag is ignored.</em>
-            </td>
-            <td>
-                <em>N/A</em>
-            </td>
-        </tr>
-        <tr>
             <td>MustBeActiveIfImported</td>
             <td>Must be active to function correctly even if it is imported into the Bashed Patch. Currently this tags only function is that Bash won't ask to deactivate the plugin.</td>
             <td>
@@ -1373,6 +1396,69 @@ C.Location, -C.LockList
             <td>
                 <em>N/A</em>
             </td>
+        </tr>
+    </tbody>
+</table>
+<table id="patch-deprecated-tags">
+    <thead>
+        <tr>
+            <th colspan="2">Removed &amp; Deprecated Bash Tags</th>
+        </tr>
+        <tr>
+            <th>Tag</th>
+            <th>Replacement/Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C.GridFlags</td>
+            <td>Older name for C.ForceHideLand.</td>
+        </tr>
+        <tr>
+            <td>Derel</td>
+            <td>Older name for Relations.Remove.</td>
+        </tr>
+        <tr>
+            <td>Invent</td>
+            <td>Split into Invent.Add, Invent.Change and Invent.Remove. The
+                behavior of the old Invent tag is equivalent to Invent.Add
+                combined with Invent.Remove.</td>
+        </tr>
+        <tr>
+            <td>InventOnly</td>
+            <td>Use the Invent tags mentioned above in conjunction with IIM
+                instead.</td>
+        </tr>
+        <tr>
+            <td>Merge</td>
+            <td>Obsoleted due to Merge Patches rework.</td>
+        </tr>
+        <tr>
+            <td>Npc.EyesOnly</td>
+            <td>Older name for NPC.Eyes.</td>
+        </tr>
+        <tr>
+            <td>Npc.HairOnly</td>
+            <td>Older name for NPC.Hair.</td>
+        </tr>
+        <tr>
+            <td>NpcFaces</td>
+            <td>Split into NPC.Eyes, NPC.Hair and NPC.FaceGen. Previous
+                behavior is equivalent to all three tags combined.
+                <br>
+                Warning: Previous versions allowed applying both NpcFaces and
+                one of the two 'Only' tags above. This was undefined behavior,
+                but thankfully no mods seem to have made this mistake.</td>
+        </tr>
+        <tr>
+            <td>Relations</td>
+            <td>Split into Relations.Add and Relations.Change. The behavior of
+                the old Relations tag is equivalent to Relations.Add combined
+                with Relations.Change.</td>
+        </tr>
+        <tr>
+            <td>ScriptContents</td>
+            <td>Dangerous tag that was never fully implemented.</td>
         </tr>
     </tbody>
 </table>
@@ -1394,7 +1480,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#ActorsACBSOblivion">Oblivion</a> <q>Actors.ACBS</q> section for more information.
+                        See the <a href="#ActorsACBSOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Actors.ACBS</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsACBSFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.ACBS</q> section for more information.
@@ -1413,7 +1499,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#ActorsAIDataOblivion">Oblivion</a> <q>Actors.AIData</q> section for more information.
+                        See the <a href="#ActorsAIDataOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Actors.AIData</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsAIDataFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.AIData</q> section for more information.
@@ -1432,7 +1518,7 @@ C.Location, -C.LockList
             <td>Addition or removal of an (PKID) AI Package in the AI Packages subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1446,7 +1532,7 @@ C.Location, -C.LockList
             <td>Addition of an (PKID) AI Package in the AI Packages subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1463,7 +1549,7 @@ C.Location, -C.LockList
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -1472,7 +1558,7 @@ C.Location, -C.LockList
             <td>Modification of the (ZNAM) Combat Style subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1486,7 +1572,7 @@ C.Location, -C.LockList
             <td>Modification of the (INAM) Death Item subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1504,7 +1590,7 @@ C.Location, -C.LockList
                     <li>(MODT) Texture File Hashes.</li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -1513,7 +1599,7 @@ C.Location, -C.LockList
             <td>Addition, modification or removal of spells to the (SPLO) Spells subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1527,7 +1613,7 @@ C.Location, -C.LockList
             <td>Addition of (SPLO) spells to the Spells subrecord in the following record types:
                 <ul>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
@@ -1541,7 +1627,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#ActorsStatsOblivion">Oblivion</a> <q>Actors.Stats</q> section for more information.
+                        See the <a href="#ActorsStatsOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Actors.Stats</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ActorsStatsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Actors.Stats</q> section for more information.
@@ -1560,7 +1646,7 @@ C.Location, -C.LockList
             <td>The Acoustic Space (XCAS) subrecord in Cell (CELL) records.
                 <br>
                 <br>
-                <strong>Not available for Oblivion &amp; Fallout 4.</strong>
+                <strong>Not available for Oblivion, Nehrim&colon; At Fate's Edge &amp; Fallout 4.</strong>
             </td>
         </tr>
         <tr>
@@ -1569,7 +1655,7 @@ C.Location, -C.LockList
             <td>The following subrecords:
                 <br>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                 <ul>
                     <li>(XCCM) Climate</li>
                     <li>(DATA - flags) Behave Like Exterior</li>
@@ -1590,7 +1676,7 @@ C.Location, -C.LockList
             <td>The Encounter Zone (XEZN) subrecord in Cell (CELL) records.
                 <br>
                 <br>
-                <strong>Not available for Oblivion &amp; Fallout 4.</strong>
+                <strong>Not available for Oblivion, Nehrim&colon; At Fate's Edge &amp; Fallout 4.</strong>
             </td>
         </tr>
         <tr>
@@ -1599,7 +1685,7 @@ C.Location, -C.LockList
           <td>The Force Hide Land flags field in the Grid (XCLC) subrecord in Cell (CELL) records.
             <br>
             <br>
-            <strong>Not available for Oblivion &amp; Fallout 4.</strong>
+            <strong>Not available for Oblivion, Nehrim&colon; At Fate's Edge &amp; Fallout 4.</strong>
           </td>
         </tr>
         <tr>
@@ -1608,7 +1694,7 @@ C.Location, -C.LockList
             <td>The Image Space (XCIM) subrecord in Cell (CELL) records.
                 <br>
                 <br>
-                <strong>Not available for Oblivion &amp; Fallout 4.</strong>
+                <strong>Not available for Oblivion, Nehrim&colon; At Fate's Edge &amp; Fallout 4.</strong>
             </td>
         </tr>
         <tr>
@@ -1628,7 +1714,7 @@ C.Location, -C.LockList
                             <li>Fog Far</li>
                             <li>Fog Clip Dist</li>
                             <li>Fog Power &mdash;
-                                <strong>Not available for Oblivion.</strong>
+                                <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
                             </li>
                             <li>Directional Rotation XY</li>
                             <li>Directional Rotation Z</li>
@@ -1636,7 +1722,7 @@ C.Location, -C.LockList
                         </ul>
                     </li>
                     <li>(LTMP) Light Template &mdash;
-                        <strong>Not available for Oblivion</strong>
+                        <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge</strong>
                     </li>
                     <br>
                     <strong>Fallout 3 &amp; Fallout&colon; New Vegas only:</strong>
@@ -1690,10 +1776,10 @@ C.Location, -C.LockList
             <td>The following subrecords:
                 <ul>
                     <li>(XCMT) Music &mdash;
-                        <strong>Oblivion only.</strong>
+                        <strong>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</strong>
                     </li>
                     <li>(XCMO) Music &mdash;
-                        <strong>All but Oblivion &amp; Fallout 4.</strong>
+                        <strong>All but Oblivion, Nehrim&colon; At Fate's Edge &amp; Fallout 4.</strong>
                     </li>
                 </ul>
                 <br>
@@ -1721,7 +1807,7 @@ C.Location, -C.LockList
                             <li>(XOWN) Owner</li>
                             <li>(XRNK) Rank</li>
                             <li>(XGLB) Global variable &mdash;
-                                <strong>Oblivion only.</strong>
+                                <strong>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</strong>
                             </li>
                         </ul>
                     </li>
@@ -1768,7 +1854,7 @@ C.Location, -C.LockList
                     <li>(XCLW) Water Height</li>
                     <li>(DATA - flags) Has Water</li>
                     <li>(XNAM) Water Noise Texture &mdash;
-                        <strong>Not available for Oblivion.</strong>
+                        <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
                     </li>
                     <li>(XWEN) Water Environment Map &mdash;
                         <strong>Skyrim, Enderal&colon; Forgotten Stories and Skyrim&colon; Special Edition only.</strong>
@@ -1785,17 +1871,17 @@ C.Location, -C.LockList
             <td>The following (CREA) Creature subrecord(s):
                 <ul>
                     <li>(NAM0) Blood Spray &mdash;
-                        <strong>Oblivion only.</strong>
+                        <strong>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</strong>
                     </li>
                     <li>(NAM1) Blood Decal &mdash;
-                        <strong>Oblivion only.</strong>
+                        <strong>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</strong>
                     </li>
                     <li>(CNAM) Impact Dataset &mdash;
                         <strong>Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                     </li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -1821,7 +1907,7 @@ C.Location, -C.LockList
                     </li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -1845,14 +1931,14 @@ C.Location, -C.LockList
             <td>Removal of a (LVLO) Level List Entry from the following record types:
                 <ul>
                     <li>(LVLC) Leveled Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                     </li>
                     <li>(LVLI) Leveled Item</li>
                     <li>(LVLN) Leveled NPC &mdash;
-                        <strong>Not available for Oblivion.</strong>
+                        <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
                     </li>
                     <li>(LVSP) Leveled SPELL &mdash;
-                        <strong>Oblivion, Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only.</strong>
                     </li>
                 </ul>
             </td>
@@ -1874,9 +1960,100 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
+            <td>EffectStats</td>
+            <td>Modifies (MGEF) Magic Effect / Base Effect stats.</td>
+            <td>The following fields of the (DATA) Data subrecord in (MGEF)
+                Magic Effect / Base Effect records:
+                <ul>
+                    <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only:</strong>
+                    <br>
+                    <br>
+                    <li>Flags</li>
+                    <li>Base Cost</li>
+                    <li>Associated Item</li>
+                    <li>Magic School</li>
+                    <li>Resist Value</li>
+                    <li>Projectile Speed</li>
+                    <li>Constant Effect Enchantment Factor</li>
+                    <li>Constant Effect Barter Factor</li>
+                    <li>Archetype &mdash;
+                        <strong>Fallout 3 &amp; Fallout&colon; New Vegas only.</strong></li>
+                    <li>Actor Value &mdash;
+                        <strong>Fallout 3 &amp; Fallout&colon; New Vegas only.</strong></li>
+                    <br>
+                    <strong>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only:</strong>
+                    <br>
+                    <br>
+                    <li>Flags</li>
+                    <li>Base Cost</li>
+                    <li>Associated Item</li>
+                    <li>Magic Skill</li>
+                    <li>Resist Value</li>
+                    <li>Taper Weight</li>
+                    <li>Minimum Skill Level</li>
+                    <li>Spellmaking
+                        <ul>
+                            <li>Area</li>
+                            <li>Casting Time</li>
+                        </ul>
+                    </li>
+                    <li>Taper Curve</li>
+                    <li>Taper Duration</li>
+                    <li>Second AV Weight</li>
+                    <li>Archetype</li>
+                    <li>Actor Value</li>
+                    <li>Casting Type</li>
+                    <li>Delivery</li>
+                    <li>Second Actor Value</li>
+                    <li>Skill Usage Multiplier</li>
+                    <li>Equip Ability</li>
+                    <li>Perk to Apply</li>
+                    <li>Script Effect AI
+                        <ul>
+                            <li>Score</li>
+                            <li>Delay Time</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>EnchantmentStats</td>
+            <td>Modifies (ENCH) Enchantment / Object Effect stats.</td>
+            <td>The following fields of the (ENIT) Effect Data subrecord in
+                (ENCH) Enchantment / Object Effect records:
+                <ul>
+                    <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only:</strong>
+                    <br>
+                    <br>
+                    <li>Type</li>
+                    <li>Charge Amount</li>
+                    <li>Enchant Cost</li>
+                    <li>Flags</li>
+                    <br>
+                    <strong>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only:</strong>
+                    <br>
+                    <br>
+                    <li>Enchantment Cost</li>
+                    <li>Flags</li>
+                    <li>Cast Type</li>
+                    <li>Enchantment Amount</li>
+                    <li>Target Type</li>
+                    <li>Enchant Type</li>
+                    <li>Charge Time</li>
+                    <li>Base Enchantment</li>
+                    <li>Worn Restrictions</li>
+                </ul>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
+            </td>
+        </tr>
+        <tr>
             <td>Factions</td>
-            <td>Changes Creature or Non-Player Character factions.</td>
-            <td>Addition or removal of a faction, or change of faction rank in Non-Player Character (NPC_) or Creature (CREA) records.
+            <td>Changes Creature (<strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>) or Non-Player Character factions.</td>
+            <td>Addition or removal of a faction, or change of faction rank in (NPC_) Non-Player Character or (CREA) Creature (<strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only</strong>) records.
                 <ul>
                     <li>Factions
                         <ul>
@@ -1887,7 +2064,7 @@ C.Location, -C.LockList
                 </ul>
                 <br>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Not available for Fallout 4.</strong>
             </td>
         </tr>
         <tr>
@@ -1896,7 +2073,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#GraphicsOblivion">Oblivion</a> <q>Graphics</q> section for more information.
+                        See the <a href="#GraphicsOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Graphics</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#GraphicsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Graphics</q> section for more information.
@@ -1910,16 +2087,59 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
-            <td>Invent</td>
-            <td>Changes inventories.</td>
-            <td>Addition, removal or change in count/number of an item in records:
+            <td>Invent.Add</td>
+            <td>Adds items to inventories.</td>
+            <td>Addition of items in the following records:
                 <ul>
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                     </li>
                     <li>(NPC_) Non-Player Character</li>
                 </ul>
+                <em>Note that changing an item's FormID is indistinguishable
+                    from removing it and adding a new one with a different
+                    FormID, so in that case you will need to tag with both
+                    <code>Invent.Add</code> and
+                    <code>Invent.Remove</code>.</em>
+                <br>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Invent.Change</td>
+            <td>Changes other properties (like count and owner) of items in
+                inventories.</td>
+            <td>Change of item properties in the following records:
+                <ul>
+                    <li>(CONT) Container</li>
+                    <li>(CREA) Creature &mdash;
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                    </li>
+                    <li>(NPC_) Non-Player Character</li>
+                </ul>
+                <br>
+                <br>
+                <strong>Not available for Fallout 4 &amp; not functional for CBash in Oblivion.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Invent.Remove</td>
+            <td>Removes items from inventories.</td>
+            <td>Removal of items in the following records:
+                <ul>
+                    <li>(CONT) Container</li>
+                    <li>(CREA) Creature &mdash;
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                    </li>
+                    <li>(NPC_) Non-Player Character</li>
+                </ul>
+                <em>Note that changing an item's FormID is indistinguishable
+                    from removing it and adding a new one with a different
+                    FormID, so in that case you will need to tag with both
+                    <code>Invent.Add</code> and
+                    <code>Invent.Remove</code>.</em>
                 <br>
                 <br>
                 <strong>Not available for Fallout 4.</strong>
@@ -1960,7 +2180,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#NamesOblivion">Oblivion</a> <q>Names</q> section for more information.
+                        See the <a href="#NamesOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Names</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#NamesFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Names</q> section for more information.
@@ -1974,6 +2194,21 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
+            <td>NPC.AIPackageOverrides</td>
+            <td>Changes </td>
+            <td>The following (NPC_) Non-Player Character subrecords:
+                <ul>
+                    <li>(SPOR) Spectator Override Package List</li>
+                    <li>(OCOR) Observe Dead Body Override Package List</li>
+                    <li>(GWOR) Guard Warn Override Package List</li>
+                    <li>(ECOR) Combat Override Package List</li>
+                </ul>
+                <br>
+                <strong>Skyrim, Enderal&colon; Forgotten Stories &amp;
+                    Skyrim&colon; Special Edition only.</strong>
+            </td>
+        </tr>
+        <tr>
             <td>NPC.Class</td>
             <td>Changes the classes of NPCs.</td>
             <td>The (CNAM) Class subrecord of (NPC_) Non-Player Character records.
@@ -1983,21 +2218,34 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
-            <td>Npc.EyesOnly</td>
+            <td>NPC.Eyes</td>
             <td>Modifies Non-Player Character eyes.</td>
-            <td>The Eyes (ENAM) subrecord of Non-Player Character (NPC_) records.
+            <td>The (ENAM) Eyes subrecord of (NPC_) Non-Player Character records.
                 <br>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
-            <td>Npc.HairOnly</td>
+            <td>NPC.FaceGen</td>
+            <td>Modifies Non-Player Character faces.</td>
+            <td>The following (NPC_) Non-Player Character subrecords:
+                <ul>
+                    <li>(FGGS) FaceGen Geometry-Symmetric</li>
+                    <li>(FGGA) FaceGen Geometry-Asymmetric</li>
+                    <li>(FGTS) FaceGen Texture-Symmetry </li>
+                </ul>
+                <br>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>NPC.Hair</td>
             <td>Modifies Non-Player Character hair.</td>
-            <td>The Hair (HNAM) subrecord of Non-Player Character (NPC_) records.
+            <td>The (HNAM) Hair subrecord of (NPC_) Non-Player Character records.
                 <br>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -2010,31 +2258,10 @@ C.Location, -C.LockList
             </td>
         </tr>
         <tr>
-            <td>NpcFaces</td>
-            <td>Modifies Non-Player Character faces.</td>
-            <td>The following Non-Player Character (NPC_) subrecords:
-                <ul>
-                    <li>FaceGen Data
-                        <ul>
-                            <li>(FGGS) FaceGen Geometry-Symmetric</li>
-                            <li>(FGGA) FaceGen Geometry-Asymmetric</li>
-                            <li>(FGTS) FaceGen Texture-Symmetry </li>
-                        </ul>
-                    </li>
-                    <li>(ENAM) Eyes</li>
-                    <li>(HNAM) Hair</li>
-                    <li>(LNAM) Hair Length</li>
-                    <li>(HCLR) Hair Color</li>
-                </ul>
-                <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
-            </td>
-        </tr>
-        <tr>
             <td>NpcFacesForceFullImport</td>
             <td>Modifies Non-Player Character faces, and you wish to import the
                 unmodified subrecords as well as the modified subrecords.</td>
-            <td>The following Non-Player Character (NPC_) subrecords:
+            <td>The following (NPC_) Non-Player Character subrecords:
                 <ul>
                     <li>FaceGen Data
                         <ul>
@@ -2049,7 +2276,12 @@ C.Location, -C.LockList
                     <li>(HCLR) Hair Color</li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                Note: If you have applied this tag, there is no more need to
+                apply NPC.Eyes, NPC.FaceGen or NPC.Hair as well. This tag
+                already does everything those tags do.
+                <br>
+                <br>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -2068,7 +2300,62 @@ C.Location, -C.LockList
                     </li>
                 </ul>
                 <br>
-                <strong>Not available for Oblivion.</strong>
+                <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Outfits.Add</td>
+            <td>Adds items to outfits.</td>
+            <td>Additions of items in (OTFT) Outfit records.
+                <br>
+                <br>
+                <strong>Skyrim, Enderal&colon; Forgotten Stories &amp;
+                        Skyrim&colon; Special Edition only.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Outfits.Remove</td>
+            <td>Removes items from outfits.</td>
+            <td>Removal of items in (OTFT) Outfit records.
+                <br>
+                <br>
+                <strong>Skyrim, Enderal&colon; Forgotten Stories &amp;
+                        Skyrim&colon; Special Edition only.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Relations.Add</td>
+            <td>Adds faction relationships.</td>
+            <td>Additions of (XNAM) Relation subrecords in (FACT) Faction
+                records.
+                <br>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Relations.Change</td>
+            <td>Changes faction relationships.</td>
+            <td>Changes to the following fields in (XNAM) Relation subrecords
+                in (FACT) Faction records:
+                <ul>
+                    <li>Modifier</li>
+                    <li>Group Combat Reaction &mdash;
+                        <strong>Not available for Oblivion.</strong></li>
+                </ul>
+                <br>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Relations.Remove</td>
+            <td>Removes faction relationships.</td>
+            <td>Removal of (XNAM) Relation subrecords from (FACT) Faction
+                records.
+                <br>
+                <br>
+                <strong>Not available for Fallout 4.</strong>
             </td>
         </tr>
         <tr>
@@ -2077,14 +2364,14 @@ C.Location, -C.LockList
             <td>Changes to the Level or Count of a (LVLO) leveled list entry in:
                 <ul>
                     <li>(LVLC) Leveled Creature &mdash;
-                        <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
                     </li>
                     <li>(LVLI) Leveled Item</li>
                     <li>(LVLN) Leveled NPC &mdash;
-                        <strong>Not available for Oblivion.</strong>
+                        <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
                     </li>
                     <li>(LVSP) Leveled SPELL &mdash;
-                        <strong>Oblivion, Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only.</strong>
+                        <strong>Oblivion, Nehrim&colon; At Fate's Edge, Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition only.</strong>
                     </li>
                 </ul>
             </td>
@@ -2095,14 +2382,14 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#ScriptsOblivion">Oblivion</a> <q>Scripts</q> section for more information.
+                        See the <a href="#ScriptsOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Scripts</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#ScriptsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Scripts</q> section for more information.
                     </li>
                 </ul>
                 <br>
-                <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
+                <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only.</strong>
             </td>
         </tr>
         <tr>
@@ -2111,7 +2398,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#SoundOblivion">Oblivion</a> <q>Sound</q> section for more information.
+                        See the <a href="#SoundOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Sound</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#SoundFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Sound</q> section for more information.
@@ -2137,7 +2424,7 @@ C.Location, -C.LockList
                     <li>(SPIT) Cost</li>
                     <li>(SPIT) Spell Type</li>
                     <br>
-                    <strong>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas only:</strong>
+                    <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas only:</strong>
                     <br>
                     <br>
                     <li>(SPIT) Level</li>
@@ -2163,7 +2450,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#StatsOblivion">Oblivion</a> <q>Stats</q> section for more information.
+                        See the <a href="#StatsOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Stats</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#StatsFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Stats</q> section for more information.
@@ -2182,7 +2469,7 @@ C.Location, -C.LockList
             <td>See the game-specific sections below for record types:
                 <ul>
                     <li>
-                        See the <a href="#TextOblivion">Oblivion</a> <q>Text</q> section for more information.
+                        See the <a href="#TextOblivion">Oblivion &amp; Nehrim&colon; At Fate's Edge</a> <q>Text</q> section for more information.
                     </li>
                     <li>
                         See the <a href="#TextFO3">Fallout 3 &amp; Fallout&colon; New Vegas</a> <q>Text</q> section for more information.
@@ -2200,7 +2487,7 @@ C.Location, -C.LockList
 <table>
     <thead>
         <tr>
-            <th colspan="3">Bash Tags Available For Oblivion</th>
+            <th colspan="3">Bash Tags Available For Oblivion &amp; Nehrim&colon; At Fate's Edge</th>
         </tr>
         <tr>
             <th>Tag</th>
@@ -2474,7 +2761,19 @@ C.Location, -C.LockList
                     <li>(LIGH) Light: (ICON) Icon Filename, Model</li>
                     <li>(LSCR) Load Screen: (ICON) Icon Filename</li>
                     <li>(LTEX) Landscape Texture: (ICON) Icon Filename</li>
-                    <li>(MGEF) Magic Effect: (ICON) Icon Filename, Model</li>
+                    <li>(MGEF) Magic Effect:
+                        <ul>
+                            <li>(ICON) Icon Filename</li>
+                            <li>Model</li>
+                            <li>(DATA) Data
+                                <ul>
+                                    <li>Light</li>
+                                    <li>Effect Shader</li>
+                                    <li>Enchant Effect</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li>(MISC) Misc. Item: (ICON) Icon Filename, Model</li>
                     <li>(QUST) Quest: (ICON) Icon Filename</li>
                     <li>(REGN) Region: (ICON) Icon Filename</li>
@@ -2508,6 +2807,7 @@ C.Location, -C.LockList
                     <li>(CONT) Container</li>
                     <li>(CREA) Creature</li>
                     <li>(DOOR) Door</li>
+                    <li>(ENCH) Enchantment</li>
                     <li>(EYES) Eyes</li>
                     <li>(FACT) Faction</li>
                     <li>(FLOR) Flora</li>
@@ -2515,6 +2815,7 @@ C.Location, -C.LockList
                     <li>(INGR) Ingredient</li>
                     <li>(KEYM) Key</li>
                     <li>(LIGH) Light</li>
+                    <li>(MGEF) Magic Effect</li>
                     <li>(MISC) Misc. Item</li>
                     <li>(NPC_) Non-Player Character</li>
                     <li>(RACE) Race</li>
@@ -2673,16 +2974,6 @@ C.Location, -C.LockList
                             <li>(ICON) Icon Filename</li>
                         </ul>
                     </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Relations</td>
-            <td>Changes faction relationships.</td>
-            <td>Adds, Removes or Modifies the (XNAM) Relation subrecord of Relations in Faction (FACT) records.
-                <ul>
-                    <li>Faction</li>
-                    <li>Modifier</li>
                 </ul>
             </td>
         </tr>
@@ -2965,7 +3256,8 @@ C.Location, -C.LockList
                     <li>(NPC_ only) Flags:
                         <ul>
                             <li>Auto-Calc Stats</li>
-                            <li>Autocalc Service - <strong>Fallout&colon; New Vegas only</strong></li>
+                            <li>Autocalc Service &mdash;
+                                <strong>Fallout&colon; New Vegas only</strong></li>
                             <li>Can Be All Races</li>
                             <li>Essential</li>
                             <li>Female</li>
@@ -3380,9 +3672,13 @@ C.Location, -C.LockList
                         <ul>
                             <li>(MODL) Model</li>
                             <li>(ICON) Icon</li>
-                            <li>(DATA) Light</li>
-                            <li>(DATA) Effect Shader</li>
-                            <li>(DATA) Object Display Shader</li>
+                            <li>(DATA) Data
+                                <ul>
+                                    <li>Light</li>
+                                    <li>Effect Shader</li>
+                                    <li>Object Display Shader</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>(MICN) Menu Icon:
@@ -4219,14 +4515,27 @@ C.Location, -C.LockList
                     <li>(LSCR) Load Screen: (ICON) Icon</li>
                     <li>(MGEF) Magic Effect:
                         <ul>
-                            <li>(DATA) Casting Art</li>
-                            <li>(DATA) Casting Light</li>
-                            <li>(DATA) Dual-Casting Art</li>
-                            <li>(DATA) Enchant Art</li>
-                            <li>(DATA) Enchant Shader</li>
-                            <li>(DATA) Hit Effect Art</li>
-                            <li>(DATA) Hit Shader</li>
                             <li>(MDOB) Menu Display Object</li>
+                            <li>(DATA) Data
+                                <ul>
+                                    <li>Casting Light</li>
+                                    <li>Hit Shader</li>
+                                    <li>Enchant Shader</li>
+                                    <li>Projectile</li>
+                                    <li>Explosion</li>
+                                    <li>Casting Art</li>
+                                    <li>Hit Effect Art</li>
+                                    <li>Impact Data</li>
+                                    <li>Dual Casting
+                                        <ul>
+                                            <li>Art</li>
+                                            <li>Scale</li>
+                                        </ul>
+                                    </li>
+                                    <li>Enchant Art</li>
+                                    <li>Image Space Modifier</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>(SCRL) Scroll: (MDOB) Menu Display Object</li>
@@ -4254,11 +4563,11 @@ C.Location, -C.LockList
                     <li>(CLAS) Class</li>
                     <li>(CLFM) Colour</li>
                     <li>(CONT) Container</li>
-                    <li>(DIAL) Dialogue Topic</li>
                     <li>(DOOR) Door</li>
                     <li>(ENCH) Object Effect</li>
                     <li>(EXPL) Explosion</li>
                     <li>(EYES) Eyes</li>
+                    <li>(FACT) Faction</li>
                     <li>(FLOR) Flora</li>
                     <li>(FURN) Furniture</li>
                     <li>(HAZD) Hazard</li>
@@ -4272,6 +4581,7 @@ C.Location, -C.LockList
                     <li>(MISC) Misc. Item</li>
                     <li>(MSTT) Movable Static</li>
                     <li>(NPC_) Non Player Character</li>
+                    <li>(PERK) Perk</li>
                     <li>(SCRL) Scroll</li>
                     <li>(SHOU) Shout</li>
                     <li>(SLGM) Soul Gem</li>
@@ -4674,6 +4984,11 @@ C.Location, -C.LockList
             <td>Modifies long-form text (e.g. the text in a book or the description of a weapon, armor, spell, etc.) of things.</td>
             <td>The following subrecords:
                 <ul>
+                    <li>(ACTI) Activator
+                        <ul>
+                            <li>(RNAM) Activate Text Override</li>
+                        </ul>
+                    </li>
                     <li>(ALCH) Ingestible:
                         <ul>
                             <li>(DESC) Description</li>
@@ -4723,6 +5038,11 @@ C.Location, -C.LockList
                     <li>(MGEF) Magic Effect:
                         <ul>
                             <li>(DNAM) Magic Item Description</li>
+                        </ul>
+                    </li>
+                    <li>(PERK) Perk
+                        <ul>
+                            <li>(DESC) Description</li>
                         </ul>
                     </li>
                     <li>(SCRL) Scroll:
@@ -4788,8 +5108,112 @@ C.Location, -C.LockList
     <li>The plugin must not be active at the time the patch is built. Note that if the user doesn't have all the plugin's masters installed, it will have to remain deactivated at all times.
     <li>Filtering is done according to the currently active plugins: it is therefore very important that all the desired plugins are active when the Bashed Patch is built.
     <li>Filtering is mostly limited to the top level, ie. if the plugin a record is from is missing, the record will be skipped. However, if a record references another record, and the latter's plugin is missing, the former will not be skipped, and the Bashed Patch will end up dependent on the latter's plugin being installed.
-    <li>There are a few exceptions to the above limitation: entries in leveled lists will be filtered, as will spells, factions and items referenced in Creature and NPC records.
+    <li>There are a few exceptions to the above limitation. The following table
+        lists subrecords that contain lists of FormIDs. Any entries in such
+        lists that do not map back to a loaded mods are simply filtered out by
+        the Bashed Patch when performing merge filtering:</li>
 </ul>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Filtered Subrecords</th>
+        </tr>
+        <tr>
+            <th>Record Type</th>
+            <th>Subrecords</th>
+            <th>Available For</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>(COBJ) Constructible Object</td>
+            <td>
+                <ul>
+                    <li>(INAM) Items</li>
+                </ul>
+            </td>
+            <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
+                Special Edition</td>
+        </tr>
+        <tr>
+            <td>(CONT) Container</td>
+            <td>
+                <ul>
+                    <li>(INAM) Items</li>
+                </ul>
+            </td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>(CREA) Creature</td>
+            <td>
+                <ul>
+                    <li>(CNTO) Items</li>
+                    <li>(SNAM) Factions</li>
+                    <li>(SPLO) Spells</li>
+                </ul>
+            </td>
+            <td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>(LVLC) Leveled Creature</td>
+            <td>
+                <ul>
+                    <li>(LVLO) Entries</li>
+                </ul>
+            </td>
+            <td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td>
+        </tr>
+        <tr>
+            <td>(LVLI) Leveled Item</td>
+            <td>
+                <ul>
+                    <li>(LVLO) Entries</li>
+                </ul>
+            </td>
+            <td>All games</td>
+        </tr>
+        <tr>
+            <td>(LVLN) Leveled Non-Player Character</td>
+            <td>
+                <ul>
+                    <li>(LVLO) Entries</li>
+                </ul>
+            </td>
+            <td>All but Oblivion</td>
+        </tr>
+        <tr>
+            <td>(LVSP) Leveled Spell</td>
+            <td>
+                <ul>
+                    <li>(LVLO) Entries</li>
+                </ul>
+            </td>
+            <td>All but Fallout 3, Fallout&colon; New Vegas &amp; Fallout 4</td>
+        </tr>
+        <tr>
+            <td>(NPC_) Non-Player Character</td>
+            <td>
+                <ul>
+                    <li>(CNTO) Items</li>
+                    <li>(SNAM) Factions</li>
+                    <li>(SPLO) Spells</li>
+                </ul>
+            </td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>(OTFT) Outfit</td>
+            <td>
+                <ul>
+                    <li>(INAM) Items</li>
+                </ul>
+            </td>
+            <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
+                Special Edition</td>
+        </tr>
+    </tbody>
+</table>
 
 
 <h3 id="patch-iim">Item Interchange Mode <a class="back2top" href="#contents">Back to top</a></h3>
@@ -4833,17 +5257,17 @@ C.Location, -C.LockList
     <tbody>
         <tr><td>As Intended: Boars</td><td>Adds the Bethesda Boar Resistances spells to all boars (found by the UOP team, based off of a mod made by Tejon).</td><td>Oblivion</td></tr>
         <tr><td>As Intended: Imps</td><td>Adds the Bethesda Imp Resistances spells to imps (found by the UOP team, based off of a mod made by Tejon). May choose to apply to all imps, only full size imps, or only implings.</td><td>Oblivion</td></tr>
-        <tr><td>Irresponsible Creatures</td><td>Sets responsibility to 0 for all/specified creatures - so they can't report you for crimes.</td><td>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas</td></tr>
+        <tr><td>Irresponsible Creatures</td><td>Sets responsibility to 0 for all/specified creatures - so they can't report you for crimes.</td><td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td></tr>
         <tr><td>Mayu's Animation Overhaul Skeleton Tweaker</td><td>Sets NPC skeletons paths to match that required for MAO to work. <strong>Requires</strong> Mayu's Animation Overhaul or it will almost certainly cause CTDs.</td><td>Oblivion</td></tr>
-        <tr><td>No Bloody Creatures</td><td>Nulls the blood records of all creatures; acts like 'Mart's Monster Mod - No Blood.esp' except it is universal and doesn't work with MMM (MMM uses a different system - it won't cause any harm if used with MMM, it will just have pretty much no effect).</td><td>Oblivion</td></tr>
+        <tr><td>No Bloody Creatures</td><td>Nulls the blood records of all creatures; acts like 'Mart's Monster Mod - No Blood.esp' except it is universal and doesn't work with MMM (MMM uses a different system - it won't cause any harm if used with MMM, it will just have pretty much no effect).</td><td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td></tr>
         <tr><td>Opposite Gender Anims: Female</td><td>Enables or disables the 'Opposite Gender Anims' flag for all female NPCs. Similar to the 'Feminine Females' mod, but applies to your whole load order.</td><td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</td></tr>
         <tr><td>Opposite Gender Anims: Male</td><td>Enables or disables the 'Opposite Gender Anims' flag for all male NPCs. Similar to the 'Feminine Females' mod, but applies to your whole load order.</td><td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition</td></tr>
-        <tr><td>Quiet Feet</td><td>Removes all/some 'foot' sounds from creatures; on some computers can have a significant performance boost.</td><td>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas</td></tr>
+        <tr><td>Quiet Feet</td><td>Removes all/some 'foot' sounds from creatures; on some computers can have a significant performance boost.</td><td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td></tr>
         <tr><td>Real Walk for female NPCs</td><td>Changes all female NPCs to use Mur Zuk's Real Walk. <strong>Requires</strong> Mur Zuk's Real Walk animation file.</td><td>Oblivion</td></tr>
         <tr><td>Redguard FGTS Nuller</td><td>Sets Redguard NPC FGTS subrecords to null; for use with Better Redguards.</td><td>Oblivion</td></tr>
         <tr><td>Sexy Walk for female NPCs</td><td>Changes all female NPCs to use Mur Zuk's Sexy Walk. <strong>Requires</strong> Mur Zuk's Sexy Walk animation file.</td><td>Oblivion</td></tr>
         <tr><td>VadersApp's Oblivion Real Bodies Skeleton Tweaker</td><td>Changes all (modded and vanilla) NPCs to use diverse skeletons for different look. Not compatible with MAO. <strong>Requires</strong> VadersApp's Oblivion Real Bodies.</td><td>Oblivion</td></tr>
-        <tr><td>Vanilla Beast Skeleton Tweaker</td><td>Sets any NPCs using the vanilla non-beast skeleton path (skeleton.nif) to use the beast skeleton patch (skeletonbeast.nif). This avoids bugs when a mod changes the race of an NPC to a beast race without setting the skeleton path to the beast path, in which case the tail will appear to extend forever and weird stuff like that.</td><td>Oblivion</td></tr>
+        <tr><td>Vanilla Beast Skeleton Tweaker</td><td>Sets any NPCs using the vanilla non-beast skeleton path (skeleton.nif) to use the beast skeleton patch (skeletonbeast.nif). This avoids bugs when a mod changes the race of an NPC to a beast race without setting the skeleton path to the beast path, in which case the tail will appear to extend forever and weird stuff like that.</td><td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td></tr>
     </tbody>
 </table>
 <table>
@@ -4902,12 +5326,12 @@ C.Location, -C.LockList
         <tr><td>Nvidia Fog Fix<td>Ensures that cells have at least one non-zero fog value. For avoiding the Nvidia fog-related black screen. This feature is based on <a href="https://www.nexusmods.com/oblivion/mods/11167/?">Quarn's Nvidia Black Screen Fix</a>.
         <tr><td>Reweigh: Arrows<td>Reweighs arrows to a maximum weight.
         <tr><td>Reweigh: Ingredients<td>Reweighs ingredients to a maximum weight.
-        <tr><td>Reweigh: Potions (Maximum)<td>Reweighs potions to a maximum weight. This does not affect potions with script effects or with current weight &gt;= 1.0. Thus it should not affect alcoholic beverages or scripted "potions" like HTS water skins. Note that this is similar to, but not the same as, the Reweigh Potions command for savegames, which reweighs user created potions rather than mod created potions.
+        <tr><td>Reweigh: Potions (Maximum)<td>Reweighs potions to a maximum weight. This does not affect potions with script effects, ones with OBME effects or with current weight &gt;= 1.0. Thus it should not affect alcoholic beverages or scripted "potions" like HTS water skins. Note that this is similar to, but not the same as, the Reweigh Potions command for savegames, which reweighs user created potions rather than mod created potions.
         <tr><td>Reweigh: Potions (Minimum)<td>Reweighs potions to a minimum weight.
         <tr><td>Reweigh: Staffs/Staves<td>Reweighs staves to a maximum weight.
         <tr><td>Right Hand Rings<td>Makes rings behave more consistently by making all rings prefer to be on the right hand. With this tweak activated, rings will only equip to the left hand if the right hand has a ring, but the left hand does not. You can use this to make one ring permanently equipped - just equip it to the left hand and it will stay on until you specifically unequip it.
         <tr><td>Set Sound Attenuation Levels<td>The sound attenuation levels will be set to tweak%*current level, thereby increasing (or decreasing) the sound volume (lower attenuation = higher volume).
-        <tr><td>Set Sound Attenuation Levels: Nirnroots Only<td>The sound attenuation levels will be set to tweak%*current level, thereby increasing (or decreasing) the sound volume (lower attenuation = higher volume). This one only affects Nirnroots.
+        <tr><td>Set Sound Attenuation Levels: Nirnroots/Vynroots Only<td>The sound attenuation levels will be set to tweak%*current level, thereby increasing (or decreasing) the sound volume (lower attenuation = higher volume). This one only affects Nirnroots/Vynroots.
         <tr><td>Skyrim-style Weapons<td>Sets all one handed weapons as blades, two handed weapons as blunt.
         <tr><td>Uniform Groundcover<td>Eliminates the random variation in groundcover (grass, vines, shrubs, etc). Tall groundcover will still be taller than short groundcover, but there will be less variation in size. May help on lower end machines.
 </table>
@@ -4944,7 +5368,7 @@ C.Location, -C.LockList
 <p><strong>Note regarding Tweak Settings</strong>: In some cases for newer games the following Tweaks may become a permanent part of your saves,
     and so should be set prior to starting a new game.<br>
     Trying to change the same settings in a continued game by rebuilding your bashed patch may fail
-    for games newer than Oblivion, because the game setting will always be loaded from your ongoing save files ( which the game loads last,
+    for games newer than Oblivion &amp; Nehrim&colon; At Fate's Edge, because the game setting will always be loaded from your ongoing save files ( which the game loads last,
     after the Bashed Patch ).<br>
     For example, <em>World: Timescale</em>, once changed, is known to become permanently baked in your save game for
     Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon; Special Edition. It can be set once, but thereafter is part of your saves, and can only be
@@ -5051,19 +5475,19 @@ C.Location, -C.LockList
         <tr>
             <td>AI: Max Smile Distance</td>
             <td>Maximum distance for NPCs to start smiling.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Arrow: Litter Count</td>
             <td>Shot arrows will be automatically removed from the world if
                 their number exceeds the Arrow Litter Count.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Arrow: Litter Time</td>
             <td>The period of time after which shot arrows will be
                 automatically removed from the world.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Arrow: Max Arrows Attached to NPC</td>
@@ -5145,7 +5569,7 @@ C.Location, -C.LockList
             <td>Camera: Chase Tightness</td>
             <td>Tightens up the 3rd person chase camera. Highest setting
                 (x 3.0) essentially locks camera behind player.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Camera: PC Death Time</td>
@@ -5225,7 +5649,7 @@ C.Location, -C.LockList
             <td>Combat: Repair</td>
             <td>By default, you cannot repair items in combat. Disallowing it
                 encourages you to be ready for battle ahead of time.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Combat: Stealth Damage Bonus</td>
@@ -5249,7 +5673,7 @@ C.Location, -C.LockList
             <td>Disables POI's (Points of Interest), Quest Markers, or both on
                 the compass. This may not work with some UI mods, and can make
                 some quests very hard to complete.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Compass: Recognition Distance</td>
@@ -5267,17 +5691,17 @@ C.Location, -C.LockList
         <tr>
             <td>Cost Multiplier: Recharge</td>
             <td>The cost multiplier factor for recharging.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Cost Multiplier: Repair</td>
             <td>The cost multiplier factor for repairing.</td>
-            <td>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas</td>
+            <td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Cost Multiplier: Spell Making</td>
             <td>The cost multiplier factor for spellmaking.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Crime: Alarm Distance</td>
@@ -5290,7 +5714,7 @@ C.Location, -C.LockList
             <td>Crime: Force Jail</td>
             <td>The bounty level at which the player cannot pay the fine but
                 has to go to jail.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Crime: Pickpocketing Chance</td>
@@ -5331,23 +5755,23 @@ C.Location, -C.LockList
         <tr>
             <td>Leveled Creature Max Level Difference</td>
             <td>Maximum difference to player level for leveled creatures.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Leveled Item Max Level Difference</td>
             <td>Maximum difference to player level for leveled items.</td>
-            <td>Oblivion, Fallout 3 &amp; Fallout&colon; New Vegas</td>
+            <td>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp; Fallout&colon; New Vegas</td>
         </tr>
         <tr>
             <td>Magic: Bolt Speed</td>
             <td>Speed at which at which magic bolts (projectiles) travel.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Magic: Chameleon Refraction</td>
             <td>Turns off the refraction effect for chameleon, but leaves the
                 incremental transparency effect on.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Magic: Invisibility Detection Difficulty</td>
@@ -5367,13 +5791,13 @@ C.Location, -C.LockList
             <td>Magic: Max NPC Summons</td>
             <td>Sets the number of summons a NPC may have active at one
                 time.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Magic: Max Player Summons</td>
             <td>Sets the number of summons the player may have active at one
                 time. Normally less than Max NPC Summons.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Magic: Max Resistance</td>
@@ -5393,7 +5817,7 @@ C.Location, -C.LockList
             <td>Master of Mercantile Extra Gold Amount</td>
             <td>The extra barter gold all vendors have for a master of
                 mercantile.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Movement: Base Speed</td>
@@ -5403,7 +5827,7 @@ C.Location, -C.LockList
         <tr>
             <td>Movement: Fatigue from Running/Encumbrance</td>
             <td>Fatigue cost multiplier for running or encumbrance.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Movement: Sneak Multiplier</td>
@@ -5436,31 +5860,31 @@ C.Location, -C.LockList
             <td>Msg: Equip Misc. Item</td>
             <td>Sets the message on equipping a misc item to blank or either
                 "." or "Hmm..." or a custom value entered by user.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Msg: Harvest Failure</td>
             <td>Sets the message on flora harvest failure to blank or either
                 "." or "Hmm..." or a custom value entered by user.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Msg: Harvest Success</td>
             <td>Sets the message on flora harvest success to blank or either
                 "." or "Hmm..." or a custom value entered by user.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Msg: Horse Stabled</td>
             <td>Sets the message on stabling a horse on fast travel to blank or
                 either "." or "Hmm..." or a custom value entered by user.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Msg: Loading Area</td>
             <td>Sets the message when background loading area to blank or
                 either "." or "Hmm..." or a custom value entered by user.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Msg: No Fast Travel</td>
@@ -5577,26 +6001,26 @@ C.Location, -C.LockList
             <td>Thieves Guild: Quest Attacking Penalty</td>
             <td>Sets the penalty cost for attacking while completing a Thieves
                 Guild quest.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Thieves Guild: Quest Killing Penalty</td>
             <td>Sets the penalty cost for killing while completing a Thieves
                 Guild quest.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Thieves Guild: Quest Stealing Penalty</td>
             <td>Sets the penalty cost for stealing while completing a Thieves
                 Guild quest.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>UOP Vampire Aging and Face Fix.esp</td>
             <td>Duplicate of the UOP component that disables vampire aging
                 (fixes a bug). Use instead of 'UOP Vampire Aging &amp; Face
                 Fix.esp' to save an esp slot.</td>
-            <td>Oblivion</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Visuals: Masser Size</td>
@@ -5616,8 +6040,7 @@ C.Location, -C.LockList
             <td>Visuals: NPC Blood</td>
             <td>Sets a few gmsts to use either user specified blood textures or
                 no blood.</td>
-            <td>All but Fallout 3, Fallout&colon; New Vegas &amp;
-                Fallout 4</td>
+            <td>Oblivion &amp; Nehrim&colon; At Fate's Edge</td>
         </tr>
         <tr>
             <td>Visuals: Secunda Size</td>
@@ -5868,7 +6291,7 @@ C.Location, -C.LockList
             <tr><td colspan="2">Columns</td><td>This submenu allows you to choose which columns are
                 visible in the save list.</td></tr>
             <tr><td rowspan="2">Files..</td>
-                <td>Open...</td><td>Opens the saves folder in Windows Explorer.</td></tr>
+                <td>Open Folder...</td><td>Opens the saves folder in Windows Explorer.</td></tr>
                 <tr><td>Unhide...</td><td>Opens a dialogue window allowing you to select which hidden
                     save files to unhide.</td></tr>
             <tr><td rowspan="2">Profile</td>
@@ -5936,7 +6359,7 @@ C.Location, -C.LockList
                 comparison details masters that have been removed and added in the newer save
                 since the older save, or removed and added in the load order since the
                 selected save.</td></tr>
-            <tr><td colspan="2" id="savesStatistics">Statistics</td><td><em>Oblivion only.</em>
+            <tr><td colspan="2" id="savesStatistics">Statistics</td><td><em>Oblivion &amp;  &amp; Nehrim&colon; At Fate's Edge only.</em>
                 This produces a set of various technical statistics for the selected savegame.
                 The following information is produced:
                 <ul>
@@ -5974,40 +6397,40 @@ C.Location, -C.LockList
                 <a href="#savesStatistics">Statistics</a> above, but reports statistics for the
                 <code>.**se</code> cosave file (e.g. <code>.obse</code> for Oblivion or
                 <code>.skse</code> for Skyrim) associated with the selected save.</td></tr>
-            <tr><td colspan="2">Dump .pluggy Contents</td><td><em>Oblivion only.</em> Behaves
+            <tr><td colspan="2">Dump .pluggy Contents</td><td><em>Oblivion &amp;  &amp; Nehrim&colon; At Fate's Edge only.</em> Behaves
                 like <a href="#saveDumpSE">Dump .**se Contents</a>, but for the Pluggy cosave
                 file associated with the selected save.</td></tr>
             <tr><td colspan="2" id="savesDeleteSpells">Delete Spells...</td><td>
-                <em>Oblivion only.</em> This allows you to delete unused spells from your spell
+                <em>Oblivion &amp;  &amp; Nehrim&colon; At Fate's Edge only.</em> This allows you to delete unused spells from your spell
                 list in the selected save. <strong>Warning:</strong> This cannot be undone. Most
                 spells may be repurchased or recreated, but quest and other special spells will
                 likely have to be added using the console.</td></tr>
-            <tr><td colspan="2">Rename Player...</td><td><em>Oblivion only.</em> Renames the
+            <tr><td colspan="2">Rename Player...</td><td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Renames the
                 player's character in the selected save.</td></tr>
             <tr><td colspan="2">Set Number of Uses for Weapon Enchantments...</td><td>
-                <em>Oblivion only.</em> Allows you to set the number of casts available to any
+                <em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Allows you to set the number of casts available to any
                 enchanted weapon you created in-game, or that has otherwise been recorded in
                 your savegame.</td></tr>
-            <tr><td colspan="2">Import Face...</td><td><em>Oblivion only.</em> Relates to
+            <tr><td colspan="2">Import Face...</td><td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Relates to
                 <a href="#saves-face">Face Importing</a>. This command allows you to import a
                 face for the save file's player character (and possibly some NPCs) from another
                 save file or from an NPC in a mod.</td></tr>
-            <tr><td colspan="2">Rename Enchanted...</td><td><em>Oblivion only.</em> Allows you
+            <tr><td colspan="2">Rename Enchanted...</td><td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Allows you
                 to rename any enchanted items that you have created in-game for the selected
                 save.</td></tr>
             <tr><td colspan="2" id="savesRenamePotions">Rename Potions...</td><td>
-                <em>Oblivion only.</em> Allows you to rename any potions that you have created
+                <em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Allows you to rename any potions that you have created
                 in-game for the selected save.</td></tr>
-            <tr><td colspan="2">Rename Spells...</td><td><em>Oblivion only.</em> Allows you to
+            <tr><td colspan="2">Rename Spells...</td><td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Allows you to
                 rename any spells that you have created in-game for the selected save.</td></tr>
             <tr><td colspan="2" id="savesReweighPotions">Reweigh Potions...</td><td>
-                <em>Oblivion only.</em> Potions created in-game are given a weight that is
+                <em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Potions created in-game are given a weight that is
                 somewhat arbitrarily selected and potentially high. This command may be used to
                 set all created potions to have a specific weight. Potions created after the use
                 of this command with new names, new effects or new durations will not be
                 affected.</td></tr>
             <tr><td colspan="2" id="savesUpdateNPCLevels">Update NPC Levels...</td><td>
-                <em>Oblivion only.</em> Updates the level information for NPCs stored in the
+                <em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Updates the level information for NPCs stored in the
                 selected savegame to reflect the active load order's NPC level settings. This is
                 required because although NPC levels are set via plugins, once an NPC is
                 encountered its level is stored in the save file, which overrides the plugin
@@ -6019,7 +6442,7 @@ C.Location, -C.LockList
                 the given number and the others will be numbered in increments of one from the
                 given number. The save name must be of the form
                 <code>&lt;Save (case insensitive)&gt;&lt;space&gt;&lt;some digits&gt;&lt;optional text&gt;.&lt;save extension&gt;</code>.</td></tr>
-            <tr><td colspan="2" id="savesRemoveBloat">Remove Bloat...<td><em>Oblivion only.</em>
+            <tr><td colspan="2" id="savesRemoveBloat">Remove Bloat...<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em>
                 <strong>This is an experimental command. It is recommended that saves are backed
                 up before using it on them.</strong> It attempts to determine how much bloating
                 there is in the selected save file and then optionally remove it. If the command
@@ -6034,12 +6457,12 @@ C.Location, -C.LockList
                         present in the game world. These objects then get replaced with null
                         references when the game is next saved with the mod missing.</li>
                 </ul></td></tr>
-            <tr><td colspan="2" id="savesRepairAbomb">Repair Abomb<td><em>Oblivion only.</em>
+            <tr><td colspan="2" id="savesRepairAbomb">Repair Abomb<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em>
                 <q>Abomb Animation Slowing</q> is a slowing of animations that typically occurs
                 around 225 hours into the game, though it may occur earlier or later. This is
                 an engine bug, and this command avoids its effects by resetting a related
                 counter (TesClass Abomb counter is reset to 0x41000000).</td></tr>
-            <tr><td colspan="2">Repair Hair<td><em>Oblivion only.</em> Oblivion has a bug that
+            <tr><td colspan="2">Repair Hair<td><em>Oblivion &amp; Nehrim&colon; At Fate's Edge only.</em> Oblivion has a bug that
                 will cause a crash if your PC's hair comes from a mod that has been removed and
                 you then run showRaceMenu. This command resets your hair to the default for that
                 race and gender, so you can then use showRaceMenu to select a new hair again if
@@ -6191,7 +6614,7 @@ C.Location, -C.LockList
 <p>You can hide specific launcher icons, preventing them from being displayed, by right-clicking them and selecting <q>Hide...</q> or by inserting a semicolon before their path in the <q>bash.ini</q>.
 <ul><li>For example, <code>sPhotoshopPath=;C:\Program Files\Adobe\Photoshop 7.0\Photoshop.exe</code>.</ul>
 <p>You can hide some of the toggle buttons using the <code>bShowTes4...</code> options in the <code>Tool Options</code> in the <q>bash.ini</q>.
-<p>You can unhide launchers hidden through the right-click option using the Settings menu. See the <a href="#tools-settings">Settings Menu</a> for more information.
+<p>You can unhide launchers hidden through the right-click option using the Settings menu. See the <a href="#settings">Settings Menu</a> for more information.
 
 
 <h3 id="launchers-custom">Custom Launchers <a class="back2top" href="#contents">Back to top</a></h3>
@@ -6207,7 +6630,7 @@ C.Location, -C.LockList
     <li>Notepadpp.lnk
     <li>Notepadpp24.png
 </ul>
-<p><strong>Note:</strong> 24x24 icons taken from shortcuts do not work well, so if you are using this size, be sure to include a custom icon. Icon size displayed can be adjusted in the <q>bash.ini</q> or the <a href="#tools-settings">Settings</a> menu.
+<p><strong>Note:</strong> 24x24 icons taken from shortcuts do not work well, so if you are using this size, be sure to include a custom icon. Icon size displayed can be adjusted in the <q>bash.ini</q> or the <a href="#settings">Settings</a> menu.
 
 
 <h2 id="people">People Tab <a class="back2top" href="#contents">Back to top</a></h2>
@@ -6257,80 +6680,356 @@ C.Location, -C.LockList
     </table>
 </div>
 
-<h2 id="tools">Miscellaneous Tools <a class="back2top" href="#contents">Back to top</a></h2>
-
-<h3 id="tools-settings">Settings Menu <a class="back2top" href="#contents">Back to top</a></h3>
+<h2 id="settings">Settings Menu <a class="back2top" href="#contents">Back to top</a></h2>
 <figure class="slideshow">
-<img alt="Settings Menu" src="../bash/images/readme/settings-1-colour_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-2-tabs_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-3-status_bar_and_icon_size_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-3-status_bar_and_unhide_buttons_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-4-language_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-5-plugin_encoding_highlighted.png"/>
-<img alt="Settings Menu" src="../bash/images/readme/settings-6-game_highlighted.png"/>
-<figcaption class="tools-settings-figcap">Wrye Bash's Settings menu.</figcaption>
+<img alt="Settings Menu" src="../bash/images/readme/settings-appearance.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-colors.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-language.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-status-bar.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-backups.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-confirmations.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-general.png"/>
+<img alt="Settings Menu" src="../bash/images/readme/settings-trusted-binaries.png"/>
+<figcaption class="settings-figcap">Wrye Bash's Settings menu.</figcaption>
 </figure>
-<p>The Settings menu is where Wrye Bash's global settings may be accessed. The Settings menu can be opened by clicking on the <a href="Wrye%20Bash%20General%20Readme.html#launchersSettingsMenu">Settings button</a> in the status bar. The Settings menu's items are detailed in the table below.
+<p>The Settings menu is where Wrye Bash's global settings may be accessed.
+    It can be opened via <q>Settings > Global Settings...</q> or by clicking on
+    the <a href="Wrye%20Bash%20General%20Readme.html#launchersSettingsMenu">Settings button</a>
+    in the status bar.</p>
+<p>The layout varies from page to page, but a few buttons are always available:</p>
+
 <table>
     <thead>
-        <tr><th colspan="3">Settings Menu
-        <tr><th colspan="2">Item<th>Description
+        <tr><th colspan="2">Globally Available Buttons</th></tr>
+        <tr><th>Button<th>Description</th></tr>
+    </thead>
     <tbody>
-        <tr><td colspan="2">Backup Settings...<td>Backs up all the parts of Wrye Bash that can be changed by the user to a location of the user's choosing. The backed up items are:
-            <ul>
-                <li>The bash.ini
-                <li>The Wrye Bash specific documents in <code>Data\Docs</code>
-                <li>The Mods, Installer, and Converter meta-data stored in <code>[Game] Mods</code>.
-                <li>Any user profiles you have created.
-                <li>Your application and UI settings.
-                <li>Your people from the People tab.
-                <li>Any translation files you have.
-                <li>All files in the <code>Data\Bash Patches</code> directory.
-                <li>All files in the <code>Data\BashTags</code> directory.</li>
-                <li>All INI Tweaks.
-            </ul>
-        <tr><td colspan="2" id="settingsRestore">Restore Settings...<td>Restores your settings from a backup of your choice. This will force
-            a restart of Wrye Bash to ensure the new settings take effect. We extract the backup in a temporary folder, then we check that
-            the backup is for the current game and that the settings are not from a newer Bash version. Then we restart Bash and apply the
-            settings. Note that if you have a bash.ini this will be copied in the Mopy folder to a file named as in
-            <code>bash(YEAR-MONTH-DAY hh.mm.sec).ini</code> so you do not lose your precious ini settings in case something goes wrong.
-        <tr><td colspan="2">Save Settings<td>Normally, Wrye Bash saves its settings to disc only on closing. Use this to force a save right now.
-        <tr><td colspan="2" id="settingsExportList">Export list of allowed/disallowed **SE plugin DLLs<td>This will save the Good/Bad **SE DLL definitions to a text file, either for editing or for backup purposes.
-        <tr><td colspan="2" id="settingsImportList">Import list of allowed/disallowed **SE plugin DLLs<td>This will import the list of Good/Bad **SE DLL definitions from a text file previously exported using <a href="#settingsExportList">Export list of allowed/disallowed **SE plugin DLLs</a>.
-        <tr><td colspan="2" id="settingsColors">Colors...<td>Brings up the <a href="#tools-colors">Colors dialog</a>. This dialog can be used to change the colors that Wrye Bash uses to communicate various bits of information.
-            <br><br>The drop-down list is used to select the item for which you want to change the color. The square box next to the drop-down list opens a color picker, allowing you to choose a
-            new color. The function of the other buttons is described in the table below.
-        <tr><td colspan="2">Tabs<td>This submenu allows you to choose which of the main tabs are displayed (eg. Installers, Mods, Saves, INI Edits, Screenshots, People) by checking and unchecking the tabs listed in it.
-        <tr><td rowspan="3">Status Bar<td>Icon Size<td>Choose between 16x16, 24x24, or 32x32 Status Bar icons.
-        <tr><td>Unhide Buttons<td>Unhide Status Bar buttons that you have hidden.
-        <tr><td>Show App Version<td>Shows the versions of applications in their launchers' tooltips.
-  <tr><td colspan="2" id="settingsLanguage">Language<td>This submenu lists the languages for which translations of Wrye Bash exist.
-  <tr><td colspan="2">Plugin Encoding<td>This submenu allows you to select the encoding that Wrye Bash assumes plugin descriptions to be written in. The <q>Automatic</q> option is selected, Wrye Bash attempts to detect the encoding from the contents of the description. If a plugin description is being displayed incorrectly, try selecting another encoding from this list.
-  <tr><td colspan="2">Game<td>This submenu lists the games that Wrye Bash supports and detects as being installed. Selecting a game will close Wrye Bash and re-open it for the selected game.
-  <tr><td colspan="2">Use Alternate Wrye Bash Name<td>If checked, displays a game-specific name instead of Wrye Bash in the title bar instead. See the <a href="#intro-title">Title Bar Info</a> section for more information.</td></tr>
-  <tr><td colspan="2">Debug Mode<td>Opens up a window to which debugging information is written.
-  <tr><td colspan="2" id="settingsDumpTranslator">Dump Translator<td>Generates a new translation file for your locale. See <a href="#international">Internationalisation</a> for more information.
+        <tr>
+            <td><img alt="Help" src="../bash/images/help24.png"></td>
+            <td>Opens the Wrye Bash General Readme in a browser.</td>
+        </tr>
+        <tr>
+            <td>OK</td>
+            <td>Applies all pending changes and closes the settings menu.</td>
+        </tr>
+        <tr>
+            <td>Cancel</td>
+            <td>Discards all pending changes and closes the settings menu.</td>
+        </tr>
+        <tr>
+            <td id="settings-apply">Apply</td>
+            <td>Applies all pending changes, but keeps the settings menu
+                open.</td>
+        </tr>
+    </tbody>
 </table>
-<h3 id="tools-colors">Color Configuration <a class="back2top" href="#contents">Back to top</a></h3>
-<div class="prlflex smltbl clearf">
-  <figure class="slideshow" style="width:608px; min-height:355px">
-    <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colours-dialogue-1.png">
-    <img alt="Colors Dialog" src="../bash/images/readme/settings-1-colours-dialogue-2.png">
-  </figure>
-<table class="tools-colors-table">
+
+<h3 id="settings-appearance-colors">Appearance: Colors <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure class="slideshow">
+    <img alt="Color Page" src="../bash/images/readme/settings-colors.png">
+    <img alt="Color Page" src="../bash/images/readme/settings-colors-picker.png">
+    <figcaption class="settings-colors-figcap">The Colors page.</figcaption>
+</figure>
+
+<p>The Colors page can be used to change colors used by various GUI components
+    of Wrye Bash. To change a component's color, first select it in the
+    dropdown, then click on the square box to the right of the dropdown to
+    choose a new color. Finally, <a href="#settings-apply">apply</a> it as
+    usual.</p>
+<p>The following buttons can also be used to reset, export and import
+    colors:</p>
+
+<table>
     <thead>
-        <tr><th colspan="2">Colors Dialog Buttons
-        <tr><th>Button<th>Function
+        <tr><th colspan="2">Colors Buttons</th></tr>
+        <tr><th>Button</th><th>Function</th></tr>
+    </thead>
     <tbody>
-        <tr><td>All Defaults<td>Returns all colors to their default setting. <a href="#settingsApplyAll">Apply All</a> must still be used for the changes to take effect.
-        <tr><td>Default<td>Returns the current item to its default color. <a href="#settingsApply">Apply</a> must still be used for the change to take effect.
-        <tr><td id="settingsApplyAll">Apply All<td>Applies all changes you have made to the colors since last opening the Colors dialog.
-        <tr><td id="settingsApply">Apply<td>Applies any change to the current item's color.
-        <tr><td>Export...<td>Exports the current color scheme to a text file.
-        <tr><td>Import...<td>Imports a color scheme from a text file previously exported. <a href="#settingsApplyAll">Apply All</a> must still be used for the changes to take effect.
-        <tr><td>OK<td>Closes the dialog. Also applies all changes that have been made.
+        <tr>
+            <td>Reset Color</td>
+            <td>Returns the currently selected component to its default
+                color.</td>
+        </tr>
+        <tr>
+            <td>Reset All Colors</td>
+            <td>Returns all components to their default colors.</td>
+        </tr>
+        <tr>
+            <td>Export Colors...</td>
+            <td>Exports the colors you have selected to a text file, for
+                backing up or sharing with other users.</td>
+        </tr>
+        <tr>
+            <td>Import Colors...</td>
+            <td>Imports a color scheme from a text file previously
+                exported.</td>
+        </tr>
+    </tbody>
 </table>
-</div>
+
+<h3 id="settings-appearance-language">Appearance: Language <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure class="slideshow">
+    <img alt="Language Page" src="../bash/images/readme/settings-language.png">
+    <img alt="Language Page" src="../bash/images/readme/settings-language-configure-editor.png">
+    <figcaption class="settings-language-figcap">The Language page.</figcaption>
+</figure>
+
+<p>The language page can be used to change the language that Wrye Bash will be
+    displayed in. It is also the place to create, edit and manage
+    localizations. See the <a href="#international">Internationalisation</a>
+    section for more information.</p>
+<p>The following buttons are available:</p>
+
+<table>
+    <thead>
+        <tr><th colspan="2">Language Buttons</th></tr>
+        <tr><th>Button</th><th>Function</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="settings-configure-editor">Configure Editor...</td>
+            <td>Launches the <q>Configure Editor</q> dialog, which allows you
+                to choose and configure a localization editor.</td>
+        </tr>
+        <tr>
+            <td id="settings-dump-localization">Dump Localization...</td>
+            <td>Generates a new translation file for your currently chosen
+                language.</td>
+        </tr>
+        <tr>
+            <td id="settings-edit-localization">Edit...</td>
+            <td>Launches the editor chosen via
+                <a href="#settings-configure-editor">Configure Editor...</a>
+                to edit the selected localization.</td>
+        </tr>
+        <tr>
+            <td id="settings-rename-localization">Rename...</td>
+            <td>Allows you to rename the selected localization file.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="settings-appearance-status-bar">Appearance: Status Bar <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure>
+    <img alt="Status Bar Page" src="../bash/images/readme/settings-status-bar.png">
+    <figcaption class="settings-static-figcap">
+        The Status Bar Page.
+    </figcaption>
+</figure>
+
+<p>The status bar page can be used to tweak the status bar at the bottom of the
+    screen in various ways.</p>
+
+<table>
+    <thead>
+        <tr><th colspan="2">Status Bar Options</th></tr>
+        <tr><th>Option</th><th>Function</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Show App Version</td>
+            <td>If enabled, the versions of applications will be shown in their
+                launchers' tooltips on the status bar.</td>
+        </tr>
+        <tr>
+            <td>Icon Size</td>
+            <td>Choose between 16x16, 24x24, or 32x32 status bar icons.</td>
+        </tr>
+        <tr>
+            <td>Visible/Hidden Buttons</td>
+            <td>Allows you to manage which buttons will be shown on the status
+                bar. To change a button's state, select it and use the
+                left/right arrows to move it between the two lists.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="settings-backups">Backups <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure>
+    <img alt="Backups Page" src="../bash/images/readme/settings-backups.png">
+    <figcaption class="settings-static-figcap">The Backups Page.</figcaption>
+</figure>
+
+<p>The backups page can be used to manage backups of various Wrye Bash-related
+    files.</p>
+<p>A full list of everything that Wrye Bash will back up follows:</p>
+<ul>
+    <li>Your bash.ini, if present.</li>
+    <li>The Wrye Bash-specific documents in <code>Data\Docs</code>, like
+        <code>Bashed Patch, 0.html</code> and
+        <code>Bashed Patch, 0.txt</code>.</li>
+    <li>The Mods, Installer, and Converter meta-data stored in
+        <code>[Game] Mods</code>.</li>
+    <li>Any user profiles you have created.</li>
+    <li>Your application and UI settings.</li>
+    <li>Your people from the People tab.</li>
+    <li>Any translation files you have.</li>
+    <li>All files in the <code>Data\Bash Patches</code> directory.</li>
+    <li>All files in the <code>Data\BashTags</code> directory.</li>
+    <li>All INI Tweaks.</li>
+</ul>
+
+<p>Note that this does <em>not</em> include the actual packages from the
+    Installers tab, only the state of those packages (i.e. which of them were
+    installed)! If you want to fully back up your installation, make a manual
+    backup of the packages in addition to Wrye Bash's backups.</p>
+
+<table>
+    <thead>
+        <tr><th colspan="2">Backup Buttons</th></tr>
+        <tr><th>Button</th><th>Function</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Save Data</td>
+            <td>Normally, Wrye Bash saves its internal data files to disk only
+                on closing. You can use this to force a save right now.</td>
+        </tr>
+        <tr>
+            <td>New Backup...</td>
+            <td>Backs up all the parts of Wrye Bash that can be changed by the
+                user to a location of your choosing. See the list above for a
+                rundown of what this will back up.</td>
+        </tr>
+        <tr>
+            <td id="settings-restore">Restore...</td>
+            <td>Restores the selected backup. This will force a restart of Wrye
+                Bash to ensure the new settings take effect. We extract the
+                backup in a temporary folder, then we check that the backup is
+                for the current game and that the settings are not from a newer
+                WB version. Then we restart WB and apply the settings. Note
+                that if you have a bash.ini this will be copied in the Mopy
+                folder to a file named
+                <code>bash(YEAR-MONTH-DAY hh.mm.sec).ini</code> so you do not
+                lose your precious INI settings in case something goes
+                wrong.</td>
+        </tr>
+        <tr>
+            <td>Rename...</td>
+            <td>Allows you to rename the selected backup.</td>
+        </tr>
+        <tr>
+            <td>Delete...</td>
+            <td>Allows you to delete the selected backup. Deleted backups are
+                sent to the recycling bin.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="settings-confirmations">Confirmations <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure>
+    <img alt="Confirmations Page" src="../bash/images/readme/settings-confirmations.png">
+    <figcaption class="settings-static-figcap">
+        The Confirmations Page.
+    </figcaption>
+</figure>
+
+<p>The confirmations page can be used to enable or disable popups with a
+    'Don't show this in the future' option.</p>
+<p>A checked entry in the list list means that no popup will show up in that
+    situation anymore. Unchecking it will reenable the corresponding popup.</p>
+<p>The <q>Drop Action</q> dropdown is special, and allows you to change what
+    will happen when a file is dropped onto the Installers tab:</p>
+<ul>
+    <li>Ask every time &mdash; Show a popup allowing you to select what to do
+        every time a file is dropped.</li>
+    <li>Copy &mdash; Make a copy of the dropped file and move that copy into
+        the Installers directory.</li>
+    <li>Move &mdash; Move the dropped file into the Installers directory.</li>
+</ul>
+<p>The <q>Show Internal Keys</q> checkbox is not very important, but might be
+    useful for debugging. It shows the internal keys that each entry in the
+    list uses to store its state.</p>
+
+<h3 id="settings-general">General <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure>
+    <img alt="General Page" src="../bash/images/readme/settings-general.png">
+    <figcaption class="settings-static-figcap">
+        The General Page.
+    </figcaption>
+</figure>
+
+<p>The general page acts as a sort of catch-all page for settings that don't
+    fit on any other page or aren't numerous enough to deserve their own
+    page.</p>
+
+<table>
+    <thead>
+        <tr><th colspan="2">General Options</th></tr>
+        <tr><th>Option</th><th>Function</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Managed Game</td>
+            <td>This dropdown lists the games that Wrye Bash supports and
+                detects as being installed. Selecting a game here and
+                <a href="#settings-apply">applying</a> will relaunch this Wrye
+                Bash installation with the <code>-o</code> argument. That means
+                the <code>bash.ini</code> settings and status bar launchers
+                from this installation will apply to the newly selected game as
+                well, which might not be what you expect.</td>
+        </tr>
+        <tr>
+            <td>Plugin Encoding</td>
+            <td>This dropdown allows you to select the encoding that Wrye Bash
+                assumes various plugin and save fields to be written in. If the
+                <q>Automatic</q> option is selected, Wrye Bash attempts to
+                detect the encoding automatically. If a plugin description,
+                save location or player name is being displayed incorrectly,
+                try selecting another encoding from this dropdown.</td>
+        </tr>
+        <tr>
+            <td>Debug Mode</td>
+            <td>Enables debug mode, which will enable extra debug prints and
+                will print errors into a <code>BashBugDump.log</code> instead
+                of showing them on screen.</td>
+        </tr>
+        <tr>
+            <td>Show Global Menu</td>
+            <td>If checked, a global menu will be shown above the tabs. If
+                disabled, its options will still be accessible by
+                right-clicking the columns. If you accidentally disabled it and
+                want it back, you can use the
+                <a href="Wrye%20Bash%20General%20Readme.html#launchersSettingsMenu">Settings button</a>
+                to open the settings menu again and reenable it.</td>
+        </tr>
+        <tr>
+            <td id="settings-use-alt-name">Use Alternate Wrye Bash Name</td>
+            <td>If checked, displays a game-specific name instead of Wrye Bash
+                in the title bar instead. See the
+                <a href="#intro-title">Title Bar Info</a> section for more
+                information.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="settings-trusted-binaries">Trusted Binaries <a class="back2top" href="#contents">Back to top</a></h3>
+
+<figure>
+    <img alt="Trusted Binaries Page" src="../bash/images/readme/settings-trusted-binaries.png">
+    <figcaption class="settings-static-figcap">
+        The Trusted Binaries Page.
+    </figcaption>
+</figure>
+
+<p>The trusted binaries page can be used to choose which binaries (DLLs, EXEs,
+    etc.) you trust. BAIN will skip installing untrusted binaries from
+    packages, and a popup will be shown whenever a new one is encountered.</p>
+<p>To change the status of a binary, select it and click the left/right arrow
+    buttons to move it between the trusted and untrusted lists. You can also
+    use the <q>Export...</q> and <q>Import...</q> buttons to save and load the
+    status of all binaries from a text file. The text file will include much
+    more information, like the CRCs and sizes that Wrye Bash is using to
+    identify binaries.</p>
+
+<h2 id="tools">Miscellaneous Tools <a class="back2top" href="#contents">Back to top</a></h2>
+
 <h3 class="clearfb" id="tools-docs">Doc Browser <a class="back2top" href="#contents">Back to top</a></h3>
 <figure class="slideshow">
 <img alt="doc browser" src="../bash/images/readme/doc-browser-1.png">
@@ -6495,7 +7194,7 @@ C.Location, -C.LockList
             <td>Restore all Bash settings from an archive file/dir before the app
                 launches. You must specify the filepath with the <code>-f/--filename</code>
                 options. Restoring from the command line skips all error checks that are done
-                in <a href="#settingsRestore">Restore Settings</a> menu item.
+                in <a href="#settings-restore">Restore...</a> menu item.
 
         <tr>
             <td><code>-f FILENAME, --filename=FILENAME</code>
@@ -6510,34 +7209,87 @@ C.Location, -C.LockList
 </table>
 
 <h2 id="international">Internationalisation <a class="back2top" href="#contents">Back to top</a></h2>
+
 <h3 id="international-overview">Overview <a class="back2top" href="#contents">Back to top</a></h3>
-<p>Wrye Bash has built-in support for translation into other languages, using text files that tell it which English strings in the source code should be translated, and into what. These text files are found in <code>Mopy\bash\l10n\</code>. New translations or updates to existing translations should be presented to the Wrye Bash team so that they may be included in future releases.
-<p>To begin translating, or to update an existing translation, use the following steps.
+
+<p>Wrye Bash has built-in support for translation into other languages,
+    using text files that tell it which English strings in the source code
+    should be translated, and into what. These text files are found in
+    <code>Mopy\bash\l10n\</code>. New translations or updates to existing
+    translations should be presented to the Wrye Bash team so that they may be
+    included in future releases.</p>
+<p>To begin translating, or to update an existing translation, use the
+    following steps:</p>
 <ol>
-    <li>Select <a href="#settingsDumpTranslator">Dump Translator</a> from Wrye Bash's Settings menu. This generates a new version of the translation file for your locale. The new file will be named appropriately, except from the leading "NEW", and will contain any translations already done.
-    <li>Delete any existing translation text file for the same language.
-    <li>Rename the new translator file, removing the leading "NEW". Do not change the rest of the filename.
-    <li>Edit the translator file, adding translations or editing existing translations.
-    <li>To test a translator file, save your changes then restart Wrye Bash, and select the language from the <a href="#settingsLanguage">Language</a> submenu in Wrye Bash's Settings menu.
+    <li>Ensure you are running the Python version of Wrye Bash, as the
+        standalone version does not include the source code, which is necessary
+        for generating the translation file. See the
+        <a href="Wrye%20Bash%20General%20Readme.html#install">Installation</a>
+        section of the General Readme for a short overview of how to install
+        the Python version.</li>
+    <li>Open the <a href="#settings">Settings Menu</a> and navigate to the
+        <a href="#settings-appearance-language">Appearance: Language</a>
+        page.</li>
+    <li>If you haven't done so yet, click the
+        <a href="#settings-configure-editor">Configure Editor...</a> button to
+        set up an editor for editing localization files:
+        <ol>
+            <li>Click on <q>Browse...</q> and pick the editor's
+                executable.</li>
+            <li>If necessary, edit the <q>Parameters</q> section. For example,
+                if you're using Notepad++, you might want to add parameters
+                like <code>-multiInst -notabbar -nosession</code>.</li>
+            <li>If your editor does not support opening Wrye Bash's
+                <code>.txt</code> files (Poedit, for example, does not), try
+                checking the <q>Rename to .po</q> checkbox. This will make Wrye
+                Bash rename the localization file right before launching the
+                chosen editor, then rename it back to <code>.txt</code> after
+                you've finished editing to work around this.</li>
+            <li>Once you're done configuring the editor, click <q>OK</q>.</li>
+        </ol>
+    </li>
+    <li>Click the
+        <a href="#settings-dump-localization">Dump Localization...</a> button.
+        This generates a new version of the translation file for your locale.
+        The new file will be named appropriately, except for the trailing
+        "NEW", and will contain any translations already done.</li>
+    <li>Select the newly created localization and click the
+        <a href="#settings-rename-localization">Rename...</a> button. Remove
+        the trailing "NEW", but do not change the rest of the filename. Confirm
+        that you want to replace the existing file when prompted.</li>
+    <li>Select the now-renamed localization file again, and click the
+        <a href="#settings-edit-localization">Edit...</a> button. Your editor
+        will be launched, allowing you to add or edit translations.</li>
+    <li>Once you are done with editing, save and close the editor. Then click
+        the <q>OK</q> button on the popup in Wrye Bash.</li>
+    <li>To test a translation, make sure the matching language is selected in
+        the <q>Change Language</q> dropdown and restart Wrye Bash.</li>
 </ol>
 
 
 <h3 id="international-format">Translator File Format <a class="back2top" href="#contents">Back to top</a></h3>
 <p>Below is an excerpt from a translator file.
 <div class="international-format-cdebox">
-<code class="box">=== basher.py, 3711
-Active profile cannot be removed.
-&gt;&gt;&gt;&gt;
+<code class="box">#: bash\basher.py:10106
+msgid "Active profile cannot be removed"
+msgstr "Aktives Profil kann nicht entfernt werden"
 
-=== basher.py, 3717
-Delete profile %s and the %d save files it contains?
-&gt;&gt;&gt;&gt;
-DELETE PROFILE %s AND THE %d SAVE FILES IT CONTAINS?
+#: bash\basher.py:10112
+msgid "Delete profile %s and the %d save files it contains?"
+msgstr "Möchten Sie das Profil %s und die %d saves, die es enthält, löschen?"
 </code>
 </div>
-<p>The above contains two separate translation entries. Each entry begins with the source code file and line number the string to be translated is found on.
-<p>The file line is followed by the original text string on a new line, which is then followed by a line containing only <code>&gt;&gt;&gt;&gt;</code>. The translation entry ends with a final line containing the translated text string.
-<p><strong>Note:</strong> It is important that the formatting characters are not removed or moved or added to. Formatting characters are those that start with a percentage sign or a backslash, eg. <code> %s %d %08X \n</code>. If a formatting character is missing, Wrye Bash will throw an exception, which is bad.
+<p>The above contains two separate translation entries. Each entry begins with
+    the source code file and line number the string to be translated is found
+    on.</p>
+<p>The file line is followed by <code>msgid</code> and the original text
+    string. Lastly, <code>msgstr</code> introduces the translated text
+    string.</p>
+<p><strong>Note:</strong> It is important that the formatting characters are
+    not removed or moved or added to. Formatting characters are those that
+    start with a percentage sign, e.g. <code>%s</code>, <code>%u</code>,
+    <code>%08X</code>, etc. If a formatting character is missing or incorrect,
+    Wrye Bash will most likely crash.</p>
 
 <!-- Scrolling content end -->
 </div>
