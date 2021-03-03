@@ -181,7 +181,7 @@
 <h3 id="install-components">Python Components <a class="back2top" href="#contents">Back to top</a></h3>
 <p>If you are installing the Python version of Wrye Bash and wish to install the Python dependencies separately, the following must be installed.</p>
 <p class="emphasis">Note that the 64-bit versions are <em>required</em> - we no longer support 32-bit operating systems.</p>
-<p><a href="https://www.python.org/ftp/python/2.7.18/python-2.7.18.msi">Python 2.7.18</a>: Versions prior to this one may work with Wrye Bash,
+<p><a href="https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi">Python 2.7.18</a>: Versions prior to this one may work with Wrye Bash,
     but have not been tested. Updating is recommended for bug and security fixes.</p>
 <p>Installation is easiest by just using pip, which comes with Python (see above). Simply run <code>path/to/python.exe -m pip install -r requirements.txt</code>
     (obviously replacing <code>path/to/python.exe</code> with the actual path to your python.exe).</p>
@@ -556,6 +556,9 @@ tab. The directories skipped are:
             manually refresh) - so it's recommended to leave this enabled. If you are concerned about a particularly big project then consider enabling the <a href="#bainDontRefresh">Don't
                 Refresh</a> flag <em>on that particular project</em>. Keep in mind that Projects will be anyway refreshed once on Bash restart, irrespective of this setting (except if popular
             demand arises).
+        <tr><td colspan="2">Ignore FOMODs</td><td>If checked, then the 'smart'
+            <a href="#install">Install...</a> command will ignore FOMODs and
+            only run wizards or the manual procedure.</td></tr>
         <tr><td colspan="2" id="bainSkipBethsoftContent">Skip BethSoft Content<td>Toggles whether or not refreshing the Data directory will
             also scan Bethsoft BSAs, ESPs, and ESMs. Disabling this option will cause a significant increase in refresh time if the
             timestamps on the Bethsoft BSAs are changed. However, disabling this setting is the only way to allow BAIN to install Vanilla
@@ -887,7 +890,7 @@ tab. The directories skipped are:
         (Mod Index) of that master in the plugin file, and the current load order of the master plugin if present and active.<br /><br />
         Plugins' entries in the Masters List may be renamed to reflect name changes of the plugins themselves. To rename a master, first allow editing from the
         masters list column context menu and then either left-click the plugin entry and edit it in the column display, or right-click the
-        plugin and select <q>Change To...</q> then select the replacement plugin. <strong>Do not</strong> use this to change a plugin's masters to
+        plugin and select <q>Change to...</q> then select the replacement plugin. <strong>Do not</strong> use this to change a plugin's masters to
         unrelated plugins, as this will cause file corruption.<br />
         If editing is allowed, items that are renamed inside Bash internal dictionaries appear <strong>bolded</strong> - on clicking on the masterlist they
         take their renamed values and the <em>Save</em> and <em>Cancel</em> buttons are enabled. You may click on Save to save the new master list,
@@ -972,6 +975,13 @@ tab. The directories skipped are:
                 <tr><td>New Bashed Patch...</td><td>Creates a new Bashed Patch plugin. Useful if you accidentally delete your current one or wish to have more than one.</td></tr>
                 <tr><td>New Plugin...</td><td>Displays a dialog that allows you
                     to create an empty plugin with various options.</td></tr>
+                <tr>
+                    <td>Open &lt;<em>file</em>&gt;</td>
+                    <td>One or more options of this form may be here, depending
+                        on the managed game. They will open the files used by
+                        the game for controlling plugin load order in your
+                        default text editor.</td>
+                </tr>
             <tr><td rowspan="6">Active Mods</td>
                 <td id="modsLoadAll">Activate All</td><td>Activates all the plugins in the mod list. If more than 255 mods are
                     present Bash will activate all it can from the bashed patches, then non mergeable and then mergeable mods then will display an
@@ -1249,30 +1259,71 @@ tab. The directories skipped are:
 
 <table>
     <thead>
-        <tr><td class="thf" colspan="3">Mod's Masters List Column Header Context Menu</td>
-        <tr><td class="thf" colspan="2">Command<td class="thf">Description
+        <tr>
+            <td class="thf" colspan="3">Plugin Masters List Column Header
+                Context Menu</td>
+        </tr>
+        <tr>
+            <td class="thf" colspan="2">Command</td>
+            <td class="thf">Description</td>
+        </tr>
+    </thead>
     <tbody>
-        <tr><td colspan="2">Sort By<td>This submenu allows you to choose by which column the masters list is sorted.
-            This is equivalent to clicking on a column header.
-        <tr><td colspan="2">Allow editing<td>Allow (or disallow) editing of the masters list.
-            Enables (or disables) the items' context menu entries.
-        <tr><td colspan="2">Clear Renames<td>Clear internal Bash renames dictionary
+        <tr>
+            <td colspan="2">Sort By</td>
+            <td>This submenu allows you to choose by which column the masters
+                list is sorted. This is equivalent to clicking on a column
+                header.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Allow Editing</td>
+            <td>Allow (or disallow) editing of the masters list. Enables (or
+                disables) the items' context menu entries.</td>
+        </tr>
+        <tr><td colspan="2">Clear Renames</td>
+            <td>Clears the internal renames dictionary, meaning that maters
+                that were previously renamed will no longer be automatically
+                renamed in future plugins' master lists.</td>
+        </tr>
+    </tbody>
 </table>
 
 
 <table>
     <thead>
-        <tr><td class="thf" colspan="3">Mod's Masters List Items Context Menu
-        <tr><td class="thf" colspan="2">Command<td class="thf">Description
+        <tr>
+            <td class="thf" colspan="3">Plugin Masters List Items Context
+                Menu</td>
+        </tr>
+        <tr>
+            <td class="thf" colspan="2">Command</td>
+            <td class="thf">Description</td>
+        </tr>
+    </thead>
     <tbody>
-        <tr><td colspan="2">Change To...<td>Rename a master by selecting the desired replacement esp/esm from the mods directory. It will add the
-            plugin to the internal renames dictionary of Bash and bold it on any master list that it appears. Hit Save to edit the selected file
-            permanently. Equivalent to left clicking the selected master for a second time, just allows you to select the mod from the Data
-            directory instead of entering the name manually.<br />
-            <ul>
-                <li>Note that you should only do this if the new name is a new version of the same mod. Replacing a mod with an unrelated mod will cause
-                file corruption.
-            </ul>
+        <tr>
+            <td colspan="2">Change to...</td>
+            <td>Rename a master by selecting the desired replacement plugin
+                from the Data folder. It will add the plugin to the internal
+                renames dictionary of Wrye Bash and bold it on any master list
+                that it appears in. Hit Save to edit the selected file
+                permanently. Equivalent to left clicking the selected master
+                for a second time, just allows you to select the plugin from
+                the Data directory instead of entering the name manually.
+                <br>
+                <ul>
+                    <li>Note that you should only do this if the new name is a
+                        new version of the same plugin. Replacing a plugin with
+                        an unrelated plugin will cause file corruption.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Jump to Master</td>
+            <td>Jumps to the specified master on the Mods tab. You can
+                double-click on the master to the same effect.</td>
+        </tr>
+    </tbody>
 </table>
 
 
@@ -5515,6 +5566,11 @@ C.Location, -C.LockList
             <td>All but Fallout 3 &amp; Fallout 4</td>
         </tr>
         <tr>
+            <td>Reweigh: Books</td>
+            <td>Reweighs books to a maximum weight.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
             <td>Reweigh: Ingestibles (Minimum)</td>
             <td>Reweighs ingestibles (potions and drinks, as well as food in
                 newer games than Oblivion) to a minimum weight.</td>
@@ -5880,13 +5936,6 @@ C.Location, -C.LockList
             <td>All but Fallout 4</td>
         </tr>
         <tr>
-            <td>Combat: AI Projectile Dodge Fix</td>
-            <td>Removes the uncanny ability of NPCs to dodge projectiles being
-                launched at them from range.</td>
-            <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
-                Special Edition</td>
-        </tr>
-        <tr>
             <td>Combat: Alchemy</td>
             <td>By default, you cannot craft alchemy items in combat.
                 Disallowing it encourages you to be ready for battle ahead of
@@ -5905,6 +5954,14 @@ C.Location, -C.LockList
             <td>Combat: Critical Hit Chance</td>
             <td>The chance of a strike being a critical hit. 100% guarantees
                 critical hits, 0% disables them.</td>
+            <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
+                Special Edition</td>
+        </tr>
+        <tr>
+            <td>Combat: Disable Projectile Dodging</td>
+            <td>Removes the ability of NPCs to dodge projectiles being launched
+                at them from range. This makes the game easier, but the dodging
+                can look weird.</td>
             <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
                 Special Edition</td>
         </tr>
@@ -6287,6 +6344,36 @@ C.Location, -C.LockList
                 Special Edition</td>
         </tr>
         <tr>
+            <td>Prompt: Activate</td>
+            <td>Changes the text on the 'Activate' prompt shown when
+                interacting with objects.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>Prompt: Open</td>
+            <td>Changes the text on the 'Open' prompt shown when trying to open
+                a door.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>Prompt: Sit</td>
+            <td>Changes the text on the 'Sit' prompt shown when interacting
+                with chairs.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>Prompt: Take</td>
+            <td>Changes the text on the 'Take' prompt shown when taking
+                items.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
+            <td>Prompt: Talk</td>
+            <td>Changes the text on the 'Talk' prompt shown when interacting
+                with people.</td>
+            <td>All but Fallout 4</td>
+        </tr>
+        <tr>
             <td>Soul Trap: Common Soul Level</td>
             <td>The level at which NPC souls are considered 'common'.</td>
             <td>Skyrim, Enderal&colon; Forgotten Stories &amp; Skyrim&colon;
@@ -6497,7 +6584,7 @@ C.Location, -C.LockList
         <tr><td>Masters List<td>The Masters list shows the plugins that the currently selected save file depends on, the load order
         (Mod Index) of that master in the save file, and the current load order of the master plugin if present and active.<br /><br />
         Masters in the list can be renamed if the corresponding plugin has been renamed. To rename a master, first allow editing from the
-        masters list column context menu and then either left-click it and edit it in the column display, or right-click it and select <q>Change To...</q> to select the desired
+        masters list column context menu and then either left-click it and edit it in the column display, or right-click it and select <q>Change to...</q> to select the desired
         replacement plugin from the Data directory. Note that you should only do this if the new name is a new version of the same mod.
         Replacing a mod with an unrelated mod will cause file corruption.<br />
         If editing is allowed, items that are renamed inside Bash internal dictionaries appear <strong>bolded</strong> - on clicking on the masterlist they
@@ -6581,7 +6668,7 @@ C.Location, -C.LockList
         <li>Convert the source cosmetic ESP to an ESM, using the <a href="#modsCopyToEsm">Copy to Esm</a> command in the plugin context menu in the Mods tab.
         <li>Open the destination plugin in the Construction Set, also loading the converted source cosmetic ESM.
         <li>Save the plugin in the Construction Set.
-        <li>In Wrye Bash's Mods tab, select the converted source cosmetic ESM in the destination plugin's Masters List and use the <q>Change To...</q> command to select the source cosmetic ESP.
+        <li>In Wrye Bash's Mods tab, select the converted source cosmetic ESM in the destination plugin's Masters List and use the <q>Change to...</q> command to select the source cosmetic ESP.
         <li>Now import the face as normal. The eyes/hair should also be imported.
     </ul>
 </ul>
@@ -6789,38 +6876,88 @@ C.Location, -C.LockList
 
 <table>
     <thead>
-        <tr><td class="thf" colspan="3">Save's Masters List Column Header Context Menu
-        <tr><td class="thf" colspan="2">Command<td class="thf">Description
+        <tr>
+            <td class="thf" colspan="3">Save Masters List Column Header Context
+                Menu</td>
+        </tr>
+        <tr>
+            <td class="thf" colspan="2">Command</td>
+            <td class="thf">Description</td>
+        </tr>
+    </thead>
     <tbody>
-        <tr><td colspan="2">Sort By<td>This submenu allows you to choose by which column the masters list is sorted.
-            This is equivalent to clicking on a column header.
-        <tr><td colspan="2">Allow editing<td>Allow (or disallow) editing of the masters list.
-            Enables (or disables) the items' context menu entries.
-        <tr><td colspan="2">Clear Renames<td>Clear internal Bash renames dictionary
+        <tr>
+            <td colspan="2">Sort By</td>
+            <td>This submenu allows you to choose by which column the masters
+                list is sorted. This is equivalent to clicking on a column
+                header.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Allow Editing</td>
+            <td>Allow (or disallow) editing of the masters list. Enables (or
+                disables) the items' context menu entries.</td>
+        </tr>
+        <tr><td colspan="2">Clear Renames</td>
+            <td>Clears the internal renames dictionary, meaning that maters
+                that were previously renamed will no longer be automatically
+                renamed in future plugins' master lists.</td>
+        </tr>
+    </tbody>
 </table>
 
 
 <table>
     <thead>
-        <tr><td class="thf" colspan="3">Save's Masters List Items Context Menu
-        <tr><td class="thf" colspan="2">Command<td class="thf">Description
+        <tr>
+            <td class="thf" colspan="3">Save Masters List Items Context
+                Menu</td>
+        </tr>
+        <tr>
+            <td class="thf" colspan="2">Command</td>
+            <td class="thf">Description</td>
+        </tr>
+    </thead>
     <tbody>
-        <tr><td colspan="2">Change To...<td>Rename a master by selecting the desired replacement esp/esm from the mods directory. It will add the
-            plugin to the internal renames dictionary of Bash and bold it on any master list that it appears. Hit Save to edit the selected file
-            permanently. Equivalent to left clicking the selected master for a second time, just allows you to select the mod from the Data
-            directory instead of entering the name manually.<br />
-            <ul>
-                <li>Note that you should only do this if the new name is a new version of the same mod. Replacing a mod with an unrelated mod will cause
-                file corruption.
-                <li>Note also that currently renaming the master in the OBSE/SKSE cosave is NOT supported (except for very old OBSE versions). If the
-        save has a cosave this will most probably corrupt the cosave.
-                See <a href="https://github.com/wrye-bash/wrye-bash/issues/236">the related issue</a> (help wanted).
-            </ul>
-        <tr><td colspan="2">Disable<td>If you want to remove a mod from active use, you can usually just start
-            playing without the mod loaded. However, this won't work if the mod is an esm. You can get around this
-            by right clicking on the name and selecting Disable. This will rename the master to a non-existent esp.
-            Note that you still may run into logical errors which prevent the esm from being removed. But at least
-            this way the game will try to run without the master.
+        <tr>
+            <td colspan="2">Change to...</td>
+            <td>Rename a master by selecting the desired replacement plugin
+                from the Data folder. It will add the plugin to the internal
+                renames dictionary of Wrye Bash and bold it on any master list
+                that it appears in. Hit Save to edit the selected file
+                permanently. Equivalent to left clicking the selected master
+                for a second time, just allows you to select the plugin from
+                the Data directory instead of entering the name manually.
+                <br>
+                <ul>
+                    <li>Note that you should only do this if the new name is a
+                        new version of the same plugin. Replacing a plugin with
+                        an unrelated plugin will cause file corruption.</li>
+                    <li>Note also that as of 307, the master will be renamed in
+                        the xSE cosave as well. As of the time of writing, all
+                        third party xSE plugins that store plugin names into
+                        the cosaves that we're aware of are supported.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Disable</td>
+            <td><em>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp;
+                Fallout&colon; New Vegas only.</em>
+                If you want to remove a plugin from active use, you can usually
+                just start playing without the plugin loaded. However, this
+                won't work if the plugin is an esm. You can get around this by
+                right clicking on the name and selecting Disable. This will
+                rename the master to a non-existent esp. Note that you still
+                may run into logical errors which prevent the esm from being
+                removed. But at least this way the game will try to run without
+                the master.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Jump to Master</td>
+            <td>Jumps to the specified master on the Mods tab. You can
+                double-click on the master to the same effect.</td>
+        </tr>
+    </tbody>
 </table>
 
 
@@ -7381,20 +7518,63 @@ C.Location, -C.LockList
 
 
 <h3 id="tools-shortcuts">Keyboard Shortcuts <a class="back2top" href="#contents">Back to top</a></h3>
-<p>The following keyboard shortcuts can be used when a list on Bash has focus (work almost on all lists unless otherwise noted).
+
+<p>The following keyboard shortcuts can be used when a list in Wrye Bash has
+    focus (work on almost all lists, exceptions are noted).</p>
+
 <table>
-    <thead><tr><th>Shortcut<th>Function
+    <thead>
+        <tr>
+            <th>Shortcut</th>
+            <th>Function</th>
+        </tr>
+    </thead>
     <tbody>
-        <tr><td><code>ctrl-numpad plus (+)</code><td>Auto-sizes the columns to fit what is displayable.
-        <tr><td><code>ctrl-a</code><td>Selects all.
-        <tr><td><code>shift-ctrl-a</code><td>Deselects all.
-        <tr><td><code>ctrl-o</code>
-            <td>Opens the related data directory - for instance in the mods tab will open "Data/", in Ini Edits will open "Ini Tweaks/" etc.
-        <tr><td><code>ctrl-c</code><td>Copies files to the clipboard (Mods, Saves, Installers, Screens)
-        <tr><td><code>F2</code><td>Rename file(s) (Saves, Installers, Screens) - see Rename menu items for details
-        <tr><td><code>ctrl-z</code><td>Undo load order state change (Mods)
-        <tr><td><code>ctrl-y</code><td>Redo load order state change (Mods)
-        <tr><td><code>ctrl-shift-z</code></td><td>Redo load order state change (Mods)</td></tr>
+        <tr>
+            <td><code>ctrl-numpad plus (+)</code></td>
+            <td>Auto-sizes the columns to fit what is displayable.</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-a</code></td>
+            <td>Selects all items.</td>
+        </tr>
+        <tr>
+            <td><code>shift-ctrl-a</code></td>
+            <td>Deselects all items.</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-o</code></td>
+            <td>Opens the related data directory - for instance in the Mods
+                tab will open the Data folder, the INI Edits tab will open the
+                INI Tweaks folder etc.</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-c</code></td>
+            <td>Copies files to the clipboard (Mods, Saves, Installers,
+                Screens).</td>
+        </tr>
+        <tr>
+            <td><code>F2</code></td>
+            <td>Rename file(s) (Saves, Installers, Screens) - see Rename menu
+                items for details.</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-z</code></td>
+            <td>Undo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-y</code></td>
+            <td>Redo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-shift-z</code></td>
+            <td>Redo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>ctrl-shift-n</code></td>
+            <td>New Marker (Installers).</td>
+        </tr>
+    </tbody>
 </table>
 
 <h3 id="tools-arguments">Command Line Arguments <a class="back2top" href="#contents">Back to top</a></h3>
