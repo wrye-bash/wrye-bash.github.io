@@ -512,7 +512,7 @@ tab. The directories skipped are:
         <tr><td>Modified<td>Display the (date) Modified column.
         <tr><td>Size<td>Display the Size column.
         <tr><td>Files<td>Display the (number of) Files column.
-        <tr><td rowspan="3">Files..</td>
+        <tr><td rowspan="4">Files..</td>
             <td id="bainOpenDir">Open Folder...</td><td>Opens the Installers directory in Windows
                 Explorer.</td></tr>
             <tr><td id="bainUnhide">Unhide...</td><td>Opens a dialogue window
@@ -522,6 +522,11 @@ tab. The directories skipped are:
                 <td id="bainNewProject">New Project...</td>
                 <td>Displays a dialog that allows you to create a new project
                     and select some starting files for it.</td>
+            </tr>
+            <tr>
+                <td id="bainAddMarker">New Marker...</td>
+                <td>Creates a marker for organising your packages. The
+                    <q>==</q> will be added for you.</td>
             </tr>
         <tr><td colspan="2" id="bainRefreshData">Refresh Data<td>Re-scans the Data directory (and all packages). Scanning of the Data directory is done once per run of Wrye Bash, when the
             Installers tab is first opened. If you manually alter files in the Data directory after that, <em>you had to run this command to update BAIN to reflect the changes</em>. However
@@ -537,7 +542,6 @@ tab. The directories skipped are:
         <tr><td colspan="2" id="bainFullRefresh">Full Refresh<td>This does a full refresh <em>of all data files</em>, both the contents of the game Data directory tree and Bash Installers
             folder, bypassing all skip refresh flags for projects. Notably this will recalculate <abbr title="Cyclic redundancy check, digital signature of the file">CRCs</abbr> for all files
             inside Data and Bash Installers (including project directories). Running this command will likely take <em>aeons</em>, and you seldom need it.
-        <tr><td colspan="2" id="bainAddMarker">New Marker...<td>Creates a marker for organising your packages. The <q>==</q> will be added for you.
         <tr><td colspan="2" id="bainMonitorExternalInstallation">Monitor External Installation...<td>When you absolutely cannot install a mod via BAIN, you can put BAIN into Monitor Mode using this command.  It will scan the Data folder before and after you install the mod, then provide an option to create a Project from the changes it detects.
         <tr><td colspan="2" id="bainListPackages">List Packages...<td>Displays a list of projects and archives and copies the list to your clipboard. This is useful for posting your package order on forums, eg. when troubleshooting an install.
         <tr><td colspan="2" id="bainAnnealAll">Anneal All<td>Installs any missing files for active installers and corrects all install order errors.
@@ -630,10 +634,60 @@ tab. The directories skipped are:
         </tr>
         <tr><td id="bainSkipImages">Skip Images<td>If checked, image files will be skipped.
         <tr><td id="bainSkipDocs">Skip Docs<td>If checked, document files will be skipped vice being swept to the <code>Docs</code> directory.
-        <tr><td id="bainSkipDistantLOD">Skip DistantLOD<td>If checked, then DistantLOD files in packages will be ignored. Useful if you're using Tes4LodGen to generate DistantLOD files.
-        <tr><td id="bainSkipLODMeshes">Skip LOD Meshes<td>If checked, landscape LOD meshes will be skipped.
-        <tr><td id="bainSkipLODTextures">Skip LOD Textures<td>If checked, landscape LOD textures will be skipped.
-        <tr><td id="bainSkipLODNormals">Skip LOD Normals<td>If checked, landscape LOD normals will be skipped.
+        <tr>
+            <td id="bainSkipDistantLOD">Skip DistantLOD</td>
+            <td><em>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp;
+                Fallout&colon; New Vegas only.</em> If checked, then
+                <code>DistantLOD</code> files in packages will be ignored.
+                Useful if you're using Tes4LodGen to generate DistantLOD
+                files.</td>
+        </tr>
+        <tr>
+            <td id="bainSkipLODMeshes">Skip LOD Meshes</td>
+            <td>If checked, landscape LOD meshes will be skipped. This refers
+                to all files installed into the following folders:
+                <ul>
+                    <li><code>meshes\landscape\lod</code> &mdash; <em>Oblivion,
+                        Nehrim&colon; At Fate's Edge, Fallout 3 &amp;
+                        Fallout&colon; New Vegas</em></li>
+                    <li><code>meshes\lod</code> &mdash; <em>Skyrim,
+                        Enderal&colon; Forgotten Stories, Skyrim&colon; Special
+                        Edition &amp; Fallout 4</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td id="bainSkipLODTextures">Skip LOD Textures</td>
+            <td>If checked, landscape LOD textures will be skipped. This refers
+                to <code>.dds</code> files (except normals, see below)
+                installed into the following folders:
+                <ul>
+                    <li><code>textures\landscapelod\generated</code> &mdash;
+                        <em>Oblivion, Nehrim&colon; At Fate's Edge</em></li>
+                    <li><code>textures\landscape\lod</code> &mdash;
+                        <em>Fallout 3 &amp; Fallout&colon; New Vegas</em></li>
+                    <li><code>textures\lod</code> &mdash; <em>Skyrim,
+                        Enderal&colon; Forgotten Stories, Skyrim&colon; Special
+                        Edition &amp; Fallout 4</em></li>
+                </ul>
+            </td>
+        <tr>
+            <td id="bainSkipLODNormals">Skip LOD Normals</td>
+            <td>If checked, landscape LOD normals will be skipped. This refers
+                to the following files installed into the following folders:
+                <ul>
+                    <li><code>textures\landscapelod\generated\*_fn.dds</code>
+                        &mdash; <em>Oblivion, Nehrim&colon; At Fate's Edge</em>
+                    </li>
+                    <li><code>textures\landscape\lod\*\normals\*.dds</code>
+                        &mdash; <em>Fallout 3 &amp; Fallout&colon; New
+                            Vegas</em></li>
+                    <li><code>textures\lod\*_n.dds</code> &mdash; <em>Skyrim,
+                        Enderal&colon; Forgotten Stories, Skyrim&colon; Special
+                        Edition &amp; Fallout 4</em></li>
+                </ul>
+            </td>
+        </tr>
         <tr><td id="bainSkipBSLFiles">Skip BSL Files</td><td><em>Skyrim, Enderal&colon; Forgotten Stories and Skyrim&colon; Special Edition only.</em> If checked, BSL Files will be skipped.</td></tr>
         <tr><td rowspan="3">Global Redirects</td></tr>
         <tr>
@@ -708,7 +762,7 @@ tab. The directories skipped are:
             <td>Attempts to open the selected package's page on TES Alliance. This command assumes that the trailing digits in a package's name is the package ID at the site.</td>
         </tr>
         <tr>
-            <td colspan="3" id="bainOpenReadme">Open Readme</td>
+            <td id="bainOpenReadme">Open Readme</td>
             <td>If BAIN detects a readme in the selected package, it will be opened.</td>
         </tr>
         <tr>
@@ -742,7 +796,7 @@ tab. The directories skipped are:
                 wizard if it exists.</td>
         </tr>
         <tr>
-            <td rowspan="10">Advanced Installation..</td>
+            <td rowspan="11">Advanced Installation..</td>
             <td colspan="2" id="bainInstallConfigured">Install Configured</td>
             <td>Fully installs the package except for files that would be overridden by later packages.</td>
         </tr>
@@ -1042,9 +1096,17 @@ tab. The directories skipped are:
             <tr><td rowspan="5">Files..</td>
                 <td>Open Folder...</td><td>Opens the Data folder in Windows Explorer.</td></tr>
                 <tr><td>Unhide...</td><td>Opens a dialogue window allowing you to select which hidden plugins to unhide.</td></tr>
-                <tr><td>New Bashed Patch...</td><td>Creates a new Bashed Patch plugin. Useful if you accidentally delete your current one or wish to have more than one.</td></tr>
-                <tr><td>New Plugin...</td><td>Displays a dialog that allows you
-                    to create an empty plugin with various options.</td></tr>
+                <tr>
+                    <td>New Plugin...</td>
+                    <td>Displays a dialog that allows you to create an empty
+                        plugin with various options.</td>
+                </tr>
+                <tr>
+                    <td>New Bashed Patch...</td>
+                    <td>Creates a new Bashed Patch plugin. Useful if you
+                        accidentally delete your current one or wish to have
+                        more than one.</td>
+                </tr>
                 <tr>
                     <td>Open &lt;<em>file</em>&gt;</td>
                     <td>One or more options of this form may be here, depending
@@ -1105,7 +1167,6 @@ tab. The directories skipped are:
                 changes to the enabled/disabled status of plugins in your load order as well.</td></tr>
             <tr><td colspan="2">ESL-Flag Bashed Patches</td><td><em>Skyrim&colon; Special Edition &amp; Fallout 4 only.</em> If enabled,
                 then any built Bashed Patches will automatically be ESL-flagged, saving a load order slot.</td></tr>
-            <tr><td colspan="2">Debug Mode<td>Activates debug output. Only a few commands will display any debug output, but it may be useful for troubleshooting.
             <tr><td colspan="2" id="modsRemoveDummyMasters">Remove Dummy Masters...<td>Removes all dummy master files created using <a href="#modsCreateDummyMasters">Create Dummy Masters...</a> on a plugin.
             <tr><td colspan="2">Check mods against LOOT's dirty mod list</td><td>LOOT's masterlist contains information on dirty plugins that
                 can be used by Wrye Bash to highlight these plugins in the mod list. Checking this setting tells Wrye Bash to use this
@@ -2100,7 +2161,7 @@ C.Location, -C.LockList
                     <li>(XNAM) Water Noise Texture &mdash;
                         <strong>Not available for Oblivion &amp; Nehrim&colon; At Fate's Edge.</strong>
                     </li>
-                    <li>(XWEN) Water Environment Map &mdash;
+                    <li>(XWEM) Water Environment Map &mdash;
                         <strong>Skyrim, Enderal&colon; Forgotten Stories and Skyrim&colon; Special Edition only.</strong>
                     </li>
                 </ul>
@@ -2535,7 +2596,7 @@ C.Location, -C.LockList
                 <ul>
                     <li>(FGGS) FaceGen Geometry-Symmetric</li>
                     <li>(FGGA) FaceGen Geometry-Asymmetric</li>
-                    <li>(FGTS) FaceGen Texture-Symmetry </li>
+                    <li>(FGTS) FaceGen Texture-Symmetry</li>
                 </ul>
                 <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp;
                     Fallout&colon; New Vegas only.</strong>
@@ -2544,10 +2605,12 @@ C.Location, -C.LockList
         <tr>
             <td>NPC.Hair</td>
             <td>Modifies Non-Player Character hair.</td>
-            <td>The (HNAM) Hair subrecord of (NPC_) Non-Player Character
-                records.
-                <br>
-                <br>
+            <td>The following (NPC_) Non-Player Character subrecords:
+                <ul>
+                    <li>(HNAM) Hair</li>
+                    <li>(LNAM) Hair length</li>
+                    <li>(HCLR) Hair color</li>
+                </ul>
                 <strong>Oblivion, Nehrim&colon; At Fate's Edge, Fallout 3 &amp;
                     Fallout&colon; New Vegas only.</strong>
             </td>
@@ -2572,7 +2635,7 @@ C.Location, -C.LockList
                         <ul>
                             <li>(FGGS) FaceGen Geometry-Symmetric</li>
                             <li>(FGGA) FaceGen Geometry-Asymmetric</li>
-                            <li>(FGTS) FaceGen Texture-Symmetry </li>
+                            <li>(FGTS) FaceGen Texture-Symmetry</li>
                         </ul>
                     </li>
                     <li>(ENAM) Eyes</li>
@@ -3238,7 +3301,24 @@ C.Location, -C.LockList
                     <li>(HAIR) Hair: (ICON) Texture, Model</li>
                     <li>(INGR) Ingredient: (ICON) Icon Filename, Model</li>
                     <li>(KEYM) Key: (ICON) Icon Filename, Model</li>
-                    <li>(LIGH) Light: (ICON) Icon Filename, Model</li>
+                    <li>(LIGH) Light:
+                        <ul>
+                            <li>(ICON) Icon Filename</li>
+                            <li>Model</li>
+                            <li>(DATA) Radius</li>
+                            <li>(DATA) Color
+                                <ul>
+                                    <li>Red</li>
+                                    <li>Green</li>
+                                    <li>Blue</li>
+                                </ul>
+                            </li>
+                            <li>(DATA) Flags</li>
+                            <li>(DATA) Falloff Exponent</li>
+                            <li>(DATA) FOV</li>
+                            <li>(FNAM) Fade</li>
+                        </ul>
+                    </li>
                     <li>(LSCR) Load Screen: (ICON) Icon Filename</li>
                     <li>(LTEX) Landscape Texture: (ICON) Icon Filename</li>
                     <li>(MGEF) Magic Effect:
@@ -3271,6 +3351,7 @@ C.Location, -C.LockList
             <td>Changes the names of things.</td>
             <td>The (FULL) Name subrecord in the following record types:
                 <ul>
+                    <li>(ACTI) Activator</li>
                     <li>(ALCH) Potion</li>
                     <li>(AMMO) Ammunition</li>
                     <li>(APPA) Alchemical Apparatus</li>
@@ -3293,6 +3374,7 @@ C.Location, -C.LockList
                     <li>(MGEF) Magic Effect</li>
                     <li>(MISC) Misc. Item</li>
                     <li>(NPC_) Non-Player Character</li>
+                    <li>(QUST) Quest</li>
                     <li>(RACE) Race</li>
                     <li>(SGST) Sigil Stone</li>
                     <li>(SLGM) Soul Gem</li>
@@ -3586,6 +3668,18 @@ C.Location, -C.LockList
                             </li>
                         </ul>
                     </li>
+                    <li>(EYES) Eyes:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
+                    <li>(HAIR) Hair:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
                     <li>(INGR) Ingredient:
                         <ul>
                             <li>(EDID) Editor ID</li>
@@ -3609,7 +3703,7 @@ C.Location, -C.LockList
                             <li>(EDID) Editor ID</li>
                             <li>(DATA)
                                 <ul>
-                                    <li>Duration</li>
+                                    <li>Time</li>
                                     <li>Value</li>
                                     <li>Weight</li>
                                 </ul>
@@ -4152,7 +4246,6 @@ C.Location, -C.LockList
                         <ul>
                             <li>(MODL) Model</li>
                             <li>(ICON) Icon</li>
-                            <li>(DATA) Duration</li>
                             <li>(DATA) Radius</li>
                             <li>(DATA) Color
                                 <ul>
@@ -4163,6 +4256,7 @@ C.Location, -C.LockList
                             </li>
                             <li>(DATA) Flags</li>
                             <li>(DATA) Falloff Exponent</li>
+                            <li>(DATA) FOV</li>
                             <li>(FNAM) Fade</li>
                         </ul>
                     </li>
@@ -4383,6 +4477,7 @@ C.Location, -C.LockList
                     <li>(NOTE) Note</li>
                     <li>(NPC_) Non-Player Character</li>
                     <li>(PERK) Perk</li>
+                    <li>(QUST) Quest</li>
                     <li>(RACE) Race</li>
                     <li>(RCCT) Recipe Category - <strong>Fallout&colon; New Vegas only</strong></li>
                     <li>(RCPE) Recipe - <strong>Fallout&colon; New Vegas only</strong></li>
@@ -4853,6 +4948,24 @@ C.Location, -C.LockList
                             </li>
                         </ul>
                     </li>
+                    <li>(EYES) Eyes:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
+                    <li>(HAIR) Hair:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
+                    <li>(HDPT) Head Part:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
                     <li>(INGR) Ingredient:
                         <ul>
                             <li>(DATA) Weight</li>
@@ -5301,7 +5414,32 @@ C.Location, -C.LockList
                     <li>(GRAS) Grass: (MODL) Model</li>
                     <li>(INGR) Ingredient: (ICON) Icon, (MODL) Model</li>
                     <li>(KEYM) Key: (ICON) Icon, (MODL) Model</li>
-                    <li>(LIGH) Light (ICON) Icon, (MODL) Model</li>
+                    <li>(LIGH) Light:
+                        <ul>
+                            <li>(ICON) Icon</li>
+                            <li>(MODL) Model</li>
+                            <li>(DATA) Radius</li>
+                            <li>(DATA) Color
+                                <ul>
+                                    <li>Red</li>
+                                    <li>Green</li>
+                                    <li>Blue</li>
+                                </ul>
+                            </li>
+                            <li>(DATA) Flags</li>
+                            <li>(DATA) Falloff Exponent</li>
+                            <li>(DATA) FOV</li>
+                            <li>(DATA) Near Clip</li>
+                            <li>(DATA) Flicker Effect
+                                <ul>
+                                    <li>Period</li>
+                                    <li>Intensity Amplitude</li>
+                                    <li>Movement Amplitude</li>
+                                </ul>
+                            </li>
+                            <li>(FNAM) Fade</li>
+                        </ul>
+                    </li>
                     <li>(LSCR) Load Screen: (ICON) Icon</li>
                     <li>(MGEF) Magic Effect:
                         <ul>
@@ -5387,7 +5525,7 @@ C.Location, -C.LockList
                     <li>(TREE) Tree</li>
                     <li>(WATR) Water</li>
                     <li>(WEAP) Weapon</li>
-                    <li>(WOOP) Word Of Power</li>
+                    <li>(WOOP) Word of Power</li>
                 </ul>
             </td>
         </tr>
@@ -5730,6 +5868,18 @@ C.Location, -C.LockList
                             </li>
                         </ul>
                     </li>
+                    <li>(EYES) Eyes:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
+                    <li>(HDPT) Head Part:
+                        <ul>
+                            <li>(EDID) Editor ID</li>
+                            <li>(DATA) Flags</li>
+                        </ul>
+                    </li>
                     <li>(KEYM) Key:
                         <ul>
                             <li>(EDID) Editor ID</li>
@@ -5919,6 +6069,11 @@ C.Location, -C.LockList
                     <li>(WEAP) Weapon:
                         <ul>
                             <li>(DESC) Description</li>
+                        </ul>
+                    </li>
+                    <li>(WOOP) Word of Power
+                        <ul>
+                            <li>(TNAM) Translation</li>
                         </ul>
                     </li>
                 </ul>
@@ -9106,12 +9261,6 @@ noted in the description of the tweak.</p>
                 try selecting another encoding from this dropdown.</td>
         </tr>
         <tr>
-            <td>Debug Mode</td>
-            <td>Enables debug mode, which will enable extra debug prints and
-                will print errors into a <code>BashBugDump.log</code> instead
-                of showing them on screen.</td>
-        </tr>
-        <tr>
             <td>Show Global Menu</td>
             <td>If checked, a global menu will be shown above the tabs. If
                 disabled, its options will still be accessible by
@@ -9314,27 +9463,69 @@ noted in the description of the tweak.</p>
     </thead>
     <tbody>
         <tr>
-            <td><code>ctrl-numpad plus (+)</code></td>
+            <td><code>Ctrl+Numpad Plus (+)</code></td>
             <td>Auto-sizes the columns to fit what is displayable.</td>
         </tr>
         <tr>
-            <td><code>ctrl-a</code></td>
+            <td><code>Ctrl+Up Arrow (↑)</code></td>
+            <td>Move the selected item(s) up (Installers, Mods).</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+Down Arrow (↓)</code></td>
+            <td>Move the selected item(s) down (Installers, Mods).</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+A</code></td>
             <td>Selects all items.</td>
         </tr>
         <tr>
-            <td><code>shift-ctrl-a</code></td>
+            <td><code>Ctrl+Shift+A</code></td>
             <td>Deselects all items.</td>
         </tr>
         <tr>
-            <td><code>ctrl-o</code></td>
+            <td><code>Ctrl+C</code></td>
+            <td>Copies files to the clipboard (Mods, Saves, Installers,
+                Screens).</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+N</code></td>
+            <td>
+                <ul>
+                    <li>New Project (Installers).</li>
+                    <li>New Plugin (Mods).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+Shift+N</code></td>
+            <td>
+                <ul>
+                    <li>New Marker (Installers).</li>
+                    <li>New Bashed Patch (Mods).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+O</code></td>
             <td>Opens the related data directory - for instance in the Mods
                 tab will open the Data folder, the INI Edits tab will open the
                 INI Tweaks folder etc.</td>
         </tr>
         <tr>
-            <td><code>ctrl-c</code></td>
-            <td>Copies files to the clipboard (Mods, Saves, Installers,
-                Screens).</td>
+            <td><code>Ctrl+Y</code></td>
+            <td>Redo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+Z</code></td>
+            <td>Undo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>Ctrl+Shift+Z</code></td>
+            <td>Redo load order state change (Mods).</td>
+        </tr>
+        <tr>
+            <td><code>Enter</code></td>
+            <td>Open the selected file(s) (Installers, Screens).</td>
         </tr>
         <tr>
             <td><code>F2</code></td>
@@ -9342,20 +9533,8 @@ noted in the description of the tweak.</p>
                 items for details.</td>
         </tr>
         <tr>
-            <td><code>ctrl-z</code></td>
-            <td>Undo load order state change (Mods).</td>
-        </tr>
-        <tr>
-            <td><code>ctrl-y</code></td>
-            <td>Redo load order state change (Mods).</td>
-        </tr>
-        <tr>
-            <td><code>ctrl-shift-z</code></td>
-            <td>Redo load order state change (Mods).</td>
-        </tr>
-        <tr>
-            <td><code>ctrl-shift-n</code></td>
-            <td>New Marker (Installers).</td>
+            <td><code>Space</code></td>
+            <td>Enable/disable selected plugin(s) (Mods).</td>
         </tr>
     </tbody>
 </table>
@@ -9371,9 +9550,11 @@ noted in the description of the tweak.</p>
             <th>Function
     <tbody>
         <tr>
-            <td><code>-d, --debug</code>
-            <td>Useful if bash is crashing on startup or if you want to
-                print a lot of information (e.g. while developing or debugging).
+            <td><code>-d, --debug</code></td>
+            <td>DEPRECATED. This does nothing anymore. Debug printing is now
+                always enabled. Kept around so that existing scripts and
+                shortcuts don't fail due to an unknown CLI switch.</td>
+        </tr>
         <tr>
             <td><code>-L&nbsp;LANGUAGE, --language=LANGUAGE</code>
             <td>Specify the user language overriding the system language
