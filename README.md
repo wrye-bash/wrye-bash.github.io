@@ -1,5 +1,5 @@
-wrye-bashers.github.io
-======================
+wrye-bash.github.io
+===================
 
 Static hosting for readmes, etc. - displayed at:
 
